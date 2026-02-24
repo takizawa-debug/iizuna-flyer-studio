@@ -1,41 +1,56 @@
 "use client";
 
 import { useState } from "react";
-import { ZoomIn, ZoomOut, Download, MapPin, Globe, Leaf } from "lucide-react";
+import { ZoomIn, ZoomOut, Download, MapPin, Globe, Leaf, Stamp } from "lucide-react";
 
-export default function Canvas() {
+type FarmData = {
+    visualStyle: "red" | "green" | "basket";
+    farmName: string;
+    catchphrase: string;
+    message: string;
+    phone: string;
+    url: string;
+};
+
+// Convert visual style into the appropriate placeholder "watercolor" emoji
+const getVisualEmoji = (style: string) => {
+    switch (style) {
+        case "red": return "🍎";
+        case "green": return "🍏";
+        case "basket": return "🧺";
+        default: return "🍎";
+    }
+};
+
+export default function Canvas({ data }: { data: FarmData }) {
     const [scale, setScale] = useState(0.85);
 
     return (
-        <div className="flex-1 bg-washi-dark overflow-auto relative">
-            <div className="sticky top-0 right-0 z-30 p-4 flex justify-end items-center pointer-events-none gap-4">
+        <div className="flex-1 overflow-auto relative flex flex-col items-center">
+            <div className="sticky top-0 right-0 z-30 p-4 w-full max-w-[840px] flex justify-end items-center pointer-events-none gap-4 print:hidden">
                 <div className="flex items-center gap-2 bg-washi rounded-full shadow-sm border border-ink/10 px-2 py-1 pointer-events-auto">
                     <button onClick={() => setScale(s => Math.max(0.4, s - 0.1))} className="p-1 hover:text-apple"><ZoomOut size={16} /></button>
                     <span className="text-xs font-sans w-12 text-center">{Math.round(scale * 100)}%</span>
                     <button onClick={() => setScale(s => Math.min(1.5, s + 0.1))} className="p-1 hover:text-apple"><ZoomIn size={16} /></button>
                 </div>
-                <button className="bg-apple text-washi px-4 py-1.5 rounded-full shadow-md hover:bg-apple-dark transition-colors flex items-center gap-2 font-medium pointer-events-auto text-sm">
-                    <Download size={16} />
-                    PDF出力
-                </button>
             </div>
 
             <div
-                className="p-12 min-h-max flex flex-col gap-16 items-center transform-gpu transition-transform origin-top"
+                className="pb-12 min-h-max flex flex-col gap-16 items-center transform-gpu transition-transform origin-top print:transform-none print:m-0 print:p-0 print:gap-0"
                 style={{ transform: `scale(${scale})` }}
             >
                 {/* =========================================================
             【表面】 Outer Side (Left to Right: Inside Flap / Back Cover / Front Cover)
            ========================================================= */}
-                <div className="flex flex-col gap-3">
-                    <h2 className="text-ink/60 font-medium text-sm px-2 flex items-center gap-2 tracking-widest font-sans">
+                <div className="flex flex-col gap-3 print:break-after-page print:gap-0">
+                    <h2 className="text-ink/60 font-medium text-sm px-2 flex items-center gap-2 tracking-widest font-sans print:hidden">
                         表面（左から： 中折り / 裏表紙 / 表紙）
                     </h2>
-                    <div className="bg-washi w-full w-[840px] h-[594px] shadow-2xl relative wabi-shadow rounded-sm overflow-hidden border border-[#f0ece1] flex">
+                    <div className="bg-washi w-full w-[840px] h-[594px] shadow-2xl relative wabi-shadow rounded-sm overflow-hidden border border-[#f0ece1] flex print:border-none print:shadow-none print:rounded-none">
                         <div className="absolute inset-0 texture-paper pointer-events-none z-0" />
 
                         {/* --- 左面：中折り (Inside Flap) --- */}
-                        <div className="flex-1 border-r border-ink/10 border-dashed relative z-10 flex flex-col p-12">
+                        <div className="flex-1 border-r border-ink/10 border-dashed relative z-10 flex flex-col p-12 print:border-none">
                             <h3 className="text-apple font-bold text-2xl mb-8 leading-tight tracking-wide wabi-rotate-1">
                                 このサイトで<br />できること
                             </h3>
@@ -56,7 +71,7 @@ export default function Canvas() {
                         </div>
 
                         {/* --- 中面：裏表紙 (Back Cover) --- */}
-                        <div className="flex-1 border-r border-ink/10 border-dashed relative z-10 flex flex-col items-center justify-center p-12 text-center">
+                        <div className="flex-1 border-r border-ink/10 border-dashed relative z-10 flex flex-col items-center justify-center p-12 text-center print:border-none">
                             <h3 className="text-xl font-bold mb-6 tracking-wide text-ink">
                                 この地図を、<br />共に描きませんか？
                             </h3>
@@ -66,8 +81,8 @@ export default function Canvas() {
 
                             {/* Fake QR & Link */}
                             <div className="bg-white p-4 wabi-shadow mb-6 wabi-rotate-3">
-                                <div className="w-32 h-32 border-4 border-ink flex items-center justify-center text-xs text-ink/40 font-sans">
-                                    QR Code
+                                <div className="w-32 h-32 border-[3px] border-ink flex flex-col items-center justify-center text-xs text-ink/40 font-sans">
+                                    アプリダウンロード<br />QR Code
                                 </div>
                             </div>
                             <div className="flex items-center gap-2 text-apple font-bold tracking-wider font-sans">
@@ -97,15 +112,15 @@ export default function Canvas() {
                 {/* =========================================================
             【裏面】 Inner Spread (Left / Center / Right)
            ========================================================= */}
-                <div className="flex flex-col gap-3">
-                    <h2 className="text-ink/60 font-medium text-sm px-2 flex items-center gap-2 tracking-widest font-sans">
-                        裏面（左面 / 中面 / 右面）
+                <div className="flex flex-col gap-3 print:gap-0">
+                    <h2 className="text-ink/60 font-medium text-sm px-2 flex items-center gap-2 tracking-widest font-sans print:hidden mt-8">
+                        裏面（左面 / 中面 / 右面: 農家カスタマイズ枠 ★）
                     </h2>
-                    <div className="bg-washi w-[840px] h-[594px] shadow-2xl relative wabi-shadow rounded-sm overflow-hidden border border-[#f0ece1] flex">
+                    <div className="bg-washi w-[840px] h-[594px] shadow-2xl relative wabi-shadow rounded-sm overflow-hidden border border-[#f0ece1] flex print:border-none print:shadow-none print:rounded-none">
                         <div className="absolute inset-0 texture-paper pointer-events-none z-0" />
 
                         {/* --- 左面：知る・味わう --- */}
-                        <div className="flex-1 border-r border-ink/10 border-dashed relative z-10 p-12 flex flex-col">
+                        <div className="flex-1 border-r border-ink/10 border-dashed relative z-10 p-12 flex flex-col print:border-none">
                             <span className="text-sm font-bold text-apple/60 tracking-widest mb-2">STORY & DELICIOUS</span>
                             <h2 className="text-2xl font-bold text-apple mb-8 tracking-wider wabi-rotate-2 border-b border-apple/20 pb-4">
                                 知る ＆ 味わう
@@ -128,7 +143,7 @@ export default function Canvas() {
                         </div>
 
                         {/* --- 中面：体験する・暮らす --- */}
-                        <div className="flex-1 border-r border-ink/10 border-dashed relative z-10 p-12 flex flex-col bg-[#f5f8ec]/30">
+                        <div className="flex-1 border-r border-ink/10 border-dashed relative z-10 p-12 flex flex-col bg-[#f5f8ec]/30 print:border-none">
                             <span className="text-sm font-bold text-leaf/60 tracking-widest mb-2">DISCOVER & LIFE</span>
                             <h2 className="text-2xl font-bold text-leaf mb-8 tracking-wider wabi-rotate-4 border-b border-leaf/20 pb-4">
                                 体験する ＆ 暮らす
@@ -150,27 +165,42 @@ export default function Canvas() {
                             <div className="text-6xl self-end opacity-90 wabi-rotate-3">🏠</div>
                         </div>
 
-                        {/* --- 右面：新しい探索 --- */}
-                        <div className="flex-1 relative z-10 p-12 flex flex-col">
-                            <span className="text-sm font-bold text-ink/40 tracking-widest mb-2">NEW EXPLORATION</span>
-                            <h2 className="text-2xl font-bold text-ink mb-8 tracking-wider wabi-rotate-1 border-b border-ink/10 pb-4">
-                                新しい探索体験
-                            </h2>
-                            <div className="space-y-6 flex-1 text-[14px] text-ink/80 leading-relaxed">
-                                <p className="font-bold text-base text-apple">
-                                    キーワードが道しるべになる
-                                </p>
-                                <p>
-                                    記事の中で気になった言葉をクリックするだけで、関連情報へ次々とジャンプ。品種から農家さんへ、お店から体験へ。
-                                </p>
+                        {/* --- 右面：★★★ ファームプロフィール枠 ★★★ --- */}
+                        <div className="flex-1 relative z-10 p-12 flex flex-col items-center border-[3px] border-apple/20 bg-apple/5 print:border-none rounded-sm">
+                            <span className="absolute top-2 left-2 text-[10px] text-apple/50 font-bold tracking-widest print:hidden">
+                                ▼ ここがカスタマイズされます ▼
+                            </span>
 
-                                <div className="bg-white/50 p-4 border border-ink/5 mt-4 text-sm wabi-rotate-2">
-                                    <span className="font-bold block mb-1 text-apple">💡 小さな記事</span>
-                                    隙間時間でサッと読める、分かりやすいボリュームにまとめています。
+                            <div className="text-[80px] mb-4 wabi-rotate-2 filter drop-shadow-sm leading-none pt-4 opacity-90">
+                                {getVisualEmoji(data.visualStyle)}
+                            </div>
+
+                            <h1 className="text-2xl font-bold text-apple wabi-rotate-1 mb-4 tracking-widest text-center leading-tight">
+                                {data.farmName || "　"}
+                            </h1>
+
+                            <p className="text-sm text-ink/80 tracking-widest font-bold wabi-rotate-4 mb-6 border-b border-apple/20 pb-2">
+                                {data.catchphrase || "　"}
+                            </p>
+
+                            <p className="text-[13px] leading-loose text-ink/70 tracking-wide flex-1 text-center whitespace-pre-wrap">
+                                {data.message || "　"}
+                            </p>
+
+                            <div className="mt-auto w-full border-t border-ink/10 pt-4 text-center">
+                                <div className="text-lg font-bold text-ink tracking-widest mb-1">
+                                    <span className="text-[10px] mr-1">TEL</span>{data.phone || "　"}
+                                </div>
+                                <div className="text-xs text-apple tracking-wider font-sans">
+                                    {data.url || "　"}
                                 </div>
                             </div>
-                            <div className="text-6xl self-end opacity-90 wabi-rotate-4">✨</div>
+
+                            <div className="absolute bottom-4 right-4 text-apple/10 wabi-rotate-3">
+                                <Stamp size={48} />
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
