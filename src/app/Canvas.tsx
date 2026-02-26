@@ -322,18 +322,8 @@ export default function Canvas() {
                             style={{ backgroundColor: coverColor }}
                         >
 
-                            {/* Background Image for the entire cover */}
-                            <div className="absolute inset-0 z-0">
-                                {/* eslint-disable-next-line @next/next/no-img-element */}
-                                <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/b0a34c40-a041-013e-b18a-0a58a9feac02/20231013_sweet-3.jpg" alt="Autumn Orchard" className="w-full h-full object-cover filter saturate-150" />
-                                {/* Overlay to restore the cover color theme, but keep it slightly transparent so the image peeks through slightly, or keep it solid and ONLY reveal through the 'i' slit? The user said "ここはすりガラスの窓として、背景画像を下記の画像にして、スリットから奥に見えるようにしてほしい。". So the cover is solid, and the 'i' is the window. */}
-                                <div className="absolute inset-0 transition-colors duration-300" style={{ backgroundColor: coverColor === '#FFFFFF' ? '#E88C83' : coverColor }}></div>
-                            </div>
-
-                            {/* "Information (i)" Frosted Glass Window Slits */}
-                            {/* We achieve "seeing through" by cutting holes in the overlay, OR by holding a duplicate image inside the 'i' divs. Let's use duplicate images inside the divs with background-attachment fixed or careful positioning, OR CSS clip-path on a reveal layer. */}
-                            {/* The most robust way to reveal a background through a specific shape in a solid overlay is to use CSS mask on the overlay itself. But let's build the 'i' shape using mask-image on a container that holds the clear image. */}
-
+                            {/* "Information (i)" Clear Tinted Window Slit */}
+                            {/* Uses CSS mask to cut the abstract 'i' shape, revealing the image below with a color tint */}
                             <div className="absolute inset-0 pointer-events-none z-0" style={{
                                 // Create the 'i' mask using multiple linear-gradients
                                 WebkitMaskImage: `
@@ -375,11 +365,11 @@ export default function Canvas() {
                                 `,
                                 maskRepeat: 'no-repeat'
                             }}>
-                                {/* Inside the masked area, we show the image but with a frosted glass effect */}
+                                {/* Clear Image background visible only through the 'i' slit mask */}
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                                <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/b0a34c40-a041-013e-b18a-0a58a9feac02/20231013_sweet-3.jpg" alt="Autumn Orchard Clear" className="absolute inset-0 w-full h-full object-cover" />
-                                {/* Frosted glass overlay inside the slit */}
-                                <div className="absolute inset-0 backdrop-blur-md bg-white/20 border border-white/30 shadow-[inset_0_4px_10px_rgba(0,0,0,0.1)] blur-[0.5px]"></div>
+                                <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/ec2954c0-a041-013e-ff9d-0a58a9feac02/iizuna_20220525-2.jpg" alt="Summer Orchard Window" className="absolute inset-0 w-full h-full object-cover filter contrast-125 saturate-110" />
+                                {/* Tint overlay to blend the window seamlessly with the cover color (like pink transparent glass) */}
+                                <div className="absolute inset-0 transition-colors duration-300 opacity-50 mix-blend-multiply" style={{ backgroundColor: coverColor === '#FFFFFF' ? '#E88C83' : coverColor }}></div>
                             </div>
 
 
