@@ -369,80 +369,21 @@ export default function Canvas() {
                             </h2>
                         </div>
 
-                        {/* --- 左面 (Mitoro Style Redesign: 知る / 暮らす) --- */}
-                        <div className="w-[280px] border-r border-[#D5CD97] border-dashed relative z-10 p-8 flex flex-col justify-start print:border-none text-ink/90 overflow-hidden">
-                            {/* Decorative background element */}
-                            <div className="absolute top-10 right-0 w-[150px] h-[150px] bg-white/20 rounded-full blur-2xl -z-10"></div>
-
-                            <div className="flex flex-col h-full pt-[40px] relative">
-
-                                {/* Section 1: 知る (Learn/History) */}
-                                <div className="relative z-20 mb-[30px]">
-                                    {/* Mitoro-style playful heading */}
-                                    <div className="relative inline-block mb-3">
-                                        <div className="absolute inset-0 bg-[#A1C23A]/20 -rotate-2 rounded-sm transform scale-105 origin-bottom-left z-[-1]"></div>
-                                        <h3 className="text-[16px] font-bold tracking-widest flex items-end">
-                                            知る <span className="text-[10px] font-normal pl-2 ml-2 pb-0.5 text-ink/70">歴史・栽培品種</span>
-                                        </h3>
-                                    </div>
-
-                                    {/* Dynamic overlapping image composition */}
-                                    <div className="relative w-full h-[140px] mt-2">
-                                        {/* Main image */}
-                                        <div className="absolute top-0 left-0 w-[160px] h-[110px] bg-white p-1.5 shadow-md rotate-[-3deg] z-10">
-                                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                                            <img src="https://images.unsplash.com/photo-1590005354167-6da97ce2b4fe?auto=format&fit=crop&q=80&w=300" alt="Apple history" className="w-full h-full object-cover filter contrast-110 saturate-110" />
-                                        </div>
-                                        {/* Secondary overlapping image */}
-                                        <div className="absolute top-[30px] right-[10px] w-[100px] h-[100px] bg-white p-1 rounded-full shadow-lg rotate-[5deg] z-20 overflow-hidden border-2 border-[#EBE2AF]">
-                                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                                            <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&q=80&w=200" alt="Varieties" className="w-full h-full object-cover" />
-                                        </div>
-                                        {/* Playful pop-out badge */}
-                                        <div className="absolute bottom-1 left-4 bg-[#F1CE00] text-ink font-bold text-[9px] py-1 px-3 rotate-[-5deg] shadow-sm whitespace-nowrap z-30 transform border border-ink/10 rounded-sm">
-                                            50種類以上の品種！
-                                        </div>
-                                    </div>
+                        {/* --- 左面 --- */}
+                        <div className="w-[280px] border-r border-[#D5CD97] border-dashed relative z-10 p-10 flex flex-col print:border-none text-ink/90">
+                            <div className="flex flex-col h-full pt-[70px]">
+                                <div className="relative z-20 mb-auto">
+                                    <h3 className="text-[14px] font-bold tracking-widest flex items-center mb-6">
+                                        知る <span className="font-normal border-l border-ink/40 pl-2 ml-2">歴史・栽培品種情報</span>
+                                    </h3>
+                                    <div className="w-full h-[100px] bg-white/40 flex items-center justify-center text-xs text-ink/40 border border-[#D5CD97]">Image Placeholder</div>
                                 </div>
-
-                                {/* Section 2: 暮らす (Live/Work) */}
-                                <div className="relative z-20 pt-[20px]">
-                                    {/* Mitoro-style playful heading */}
-                                    <div className="relative inline-block mb-4">
-                                        <div className="absolute bottom-1 left-0 right-0 h-[6px] bg-[#E88C83]/40 -rotate-1 rounded-sm z-[-1]"></div>
-                                        <h3 className="text-[16px] font-bold tracking-widest flex items-end">
-                                            暮らす <span className="text-[10px] font-normal pl-2 ml-2 pb-0.5 text-ink/70">移住・お仕事</span>
-                                        </h3>
-                                    </div>
-
-                                    {/* Dynamic image composition with tape/scrapbook feel */}
-                                    <div className="relative w-full h-[160px]">
-                                        {/* Large lifestyle image */}
-                                        <div className="absolute top-0 right-[-10px] w-[200px] h-[130px] shadow-sm rounded-lg overflow-hidden border-[3px] border-white rotate-[2deg] z-10">
-                                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                                            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=400" alt="Living in nature" className="w-full h-full object-cover" />
-                                        </div>
-                                        {/* "Masking tape" effect */}
-                                        <div className="absolute top-[-8px] right-[70px] w-[40px] h-[15px] bg-white/60 shadow-sm rotate-[-15deg] z-20 mix-blend-overlay"></div>
-                                        <div className="absolute top-[-8px] right-[70px] w-[40px] h-[15px] bg-yellow-100/40 rotate-[-15deg] z-20"></div>
-
-                                        {/* Small inset detail image */}
-                                        <div className="absolute bottom-0 left-[-5px] w-[110px] h-[80px] bg-white p-1 shadow-md rotate-[-4deg] z-20">
-                                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                                            <img src="https://images.unsplash.com/photo-1547989453-11e67af3610c?auto=format&fit=crop&q=80&w=200" alt="Workspace" className="w-full h-full object-cover filter contrast-125 saturate-110" />
-                                        </div>
-
-                                        {/* playful text arrow/label */}
-                                        <div className="absolute top-[80px] left-[5px] flex flex-col items-center rotate-[-10deg] z-30">
-                                            <span className="text-[8px] font-bold text-[#E88C83] bg-white px-1.5 py-0.5 rounded-sm shadow-sm whitespace-nowrap">自然の中で働く！</span>
-                                            {/* Hand-drawn style line/arrow using SVG */}
-                                            <svg width="20" height="20" viewBox="0 0 20 20" className="mt-0.5 text-[#E88C83] fill-current">
-                                                <path d="M10 0 C15 5, 20 10, 15 15 L20 12 L15 20 L12 15 L15 15 C10 10, 5 5, 10 0 Z" transform="scale(0.8) translate(2,2)" />
-                                            </svg>
-                                        </div>
-                                    </div>
+                                <div className="relative z-20 pt-10">
+                                    <h3 className="text-[14px] font-bold tracking-widest flex items-center mb-6">
+                                        暮らす <span className="font-normal border-l border-ink/40 pl-2 ml-2">移住・お仕事</span>
+                                    </h3>
+                                    <div className="w-full h-[100px] bg-white/40 flex items-center justify-center text-xs text-ink/40 border border-[#D5CD97]">Image Placeholder</div>
                                 </div>
-
                             </div>
                         </div>
 
