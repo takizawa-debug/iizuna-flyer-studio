@@ -335,8 +335,17 @@ export default function Canvas() {
                                                             <img
                                                                 src={appleUrl}
                                                                 alt="apple"
-                                                                // w-[90px] making apples slightly smaller while maintaining grid density.
-                                                                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90px] max-w-none h-auto object-contain"
+                                                                style={{
+                                                                    // High-end layered realistic shadow:
+                                                                    // 1. Sharp dark contact shadow right at the edge
+                                                                    // 2. Soft, wide diffuse shadow cast to the bottom-right
+                                                                    filter: `
+                                                                        drop-shadow(1.5px 2px 1.5px rgba(0,0,0,0.4))
+                                                                        drop-shadow(6px 10px 8px rgba(0,0,0,0.25))
+                                                                        contrast(1.05) saturate(1.05) brightness(0.98)
+                                                                    `
+                                                                }}
+                                                                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90px] max-w-none h-auto object-contain transition-transform duration-500 hover:scale-105"
                                                             />
                                                         ) : (
                                                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[30px] leading-none text-center z-10">🍎</div>
