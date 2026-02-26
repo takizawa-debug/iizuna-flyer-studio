@@ -201,7 +201,7 @@ export default function Canvas() {
                                     const startIdx = Math.floor(rowIndex / 2) * 7 + (isFourRow ? 0 : 4);
 
                                     return (
-                                        <div key={rowIndex} className={`flex justify-between w-full ${!isFourRow ? 'px-[44px]' : 'px-0'}`}>
+                                        <div key={rowIndex} className={`flex justify-between w-full ${!isFourRow ? 'px-[30px]' : 'px-0'}`}>
                                             {[...Array(appleCount)].map((_, colIndex) => {
                                                 const appleIndex = startIdx + colIndex;
                                                 const appleUrl = randomApples[appleIndex];
