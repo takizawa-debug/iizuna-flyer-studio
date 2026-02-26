@@ -199,32 +199,36 @@ export default function Canvas() {
                             <div className="grid grid-cols-2 gap-x-6 gap-y-8 w-full px-2 mb-auto">
                                 {/* Spring */}
                                 <div className="flex flex-col items-center text-center group">
-                                    <div className="w-[44px] h-[44px] rounded-full bg-[#fae8e9] border border-[#f5d0d3] flex items-center justify-center mb-3 transition-transform group-hover:scale-105">
-                                        <span className="text-[#d88289] text-[18px]">🌸</span>
+                                    <div className="w-[44px] h-[44px] rounded-full bg-[#fae8e9] border border-[#f5d0d3] flex items-center justify-center mb-3 transition-transform group-hover:scale-105 overflow-hidden">
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                                        <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/bd0a2240-8eef-013e-f636-0a58a9feac02/08d38714aac878e65d2e26af32577e64.jpg" alt="Spring" className="w-full h-full object-cover" />
                                     </div>
                                     <h4 className="text-[11px] font-bold tracking-widest mb-1">春</h4>
                                     <p className="text-[9px] text-ink/60 tracking-wider">桃源郷</p>
                                 </div>
                                 {/* Summer */}
                                 <div className="flex flex-col items-center text-center group">
-                                    <div className="w-[44px] h-[44px] rounded-full bg-[#e8f2ea] border border-[#cbe1ce] flex items-center justify-center mb-3 transition-transform group-hover:scale-105">
-                                        <span className="text-[#729f79] text-[18px]">🍃</span>
+                                    <div className="w-[44px] h-[44px] rounded-full bg-[#e8f2ea] border border-[#cbe1ce] flex items-center justify-center mb-3 transition-transform group-hover:scale-105 overflow-hidden">
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                                        <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/ec2954c0-a041-013e-ff9d-0a58a9feac02/iizuna_20220525-2.jpg" alt="Summer" className="w-full h-full object-cover" />
                                     </div>
                                     <h4 className="text-[11px] font-bold tracking-widest mb-1">夏</h4>
                                     <p className="text-[9px] text-ink/60 tracking-wider">標高900mの涼風</p>
                                 </div>
                                 {/* Autumn */}
                                 <div className="flex flex-col items-center text-center group">
-                                    <div className="w-[44px] h-[44px] rounded-full bg-[#fdf3e6] border border-[#f8dfc2] flex items-center justify-center mb-3 transition-transform group-hover:scale-105">
-                                        <span className="text-[#d29b5a] text-[18px]">🌾</span>
+                                    <div className="w-[44px] h-[44px] rounded-full bg-[#fdf3e6] border border-[#f8dfc2] flex items-center justify-center mb-3 transition-transform group-hover:scale-105 overflow-hidden">
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                                        <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/b0a34c40-a041-013e-b18a-0a58a9feac02/20231013_sweet-3.jpg" alt="Autumn" className="w-full h-full object-cover" />
                                     </div>
                                     <h4 className="text-[11px] font-bold tracking-widest mb-1">秋</h4>
                                     <p className="text-[9px] text-ink/60 tracking-wider">黄金の収穫</p>
                                 </div>
                                 {/* Winter */}
                                 <div className="flex flex-col items-center text-center group">
-                                    <div className="w-[44px] h-[44px] rounded-full bg-white border border-ink/10 shadow-sm flex items-center justify-center mb-3 transition-transform group-hover:scale-105">
-                                        <span className="text-ink/40 text-[18px]">❄️</span>
+                                    <div className="w-[44px] h-[44px] rounded-full bg-white border border-ink/10 shadow-sm flex items-center justify-center mb-3 transition-transform group-hover:scale-105 overflow-hidden">
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                                        <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/120aadf0-a042-013e-ffb1-0a58a9feac02/iizuna_20250123-10.jpg" alt="Winter" className="w-full h-full object-cover" />
                                     </div>
                                     <h4 className="text-[11px] font-bold tracking-widest mb-1">冬</h4>
                                     <p className="text-[9px] text-ink/60 tracking-wider">静寂の銀世界</p>
