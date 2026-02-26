@@ -187,53 +187,46 @@ export default function Canvas() {
                             </div>
 
                             {/* 2. Access Section (Minimalist & High-End with Icons) */}
-                            <div className="w-full flex flex-col gap-3 py-3 mb-5 relative">
-                                {/* Vertical text decoration */}
-                                <div className="absolute -left-5 top-1/2 -translate-y-1/2 transform -rotate-90 text-[6px] tracking-[0.4em] text-ink/20 uppercase font-sans whitespace-nowrap">
-                                    Access Guide
+                            <div className="w-full grid grid-cols-[16px_auto_1fr_auto] gap-x-2 gap-y-3 items-center py-2 mb-5">
+                                {/* Row 1: Train */}
+                                <div className="text-ink/60 flex justify-center">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-[14px] h-[14px]" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2C8 2 4 4 4 12v4c0 1.1.9 2 2 2h2v2h2v-2h4v2h2v-2h2c1.1 0 2-.9 2-2v-4c0-8-4-10-8-10zm0 2c3.2 0 6 1.6 6 8H6c0-6.4 2.8-8 6-8zm-3.5 13c-.83 0-1.5-.67-1.5-1.5S7.67 14 8.5 14s1.5.67 1.5 1.5S9.33 17 8.5 17zm7 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM18 12H6V9h12v3z" />
+                                    </svg>
                                 </div>
 
-                                {/* Route A: Train */}
-                                <div className="flex items-center w-full ml-2 relative">
-                                    <div className="w-[18px] flex-shrink-0 text-ink/60">
-                                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12 2C8 2 4 4 4 12v4c0 1.1.9 2 2 2h2v2h2v-2h4v2h2v-2h2c1.1 0 2-.9 2-2v-4c0-8-4-10-8-10zm0 2c3.2 0 6 1.6 6 8H6c0-6.4 2.8-8 6-8zm-3.5 13c-.83 0-1.5-.67-1.5-1.5S7.67 14 8.5 14s1.5.67 1.5 1.5S9.33 17 8.5 17zm7 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM18 12H6V9h12v3z" />
-                                        </svg>
+                                <div className="row-span-2 font-bold text-ink text-[10px] tracking-widest pl-1">東京</div>
+
+                                <div className="flex items-center w-full">
+                                    <div className="flex-1 flex flex-col items-center">
+                                        <span className="text-[6px] text-ink/50 bg-[#FBF4F0] px-1 z-10 leading-none mb-[2px]">新幹線 1.5H</span>
+                                        <div className="w-full border-t-[0.5px] border-dashed border-ink/30 -mt-[4px]"></div>
                                     </div>
-                                    <div className="flex-1 flex items-center justify-between ml-1 text-[9px] font-sans tracking-wide">
-                                        <span className="font-bold text-ink">東京</span>
-                                        <div className="flex-1 flex flex-col items-center px-1">
-                                            <span className="text-[6px] text-ink/50 bg-[#FBF4F0] px-1 z-10 leading-none mb-[2px]">新幹線 1.5H</span>
-                                            <div className="w-full border-t-[0.5px] border-dashed border-ink/30 -mt-[4px]"></div>
-                                        </div>
-                                        <span className="font-bold text-ink">長野</span>
-                                        <div className="flex-1 flex flex-col items-center px-1">
-                                            <span className="text-[6px] text-[#D45D56]/80 bg-[#FBF4F0] px-1 z-10 leading-none mb-[2px]">電車 20MIN</span>
-                                            <div className="w-full border-t-[0.5px] border-dashed border-[#D45D56]/50 -mt-[4px]"></div>
-                                        </div>
-                                        <div className="bg-[#D45D56] text-white px-1.5 py-0.5 rounded-[1px] shadow-sm ml-1">
-                                            <span className="text-[8px] font-bold">飯綱町</span>
-                                        </div>
+                                    <span className="font-bold text-ink text-[9px] px-1.5">長野</span>
+                                    <div className="flex-1 flex flex-col items-center">
+                                        <span className="text-[6px] text-[#D45D56]/80 bg-[#FBF4F0] px-1 z-10 leading-none mb-[2px]">電車 20MIN</span>
+                                        <div className="w-full border-t-[0.5px] border-dashed border-[#D45D56]/50 -mt-[4px]"></div>
                                     </div>
                                 </div>
 
-                                {/* Route B: Car */}
-                                <div className="flex items-center w-full ml-2 relative">
-                                    <div className="w-[18px] flex-shrink-0 text-ink/60">
-                                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-[15px] h-[15px]" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z" />
-                                            <circle cx="7.5" cy="14.5" r="1.5" /><circle cx="16.5" cy="14.5" r="1.5" />
-                                        </svg>
+                                <div className="row-span-2 flex items-center pr-1">
+                                    <div className="bg-[#D45D56] text-white px-1.5 py-1 rounded-[1px] shadow-sm">
+                                        <span className="text-[9px] font-bold tracking-widest">飯綱町</span>
                                     </div>
-                                    <div className="flex-1 flex items-center justify-between ml-1 text-[9px] font-sans tracking-wide">
-                                        <span className="font-bold text-ink">東京</span>
-                                        <div className="flex-1 flex flex-col items-center px-2">
-                                            <span className="text-[6px] text-ink/50 bg-[#FBF4F0] px-1 z-10 leading-none mb-[2px]">車 3H</span>
-                                            <div className="w-full border-t-[0.5px] border-dashed border-ink/30 -mt-[4px]"></div>
-                                        </div>
-                                        <div className="bg-[#D45D56] text-white px-1.5 py-0.5 rounded-[1px] shadow-sm ml-[35px]">
-                                            <span className="text-[8px] font-bold">飯綱町</span>
-                                        </div>
+                                </div>
+
+                                {/* Row 2: Car */}
+                                <div className="text-ink/60 flex justify-center">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-[14px] h-[14px]" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z" />
+                                        <circle cx="7.5" cy="14.5" r="1.5" /><circle cx="16.5" cy="14.5" r="1.5" />
+                                    </svg>
+                                </div>
+
+                                <div className="flex items-center w-full">
+                                    <div className="flex-1 flex flex-col items-center">
+                                        <span className="text-[6px] text-ink/50 bg-[#FBF4F0] px-1 z-10 leading-none mb-[2px]">車 3H</span>
+                                        <div className="w-full border-t-[0.5px] border-dashed border-ink/30 -mt-[4px]"></div>
                                     </div>
                                 </div>
                             </div>
