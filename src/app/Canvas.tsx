@@ -147,21 +147,21 @@ export default function Canvas() {
                             </div>
 
                             {/* Apple Grid overlay */}
-                            <div className="absolute inset-0 pt-[44px] pb-[76px] px-3 flex flex-col justify-between opacity-100 pointer-events-none z-10">
+                            <div className="absolute inset-0 pt-[30px] pb-[60px] px-2 flex flex-col justify-between opacity-100 pointer-events-none z-10">
                                 {[...Array(6)].map((_, rowIndex) => {
                                     const isEvenRow = rowIndex % 2 === 0;
                                     return (
-                                        <div key={rowIndex} className={`flex justify-around w-full ${isEvenRow ? 'px-4' : 'px-1'}`}>
-                                            {[...Array(5)].map((_, colIndex) => {
-                                                const appleIndex = rowIndex * 5 + colIndex;
+                                        <div key={rowIndex} className={`flex justify-around w-full ${isEvenRow ? 'px-4' : 'px-0'}`}>
+                                            {[...Array(4)].map((_, colIndex) => {
+                                                const appleIndex = rowIndex * 4 + colIndex;
                                                 const appleUrl = randomApples[appleIndex];
                                                 return (
-                                                    <div key={colIndex} className="w-[38px] h-[38px] filter drop-shadow-md relative">
+                                                    <div key={colIndex} className="w-[50px] h-[50px] relative">
                                                         {appleUrl ? (
                                                             // eslint-disable-next-line @next/next/no-img-element
-                                                            <img src={appleUrl} alt="apple" className="w-full h-full object-contain drop-shadow-[0_4px_6px_rgba(0,0,0,0.4)]" />
+                                                            <img src={appleUrl} alt="apple" className="w-full h-full object-contain" />
                                                         ) : (
-                                                            <div className="text-[30px] leading-none text-center">🍎</div>
+                                                            <div className="text-[40px] leading-none text-center">🍎</div>
                                                         )}
                                                     </div>
                                                 );
