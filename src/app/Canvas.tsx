@@ -449,28 +449,33 @@ export default function Canvas() {
 
                             {/* ── Infographic Timeline ── */}
                             <div className="bg-white/40 rounded-sm px-3 py-2 mb-2">
-                                <p className="text-[7.5px] font-bold tracking-[0.1em] mb-1.5" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                <p className="text-[7.5px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
                                     りんご栽培のあゆみ
                                 </p>
                                 <div className="flex flex-col gap-0">
                                     {[
-                                        { year: '1874', label: '明治7', text: 'りんご栽培はじまる' },
-                                        { year: '1920', label: '大正末', text: '「紅玉」「国光」で全国有数の産地へ' },
-                                        { year: '1962', label: '昭和37', text: '「ふじ」導入、飯綱の気候と好相性' },
-                                        { year: '1999', label: '平成11', text: 'シナノスイート・シナノゴールド栽培開始' },
-                                        { year: '2015', label: '平成27', text: '英国品種ブラムリー導入、料理用りんごの先駆け' },
-                                        { year: '現在', label: '', text: '50種以上を栽培する「りんごの宝庫」' },
-                                    ].map((item, i) => (
-                                        <div key={i} className="flex items-start gap-2">
-                                            <div className="flex flex-col items-center flex-shrink-0 w-[28px]">
-                                                <div className={`w-[5px] h-[5px] rounded-full ${i === 5 ? 'bg-[#D45D56]' : 'bg-[#E8C340]'}`}></div>
-                                                {i < 5 && <div className="w-px h-[12px] bg-[#E8C340]/40"></div>}
+                                        { era: '江戸末期', text: '「高坂林檎」が善光寺の門前で売られる' },
+                                        { era: '明治20年代', text: '笠井源太夫が西洋種を植え、果樹栽培が始まる' },
+                                        { era: '昭和4年〜', text: '世界恐慌で蚕糸業が衰退、桑畑→りんご畑へ転換' },
+                                        { era: '昭和40年代', text: '「うまいくだものづくり運動」で主力品種が「ふじ」へ' },
+                                        { era: '昭和43年', text: '旧三水村で9,560t産出。「日本一のりんご村」に' },
+                                        { era: '昭和末年', text: '絶滅寸前の「高坂林檎」を有志が苗木育成し保存' },
+                                        { era: '1987年', text: '役場前にニュートンの「フラワー・オブ・ケント」植樹' },
+                                        { era: '1990年頃', text: '英国王立園芸協会からブラムリー等16品種が渡来' },
+                                        { era: '2005年', text: '「高坂林檎」原木2本が天然記念物に指定' },
+                                        { era: '2020年頃', text: '科学分析で高坂林檎にふじの約10倍の機能性成分を確認' },
+                                        { era: '現在', text: '50種以上を栽培。「日本一のりんごのまち」へ' },
+                                    ].map((item, i, arr) => (
+                                        <div key={i} className="flex items-start gap-1.5">
+                                            <div className="flex flex-col items-center flex-shrink-0 w-[6px] mt-[3px]">
+                                                <div className={`w-[4px] h-[4px] rounded-full ${i === arr.length - 1 ? 'bg-[#D45D56]' : 'bg-[#E8C340]'}`}></div>
+                                                {i < arr.length - 1 && <div className="w-px h-[8px] bg-[#E8C340]/40"></div>}
                                             </div>
-                                            <div className="pb-0.5">
-                                                <span className="text-[5.5px] text-ink/40 tracking-wider" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
-                                                    {item.label ? `${item.label}（${item.year}）` : item.year}
+                                            <div className="pb-0">
+                                                <span className="text-[5px] text-ink/40 tracking-wider" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                                    {item.era}
                                                 </span>
-                                                <p className="text-[6.5px] font-serif text-ink/70 leading-[1.5]">{item.text}</p>
+                                                <p className="text-[5.5px] font-serif text-ink/70 leading-[1.4]">{item.text}</p>
                                             </div>
                                         </div>
                                     ))}
