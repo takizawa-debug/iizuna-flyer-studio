@@ -172,10 +172,11 @@ export default function Canvas() {
                         <div className="w-[280px] relative z-10 flex flex-col items-center justify-center bg-[#D45D56] text-white print:border-none overflow-hidden pb-[40px]">
 
                             {/* "i" motif background */}
-                            <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-0 mt-[20px]">
-                                <div className="w-[58px] h-[50px] bg-white mb-[40px] shadow-sm"></div>
-                                {/* Height adjusted to align bottom with QR code roughly */}
-                                <div className="w-[58px] h-[210px] bg-white shadow-sm"></div>
+                            <div className="absolute inset-0 pointer-events-none z-0">
+                                {/* Dot: starts at y=100, height=50 */}
+                                <div className="absolute top-[100px] left-1/2 -translate-x-1/2 w-[50px] h-[50px] bg-white shadow-sm"></div>
+                                {/* Body: starts at y=180 (30px gap), height=320 -> ends exactly at y=500 */}
+                                <div className="absolute top-[180px] left-1/2 -translate-x-1/2 w-[50px] h-[320px] bg-white shadow-sm"></div>
                             </div>
 
                             {/* Apple Grid overlay (Staggered 4-3-4-3... over 8 rows, tightly clumped in center) */}
