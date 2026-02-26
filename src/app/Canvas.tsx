@@ -179,51 +179,62 @@ export default function Canvas() {
 
                             {/* 1. Header Area */}
                             <div className="w-full flex flex-col justify-start mb-6 mt-1 relative z-10">
-                                <h3 className="text-[17px] font-serif tracking-[0.2em] leading-[1.5] text-ink/90 font-medium">
-                                    ようこそ<br />
-                                    <span className="text-[19px]">りんごのまちへ。</span>
+                                <h3 className="text-[19px] font-serif tracking-[0.15em] leading-[1.5] text-ink/90 font-medium">
+                                    ようこそ、りんごのまちへ。
                                 </h3>
                                 {/* Refined thick yellow line - slightly offset and elegant gold-yellow */}
                                 <div className="w-[85%] h-[3px] bg-[#E8C340] mt-3"></div>
                             </div>
 
-                            {/* 2. Access Section (Minimalist & High-End) */}
-                            <div className="w-full flex justify-between items-stretch border-t border-b border-ink/10 py-3 mb-5 relative">
+                            {/* 2. Access Section (Minimalist & High-End with Icons) */}
+                            <div className="w-full flex flex-col gap-3 py-3 mb-5 relative">
                                 {/* Vertical text decoration */}
-                                <div className="absolute -left-4 top-1/2 -translate-y-1/2 transform -rotate-90 text-[5px] tracking-[0.3em] text-ink/30 uppercase font-sans">
-                                    Access
+                                <div className="absolute -left-5 top-1/2 -translate-y-1/2 transform -rotate-90 text-[6px] tracking-[0.4em] text-ink/20 uppercase font-sans whitespace-nowrap">
+                                    Access Guide
                                 </div>
-                                <div className="flex-1 flex flex-col justify-center px-1">
-                                    <div className="flex items-end gap-1 mb-1.5">
-                                        <span className="text-[10px] font-serif tracking-widest font-bold">東京</span>
-                                        <span className="text-[5px] font-sans tracking-[0.2em] text-ink/40 uppercase pb-0.5">Tokyo</span>
+
+                                {/* Route A: Train */}
+                                <div className="flex items-center w-full ml-2 relative">
+                                    <div className="w-[18px] flex-shrink-0 text-ink/60">
+                                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 2C8 2 4 4 4 12v4c0 1.1.9 2 2 2h2v2h2v-2h4v2h2v-2h2c1.1 0 2-.9 2-2v-4c0-8-4-10-8-10zm0 2c3.2 0 6 1.6 6 8H6c0-6.4 2.8-8 6-8zm-3.5 13c-.83 0-1.5-.67-1.5-1.5S7.67 14 8.5 14s1.5.67 1.5 1.5S9.33 17 8.5 17zm7 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM18 12H6V9h12v3z" />
+                                        </svg>
                                     </div>
-                                    <div className="flex items-center w-full">
-                                        <div className="flex-1 h-[0.5px] bg-ink/20 relative">
-                                            <span className="absolute -top-[12px] left-1/2 -translate-x-1/2 text-[5px] tracking-widest text-ink/60 whitespace-nowrap bg-transparent">新幹線 1.5H</span>
-                                            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[3px] h-[3px] border-[0.5px] border-ink/40 bg-[#fbf4f0] rounded-full"></div>
+                                    <div className="flex-1 flex items-center justify-between ml-1 text-[9px] font-sans tracking-wide">
+                                        <span className="font-bold text-ink">東京</span>
+                                        <div className="flex-1 flex flex-col items-center px-1">
+                                            <span className="text-[6px] text-ink/50 bg-[#FBF4F0] px-1 z-10 leading-none mb-[2px]">新幹線 1.5H</span>
+                                            <div className="w-full border-t-[0.5px] border-dashed border-ink/30 -mt-[4px]"></div>
+                                        </div>
+                                        <span className="font-bold text-ink">長野</span>
+                                        <div className="flex-1 flex flex-col items-center px-1">
+                                            <span className="text-[6px] text-[#D45D56]/80 bg-[#FBF4F0] px-1 z-10 leading-none mb-[2px]">電車 20MIN</span>
+                                            <div className="w-full border-t-[0.5px] border-dashed border-[#D45D56]/50 -mt-[4px]"></div>
+                                        </div>
+                                        <div className="bg-[#D45D56] text-white px-1.5 py-0.5 rounded-[1px] shadow-sm ml-1">
+                                            <span className="text-[8px] font-bold">飯綱町</span>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="flex-1 flex flex-col justify-center px-2">
-                                    <div className="flex items-end gap-1 mb-1.5">
-                                        <span className="text-[10px] font-serif tracking-widest font-bold">長野</span>
-                                        <span className="text-[5px] font-sans tracking-[0.2em] text-ink/40 uppercase pb-0.5">Nagano</span>
+                                {/* Route B: Car */}
+                                <div className="flex items-center w-full ml-2 relative">
+                                    <div className="w-[18px] flex-shrink-0 text-ink/60">
+                                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-[15px] h-[15px]" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z" />
+                                            <circle cx="7.5" cy="14.5" r="1.5" /><circle cx="16.5" cy="14.5" r="1.5" />
+                                        </svg>
                                     </div>
-                                    <div className="flex items-center w-full">
-                                        <div className="flex-1 h-[0.5px] bg-[#D45D56]/50 relative">
-                                            <span className="absolute -top-[12px] left-1/2 -translate-x-1/2 text-[5px] tracking-widest text-[#D45D56]/80 whitespace-nowrap bg-transparent">車 30MIN</span>
-                                            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[3px] h-[3px] bg-[#D45D56] rounded-full"></div>
+                                    <div className="flex-1 flex items-center justify-between ml-1 text-[9px] font-sans tracking-wide">
+                                        <span className="font-bold text-ink">東京</span>
+                                        <div className="flex-1 flex flex-col items-center px-2">
+                                            <span className="text-[6px] text-ink/50 bg-[#FBF4F0] px-1 z-10 leading-none mb-[2px]">車 3H</span>
+                                            <div className="w-full border-t-[0.5px] border-dashed border-ink/30 -mt-[4px]"></div>
+                                        </div>
+                                        <div className="bg-[#D45D56] text-white px-1.5 py-0.5 rounded-[1px] shadow-sm ml-[35px]">
+                                            <span className="text-[8px] font-bold">飯綱町</span>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div className="flex flex-col justify-center items-end pl-1 pt-1">
-                                    <div className="bg-[#D45D56] text-white px-2 py-0.5 shadow-sm rounded-sm">
-                                        <span className="text-[9px] font-serif tracking-[0.15em] font-bold">飯綱町</span>
-                                    </div>
-                                    <span className="text-[4.5px] font-sans tracking-[0.2em] text-[#D45D56]/70 uppercase mt-1">Iizuna</span>
                                 </div>
                             </div>
 
