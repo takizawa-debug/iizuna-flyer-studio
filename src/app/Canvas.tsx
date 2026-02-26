@@ -159,94 +159,84 @@ export default function Canvas() {
                         {/* --- 左面：中折り (Inside Flap) --- */}
                         <div className="w-[280px] border-r border-ink/15 border-dashed relative z-10 flex flex-col p-8 text-ink print:border-none">
                             {/* Heading */}
-                            <div className="mt-4 mb-8 relative w-full flex justify-center">
-                                <h3 className="text-[18px] font-bold tracking-[0.15em] leading-loose text-center text-ink/90 whitespace-nowrap">
+                            <div className="mt-8 mb-10 w-full">
+                                <h3 className="text-[16px] font-serif tracking-[0.25em] leading-loose text-ink/90 whitespace-nowrap pl-2">
                                     ようこそ、りんごのまちへ。
                                 </h3>
                             </div>
 
-                            {/* Access Infographic */}
-                            <div className="w-full flex flex-col items-center mb-8">
-                                <div className="flex items-center w-full justify-between relative px-2 mb-3">
-                                    {/* Connecting Line */}
-                                    <div className="absolute top-[6px] left-[20px] right-[24px] h-0 border-t-[1.5px] border-ink/30 border-dashed z-0"></div>
+                            {/* Access Infographic - Editorial Hairline Style */}
+                            <div className="w-full flex flex-col mb-12 px-2">
+                                <div className="flex items-center w-full justify-between relative mb-2">
+                                    {/* Connecting Hairline */}
+                                    <div className="absolute top-[4px] left-[10px] right-[10px] h-0 border-t-[0.5px] border-ink/40 z-0"></div>
 
-                                    <div className="flex flex-col items-center relative z-10 bg-[#FCF2F0] px-1">
-                                        <div className="w-[10px] h-[10px] bg-white border-2 border-ink rounded-full mb-1"></div>
-                                        <span className="text-[10px] font-sans tracking-widest text-ink/80 font-bold">東京駅</span>
+                                    <div className="flex flex-col items-center relative z-10 bg-[#FCF2F0] px-1.5">
+                                        <div className="w-[8px] h-[8px] border-[0.5px] border-ink bg-white rounded-full mb-1.5"></div>
+                                        <span className="text-[9px] font-serif tracking-widest text-ink/80">東京駅</span>
                                     </div>
-                                    <div className="flex flex-col items-center justify-center relative z-10 -mt-2 bg-[#FCF2F0] px-1">
-                                        <span className="text-[10px] mb-0.5">🚅</span>
-                                        <span className="text-[8px] font-sans text-ink/60 whitespace-nowrap">新幹線 1.5h</span>
+
+                                    <div className="flex flex-col items-center justify-center relative z-10 -mt-3 bg-[#FCF2F0] px-1.5">
+                                        <span className="text-[7.5px] font-sans text-ink/50 tracking-wider">新幹線 1.5h</span>
                                     </div>
-                                    <div className="flex flex-col items-center relative z-10 bg-[#FCF2F0] px-1">
-                                        <div className="w-[10px] h-[10px] bg-ink rounded-full mb-1"></div>
-                                        <span className="text-[10px] font-sans tracking-widest text-ink/90 font-bold">長野駅</span>
+
+                                    <div className="flex flex-col items-center relative z-10 bg-[#FCF2F0] px-1.5">
+                                        <div className="w-[8px] h-[8px] bg-ink rounded-full mb-1.5"></div>
+                                        <span className="text-[9px] font-serif tracking-widest text-ink/90">長野駅</span>
                                     </div>
-                                    <div className="flex flex-col items-center justify-center relative z-10 -mt-2 bg-[#FCF2F0] px-1">
-                                        <span className="text-[10px] mb-0.5">🚗</span>
-                                        <span className="text-[8px] font-sans text-ink/60 whitespace-nowrap">車 30min</span>
+
+                                    <div className="flex flex-col items-center justify-center relative z-10 -mt-3 bg-[#FCF2F0] px-1.5">
+                                        <span className="text-[7.5px] font-sans text-ink/50 tracking-wider">車 30min</span>
                                     </div>
-                                    <div className="flex flex-col items-center relative z-10 bg-[#FCF2F0] pl-1">
-                                        <span className="text-[14px] leading-none mb-1 drop-shadow-sm">🍎</span>
-                                        <span className="text-[10px] font-sans tracking-widest text-[#D45D56] font-bold">飯綱町</span>
+
+                                    <div className="flex flex-col items-center relative z-10 bg-[#FCF2F0] pl-1.5">
+                                        <span className="text-[11px] leading-none mb-1 opacity-90 drop-shadow-sm">🍎</span>
+                                        <span className="text-[9px] font-serif tracking-widest text-[#D45D56] font-bold">飯綱町</span>
                                     </div>
                                 </div>
-                                <div className="text-[11px] tracking-widest text-ink/70 mt-2 font-bold bg-[#FCF2F0] px-2">
+                                <div className="text-[9px] tracking-[0.2em] text-ink/60 mt-3 font-serif pl-1">
                                     長野駅からわずか30分の非日常
                                 </div>
                             </div>
 
-                            {/* Seasons Grid (2x2) */}
-                            <div className="grid grid-cols-2 gap-x-4 gap-y-6 w-full px-2 mb-auto">
-                                {/* Spring */}
-                                <div className="flex flex-col items-center text-center group">
-                                    <div className="w-[84px] h-[84px] rounded-full shadow-sm flex items-center justify-center mb-3 transition-transform group-hover:scale-105 overflow-hidden border-2 border-white">
-                                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                                        <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/bd0a2240-8eef-013e-f636-0a58a9feac02/08d38714aac878e65d2e26af32577e64.jpg" alt="Spring" className="w-full h-full object-cover" />
+                            {/* Photo Mosaic & Editorial Caption */}
+                            <div className="w-full flex justify-center mb-auto px-2">
+                                <div className="w-[200px]">
+                                    {/* 2x2 Sharp Grid Mosaic */}
+                                    <div className="grid grid-cols-2 gap-[2px] w-full aspect-square mb-5">
+                                        <div className="relative overflow-hidden w-full h-full">
+                                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                                            <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/bd0a2240-8eef-013e-f636-0a58a9feac02/08d38714aac878e65d2e26af32577e64.jpg" alt="Spring" className="w-full h-full object-cover grayscale-[10%] brightness-105" />
+                                        </div>
+                                        <div className="relative overflow-hidden w-full h-full">
+                                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                                            <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/ec2954c0-a041-013e-ff9d-0a58a9feac02/iizuna_20220525-2.jpg" alt="Summer" className="w-full h-full object-cover grayscale-[10%] brightness-105" />
+                                        </div>
+                                        <div className="relative overflow-hidden w-full h-full">
+                                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                                            <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/b0a34c40-a041-013e-b18a-0a58a9feac02/20231013_sweet-3.jpg" alt="Autumn" className="w-full h-full object-cover grayscale-[10%] brightness-105" />
+                                        </div>
+                                        <div className="relative overflow-hidden w-full h-full">
+                                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                                            <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/120aadf0-a042-013e-ffb1-0a58a9feac02/iizuna_20250123-10.jpg" alt="Winter" className="w-full h-full object-cover grayscale-[10%] brightness-105" />
+                                        </div>
                                     </div>
-                                    <h4 className="text-[12px] font-bold tracking-widest mb-1">春</h4>
-                                    <p className="text-[10px] text-ink/70 tracking-wider">桃源郷</p>
-                                </div>
-                                {/* Summer */}
-                                <div className="flex flex-col items-center text-center group">
-                                    <div className="w-[84px] h-[84px] rounded-full shadow-sm flex items-center justify-center mb-3 transition-transform group-hover:scale-105 overflow-hidden border-2 border-white">
-                                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                                        <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/ec2954c0-a041-013e-ff9d-0a58a9feac02/iizuna_20220525-2.jpg" alt="Summer" className="w-full h-full object-cover" />
-                                    </div>
-                                    <h4 className="text-[12px] font-bold tracking-widest mb-1">夏</h4>
-                                    <p className="text-[10px] text-ink/70 tracking-wider">標高900mの涼風</p>
-                                </div>
-                                {/* Autumn */}
-                                <div className="flex flex-col items-center text-center group">
-                                    <div className="w-[84px] h-[84px] rounded-full shadow-sm flex items-center justify-center mb-3 transition-transform group-hover:scale-105 overflow-hidden border-2 border-white">
-                                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                                        <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/b0a34c40-a041-013e-b18a-0a58a9feac02/20231013_sweet-3.jpg" alt="Autumn" className="w-full h-full object-cover" />
-                                    </div>
-                                    <h4 className="text-[12px] font-bold tracking-widest mb-1">秋</h4>
-                                    <p className="text-[10px] text-ink/70 tracking-wider">黄金の収穫</p>
-                                </div>
-                                {/* Winter */}
-                                <div className="flex flex-col items-center text-center group">
-                                    <div className="w-[84px] h-[84px] rounded-full shadow-sm flex items-center justify-center mb-3 transition-transform group-hover:scale-105 overflow-hidden border-2 border-white">
-                                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                                        <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/120aadf0-a042-013e-ffb1-0a58a9feac02/iizuna_20250123-10.jpg" alt="Winter" className="w-full h-full object-cover" />
-                                    </div>
-                                    <h4 className="text-[12px] font-bold tracking-widest mb-1">冬</h4>
-                                    <p className="text-[10px] text-ink/70 tracking-wider">静寂の銀世界</p>
+                                    {/* Poetic Caption */}
+                                    <p className="text-[10px] font-serif tracking-[0.16em] leading-relaxed text-ink/70">
+                                        春の桃源郷、夏の涼風。<br />
+                                        秋の黄金色と冬の静寂。
+                                    </p>
                                 </div>
                             </div>
 
-                            {/* Food Quality */}
-                            <div className="w-full flex flex-col items-center mt-6 border-t border-ink/10 pt-6">
-                                <div className="flex items-center justify-center gap-4 mb-3 text-[14px] opacity-80">
+                            {/* Food Quality - Hyper Minimal */}
+                            <div className="w-full flex justify-between items-center border-t-[0.5px] border-ink/20 pt-6 px-1">
+                                <span className="text-[8.5px] font-serif tracking-[0.2em] text-ink/70">農村の食文化に触れる豊かな土壌</span>
+                                <div className="flex gap-2.5 opacity-60 text-[12px]">
                                     <span>🍎</span>
                                     <span>🍜</span>
                                     <span>🍶</span>
                                     <span>🥕</span>
-                                </div>
-                                <div className="text-[10px] tracking-widest text-ink/80 text-center leading-relaxed">
-                                    農村の食文化に触れる、豊かな食材。
                                 </div>
                             </div>
                         </div>
