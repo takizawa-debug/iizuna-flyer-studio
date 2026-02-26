@@ -77,7 +77,7 @@ export default function Canvas() {
     }, []);
 
     return (
-        <div className="flex-1 overflow-auto relative flex flex-col items-center">
+        <div className="flex-1 overflow-auto relative flex flex-col items-center font-tsukushi font-bold">
             <div className="sticky top-0 right-0 z-30 p-4 w-full max-w-[840px] flex justify-end items-center pointer-events-none gap-4 print:hidden">
                 <div className="flex items-center gap-2 bg-washi rounded-full shadow-sm border border-ink/10 px-2 py-1 pointer-events-auto">
                     <button onClick={() => setScale(s => Math.max(0.4, s - 0.1))} className="p-1 hover:text-apple"><ZoomOut size={16} /></button>
@@ -137,22 +137,31 @@ export default function Canvas() {
                         </div>
 
                         {/* --- 右面：表紙 (Front Cover) --- */}
-                        <div className="w-[280px] relative z-10 flex flex-col items-center justify-center bg-[#D45D56] text-white print:border-none overflow-hidden">
-                            <div className="absolute inset-0 pt-16 pb-24 px-4 flex flex-col justify-between opacity-90 pointer-events-none">
+                        <div className="w-[280px] relative z-10 flex flex-col items-center justify-center bg-[#D45D56] text-white print:border-none overflow-hidden pb-[40px]">
+
+                            {/* "i" motif background */}
+                            <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-0 mt-[20px]">
+                                <div className="w-[58px] h-[50px] bg-white mb-[40px] shadow-sm"></div>
+                                {/* Height adjusted to align bottom with QR code roughly */}
+                                <div className="w-[58px] h-[210px] bg-white shadow-sm"></div>
+                            </div>
+
+                            {/* Apple Grid overlay */}
+                            <div className="absolute inset-0 pt-[44px] pb-[76px] px-3 flex flex-col justify-between opacity-100 pointer-events-none z-10">
                                 {[...Array(6)].map((_, rowIndex) => {
                                     const isEvenRow = rowIndex % 2 === 0;
                                     return (
-                                        <div key={rowIndex} className={`flex justify-around w-full ${isEvenRow ? 'px-3' : 'px-0'}`}>
+                                        <div key={rowIndex} className={`flex justify-around w-full ${isEvenRow ? 'px-4' : 'px-1'}`}>
                                             {[...Array(5)].map((_, colIndex) => {
                                                 const appleIndex = rowIndex * 5 + colIndex;
                                                 const appleUrl = randomApples[appleIndex];
                                                 return (
-                                                    <div key={colIndex} className="w-[30px] h-[30px] filter drop-shadow-md relative">
+                                                    <div key={colIndex} className="w-[38px] h-[38px] filter drop-shadow-md relative">
                                                         {appleUrl ? (
                                                             // eslint-disable-next-line @next/next/no-img-element
-                                                            <img src={appleUrl} alt="apple" className="w-full h-full object-contain" />
+                                                            <img src={appleUrl} alt="apple" className="w-full h-full object-contain drop-shadow-[0_4px_6px_rgba(0,0,0,0.4)]" />
                                                         ) : (
-                                                            <div className="text-[24px] leading-none text-center">🍎</div>
+                                                            <div className="text-[30px] leading-none text-center">🍎</div>
                                                         )}
                                                     </div>
                                                 );
@@ -162,12 +171,7 @@ export default function Canvas() {
                                 })}
                             </div>
 
-                            <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-20 pb-[40px]">
-                                <div className="w-[50px] h-[40px] bg-white mb-[48px] shadow-sm"></div>
-                                <div className="w-[50px] h-[160px] bg-white shadow-sm"></div>
-                            </div>
-
-                            <h1 className="absolute bottom-[40px] text-[17px] font-bold tracking-widest z-30 drop-shadow-md pb-[8px]">
+                            <h1 className="absolute bottom-[44px] text-[18px] font-bold tracking-widest z-30 drop-shadow-md pb-[8px]">
                                 りんごのまち いいづな
                             </h1>
                         </div>
