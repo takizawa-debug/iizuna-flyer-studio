@@ -313,12 +313,22 @@ export default function Canvas() {
                             style={{ backgroundColor: coverColor }}
                         >
 
-                            {/* "i" motif background */}
+                            {/* "Information (i)" motif background */}
                             <div className="absolute inset-0 pointer-events-none z-0">
-                                {/* Dot: starts at y=100, extends to 180 (height=80) */}
-                                <div className={`absolute top-[100px] left-1/2 -translate-x-1/2 w-[50px] h-[80px] shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#E88C83]' : 'bg-white'}`}></div>
-                                {/* Body: starts at y=210, extends to 500 (height=290) */}
-                                <div className={`absolute top-[210px] left-1/2 -translate-x-1/2 w-[50px] h-[290px] shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#E88C83]' : 'bg-white'}`}></div>
+                                {/* Dot: Perfect Circle */}
+                                <div className={`absolute top-[90px] left-1/2 -translate-x-1/2 w-[66px] h-[66px] rounded-full shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#E88C83]' : 'bg-white'}`}></div>
+
+                                {/* Body: Stem and Serifs */}
+                                <div className="absolute top-[180px] left-1/2 -translate-x-1/2 w-[60px] h-[260px]">
+                                    {/* Top-left Serif */}
+                                    <div className={`absolute top-0 -left-[28px] w-[28px] h-[26px] shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#E88C83]' : 'bg-white'}`}></div>
+
+                                    {/* Main Stem */}
+                                    <div className={`absolute inset-0 w-full h-full shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#E88C83]' : 'bg-white'}`}></div>
+
+                                    {/* Bottom Slab Serif */}
+                                    <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-[160px] h-[28px] shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#E88C83]' : 'bg-white'}`}></div>
+                                </div>
                             </div>
 
                             {/* Apple Grid overlay (Staggered 4-3-4-3... over 8 rows, tightly clumped in center) */}
