@@ -157,8 +157,6 @@ export default function Canvas() {
                         )}
 
                         {/* --- 左面：中折り (Inside Flap) --- */}
-                        {/* --- 左面：中折り (Inside Flap) --- */}
-                        {/* --- 左面：中折り (Inside Flap) - Editorial Masterpiece --- */}
                         <div className="w-[280px] h-full relative z-10 flex flex-col pt-[45px] pb-[35px] px-[28px] text-ink print:border-none">
 
                             {/* Dynamic Absolute Background Silhouette - Using user's specific PNG */}
@@ -452,144 +450,346 @@ export default function Canvas() {
                             </div>
                         </div>
 
-                {/* --- 右面：表紙 (Front Cover) --- */}
-                <div
-                    className="w-[280px] relative z-10 flex flex-col items-center justify-center text-white print:border-none overflow-hidden pb-[40px] transition-colors duration-300"
-                    style={{ backgroundColor: coverColor }}
-                >
+                        {/* --- 右面：表紙 (Front Cover) --- */}
+                        <div
+                            className="w-[280px] relative z-10 flex flex-col items-center justify-center text-white print:border-none overflow-hidden pb-[40px] transition-colors duration-300"
+                            style={{ backgroundColor: coverColor }}
+                        >
 
-                    {/* "Information (i)" abstract motif background */}
-                    <div className="absolute inset-0 pointer-events-none z-0">
-                        {/* Dot: Abstract Rectangle */}
-                        <div className={`absolute top-[100px] left-1/2 -translate-x-1/2 w-[50px] h-[80px] transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-black opacity-5' : 'bg-white opacity-[0.25]'}`}></div>
+                            {/* "Information (i)" abstract motif background */}
+                            <div className="absolute inset-0 pointer-events-none z-0">
+                                {/* Dot: Abstract Rectangle */}
+                                <div className={`absolute top-[100px] left-1/2 -translate-x-1/2 w-[50px] h-[80px] transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-black opacity-5' : 'bg-white opacity-[0.25]'}`}></div>
 
-                        {/* Body: Stem with subtle serifs, rendered as a single cohesive SVG to avoid any overlapping lines */}
-                        <div className="absolute top-[210px] left-1/2 -translate-x-1/2 w-[100px] h-[290px]">
-                            <svg width="100%" height="100%" viewBox="0 0 100 290" xmlns="http://www.w3.org/2000/svg" className={`transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'fill-black opacity-5' : 'fill-white opacity-[0.25]'}`}>
-                                <path d="M 75 0 V 270 H 100 V 290 H 0 V 270 H 25 V 16 H 9 V 0 Z" />
-                            </svg>
-                        </div>
-                    </div>
+                                {/* Body: Stem with subtle serifs, rendered as a single cohesive SVG to avoid any overlapping lines */}
+                                <div className="absolute top-[210px] left-1/2 -translate-x-1/2 w-[100px] h-[290px]">
+                                    <svg width="100%" height="100%" viewBox="0 0 100 290" xmlns="http://www.w3.org/2000/svg" className={`transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'fill-black opacity-5' : 'fill-white opacity-[0.25]'}`}>
+                                        <path d="M 75 0 V 270 H 100 V 290 H 0 V 270 H 25 V 16 H 9 V 0 Z" />
+                                    </svg>
+                                </div>
+                            </div>
 
-                    {/* Apple Grid overlay (Staggered 4-3-4-3... over 8 rows, tightly clumped in center) */}
-                    {/* Increased padding drastically squishes the flex justify-between space, pulling apples together */}
-                    <div className="absolute inset-0 pt-[78px] pb-[136px] px-[50px] flex flex-col justify-between opacity-100 pointer-events-none z-10">
-                        {[...Array(8)].map((_, rowIndex) => {
-                            const isFourRow = rowIndex % 2 === 0;
-                            const appleCount = isFourRow ? 4 : 3;
-                            const startIdx = Math.floor(rowIndex / 2) * 7 + (isFourRow ? 0 : 4);
+                            {/* Apple Grid overlay (Staggered 4-3-4-3... over 8 rows, tightly clumped in center) */}
+                            {/* Increased padding drastically squishes the flex justify-between space, pulling apples together */}
+                            <div className="absolute inset-0 pt-[78px] pb-[136px] px-[50px] flex flex-col justify-between opacity-100 pointer-events-none z-10">
+                                {[...Array(8)].map((_, rowIndex) => {
+                                    const isFourRow = rowIndex % 2 === 0;
+                                    const appleCount = isFourRow ? 4 : 3;
+                                    const startIdx = Math.floor(rowIndex / 2) * 7 + (isFourRow ? 0 : 4);
 
-                            return (
-                                <div key={rowIndex} className={`flex justify-between w-full ${!isFourRow ? 'px-[30px]' : 'px-0'}`}>
-                                    {[...Array(appleCount)].map((_, colIndex) => {
-                                        const appleIndex = startIdx + colIndex;
-                                        const appleUrl = randomApples[appleIndex];
-                                        return (
-                                            // w-0 h-0 ensures justify-between distributes point centers mathematically perfectly
-                                            <div key={colIndex} className="relative flex items-center justify-center w-0 h-0">
-                                                {appleUrl ? (
-                                                    // eslint-disable-next-line @next/next/no-img-element
-                                                    <img
-                                                        src={appleUrl}
-                                                        alt="apple"
-                                                        style={{
-                                                            // High-end layered realistic shadow:
-                                                            // 1. Sharp dark contact shadow right at the edge
-                                                            // 2. Soft, wide diffuse shadow cast to the bottom-right
-                                                            filter: `
+                                    return (
+                                        <div key={rowIndex} className={`flex justify-between w-full ${!isFourRow ? 'px-[30px]' : 'px-0'}`}>
+                                            {[...Array(appleCount)].map((_, colIndex) => {
+                                                const appleIndex = startIdx + colIndex;
+                                                const appleUrl = randomApples[appleIndex];
+                                                return (
+                                                    // w-0 h-0 ensures justify-between distributes point centers mathematically perfectly
+                                                    <div key={colIndex} className="relative flex items-center justify-center w-0 h-0">
+                                                        {appleUrl ? (
+                                                            // eslint-disable-next-line @next/next/no-img-element
+                                                            <img
+                                                                src={appleUrl}
+                                                                alt="apple"
+                                                                style={{
+                                                                    // High-end layered realistic shadow:
+                                                                    // 1. Sharp dark contact shadow right at the edge
+                                                                    // 2. Soft, wide diffuse shadow cast to the bottom-right
+                                                                    filter: `
                                                                         drop-shadow(1.5px 2px 1.5px rgba(0,0,0,0.4))
                                                                         drop-shadow(6px 10px 8px rgba(0,0,0,0.25))
                                                                         contrast(1.05) saturate(1.05) brightness(0.98)
                                                                     `
-                                                        }}
-                                                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90px] max-w-none h-auto object-contain transition-transform duration-500 hover:scale-105"
-                                                    />
-                                                ) : (
-                                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[30px] leading-none text-center z-10">🍎</div>
-                                                )}
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            );
-                        })}
-                    </div>
+                                                                }}
+                                                                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90px] max-w-none h-auto object-contain transition-transform duration-500 hover:scale-105"
+                                                            />
+                                                        ) : (
+                                                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[30px] leading-none text-center z-10">🍎</div>
+                                                        )}
+                                                    </div>
+                                                );
+                                            })}
+                                        </div>
+                                    );
+                                })}
+                            </div>
 
-                    <h1 className={`absolute bottom-[44px] left-1/2 -translate-x-1/2 text-[18px] tracking-[0.2em] z-30 drop-shadow-md whitespace-nowrap transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'text-[#E88C83]' : 'text-white'}`} style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif", fontWeight: 500 }}>
-                        りんごのまち いいづな
-                    </h1>
+                            <h1 className={`absolute bottom-[44px] left-1/2 -translate-x-1/2 text-[18px] tracking-[0.2em] z-30 drop-shadow-md whitespace-nowrap transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'text-[#E88C83]' : 'text-white'}`} style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif", fontWeight: 500 }}>
+                                りんごのまち いいづな
+                            </h1>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
                 {/* =========================================================
             【裏面】 Inner Spread (Left / Center / Right)
            ========================================================= */}
-    <div className="flex flex-col gap-3 print:gap-0 mt-8">
-        <h2 className="text-ink/60 font-medium text-sm px-2 flex items-center gap-2 tracking-widest font-sans print:hidden">
-            裏面（左面 / 中面 / 右面）
-        </h2>
-        <div className="w-[840px] h-[594px] shadow-2xl relative wabi-shadow rounded-sm overflow-hidden flex print:shadow-none print:rounded-none bg-[#EBE2AF]">
-            <div className="absolute inset-0 texture-paper pointer-events-none z-0" />
+                <div className="flex flex-col gap-3 print:gap-0 mt-8">
+                    <h2 className="text-ink/60 font-medium text-sm px-2 flex items-center gap-2 tracking-widest font-sans print:hidden">
+                        裏面（左面 / 中面 / 右面）
+                    </h2>
+                    <div className="w-[840px] h-[594px] shadow-2xl relative wabi-shadow rounded-sm overflow-hidden flex print:shadow-none print:rounded-none bg-[#EBE2AF]">
+                        <div className="absolute inset-0 texture-paper pointer-events-none z-0" />
 
-            <div className="absolute top-[48%] left-0 w-full border-t border-[#D5CD97] border-dashed z-10 pointer-events-none"></div>
+                        {/* Title across panels */}
+                        <div className="absolute top-[28px] left-[30px] z-20">
+                            <span className="text-[8px] tracking-[0.3em] text-ink/35 uppercase" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif", fontWeight: 500 }}>APPLETOWN IIZUNA — THE STORIES</span>
+                            <h2 className="text-[20px] tracking-[0.15em] text-ink/90 mt-0.5" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif", fontWeight: 500 }}>
+                                いいづなりんごからはじまる物語
+                            </h2>
+                            <div className="w-[50px] h-[2px] bg-[#E8C340] mt-1.5"></div>
+                        </div>
 
-            {/* Title across panels */}
-            <div className="absolute top-[40px] left-[40px] z-20">
-                <h2 className="text-2xl font-bold tracking-widest text-ink/90">
-                    いいづなりんごからはじまる物語
-                </h2>
-            </div>
+                        {/* --- 左面：知る＋暮らす --- */}
+                        <div className="w-[280px] border-r border-[#D5CD97]/50 border-dashed relative z-10 flex flex-col print:border-none text-ink/90 pt-[80px] px-[22px] pb-[22px]">
 
-            {/* --- 左面 --- */}
-            <div className="w-[280px] border-r border-[#D5CD97] border-dashed relative z-10 p-10 flex flex-col print:border-none text-ink/90">
-                <div className="flex flex-col h-full pt-[70px]">
-                    <div className="relative z-20 mb-auto">
-                        <h3 className="text-[14px] font-bold tracking-widest flex items-center mb-6">
-                            知る <span className="font-normal border-l border-ink/40 pl-2 ml-2">歴史・栽培品種情報</span>
-                        </h3>
-                        <div className="w-full h-[100px] bg-white/40 flex items-center justify-center text-xs text-ink/40 border border-[#D5CD97]">Image Placeholder</div>
-                    </div>
-                    <div className="relative z-20 pt-10">
-                        <h3 className="text-[14px] font-bold tracking-widest flex items-center mb-6">
-                            暮らす <span className="font-normal border-l border-ink/40 pl-2 ml-2">移住・お仕事</span>
-                        </h3>
-                        <div className="w-full h-[100px] bg-white/40 flex items-center justify-center text-xs text-ink/40 border border-[#D5CD97]">Image Placeholder</div>
+                            {/* 知る section */}
+                            <div className="mb-5">
+                                <div className="flex items-baseline gap-2 mb-2">
+                                    <div className="w-[3px] h-[16px] bg-[#E8C340] rounded-full"></div>
+                                    <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>知る</span>
+                                    <span className="text-[6px] tracking-[0.2em] text-ink/30 uppercase">STORY</span>
+                                </div>
+                                <p className="text-[7px] font-serif text-ink/55 leading-[1.8] mb-2.5 tracking-[0.04em]">
+                                    町の歴史・品種図鑑・栽培の科学
+                                </p>
+
+                                {/* Apple varieties highlight */}
+                                <div className="bg-white/50 rounded-sm p-3 mb-3">
+                                    <p className="text-[8px] font-bold tracking-[0.1em] mb-1.5" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                        50種を超えるりんごの宝庫
+                                    </p>
+                                    <p className="text-[6.5px] font-serif text-ink/60 leading-[1.8] tracking-[0.03em]">
+                                        ふじ、つがる、王林の定番から、長野県生まれの<br />
+                                        シナノスイート、シナノゴールド、秋映。<br />
+                                        英国品種ブラムリーやグラニー・スミス。<br />
+                                        幻の和りんご「高坂りんご」まで。
+                                    </p>
+                                </div>
+
+                                {/* Science box */}
+                                <div className="border-l-2 border-[#E8C340] pl-2.5 mb-1">
+                                    <p className="text-[7px] font-bold tracking-[0.08em] mb-0.5" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                        科学が証明する、飯綱の美味しさ
+                                    </p>
+                                    <p className="text-[6px] font-serif text-ink/55 leading-[1.8]">
+                                        昼夜の寒暖差が糖度を凝縮し、実を引き締める。<br />
+                                        糖酸比30〜40——科学的に「美味しい」数値域。<br />
+                                        シャキシャキの食感は、破断強度で実証済み。
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Divider */}
+                            <div className="w-full border-t border-[#D5CD97]/40 mb-4"></div>
+
+                            {/* 暮らす section */}
+                            <div>
+                                <div className="flex items-baseline gap-2 mb-2">
+                                    <div className="w-[3px] h-[16px] bg-ink/25 rounded-full"></div>
+                                    <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>暮らす</span>
+                                    <span className="text-[6px] tracking-[0.2em] text-ink/30 uppercase">LIFE</span>
+                                </div>
+                                <p className="text-[7px] font-serif text-ink/55 leading-[1.8] mb-2.5 tracking-[0.04em]">
+                                    移住・就職・就農の支援
+                                </p>
+                                <div className="space-y-2">
+                                    <div className="flex gap-2 items-start">
+                                        <span className="text-[6px] text-ink/30 mt-[2px]">●</span>
+                                        <p className="text-[6.5px] font-serif text-ink/65 leading-[1.7]">
+                                            <span className="font-bold">移住体験住宅</span>——古民家に最長6泊7日。<br />
+                                            生活導線を体感できるお試し滞在。
+                                        </p>
+                                    </div>
+                                    <div className="flex gap-2 items-start">
+                                        <span className="text-[6px] text-ink/30 mt-[2px]">●</span>
+                                        <p className="text-[6.5px] font-serif text-ink/65 leading-[1.7]">
+                                            <span className="font-bold">就農里親制度</span>——約3年で独立。<br />
+                                            里親農家の実地指導で基礎から伴走。
+                                        </p>
+                                    </div>
+                                    <div className="flex gap-2 items-start">
+                                        <span className="text-[6px] text-ink/30 mt-[2px]">●</span>
+                                        <p className="text-[6.5px] font-serif text-ink/65 leading-[1.7]">
+                                            <span className="font-bold">いいコネワークス</span>——複数の仕事を<br />
+                                            組み合わせ、収入と暮らしの安定を。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* --- 中面：味わう --- */}
+                        <div className="w-[280px] border-r border-[#D5CD97]/50 border-dashed relative z-10 flex flex-col print:border-none text-ink/90 pt-[80px] px-[22px] pb-[22px]">
+
+                            <div className="flex items-baseline gap-2 mb-2">
+                                <div className="w-[3px] h-[16px] bg-[#D45D56] rounded-full"></div>
+                                <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>味わう</span>
+                                <span className="text-[6px] tracking-[0.2em] text-ink/30 uppercase">DELICIOUS</span>
+                            </div>
+                            <p className="text-[7px] font-serif text-ink/55 leading-[1.8] mb-3 tracking-[0.04em]">
+                                直売所・生産者・加工品・イベント
+                            </p>
+
+                            {/* Direct sales shops */}
+                            <div className="mb-4">
+                                <p className="text-[8px] font-bold tracking-[0.1em] mb-2" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                    りんごが買えるお店
+                                </p>
+                                <div className="space-y-1.5">
+                                    <div className="bg-white/50 rounded-sm px-2.5 py-1.5">
+                                        <p className="text-[7px] font-bold tracking-[0.06em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>むーちゃん</p>
+                                        <p className="text-[6px] font-serif text-ink/55 leading-[1.6]">カフェ併設、農業体験の相談窓口も</p>
+                                    </div>
+                                    <div className="bg-white/50 rounded-sm px-2.5 py-1.5">
+                                        <p className="text-[7px] font-bold tracking-[0.06em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>さんちゃん</p>
+                                        <p className="text-[6px] font-serif text-ink/55 leading-[1.6]">手作りジャム、アップルパイが人気</p>
+                                    </div>
+                                    <div className="bg-white/50 rounded-sm px-2.5 py-1.5">
+                                        <p className="text-[7px] font-bold tracking-[0.06em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>四季彩</p>
+                                        <p className="text-[6px] font-serif text-ink/55 leading-[1.6]">雪むろ熟成りんご、収穫体験も併設</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Processed goods */}
+                            <div className="mb-4">
+                                <p className="text-[8px] font-bold tracking-[0.1em] mb-2" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                    加工品
+                                </p>
+                                <div className="grid grid-cols-3 gap-1.5">
+                                    <div className="bg-white/40 rounded-sm p-1.5 text-center">
+                                        <p className="text-[7px] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>ジュース</p>
+                                        <p className="text-[5.5px] text-ink/45 leading-[1.5] mt-0.5">品種別の<br />飲み比べ</p>
+                                    </div>
+                                    <div className="bg-white/40 rounded-sm p-1.5 text-center">
+                                        <p className="text-[7px] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>シードル</p>
+                                        <p className="text-[5.5px] text-ink/45 leading-[1.5] mt-0.5">2つの<br />醸造所</p>
+                                    </div>
+                                    <div className="bg-white/40 rounded-sm p-1.5 text-center">
+                                        <p className="text-[7px] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>ジャム</p>
+                                        <p className="text-[5.5px] text-ink/45 leading-[1.5] mt-0.5">多品種の<br />味わい</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Events */}
+                            <div className="border-t border-[#D5CD97]/40 pt-3">
+                                <p className="text-[8px] font-bold tracking-[0.1em] mb-2" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                    季節のイベント
+                                </p>
+                                <div className="space-y-1.5">
+                                    <div className="flex items-start gap-1.5">
+                                        <span className="text-[7px] text-[#D45D56]/60 font-bold flex-shrink-0 mt-px" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>秋</span>
+                                        <p className="text-[6.5px] font-serif text-ink/60 leading-[1.6]">英国りんごフェア — 料理用りんごの魅力を発信</p>
+                                    </div>
+                                    <div className="flex items-start gap-1.5">
+                                        <span className="text-[7px] text-[#D45D56]/60 font-bold flex-shrink-0 mt-px" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>冬</span>
+                                        <p className="text-[6.5px] font-serif text-ink/60 leading-[1.6]">ふじまつり — 開始2時間で完売の人気</p>
+                                    </div>
+                                    <div className="flex items-start gap-1.5">
+                                        <span className="text-[7px] text-[#D45D56]/60 font-bold flex-shrink-0 mt-px" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>通年</span>
+                                        <p className="text-[6.5px] font-serif text-ink/60 leading-[1.6]">スイーツコンクール — パティシエが腕を競う</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Online shop callout */}
+                            <div className="mt-auto pt-3">
+                                <div className="bg-[#D45D56]/8 rounded-sm px-2.5 py-2 border border-[#D45D56]/15">
+                                    <p className="text-[7px] font-bold tracking-[0.06em] text-[#D45D56]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>みつどんマルシェ</p>
+                                    <p className="text-[6px] font-serif text-ink/55 leading-[1.6]">オンラインで全国配送。30品種食べ比べ定期便も。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* --- 右面：体験する＋営む --- */}
+                        <div className="w-[280px] relative z-10 flex flex-col print:border-none text-ink/90 pt-[80px] px-[22px] pb-[22px]">
+
+                            {/* 体験する section */}
+                            <div className="mb-4">
+                                <div className="flex items-baseline gap-2 mb-2">
+                                    <div className="w-[3px] h-[16px] bg-leaf rounded-full"></div>
+                                    <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>体験する</span>
+                                    <span className="text-[6px] tracking-[0.2em] text-ink/30 uppercase">DISCOVER</span>
+                                </div>
+                                <p className="text-[7px] font-serif text-ink/55 leading-[1.8] mb-2.5 tracking-[0.04em]">
+                                    農業体験・滞在・フォトスポット
+                                </p>
+
+                                <div className="space-y-2 mb-3">
+                                    <div className="bg-white/50 rounded-sm p-2.5">
+                                        <p className="text-[7.5px] font-bold tracking-[0.08em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>りんごの木オーナー制度</p>
+                                        <p className="text-[6px] font-serif text-ink/55 leading-[1.7] mt-0.5">
+                                            1本の木を契約し、秋に自分だけの収穫を。<br />
+                                            管理はプロに任せる安心プランも。
+                                        </p>
+                                    </div>
+                                    <div className="bg-white/50 rounded-sm p-2.5">
+                                        <p className="text-[7.5px] font-bold tracking-[0.08em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>信州いいづなりんご学校</p>
+                                        <p className="text-[6px] font-serif text-ink/55 leading-[1.7] mt-0.5">
+                                            日帰りから上級まで段階的に学べる<br />
+                                            体験型プログラム。農家との交流も。
+                                        </p>
+                                    </div>
+                                    <div className="bg-white/50 rounded-sm p-2.5">
+                                        <p className="text-[7.5px] font-bold tracking-[0.08em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>ワーキングホリデー</p>
+                                        <p className="text-[6px] font-serif text-ink/55 leading-[1.7] mt-0.5">
+                                            3泊4日、農家に入り込む実践型。<br />
+                                            就農の入り口として。
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* Photo spots mini */}
+                                <div className="flex gap-1.5 text-center">
+                                    <div className="flex-1 bg-white/30 rounded-sm py-1.5 px-1">
+                                        <p className="text-[5.5px] text-ink/50 leading-[1.5]">りんご畑の<br />四季の風景</p>
+                                    </div>
+                                    <div className="flex-1 bg-white/30 rounded-sm py-1.5 px-1">
+                                        <p className="text-[5.5px] text-ink/50 leading-[1.5]">ニュートン<br />りんご並木</p>
+                                    </div>
+                                    <div className="flex-1 bg-white/30 rounded-sm py-1.5 px-1">
+                                        <p className="text-[5.5px] text-ink/50 leading-[1.5]">りんごの<br />カーブミラー</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Divider */}
+                            <div className="w-full border-t border-[#D5CD97]/40 mb-3"></div>
+
+                            {/* 営む section */}
+                            <div>
+                                <div className="flex items-baseline gap-2 mb-2">
+                                    <div className="w-[3px] h-[16px] bg-[#C4956A] rounded-full"></div>
+                                    <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>営む</span>
+                                    <span className="text-[6px] tracking-[0.2em] text-ink/30 uppercase">PARTNERS</span>
+                                </div>
+                                <p className="text-[7px] font-serif text-ink/55 leading-[1.8] mb-2 tracking-[0.04em]">
+                                    栽培支援・補助金・施設情報
+                                </p>
+                                <div className="space-y-1">
+                                    <p className="text-[6.5px] font-serif text-ink/60 leading-[1.7]">
+                                        <span className="font-bold">JAりんご部会講習会</span> / 苗木導入補助 / 大型機械整備
+                                    </p>
+                                    <p className="text-[6.5px] font-serif text-ink/60 leading-[1.7]">
+                                        <span className="font-bold">共同利用機械</span>補助 / 三本松加工所 / JAフルーツセンター
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Bottom CTA */}
+                            <div className="mt-auto pt-3 text-center">
+                                <div className="bg-ink/5 rounded-sm px-3 py-2">
+                                    <p className="text-[6.5px] font-serif text-ink/50 leading-[1.7] tracking-[0.04em]">
+                                        すべての記事は<br />
+                                        <span className="font-bold text-ink/70" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>appletown-iizuna.com</span><br />
+                                        でお読みいただけます
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            {/* --- 中面 --- */}
-            <div className="w-[280px] border-r border-[#D5CD97] border-dashed relative z-10 p-10 flex flex-col print:border-none text-ink/90">
-                <div className="flex flex-col h-full pt-[70px]">
-                    <div className="relative z-20 mb-auto">
-                        <h3 className="text-[14px] font-bold tracking-widest flex items-center mb-6">
-                            味わう <span className="font-normal border-l border-ink/40 pl-2 ml-2">販売場所・生産者</span>
-                        </h3>
-                        <div className="w-full h-[100px] bg-white/40 flex items-center justify-center text-xs text-ink/40 border border-[#D5CD97]">Image Placeholder</div>
-                    </div>
-                </div>
-            </div>
-
-            {/* --- 右面 --- */}
-            <div className="w-[280px] relative z-10 p-10 flex flex-col print:border-none text-ink/90">
-                <div className="flex flex-col h-full pt-[70px]">
-                    <div className="relative z-20 mb-auto">
-                        <h3 className="text-[14px] font-bold tracking-widest flex items-center mb-6">
-                            体験する <span className="font-normal border-l border-ink/40 pl-2 ml-2">農業体験・滞在</span>
-                        </h3>
-                        <div className="w-full h-[100px] bg-white/40 flex items-center justify-center text-xs text-ink/40 border border-[#D5CD97]">Image Placeholder</div>
-                    </div>
-                    <div className="relative z-20 pt-10">
-                        <h3 className="text-[14px] font-bold tracking-widest flex items-center mb-6">
-                            営む <span className="font-normal border-l border-ink/40 pl-2 ml-2">事業者支援・素材</span>
-                        </h3>
-                        <div className="w-full h-[100px] bg-white/40 flex items-center justify-center text-xs text-ink/40 border border-[#D5CD97]">Image Placeholder</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
             </div >
         </div >
     );
