@@ -159,15 +159,15 @@ export default function Canvas() {
                         {/* --- 左面：中折り (Inside Flap) --- */}
                         <div className="w-[280px] border-r border-ink/15 border-dashed relative z-10 flex flex-col p-8 text-ink print:border-none">
                             {/* Heading */}
-                            <div className="mt-8 mb-10 w-full flex justify-center">
-                                <h3 className="text-[14.5px] font-serif tracking-[0.25em] leading-loose text-ink/90 whitespace-nowrap">
+                            <div className="h-[50px] w-full flex items-center justify-center">
+                                <h3 className="text-[15px] font-serif tracking-[0.25em] text-ink/90 whitespace-nowrap">
                                     ようこそ、りんごのまちへ。
                                 </h3>
                             </div>
 
                             {/* Access Infographic - Editorial Hairline Style */}
-                            <div className="w-full flex flex-col mb-12 px-2">
-                                <div className="flex items-center w-full justify-between relative mb-2">
+                            <div className="h-[120px] w-full flex flex-col justify-center px-2">
+                                <div className="flex items-center w-full justify-between relative mb-3">
                                     {/* Connecting Hairline */}
                                     <div className="absolute top-[4px] left-[10px] right-[10px] h-0 border-t-[0.5px] border-ink/40 z-0"></div>
 
@@ -194,8 +194,14 @@ export default function Canvas() {
                                         <span className="text-[9px] font-serif tracking-widest text-[#D45D56] font-bold">飯綱町</span>
                                     </div>
                                 </div>
-                                <div className="text-[9px] tracking-[0.2em] text-ink/60 mt-3 font-serif pl-1">
-                                    長野駅からわずか30分の非日常
+                                <div className="flex flex-col gap-1.5 mt-2 pl-1">
+                                    <div className="text-[9px] tracking-[0.2em] text-ink/70 font-serif">
+                                        長野から約2時間
+                                    </div>
+                                    <div className="text-[8px] tracking-widest text-ink/60 font-serif leading-relaxed">
+                                        標高500m〜900m。<br />
+                                        寒暖差のある冷涼な地域です。
+                                    </div>
                                 </div>
                             </div>
 
@@ -203,7 +209,7 @@ export default function Canvas() {
                             <div className="w-full flex justify-center mb-auto px-2">
                                 <div className="w-[200px]">
                                     {/* 2x2 Sharp Grid Mosaic */}
-                                    <div className="grid grid-cols-2 gap-[2px] w-full aspect-square mb-5">
+                                    <div className="grid grid-cols-2 gap-[2px] w-[200px] h-[200px] mb-4">
                                         <div className="relative overflow-hidden w-full h-full">
                                             {/* eslint-disable-next-line @next/next/no-img-element */}
                                             <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/bd0a2240-8eef-013e-f636-0a58a9feac02/08d38714aac878e65d2e26af32577e64.jpg" alt="Spring" className="w-full h-full object-cover grayscale-[10%] brightness-105" />
