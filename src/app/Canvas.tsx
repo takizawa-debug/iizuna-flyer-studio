@@ -158,52 +158,55 @@ export default function Canvas() {
 
                         {/* --- 左面：中折り (Inside Flap) --- */}
                         <div className="w-[280px] relative z-10 flex flex-col pt-12 pb-8 px-6 text-ink print:border-none">
-                            {/* Heading */}
-                            <div className="w-full mb-6">
-                                <h3 className="text-[14px] font-serif tracking-[0.3em] leading-relaxed text-ink/90">
+                            {/* Heading (y=50 to 100) */}
+                            <div className="h-[50px] w-full flex items-center justify-start mt-4">
+                                <h3 className="text-[14px] font-serif tracking-[0.15em] leading-relaxed text-ink/90 whitespace-nowrap">
                                     ようこそ、りんごのまちへ。
                                 </h3>
                             </div>
 
                             {/* Divider */}
-                            <div className="w-full h-px bg-ink/20 mb-4"></div>
+                            <div className="w-full h-[0.5px] bg-ink/30 mb-5"></div>
 
-                            {/* Access Route - Linear & Elegant */}
-                            <div className="w-full flex items-center justify-between mb-8 px-1">
-                                <div className="flex flex-col items-center">
-                                    <div className="w-2.5 h-2.5 border-[0.5px] border-ink bg-white rounded-full mb-1.5"></div>
-                                    <span className="text-[8px] font-serif tracking-widest text-ink/80">東京駅</span>
+                            {/* Access Route & Subtext (y=110 to 230) */}
+                            <div className="h-[120px] w-full flex flex-col justify-start">
+                                {/* Route */}
+                                <div className="w-full flex items-center justify-between mb-5 px-1">
+                                    <div className="flex flex-col items-center">
+                                        <div className="w-[7px] h-[7px] border-[0.5px] border-ink bg-white rounded-full mb-1"></div>
+                                        <span className="text-[8px] font-serif tracking-widest text-ink/80 whitespace-nowrap">東京駅</span>
+                                    </div>
+                                    <div className="flex flex-col items-center justify-center -mt-2">
+                                        <span className="text-[7px] font-sans text-ink/50 tracking-wider whitespace-nowrap">新幹線 1.5h</span>
+                                    </div>
+                                    <div className="flex flex-col items-center">
+                                        <div className="w-[7px] h-[7px] bg-ink rounded-full mb-1"></div>
+                                        <span className="text-[8px] font-serif tracking-widest text-ink/90 whitespace-nowrap">長野駅</span>
+                                    </div>
+                                    <div className="flex flex-col items-center justify-center -mt-2">
+                                        <span className="text-[7px] font-sans text-ink/50 tracking-wider whitespace-nowrap">車 30min</span>
+                                    </div>
+                                    <div className="flex flex-col items-center">
+                                        <span className="text-[11px] leading-none mb-0.5 opacity-90 drop-shadow-sm">🍎</span>
+                                        <span className="text-[8px] font-serif tracking-widest text-[#D45D56] font-bold whitespace-nowrap">飯綱町</span>
+                                    </div>
                                 </div>
-                                <div className="flex flex-col items-center justify-center -mt-3">
-                                    <span className="text-[7px] font-sans text-ink/50 tracking-wider">新幹線 1.5h</span>
-                                </div>
-                                <div className="flex flex-col items-center">
-                                    <div className="w-2.5 h-2.5 bg-ink rounded-full mb-1.5"></div>
-                                    <span className="text-[8px] font-serif tracking-widest text-ink/90">長野駅</span>
-                                </div>
-                                <div className="flex flex-col items-center justify-center -mt-3">
-                                    <span className="text-[7px] font-sans text-ink/50 tracking-wider">車 30min</span>
-                                </div>
-                                <div className="flex flex-col items-center">
-                                    <span className="text-[11px] leading-none mb-1 opacity-90 drop-shadow-sm">🍎</span>
-                                    <span className="text-[8px] font-serif tracking-widest text-[#D45D56] font-bold">飯綱町</span>
+
+                                {/* Subtext */}
+                                <div className="w-full pl-1">
+                                    <p className="text-[9px] tracking-[0.2em] text-ink/80 font-serif mb-2">
+                                        長野から約2時間
+                                    </p>
+                                    <p className="text-[8px] tracking-[0.1em] text-ink/60 font-serif leading-relaxed">
+                                        標高500m〜900m。<br />
+                                        寒暖差のある冷涼な地域です。
+                                    </p>
                                 </div>
                             </div>
 
-                            {/* Subtext */}
-                            <div className="w-full mb-6 pl-1">
-                                <p className="text-[10px] tracking-[0.2em] text-ink/80 font-serif mb-2">
-                                    長野から約2時間
-                                </p>
-                                <p className="text-[8.5px] tracking-[0.15em] text-ink/60 font-serif leading-loose">
-                                    標高500m〜900m。<br />
-                                    寒暖差のある冷涼な地域です。
-                                </p>
-                            </div>
-
-                            {/* Photo Mosaic */}
-                            <div className="w-full mb-4">
-                                <div className="grid grid-cols-2 gap-[2px] w-full aspect-square">
+                            {/* Photo Mosaic (y=230 to 430) */}
+                            <div className="w-full h-[200px] mb-3">
+                                <div className="grid grid-cols-2 gap-[2px] w-full h-[200px]">
                                     <div className="relative overflow-hidden w-full h-full">
                                         {/* eslint-disable-next-line @next/next/no-img-element */}
                                         <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/bd0a2240-8eef-013e-f636-0a58a9feac02/08d38714aac878e65d2e26af32577e64.jpg" alt="Spring" className="w-full h-full object-cover grayscale-[10%] brightness-105" />
@@ -223,47 +226,47 @@ export default function Canvas() {
                                 </div>
                             </div>
 
-                            {/* Poetic Caption */}
-                            <div className="w-full mb-auto pl-1">
-                                <p className="text-[9.5px] font-serif tracking-[0.2em] leading-loose text-ink/80">
+                            {/* Poetic Caption (y=430 to 460) */}
+                            <div className="w-full h-[30px] pl-1">
+                                <p className="text-[9.5px] font-serif tracking-[0.15em] leading-relaxed text-ink/80">
                                     春の桃源郷、夏の涼風。<br />
                                     秋の黄金色と冬の静寂。
                                 </p>
                             </div>
 
-                            {/* Food Gallery */}
-                            <div className="w-full mt-8">
-                                <div className="flex items-start justify-between gap-1 mb-4">
-                                    <div className="flex flex-col items-center gap-1.5 w-1/4">
+                            {/* Food Gallery (y=460 to 550) */}
+                            <div className="w-full h-[90px] mt-auto">
+                                <div className="flex items-start justify-between gap-1 mb-3">
+                                    <div className="flex flex-col items-center gap-1 w-1/4">
                                         <div className="w-full aspect-square relative overflow-hidden bg-ink/5">
                                             {/* eslint-disable-next-line @next/next/no-img-element */}
                                             <img src="https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&q=80&w=200" alt="Apple" className="w-full h-full object-cover mix-blend-multiply" />
                                         </div>
                                     </div>
-                                    <div className="flex flex-col items-center gap-1.5 w-1/4 pt-1">
-                                        <div className="w-[85%] aspect-square rounded-full relative overflow-hidden bg-ink/5">
+                                    <div className="flex flex-col items-center gap-1 w-1/4 pt-1">
+                                        <div className="w-[85%] aspect-square rounded-full relative overflow-hidden bg-ink/5 border-[0.5px] border-ink/20">
                                             {/* eslint-disable-next-line @next/next/no-img-element */}
-                                            <img src="https://images.unsplash.com/photo-1519984388953-d240ec8ceab0?auto=format&fit=crop&q=80&w=200" alt="Soba" className="w-full h-full object-cover mix-blend-multiply" />
+                                            <img src="https://images.unsplash.com/photo-1519984388953-d240ec8ceab0?auto=format&fit=crop&q=80&w=200" alt="Soba" className="w-full h-full object-cover mix-blend-multiply opacity-90" />
                                         </div>
-                                        <span className="text-[10px] font-serif tracking-widest text-ink/80">Soba</span>
+                                        <span className="text-[9px] font-serif tracking-widest text-ink/70">Soba</span>
                                     </div>
-                                    <div className="flex flex-col items-center gap-1.5 w-1/4 pt-2">
+                                    <div className="flex flex-col items-center gap-1 w-1/4 pt-2">
                                         <div className="w-[75%] aspect-[3/4] rounded-sm relative overflow-hidden bg-ink/5">
                                             {/* eslint-disable-next-line @next/next/no-img-element */}
-                                            <img src="https://images.unsplash.com/photo-1522856351838-5110ce4cdbe8?auto=format&fit=crop&q=80&w=200" alt="Cider" className="w-full h-full object-cover mix-blend-multiply" />
+                                            <img src="https://images.unsplash.com/photo-1522856351838-5110ce4cdbe8?auto=format&fit=crop&q=80&w=200" alt="Cider" className="w-full h-full object-cover mix-blend-multiply grayscale-[30%]" />
                                         </div>
-                                        <span className="text-[10px] font-serif tracking-widest text-ink/80">Cider</span>
+                                        <span className="text-[9px] font-serif tracking-widest text-ink/70">Cider</span>
                                     </div>
-                                    <div className="flex flex-col items-center gap-1.5 w-1/4">
+                                    <div className="flex flex-col items-center gap-1 w-1/4">
                                         <div className="w-[90%] aspect-square relative overflow-hidden bg-ink/5">
                                             {/* eslint-disable-next-line @next/next/no-img-element */}
-                                            <img src="https://images.unsplash.com/photo-1596704179361-9f2df6f08fb7?auto=format&fit=crop&q=80&w=200" alt="Vegetables" className="w-full h-full object-cover mix-blend-multiply" />
+                                            <img src="https://images.unsplash.com/photo-1596704179361-9f2df6f08fb7?auto=format&fit=crop&q=80&w=200" alt="Vegetables" className="w-full h-full object-cover mix-blend-multiply grayscale-[10%]" />
                                         </div>
-                                        <span className="text-[10px] font-serif tracking-widest text-ink/80 pt-1">Vegeta</span>
+                                        <span className="text-[9px] font-serif tracking-[0.1em] text-ink/70 pt-0.5">Vegeta</span>
                                     </div>
                                 </div>
-                                <div className="w-full flex justify-center mt-2">
-                                    <span className="text-[8.5px] font-serif tracking-[0.25em] text-ink/60">りんご、シードル、蕎麦、大地。</span>
+                                <div className="w-full flex justify-center">
+                                    <span className="text-[8px] font-serif tracking-[0.2em] text-ink/60">りんご、シードル、蕎麦、大地。</span>
                                 </div>
                             </div>
                         </div>
