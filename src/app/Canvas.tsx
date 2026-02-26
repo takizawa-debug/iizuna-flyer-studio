@@ -87,6 +87,7 @@ export default function Canvas() {
                     <button onClick={() => setCoverColor('#D45D56')} className={`w-4 h-4 rounded-full border ${coverColor === '#D45D56' ? 'border-ink border-2' : 'border-ink/20'}`} style={{ backgroundColor: '#D45D56' }} aria-label="Red"></button>
                     <button onClick={() => setCoverColor('#A1C23A')} className={`w-4 h-4 rounded-full border ${coverColor === '#A1C23A' ? 'border-ink border-2' : 'border-ink/20'}`} style={{ backgroundColor: '#A1C23A' }} aria-label="Green"></button>
                     <button onClick={() => setCoverColor('#F1CE00')} className={`w-4 h-4 rounded-full border ${coverColor === '#F1CE00' ? 'border-ink border-2' : 'border-ink/20'}`} style={{ backgroundColor: '#F1CE00' }} aria-label="Yellow"></button>
+                    <button onClick={() => setCoverColor('#FFFFFF')} className={`w-4 h-4 rounded-full border ${coverColor === '#FFFFFF' ? 'border-ink border-2' : 'border-ink/20'}`} style={{ backgroundColor: '#FFFFFF' }} aria-label="White"></button>
                 </div>
 
                 <button
@@ -186,21 +187,21 @@ export default function Canvas() {
                             {/* "i" motif background */}
                             <div className="absolute inset-0 pointer-events-none z-0">
                                 {/* Dot: starts at y=100, extends to 180 (height=80) */}
-                                <div className="absolute top-[100px] left-1/2 -translate-x-1/2 w-[50px] h-[80px] bg-white shadow-sm"></div>
+                                <div className={`absolute top-[100px] left-1/2 -translate-x-1/2 w-[50px] h-[80px] shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#D45D56]' : 'bg-white'}`}></div>
                                 {/* Body: starts at y=210, extends to 500 (height=290) */}
-                                <div className="absolute top-[210px] left-1/2 -translate-x-1/2 w-[50px] h-[290px] bg-white shadow-sm"></div>
+                                <div className={`absolute top-[210px] left-1/2 -translate-x-1/2 w-[50px] h-[290px] shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#D45D56]' : 'bg-white'}`}></div>
                             </div>
 
                             {/* Apple Grid overlay (Staggered 4-3-4-3... over 8 rows, tightly clumped in center) */}
                             {/* Increased padding drastically squishes the flex justify-between space, pulling apples together */}
-                            <div className="absolute inset-0 pt-[70px] pb-[130px] px-[40px] flex flex-col justify-between opacity-100 pointer-events-none z-10">
+                            <div className="absolute inset-0 pt-[78px] pb-[136px] px-[50px] flex flex-col justify-between opacity-100 pointer-events-none z-10">
                                 {[...Array(8)].map((_, rowIndex) => {
                                     const isFourRow = rowIndex % 2 === 0;
                                     const appleCount = isFourRow ? 4 : 3;
                                     const startIdx = Math.floor(rowIndex / 2) * 7 + (isFourRow ? 0 : 4);
 
                                     return (
-                                        <div key={rowIndex} className={`flex justify-between w-full ${!isFourRow ? 'px-[36px]' : 'px-0'}`}>
+                                        <div key={rowIndex} className={`flex justify-between w-full ${!isFourRow ? 'px-[44px]' : 'px-0'}`}>
                                             {[...Array(appleCount)].map((_, colIndex) => {
                                                 const appleIndex = startIdx + colIndex;
                                                 const appleUrl = randomApples[appleIndex];
@@ -226,7 +227,7 @@ export default function Canvas() {
                                 })}
                             </div>
 
-                            <h1 className="absolute bottom-[44px] text-[18px] font-bold tracking-widest z-30 drop-shadow-md pb-[8px]">
+                            <h1 className={`absolute bottom-[44px] text-[18px] font-bold tracking-widest z-30 drop-shadow-md pb-[8px] transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'text-[#D45D56]' : 'text-white'}`}>
                                 りんごのまち いいづな
                             </h1>
                         </div>
