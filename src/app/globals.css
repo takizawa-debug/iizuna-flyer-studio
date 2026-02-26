@@ -9,7 +9,7 @@
   --color-leaf: #4d6645;
 
   --font-serif: var(--font-shippori), "Shippori Mincho", serif;
-  --font-sans: var(--font-inter), sans-serif;
+  --font-sans: var(--font-noto-sans), "Noto Sans JP", sans-serif;
   --font-tsukushi: "FOT-TsukuARdGothic Std", "FOT-筑紫A丸ゴシック Std", "TsukuARdGothic-Regular", sans-serif;
 }
 

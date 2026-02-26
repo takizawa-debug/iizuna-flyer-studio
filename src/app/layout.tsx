@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Shippori_Mincho, Inter } from "next/font/google";
+import { Shippori_Mincho, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 
 const shippori = Shippori_Mincho({
@@ -9,9 +9,10 @@ const shippori = Shippori_Mincho({
   display: "swap",
 });
 
-const inter = Inter({
+const notoSansJP = Noto_Sans_JP({
+  weight: ["400", "500", "700"],
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-noto-sans",
   display: "swap",
 });
 
@@ -28,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body
-        className={`${shippori.variable} ${inter.variable} font-serif antialiased bg-washi text-ink texture-paper min-h-screen`}
+        className={`${shippori.variable} ${notoSansJP.variable} font-serif antialiased bg-washi text-ink texture-paper min-h-screen`}
       >
         {/* SVG Filter for Ink Bleed effect (Wabi-sabi) */}
         <svg style={{ position: "absolute", width: 0, height: 0 }} aria-hidden="true">

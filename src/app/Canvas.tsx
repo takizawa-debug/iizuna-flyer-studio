@@ -187,7 +187,7 @@ export default function Canvas() {
                             </div>
 
                             {/* 2. Access Section — Segmented route lines */}
-                            <div className="w-full flex flex-col gap-3 py-2 mb-5">
+                            <div className="w-full flex flex-col gap-1 py-2 mb-5">
                                 {/* Row 1: Train route */}
                                 <div className="flex items-center w-full gap-0">
                                     {/* Tokyo pictogram + label */}
@@ -240,15 +240,15 @@ export default function Canvas() {
                                 </div>
 
                                 {/* Row 2: Car route */}
-                                <div className="flex items-center w-full gap-0 -mt-1">
+                                <div className="flex items-center w-full gap-0 mt-0">
                                     {/* Spacer matching Tokyo pictogram width */}
                                     <div className="w-[30px] flex-shrink-0"></div>
                                     {/* Dashed segment */}
                                     <div className="flex-1 border-t-[1px] border-dashed border-ink/25 self-center"></div>
-                                    {/* Car label */}
-                                    <div className="px-1 text-center flex flex-col leading-none flex-shrink-0">
-                                        <span className="text-[8px] text-ink/50 leading-[1.3]">車</span>
-                                        <span className="text-[9px] text-ink/80 font-bold leading-[1.3]">3H</span>
+                                    {/* Car label - single line */}
+                                    <div className="px-1.5 flex items-center gap-1 flex-shrink-0">
+                                        <span className="text-[8px] text-ink/50 leading-none">車</span>
+                                        <span className="text-[9px] text-ink/80 font-bold leading-none">3H</span>
                                     </div>
                                     {/* Dashed segment */}
                                     <div className="flex-1 border-t-[1px] border-dashed border-ink/25 self-center"></div>
