@@ -161,12 +161,21 @@ export default function Canvas() {
                         {/* --- 左面：中折り (Inside Flap) - Editorial Masterpiece --- */}
                         <div className="w-[280px] h-full relative z-10 flex flex-col pt-[45px] pb-[35px] px-[28px] text-ink print:border-none">
 
-                            {/* Dynamic Absolute Background Abstract Silhouette - Massive, Recognizable Apple */}
-                            <div className="absolute -bottom-[150px] -left-[180px] w-[600px] h-[600px] opacity-[0.12] pointer-events-none z-0 transform rotate-[15deg] transition-colors duration-500">
-                                <svg viewBox="0 0 200 200" fill={coverColor === '#FFFFFF' ? '#E88C83' : coverColor} xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M100.005 38.692C116.793 38.692 133 42.6 146.5 53C161.4 64.4 168.9 83.1 169.8 101.9C170.8 123.6 163.7 146.5 147 161.9C131.7 176 109.4 179.6 90.7 172.5C85.5 170.5 78.6 170.6 73.1 172.1C55.6 177.1 36.6 173.3 22.8 160.1C7.8 145.7 3.6 123.4 4.8 102.6C5.9 82.5 15.6 62.4 32.2 51.5C46.8 41.9 66 38.6 82.8 44.8C88.2 46.8 95.7 46.4 100.005 38.692ZM115 11C117.8 19.3 113.8 29.2 106.8 35.1C99.8 41 89.2 43.1 82.6 36.2C75.8 29.1 77.2 16.9 83.4 9.8C89.5 2.7 101.2 -1.4 109.1 2.2C112 3.5 114 7.2 115 11Z" />
-                                </svg>
-                            </div>
+                            {/* Dynamic Absolute Background Silhouette - Using user's specific PNG */}
+                            <div
+                                className="absolute -bottom-[60px] -left-[100px] w-[500px] h-[500px] opacity-[0.09] pointer-events-none z-0 transform rotate-[10deg] transition-colors duration-500"
+                                style={{
+                                    backgroundColor: coverColor === '#FFFFFF' ? '#E88C83' : coverColor,
+                                    WebkitMaskImage: `url('/apple-silhouette.png')`,
+                                    WebkitMaskSize: 'contain',
+                                    WebkitMaskRepeat: 'no-repeat',
+                                    WebkitMaskPosition: 'center',
+                                    maskImage: `url('/apple-silhouette.png')`,
+                                    maskSize: 'contain',
+                                    maskRepeat: 'no-repeat',
+                                    maskPosition: 'center',
+                                }}
+                            />
 
                             {/* 1. Header Area */}
                             <div className="w-full flex flex-col justify-start mb-6 mt-1 relative z-10">
