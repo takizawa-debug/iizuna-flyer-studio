@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Shippori_Mincho, Noto_Sans_JP } from "next/font/google";
+import { Shippori_Mincho, Zen_Kaku_Gothic_New } from "next/font/google";
 import "./globals.css";
 
 const shippori = Shippori_Mincho({
@@ -9,9 +9,10 @@ const shippori = Shippori_Mincho({
   display: "swap",
 });
 
-const notoSansJP = Noto_Sans_JP({
-  weight: ["400", "500", "700"],
-  variable: "--font-noto-sans",
+const zenKaku = Zen_Kaku_Gothic_New({
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+  variable: "--font-zen-kaku",
   display: "swap",
   preload: false,
 });
@@ -29,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body
-        className={`${shippori.variable} ${notoSansJP.variable} font-serif antialiased bg-washi text-ink texture-paper min-h-screen`}
+        className={`${shippori.variable} ${zenKaku.variable} font-serif antialiased bg-washi text-ink texture-paper min-h-screen`}
       >
         {/* SVG Filter for Ink Bleed effect (Wabi-sabi) */}
         <svg style={{ position: "absolute", width: 0, height: 0 }} aria-hidden="true">
