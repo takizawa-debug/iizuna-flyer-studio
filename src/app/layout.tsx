@@ -11,9 +11,9 @@ const shippori = Shippori_Mincho({
 
 const notoSansJP = Noto_Sans_JP({
   weight: ["400", "500", "700"],
-  subsets: ["latin"],
   variable: "--font-noto-sans",
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {

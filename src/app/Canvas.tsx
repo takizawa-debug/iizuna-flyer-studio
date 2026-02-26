@@ -178,87 +178,75 @@ export default function Canvas() {
                             />
 
                             {/* 1. Header Area — Editorial Typography (Sans-serif accent) */}
-                            <div className="w-full flex flex-col justify-start mb-6 mt-1 relative z-10">
+                            <div className="w-full flex flex-col justify-start mb-3 mt-1 relative z-10">
                                 <h3 className="text-[15px] font-sans tracking-[0.15em] leading-[1.4] text-ink/90 font-bold whitespace-nowrap">
                                     ようこそ、りんごのまちへ。
                                 </h3>
                                 {/* Refined thick yellow line */}
-                                <div className="w-[75%] h-[3px] bg-[#E8C340] mt-3"></div>
+                                <div className="w-[75%] h-[3px] bg-[#E8C340] mt-2"></div>
                             </div>
 
-                            {/* 2. Access Section — Segmented route lines */}
-                            <div className="w-full flex flex-col gap-1 py-2 mb-5">
+                            {/* 2. Access Section — Pictograms centered between 2 route rows */}
+                            <div className="w-full grid grid-cols-[auto_1fr_auto] gap-x-0 gap-y-0 items-center mb-2">
+                                {/* Tokyo pictogram (spans both rows) */}
+                                <div className="row-span-2 flex flex-col items-center justify-center gap-0.5 pr-1">
+                                    <svg viewBox="0 0 512 512" className="w-[30px] h-[60px]" xmlns="http://www.w3.org/2000/svg">
+                                        <g fill="currentColor" className="text-ink/60">
+                                            <path d="M319.625,312.844l19.938-41.75v-48.781h-37.516l-2.406-46.625l20.953-32.188V96h-56.422V0h-16.344v96h-56.422v46.594l21.031,31.469l-2.484,48.25h-37.516v47.531l20.234,40.938L164.609,512h71.953l2.094-5.031c4.094-9.828,11.672-25.516,17.344-37.016c5.672,11.5,13.234,27.172,17.328,37.016l2.094,5.031h71.969L319.625,312.844z M315.125,398.969h-50.953v-30.297h46.734L315.125,398.969z M264.172,352.328v-33.703h39.75l4.703,33.703H264.172z M247.828,352.328h-44.453l4.688-33.703h39.766V352.328z M201.094,368.672h46.734v30.297h-50.969L201.094,368.672z M247.828,415.313v30.297h-57.469l4.234-30.297H247.828z M264.172,415.313h53.234l4.234,30.297h-57.469V415.313z M283.547,180.766l2.141,41.547h-21.516v-41.547H283.547z M207.75,112.344h96.5v26.297l-16.781,25.797h-61.813l-17.906-26.813V112.344z M228.469,180.766h19.359v41.547h-21.516L228.469,180.766z M188.781,238.656h20.328h93.781h20.328v28.75l-16.672,34.891h-99.844l-17.922-36.266V238.656z M225.734,495.656h-42.344l4.703-33.703h53.625C236.781,471.938,230.266,485.375,225.734,495.656z M286.25,495.656c-4.531-10.281-11.047-23.719-15.984-33.703h53.641l4.703,33.703H286.25z" />
+                                            <rect x="218.219" y="258.375" width="12.25" height="28.594" />
+                                            <rect x="249.875" y="258.375" width="12.25" height="28.594" />
+                                            <rect x="281.531" y="258.375" width="12.25" height="28.594" />
+                                            <rect x="234.047" y="124.25" width="12.25" height="28.594" />
+                                            <rect x="265.703" y="124.25" width="12.25" height="28.594" />
+                                        </g>
+                                    </svg>
+                                    <span className="text-[8px] font-sans font-bold text-ink/50 tracking-wider leading-none">東京</span>
+                                </div>
+
                                 {/* Row 1: Train route */}
-                                <div className="flex items-center w-full gap-0">
-                                    {/* Tokyo pictogram + label */}
-                                    <div className="flex flex-col items-center justify-center gap-1 flex-shrink-0">
-                                        <svg viewBox="0 0 512 512" className="w-[30px] h-[60px]" xmlns="http://www.w3.org/2000/svg">
-                                            <g fill="currentColor" className="text-ink/60">
-                                                <path d="M319.625,312.844l19.938-41.75v-48.781h-37.516l-2.406-46.625l20.953-32.188V96h-56.422V0h-16.344v96h-56.422v46.594l21.031,31.469l-2.484,48.25h-37.516v47.531l20.234,40.938L164.609,512h71.953l2.094-5.031c4.094-9.828,11.672-25.516,17.344-37.016c5.672,11.5,13.234,27.172,17.328,37.016l2.094,5.031h71.969L319.625,312.844z M315.125,398.969h-50.953v-30.297h46.734L315.125,398.969z M264.172,352.328v-33.703h39.75l4.703,33.703H264.172z M247.828,352.328h-44.453l4.688-33.703h39.766V352.328z M201.094,368.672h46.734v30.297h-50.969L201.094,368.672z M247.828,415.313v30.297h-57.469l4.234-30.297H247.828z M264.172,415.313h53.234l4.234,30.297h-57.469V415.313z M283.547,180.766l2.141,41.547h-21.516v-41.547H283.547z M207.75,112.344h96.5v26.297l-16.781,25.797h-61.813l-17.906-26.813V112.344z M228.469,180.766h19.359v41.547h-21.516L228.469,180.766z M188.781,238.656h20.328h93.781h20.328v28.75l-16.672,34.891h-99.844l-17.922-36.266V238.656z M225.734,495.656h-42.344l4.703-33.703h53.625C236.781,471.938,230.266,485.375,225.734,495.656z M286.25,495.656c-4.531-10.281-11.047-23.719-15.984-33.703h53.641l4.703,33.703H286.25z" />
-                                                <rect x="218.219" y="258.375" width="12.25" height="28.594" />
-                                                <rect x="249.875" y="258.375" width="12.25" height="28.594" />
-                                                <rect x="281.531" y="258.375" width="12.25" height="28.594" />
-                                                <rect x="234.047" y="124.25" width="12.25" height="28.594" />
-                                                <rect x="265.703" y="124.25" width="12.25" height="28.594" />
-                                            </g>
-                                        </svg>
-                                        <span className="text-[8px] font-sans font-bold text-ink/50 tracking-wider leading-none">東京</span>
-                                    </div>
-                                    {/* Dashed segment 1 */}
-                                    <div className="flex-1 border-t-[1px] border-dashed border-ink/25 self-center"></div>
-                                    {/* Shinkansen label */}
+                                <div className="flex items-center w-full gap-0 py-1">
+                                    <div className="flex-1 border-t-[1px] border-dashed border-ink/25"></div>
                                     <div className="px-1 text-center flex flex-col leading-none flex-shrink-0">
                                         <span className="text-[8px] text-ink/50 leading-[1.3]">新幹線</span>
                                         <span className="text-[9px] text-ink/80 font-bold leading-[1.3]">1.5H</span>
                                     </div>
-                                    {/* Dashed segment 2 */}
-                                    <div className="flex-1 border-t-[1px] border-dashed border-ink/25 self-center"></div>
-                                    {/* Nagano */}
+                                    <div className="flex-1 border-t-[1px] border-dashed border-ink/25"></div>
                                     <div className="px-1 flex-shrink-0 flex items-center">
                                         <span className="text-[10px] font-bold text-ink leading-none">長野</span>
                                     </div>
-                                    {/* Dashed segment 3 */}
-                                    <div className="flex-1 border-t-[1px] border-dashed border-[#D45D56]/40 self-center"></div>
-                                    {/* Local train label */}
+                                    <div className="flex-1 border-t-[1px] border-dashed border-[#D45D56]/40"></div>
                                     <div className="px-1 text-center flex flex-col leading-none flex-shrink-0">
                                         <span className="text-[8px] text-[#D45D56]/70 leading-[1.3]">電車</span>
                                         <span className="text-[9px] text-[#D45D56] font-bold leading-[1.3]">20MIN</span>
                                     </div>
-                                    {/* Dashed segment 4 */}
-                                    <div className="flex-1 border-t-[1px] border-dashed border-[#D45D56]/40 self-center"></div>
-                                    {/* Iizuna pictogram + label */}
-                                    <div className="flex flex-col items-center justify-center gap-1 flex-shrink-0">
-                                        <svg viewBox="0 0 48 36" className="w-[42px] h-[32px]" xmlns="http://www.w3.org/2000/svg">
-                                            <g fill="currentColor" className="text-[#D45D56]/70">
-                                                <path d="M8 36 L22 10 L36 36 Z" opacity="0.5" />
-                                                <path d="M0 36 L16 8 L20 16 L24 12 L32 36 Z" />
-                                                <path d="M16 8 L13 14 L15.5 14 L14 17 L18 17 L17 14 L19 14 Z" fill="white" opacity="0.6" />
-                                            </g>
-                                        </svg>
-                                        <span className="text-[8px] font-sans font-bold text-[#D45D56]/60 tracking-wider leading-none">飯綱町</span>
-                                    </div>
+                                    <div className="flex-1 border-t-[1px] border-dashed border-[#D45D56]/40"></div>
+                                </div>
+
+                                {/* Iizuna pictogram (spans both rows) */}
+                                <div className="row-span-2 flex flex-col items-center justify-center gap-0.5 pl-1">
+                                    <svg viewBox="0 0 48 36" className="w-[42px] h-[32px]" xmlns="http://www.w3.org/2000/svg">
+                                        <g fill="currentColor" className="text-[#D45D56]/70">
+                                            <path d="M8 36 L22 10 L36 36 Z" opacity="0.5" />
+                                            <path d="M0 36 L16 8 L20 16 L24 12 L32 36 Z" />
+                                            <path d="M16 8 L13 14 L15.5 14 L14 17 L18 17 L17 14 L19 14 Z" fill="white" opacity="0.6" />
+                                        </g>
+                                    </svg>
+                                    <span className="text-[8px] font-sans font-bold text-[#D45D56]/60 tracking-wider leading-none">飯綱町</span>
                                 </div>
 
                                 {/* Row 2: Car route */}
-                                <div className="flex items-center w-full gap-0 mt-0">
-                                    {/* Spacer matching Tokyo pictogram width */}
-                                    <div className="w-[30px] flex-shrink-0"></div>
-                                    {/* Dashed segment */}
-                                    <div className="flex-1 border-t-[1px] border-dashed border-ink/25 self-center"></div>
-                                    {/* Car label - single line */}
+                                <div className="flex items-center w-full gap-0 py-1">
+                                    <div className="flex-1 border-t-[1px] border-dashed border-ink/25"></div>
                                     <div className="px-1.5 flex items-center gap-1 flex-shrink-0">
                                         <span className="text-[8px] text-ink/50 leading-none">車</span>
                                         <span className="text-[9px] text-ink/80 font-bold leading-none">3H</span>
                                     </div>
-                                    {/* Dashed segment */}
-                                    <div className="flex-1 border-t-[1px] border-dashed border-ink/25 self-center"></div>
-                                    {/* Spacer matching Iizuna pictogram width */}
-                                    <div className="w-[42px] flex-shrink-0"></div>
+                                    <div className="flex-1 border-t-[1px] border-dashed border-ink/25"></div>
                                 </div>
                             </div>
 
                             {/* Subtext describing the town */}
-                            <div className="w-full mb-6">
+                            <div className="w-full mb-3">
                                 <p className="text-[8px] font-serif tracking-[0.1em] text-ink/80 leading-[1.8] pl-2 border-l border-ink/20">
                                     長野から約2時間。<br />
                                     標高500m〜900m、寒暖差のある冷涼な地域です。
@@ -266,7 +254,7 @@ export default function Canvas() {
                             </div>
 
                             {/* 3. Seasons Photography (Hero Block) */}
-                            <div className="w-full aspect-[4/3] relative mb-4">
+                            <div className="w-full aspect-[4/3] relative mb-2">
                                 {/* Elegant 4-season grid with crisp white inner hairlines */}
                                 <div className="absolute inset-0 bg-white grid grid-cols-2 grid-rows-2 gap-[1.5px] shadow-[0_2px_10px_rgba(0,0,0,0.05)] border-[0.5px] border-ink/10">
                                     <div className="relative overflow-hidden w-full h-full bg-ink/5">
@@ -299,7 +287,7 @@ export default function Canvas() {
 
                             {/* 4. Food Index (High-end catalog style) */}
                             <div className="w-full pt-1 pb-1">
-                                <div className="w-full h-[0.5px] bg-ink/10 mb-4"></div>
+                                <div className="w-full h-[0.5px] bg-ink/10 mb-2"></div>
                                 <div className="flex justify-between items-start">
                                     {[
                                         { url: 'https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&q=80&w=200', name: 'りんご', sub: 'APPLE' },
