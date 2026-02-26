@@ -146,20 +146,30 @@ export default function Canvas() {
                                 <div className="w-[58px] h-[210px] bg-white shadow-sm"></div>
                             </div>
 
-                            {/* Apple Grid overlay */}
-                            <div className="absolute inset-0 pt-[24px] pb-[56px] px-1 flex flex-col justify-between opacity-100 pointer-events-none z-10">
+                            {/* Apple Grid overlay (Staggered 3-2-3-2...) */}
+                            <div className="absolute inset-0 pt-[24px] pb-[70px] px-8 flex flex-col justify-between opacity-100 pointer-events-none z-10">
                                 {[...Array(6)].map((_, rowIndex) => {
-                                    const isEvenRow = rowIndex % 2 === 0;
+                                    const isThreeRow = rowIndex % 2 === 0;
+                                    const appleCount = isThreeRow ? 3 : 2;
+                                    // Calculate starting index for this row
+                                    const startIdx = rowIndex > 0 ? (Math.floor(rowIndex / 2) * 5 + (isThreeRow ? 0 : 3)) : 0;
+
                                     return (
-                                        <div key={rowIndex} className={`flex justify-around w-full ${isEvenRow ? 'px-4' : 'px-0'}`}>
-                                            {[...Array(4)].map((_, colIndex) => {
-                                                const appleIndex = rowIndex * 4 + colIndex;
+                                        <div key={rowIndex} className={`flex justify-between w-full ${!isThreeRow ? 'px-12' : 'px-0'}`}>
+                                            {[...Array(appleCount)].map((_, colIndex) => {
+                                                const appleIndex = startIdx + colIndex;
                                                 const appleUrl = randomApples[appleIndex];
                                                 return (
-                                                    <div key={colIndex} className="w-[44px] h-[44px] relative flex items-center justify-center">
+                                                    <div key={colIndex} className="relative flex items-center justify-center">
                                                         {appleUrl ? (
                                                             // eslint-disable-next-line @next/next/no-img-element
-                                                            <img src={appleUrl} alt="apple" className="absolute w-[110px] h-[110px] max-w-none object-contain" />
+                                                            <img
+                                                                src={appleUrl}
+                                                                alt="apple"
+                                                                // width 90px allows native aspect ratio to dictate height,
+                                                                // scale 1.25 gives the "overflowing" large look while keeping natural proportions
+                                                                className="w-[90px] h-auto scale-125 object-cover"
+                                                            />
                                                         ) : (
                                                             <div className="text-[40px] leading-none text-center z-10">🍎</div>
                                                         )}
