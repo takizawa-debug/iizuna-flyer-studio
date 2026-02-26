@@ -322,56 +322,23 @@ export default function Canvas() {
                             style={{ backgroundColor: coverColor }}
                         >
 
-                            {/* "Information (i)" Clear Tinted Window Slit */}
-                            {/* Uses CSS mask to cut the abstract 'i' shape, revealing the image below with a color tint */}
-                            <div className="absolute inset-0 pointer-events-none z-0" style={{
-                                // Create the 'i' mask using multiple linear-gradients
-                                WebkitMaskImage: `
-                                    linear-gradient(black, black) /* Dot */,
-                                    linear-gradient(black, black) /* Stem */,
-                                    linear-gradient(black, black) /* Top-left Serif */,
-                                    linear-gradient(black, black) /* Bottom Slab */
-                                `,
-                                WebkitMaskSize: `
-                                    50px 80px /* Dot */,
-                                    50px 290px /* Stem */,
-                                    16px 16px /* Top-left Serif */,
-                                    100px 20px /* Bottom Slab */
-                                `,
-                                WebkitMaskPosition: `
-                                    center 100px /* Dot */,
-                                    center 210px /* Stem */,
-                                    calc(50% - 25px - 8px) 210px /* Top-left Serif */,
-                                    center 500px /* Bottom Slab */
-                                `,
-                                WebkitMaskRepeat: 'no-repeat',
-                                maskImage: `
-                                    linear-gradient(black, black),
-                                    linear-gradient(black, black),
-                                    linear-gradient(black, black),
-                                    linear-gradient(black, black)
-                                `,
-                                maskSize: `
-                                    50px 80px,
-                                    50px 290px,
-                                    16px 16px,
-                                    100px 20px
-                                `,
-                                maskPosition: `
-                                    center 100px,
-                                    center 210px,
-                                    calc(50% - 33px) 210px,
-                                    center 480px
-                                `,
-                                maskRepeat: 'no-repeat'
-                            }}>
-                                {/* Clear Image background visible only through the 'i' slit mask */}
-                                {/* eslint-disable-next-line @next/next/no-img-element */}
-                                <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/ec2954c0-a041-013e-ff9d-0a58a9feac02/iizuna_20220525-2.jpg" alt="Summer Orchard Window" className="absolute inset-0 w-full h-full object-cover filter contrast-125 saturate-110" />
-                                {/* Tint overlay to blend the window seamlessly with the cover color (like pink transparent glass) */}
-                                <div className="absolute inset-0 transition-colors duration-300 opacity-50 mix-blend-multiply" style={{ backgroundColor: coverColor === '#FFFFFF' ? '#E88C83' : coverColor }}></div>
-                            </div>
+                            {/* "Information (i)" abstract motif background */}
+                            <div className="absolute inset-0 pointer-events-none z-0">
+                                {/* Dot: Abstract Rectangle (Slit/Door feel) */}
+                                <div className={`absolute top-[100px] left-1/2 -translate-x-1/2 w-[50px] h-[80px] shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#E88C83]' : 'bg-white/95'}`}></div>
 
+                                {/* Body: Stem with subtle serifs */}
+                                <div className="absolute top-[210px] left-1/2 -translate-x-1/2 w-[50px] h-[290px]">
+                                    {/* Subtle Top-left Serif */}
+                                    <div className={`absolute top-0 -left-[16px] w-[16px] h-[16px] shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#E88C83]' : 'bg-white/95'}`}></div>
+
+                                    {/* Main Stem (Inorganic block) */}
+                                    <div className={`absolute inset-0 w-full h-full shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#E88C83]' : 'bg-white/95'}`}></div>
+
+                                    {/* Subtle Bottom Spread */}
+                                    <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-[100px] h-[20px] shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#E88C83]' : 'bg-white/95'}`}></div>
+                                </div>
+                            </div>
 
                             {/* Apple Grid overlay (Staggered 4-3-4-3... over 8 rows, tightly clumped in center) */}
                             {/* Increased padding drastically squishes the flex justify-between space, pulling apples together */}
