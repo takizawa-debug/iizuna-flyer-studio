@@ -179,7 +179,7 @@ export default function Canvas() {
 
                             {/* 1. Header Area */}
                             <div className="w-full flex flex-col justify-start mb-6 mt-1 relative z-10">
-                                <h3 className="text-[19px] font-serif tracking-[0.15em] leading-[1.5] text-ink/90 font-medium">
+                                <h3 className="text-[15.5px] font-serif tracking-[0.12em] leading-[1.5] text-ink/90 font-medium whitespace-nowrap">
                                     ようこそ、りんごのまちへ。
                                 </h3>
                                 {/* Refined thick yellow line - slightly offset and elegant gold-yellow */}
@@ -187,7 +187,7 @@ export default function Canvas() {
                             </div>
 
                             {/* 2. Access Section (Minimalist & High-End with Icons) */}
-                            <div className="w-full grid grid-cols-[16px_auto_1fr_auto] gap-x-2 gap-y-3 items-center py-2 mb-5">
+                            <div className="w-full grid grid-cols-[16px_auto_1fr_auto] gap-x-2 gap-y-4 items-center py-2 mb-5">
                                 {/* Row 1: Train */}
                                 <div className="text-ink/60 flex justify-center">
                                     <svg viewBox="0 0 24 24" fill="currentColor" className="w-[14px] h-[14px]" xmlns="http://www.w3.org/2000/svg">
@@ -195,23 +195,41 @@ export default function Canvas() {
                                     </svg>
                                 </div>
 
-                                <div className="row-span-2 font-bold text-ink text-[10px] tracking-widest pl-1">東京</div>
-
-                                <div className="flex items-center w-full">
-                                    <div className="flex-1 flex flex-col items-center">
-                                        <span className="text-[6px] text-ink/50 bg-[#FBF4F0] px-1 z-10 leading-none mb-[2px]">新幹線 1.5H</span>
-                                        <div className="w-full border-t-[0.5px] border-dashed border-ink/30 -mt-[4px]"></div>
-                                    </div>
-                                    <span className="font-bold text-ink text-[9px] px-1.5">長野</span>
-                                    <div className="flex-1 flex flex-col items-center">
-                                        <span className="text-[6px] text-[#D45D56]/80 bg-[#FBF4F0] px-1 z-10 leading-none mb-[2px]">電車 20MIN</span>
-                                        <div className="w-full border-t-[0.5px] border-dashed border-[#D45D56]/50 -mt-[4px]"></div>
+                                <div className="row-span-2 flex items-center pl-1">
+                                    {/* Tokyo styled same as Iizuna but maybe slightly neutral or uncolored background */}
+                                    <div className="text-ink px-1.5 py-1">
+                                        <span className="text-[10px] font-bold tracking-widest">東京</span>
                                     </div>
                                 </div>
 
-                                <div className="row-span-2 flex items-center pr-1">
-                                    <div className="bg-[#D45D56] text-white px-1.5 py-1 rounded-[1px] shadow-sm">
-                                        <span className="text-[9px] font-bold tracking-widest">飯綱町</span>
+                                <div className="flex items-center w-full relative">
+                                    {/* Train route container */}
+                                    <div className="flex-1 flex justify-center items-center relative h-[20px]">
+                                        {/* Background dashed line connecting Tokyo to Nagano */}
+                                        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 border-t-[1px] border-dashed border-ink/30 z-0"></div>
+                                        <div className="bg-[#FBF4F0] px-1 z-10 text-center flex flex-col justify-center">
+                                            <span className="text-[5px] text-ink/50 leading-[1.2]">新幹線</span>
+                                            <span className="text-[5px] text-ink/70 leading-[1.2]">1.5H</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="px-1.5 z-10 bg-[#FBF4F0]">
+                                        <span className="font-bold text-ink text-[9px]">長野</span>
+                                    </div>
+
+                                    <div className="flex-1 flex justify-center items-center relative h-[20px]">
+                                        {/* Background dashed line connecting Nagano to Iizuna */}
+                                        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 border-t-[1px] border-dashed border-[#D45D56]/50 z-0"></div>
+                                        <div className="bg-[#FBF4F0] px-1 z-10 text-center flex flex-col justify-center">
+                                            <span className="text-[5px] text-[#D45D56]/80 leading-[1.2]">電車</span>
+                                            <span className="text-[5px] text-[#D45D56]/90 leading-[1.2]">20MIN</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="row-span-2 flex items-center pr-1 relative z-10">
+                                    <div className="bg-[#D45D56] text-white px-2 py-1.5 shadow-sm">
+                                        <span className="text-[9px] font-bold tracking-[0.1em]">飯綱町</span>
                                     </div>
                                 </div>
 
@@ -223,10 +241,14 @@ export default function Canvas() {
                                     </svg>
                                 </div>
 
-                                <div className="flex items-center w-full">
-                                    <div className="flex-1 flex flex-col items-center">
-                                        <span className="text-[6px] text-ink/50 bg-[#FBF4F0] px-1 z-10 leading-none mb-[2px]">車 3H</span>
-                                        <div className="w-full border-t-[0.5px] border-dashed border-ink/30 -mt-[4px]"></div>
+                                <div className="flex items-center w-full relative">
+                                    <div className="flex-1 flex justify-center items-center relative h-[20px]">
+                                        {/* Background dashed line connecting Tokyo directly to Iizuna */}
+                                        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 border-t-[1px] border-dashed border-ink/30 z-0"></div>
+                                        <div className="bg-[#FBF4F0] px-1 z-10 text-center flex flex-col justify-center">
+                                            <span className="text-[5px] text-ink/50 leading-[1.2]">車</span>
+                                            <span className="text-[5px] text-ink/70 leading-[1.2]">3H</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
