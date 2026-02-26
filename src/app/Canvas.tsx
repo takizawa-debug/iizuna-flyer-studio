@@ -186,66 +186,52 @@ export default function Canvas() {
                                 <div className="w-[75%] h-[3px] bg-[#E8C340] mt-3"></div>
                             </div>
 
-                            {/* 2. Access Section — Grid: [Tokyo | Icon | Route line | Iizuna] */}
-                            <div className="w-full grid grid-cols-[auto_18px_1fr_auto] gap-x-1.5 gap-y-3 items-center py-2 mb-5">
+                            {/* 2. Access Section — Grid: [Tokyo Pictogram | Route line | Iizuna Pictogram] */}
+                            <div className="w-full grid grid-cols-[auto_1fr_auto] gap-x-2 gap-y-3 items-center py-2 mb-5">
                                 {/* Tokyo (row-span-2, far left, Skytree pictogram) */}
-                                <div className="row-span-2 flex flex-col items-center justify-center gap-0.5 pr-1">
-                                    <svg viewBox="0 0 32 64" fill="currentColor" className="w-[20px] h-[40px] text-ink/70" xmlns="http://www.w3.org/2000/svg">
-                                        {/* Skytree silhouette */}
-                                        <path d="M16 0 L14 20 L12 22 L11 28 L10 30 L9 32 L8.5 36 L8 40 L7 44 L6 48 L5.5 52 L5 56 L4 60 L3 64 L29 64 L28 60 L27 56 L26.5 52 L26 48 L25 44 L24 40 L23.5 36 L23 32 L22 30 L21 28 L20 22 L18 20 Z" />
-                                        {/* Observation deck lines */}
-                                        <rect x="10" y="28" width="12" height="2" rx="0.5" opacity="0.3" fill="white" />
-                                        <rect x="8" y="38" width="16" height="2" rx="0.5" opacity="0.3" fill="white" />
+                                <div className="row-span-2 flex flex-col items-center justify-center gap-0.5">
+                                    <svg viewBox="0 0 512 512" className="w-[18px] h-[36px]" xmlns="http://www.w3.org/2000/svg">
+                                        <g fill="currentColor" className="text-ink/60">
+                                            <path d="M319.625,312.844l19.938-41.75v-48.781h-37.516l-2.406-46.625l20.953-32.188V96h-56.422V0h-16.344v96h-56.422v46.594l21.031,31.469l-2.484,48.25h-37.516v47.531l20.234,40.938L164.609,512h71.953l2.094-5.031c4.094-9.828,11.672-25.516,17.344-37.016c5.672,11.5,13.234,27.172,17.328,37.016l2.094,5.031h71.969L319.625,312.844z M315.125,398.969h-50.953v-30.297h46.734L315.125,398.969z M264.172,352.328v-33.703h39.75l4.703,33.703H264.172z M247.828,352.328h-44.453l4.688-33.703h39.766V352.328z M201.094,368.672h46.734v30.297h-50.969L201.094,368.672z M247.828,415.313v30.297h-57.469l4.234-30.297H247.828z M264.172,415.313h53.234l4.234,30.297h-57.469V415.313z M283.547,180.766l2.141,41.547h-21.516v-41.547H283.547z M207.75,112.344h96.5v26.297l-16.781,25.797h-61.813l-17.906-26.813V112.344z M228.469,180.766h19.359v41.547h-21.516L228.469,180.766z M188.781,238.656h20.328h93.781h20.328v28.75l-16.672,34.891h-99.844l-17.922-36.266V238.656z M225.734,495.656h-42.344l4.703-33.703h53.625C236.781,471.938,230.266,485.375,225.734,495.656z M286.25,495.656c-4.531-10.281-11.047-23.719-15.984-33.703h53.641l4.703,33.703H286.25z" />
+                                            <rect x="218.219" y="258.375" width="12.25" height="28.594" />
+                                            <rect x="249.875" y="258.375" width="12.25" height="28.594" />
+                                            <rect x="281.531" y="258.375" width="12.25" height="28.594" />
+                                            <rect x="234.047" y="124.25" width="12.25" height="28.594" />
+                                            <rect x="265.703" y="124.25" width="12.25" height="28.594" />
+                                        </g>
                                     </svg>
-                                    <span className="text-[6px] font-bold text-ink/60 tracking-wider leading-none">東京</span>
-                                </div>
-
-                                {/* Row 1: Train icon */}
-                                <div className="text-ink/50 flex justify-center">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-[13px] h-[13px]" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M12 2C8 2 4 4 4 12v4c0 1.1.9 2 2 2h2v2h2v-2h4v2h2v-2h2c1.1 0 2-.9 2-2v-4c0-8-4-10-8-10zm0 2c3.2 0 6 1.6 6 8H6c0-6.4 2.8-8 6-8zm-3.5 13c-.83 0-1.5-.67-1.5-1.5S7.67 14 8.5 14s1.5.67 1.5 1.5S9.33 17 8.5 17zm7 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM18 12H6V9h12v3z" />
-                                    </svg>
+                                    <span className="text-[6px] font-bold text-ink/50 tracking-wider leading-none">東京</span>
                                 </div>
 
                                 {/* Row 1: Train route dashed line */}
                                 <div className="flex items-center w-full relative h-[28px]">
-                                    {/* Full-width dashed line */}
                                     <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 border-t-[1px] border-dashed border-ink/25 z-0"></div>
-                                    {/* Label: Shinkansen 1.5H */}
                                     <div className="bg-[#FBF4F0] px-1.5 z-10 text-center flex flex-col leading-none mx-auto">
                                         <span className="text-[7px] text-ink/50 leading-[1.3]">新幹線</span>
                                         <span className="text-[8px] text-ink/80 font-bold leading-[1.3]">1.5H</span>
                                     </div>
-                                    {/* Nagano waypoint */}
                                     <div className="bg-[#FBF4F0] px-1.5 z-10 flex-shrink-0">
                                         <span className="text-[9px] font-bold text-ink leading-none">長野</span>
                                     </div>
-                                    {/* Label: Local train 20min */}
                                     <div className="bg-[#FBF4F0] px-1.5 z-10 text-center flex flex-col leading-none mx-auto">
                                         <span className="text-[7px] text-[#D45D56]/70 leading-[1.3]">電車</span>
                                         <span className="text-[8px] text-[#D45D56] font-bold leading-[1.3]">20MIN</span>
                                     </div>
                                 </div>
 
-                                {/* Iizuna (row-span-2, far right, apple pictogram) */}
-                                <div className="row-span-2 flex flex-col items-center justify-center gap-0.5 pl-1">
-                                    <svg viewBox="0 0 40 44" fill="currentColor" className="w-[22px] h-[24px] text-[#D45D56]" xmlns="http://www.w3.org/2000/svg">
-                                        {/* Apple silhouette */}
-                                        <path d="M20 6 C14 6 8 12 8 22 C8 32 12 40 20 42 C28 40 32 32 32 22 C32 12 26 6 20 6 Z" />
-                                        {/* Stem */}
-                                        <path d="M19 1 C19 1 20 0 21 1 L21 7 L19 7 Z" />
-                                        {/* Leaf */}
-                                        <path d="M21 3 C24 1 28 2 28 4 C28 5 25 6 22 5 Z" opacity="0.8" />
+                                {/* Iizuna (row-span-2, far right, mountain pictogram) */}
+                                <div className="row-span-2 flex flex-col items-center justify-center gap-0.5">
+                                    <svg viewBox="0 0 48 36" className="w-[28px] h-[21px]" xmlns="http://www.w3.org/2000/svg">
+                                        <g fill="currentColor" className="text-[#D45D56]/70">
+                                            {/* Back mountain */}
+                                            <path d="M8 36 L22 10 L36 36 Z" opacity="0.5" />
+                                            {/* Front mountain */}
+                                            <path d="M0 36 L16 8 L20 16 L24 12 L32 36 Z" />
+                                            {/* Snow cap */}
+                                            <path d="M16 8 L13 14 L15.5 14 L14 17 L18 17 L17 14 L19 14 Z" fill="white" opacity="0.6" />
+                                        </g>
                                     </svg>
-                                    <span className="text-[6px] font-bold text-[#D45D56]/70 tracking-wider leading-none">飯綱町</span>
-                                </div>
-
-                                {/* Row 2: Car icon */}
-                                <div className="text-ink/50 flex justify-center">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-[13px] h-[13px]" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z" />
-                                        <circle cx="7.5" cy="14.5" r="1.5" /><circle cx="16.5" cy="14.5" r="1.5" />
-                                    </svg>
+                                    <span className="text-[6px] font-bold text-[#D45D56]/60 tracking-wider leading-none">飯綱町</span>
                                 </div>
 
                                 {/* Row 2: Car route dashed line */}
