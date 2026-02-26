@@ -82,12 +82,16 @@ export default function Canvas() {
         <div className="flex-1 overflow-auto relative flex flex-col items-center font-tsukushi font-bold">
             <div className="sticky top-0 right-0 z-50 p-4 w-full max-w-[840px] flex justify-end items-center pointer-events-none gap-4 print:hidden">
                 {/* Cover Color Toggle */}
-                <div className="flex items-center gap-2 bg-washi rounded-full shadow-sm border border-ink/10 px-3 py-1 pointer-events-auto">
+                <div className="flex items-center gap-1.5 bg-washi rounded-full shadow-sm border border-ink/10 px-3 py-1 pointer-events-auto">
                     <span className="text-xs font-sans text-ink/60 mr-1">Cover:</span>
-                    <button onClick={() => setCoverColor('#D45D56')} className={`w-4 h-4 rounded-full border ${coverColor === '#D45D56' ? 'border-ink border-2' : 'border-ink/20'}`} style={{ backgroundColor: '#D45D56' }} aria-label="Red"></button>
-                    <button onClick={() => setCoverColor('#A1C23A')} className={`w-4 h-4 rounded-full border ${coverColor === '#A1C23A' ? 'border-ink border-2' : 'border-ink/20'}`} style={{ backgroundColor: '#A1C23A' }} aria-label="Green"></button>
-                    <button onClick={() => setCoverColor('#F1CE00')} className={`w-4 h-4 rounded-full border ${coverColor === '#F1CE00' ? 'border-ink border-2' : 'border-ink/20'}`} style={{ backgroundColor: '#F1CE00' }} aria-label="Yellow"></button>
-                    <button onClick={() => setCoverColor('#FFFFFF')} className={`w-4 h-4 rounded-full border ${coverColor === '#FFFFFF' ? 'border-ink border-2' : 'border-ink/20'}`} style={{ backgroundColor: '#FFFFFF' }} aria-label="White"></button>
+                    <button onClick={() => setCoverColor('#D45D56')} className={`w-4 h-4 rounded-full border ${coverColor === '#D45D56' ? 'border-ink border-2' : 'border-ink/20'}`} style={{ backgroundColor: '#D45D56' }} title="Default Red"></button>
+                    <button onClick={() => setCoverColor('#8B2323')} className={`w-4 h-4 rounded-full border ${coverColor === '#8B2323' ? 'border-ink border-2' : 'border-ink/20'}`} style={{ backgroundColor: '#8B2323' }} title="Dark Red"></button>
+                    <button onClick={() => setCoverColor('#E88C83')} className={`w-4 h-4 rounded-full border ${coverColor === '#E88C83' ? 'border-ink border-2' : 'border-ink/20'}`} style={{ backgroundColor: '#E88C83' }} title="Light Red"></button>
+                    <button onClick={() => setCoverColor('#5E1914')} className={`w-4 h-4 rounded-full border ${coverColor === '#5E1914' ? 'border-ink border-2' : 'border-ink/20'}`} style={{ backgroundColor: '#5E1914' }} title="Wine Red"></button>
+                    <div className="w-[1px] h-3 bg-ink/20 mx-1"></div>
+                    <button onClick={() => setCoverColor('#A1C23A')} className={`w-4 h-4 rounded-full border ${coverColor === '#A1C23A' ? 'border-ink border-2' : 'border-ink/20'}`} style={{ backgroundColor: '#A1C23A' }} title="Green"></button>
+                    <button onClick={() => setCoverColor('#F1CE00')} className={`w-4 h-4 rounded-full border ${coverColor === '#F1CE00' ? 'border-ink border-2' : 'border-ink/20'}`} style={{ backgroundColor: '#F1CE00' }} title="Yellow"></button>
+                    <button onClick={() => setCoverColor('#FFFFFF')} className={`w-4 h-4 rounded-full border ${coverColor === '#FFFFFF' ? 'border-ink border-2' : 'border-ink/20'}`} style={{ backgroundColor: '#FFFFFF' }} title="White"></button>
                 </div>
 
                 <button
@@ -173,7 +177,7 @@ export default function Canvas() {
                                 />
                             </div>
 
-                            <div className="absolute bottom-[44px] left-1/2 -translate-x-1/2 flex items-center gap-2 font-sans text-[13px] tracking-widest border-b border-white border-dashed pb-[2px] opacity-90">
+                            <div className="absolute bottom-[44px] left-1/2 -translate-x-1/2 flex items-center gap-2 font-sans text-[13px] tracking-widest border-b border-white border-dashed pb-[2px] opacity-90 whitespace-nowrap">
                                 appletown-iizuna.com
                             </div>
                         </div>
