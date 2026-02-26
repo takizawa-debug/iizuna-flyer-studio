@@ -146,17 +146,15 @@ export default function Canvas() {
                                 <div className="w-[58px] h-[210px] bg-white shadow-sm"></div>
                             </div>
 
-                            {/* Apple Grid overlay (Staggered 4-3-4-3... over 8 rows) */}
-                            <div className="absolute inset-0 pt-[24px] pb-[60px] px-2 flex flex-col justify-between opacity-100 pointer-events-none z-10">
+                            {/* Apple Grid overlay (Staggered 4-3-4-3... over 8 rows, centered tightly) */}
+                            <div className="absolute inset-0 pt-[36px] pb-[72px] px-3 flex flex-col justify-between opacity-100 pointer-events-none z-10">
                                 {[...Array(8)].map((_, rowIndex) => {
                                     const isFourRow = rowIndex % 2 === 0;
                                     const appleCount = isFourRow ? 4 : 3;
-                                    // Calculate starting index for this row: 
-                                    // Each pair of rows (4+3) has 7 apples.
                                     const startIdx = Math.floor(rowIndex / 2) * 7 + (isFourRow ? 0 : 4);
 
                                     return (
-                                        <div key={rowIndex} className={`flex justify-between w-full ${!isFourRow ? 'px-8' : 'px-0'}`}>
+                                        <div key={rowIndex} className={`flex justify-between w-full ${!isFourRow ? 'px-[32px]' : 'px-0'}`}>
                                             {[...Array(appleCount)].map((_, colIndex) => {
                                                 const appleIndex = startIdx + colIndex;
                                                 const appleUrl = randomApples[appleIndex];
@@ -167,9 +165,9 @@ export default function Canvas() {
                                                             <img
                                                                 src={appleUrl}
                                                                 alt="apple"
-                                                                // width 60px base for 4 across 280px.
-                                                                // scale 1.15 to enlarge over padding.
-                                                                className="w-[60px] h-auto scale-[1.15] object-contain"
+                                                                // Use w-[56px] (about 20% of 280px panel width) with h-auto to respect native aspect ratio exactly.
+                                                                // scale-[1.2] enlarges it to overcome internal PNG padding without distorting the box model.
+                                                                className="w-[56px] h-auto scale-[1.2] object-contain"
                                                             />
                                                         ) : (
                                                             <div className="text-[30px] leading-none text-center z-10">🍎</div>
