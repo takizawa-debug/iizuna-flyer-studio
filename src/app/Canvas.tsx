@@ -177,78 +177,75 @@ export default function Canvas() {
                                 }}
                             />
 
-                            {/* 1. Header Area */}
+                            {/* 1. Header Area — Editorial Magazine Typography */}
                             <div className="w-full flex flex-col justify-start mb-6 mt-1 relative z-10">
-                                <h3 className="text-[15.5px] font-serif tracking-[0.12em] leading-[1.5] text-ink/90 font-medium whitespace-nowrap">
-                                    ようこそ、りんごのまちへ。
-                                </h3>
-                                {/* Refined thick yellow line - slightly offset and elegant gold-yellow */}
-                                <div className="w-[85%] h-[3px] bg-[#E8C340] mt-3"></div>
+                                <div className="flex flex-col">
+                                    <span className="text-[8px] font-sans tracking-[0.35em] text-ink/50 uppercase mb-1">Welcome to</span>
+                                    <h3 className="text-[18px] font-serif tracking-[0.08em] leading-[1.3] text-ink/90 font-bold">
+                                        りんごのまちへ。
+                                    </h3>
+                                </div>
+                                {/* Refined thick yellow line */}
+                                <div className="w-[70%] h-[3px] bg-[#E8C340] mt-3"></div>
                             </div>
 
-                            {/* 2. Access Section (Minimalist & High-End with Icons) */}
-                            <div className="w-full grid grid-cols-[16px_auto_1fr_auto] gap-x-2 gap-y-4 items-center py-2 mb-5">
-                                {/* Row 1: Train */}
-                                <div className="text-ink/60 flex justify-center">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-[14px] h-[14px]" xmlns="http://www.w3.org/2000/svg">
+                            {/* 2. Access Section — Grid: [Tokyo | Icon | Route line | Iizuna] */}
+                            <div className="w-full grid grid-cols-[auto_18px_1fr_auto] gap-x-1.5 gap-y-3 items-center py-2 mb-5">
+                                {/* Tokyo (row-span-2, far left, boxed) */}
+                                <div className="row-span-2 flex items-center">
+                                    <div className="border border-ink/30 px-1.5 py-1">
+                                        <span className="text-[9px] font-bold tracking-widest text-ink">東京</span>
+                                    </div>
+                                </div>
+
+                                {/* Row 1: Train icon */}
+                                <div className="text-ink/50 flex justify-center">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-[13px] h-[13px]" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M12 2C8 2 4 4 4 12v4c0 1.1.9 2 2 2h2v2h2v-2h4v2h2v-2h2c1.1 0 2-.9 2-2v-4c0-8-4-10-8-10zm0 2c3.2 0 6 1.6 6 8H6c0-6.4 2.8-8 6-8zm-3.5 13c-.83 0-1.5-.67-1.5-1.5S7.67 14 8.5 14s1.5.67 1.5 1.5S9.33 17 8.5 17zm7 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM18 12H6V9h12v3z" />
                                     </svg>
                                 </div>
 
-                                <div className="row-span-2 flex items-center pl-1">
-                                    {/* Tokyo styled same as Iizuna but maybe slightly neutral or uncolored background */}
-                                    <div className="text-ink px-1.5 py-1">
-                                        <span className="text-[10px] font-bold tracking-widest">東京</span>
+                                {/* Row 1: Train route dashed line */}
+                                <div className="flex items-center w-full relative h-[22px]">
+                                    {/* Full-width dashed line */}
+                                    <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 border-t-[1px] border-dashed border-ink/25 z-0"></div>
+                                    {/* Label: Shinkansen 1.5H */}
+                                    <div className="bg-[#FBF4F0] px-1 z-10 text-center flex flex-col leading-none mx-auto">
+                                        <span className="text-[5px] text-ink/45 leading-[1.3]">新幹線</span>
+                                        <span className="text-[6px] text-ink/70 font-bold leading-[1.3]">1.5H</span>
+                                    </div>
+                                    {/* Nagano waypoint */}
+                                    <div className="bg-[#FBF4F0] px-1 z-10 flex-shrink-0">
+                                        <span className="text-[8px] font-bold text-ink">長野</span>
+                                    </div>
+                                    {/* Label: Local train 20min */}
+                                    <div className="bg-[#FBF4F0] px-1 z-10 text-center flex flex-col leading-none mx-auto">
+                                        <span className="text-[5px] text-[#D45D56]/70 leading-[1.3]">電車</span>
+                                        <span className="text-[6px] text-[#D45D56]/90 font-bold leading-[1.3]">20MIN</span>
                                     </div>
                                 </div>
 
-                                <div className="flex items-center w-full relative">
-                                    {/* Train route container */}
-                                    <div className="flex-1 flex justify-center items-center relative h-[20px]">
-                                        {/* Background dashed line connecting Tokyo to Nagano */}
-                                        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 border-t-[1px] border-dashed border-ink/30 z-0"></div>
-                                        <div className="bg-[#FBF4F0] px-1 z-10 text-center flex flex-col justify-center">
-                                            <span className="text-[5px] text-ink/50 leading-[1.2]">新幹線</span>
-                                            <span className="text-[5px] text-ink/70 leading-[1.2]">1.5H</span>
-                                        </div>
-                                    </div>
-
-                                    <div className="px-1.5 z-10 bg-[#FBF4F0]">
-                                        <span className="font-bold text-ink text-[9px]">長野</span>
-                                    </div>
-
-                                    <div className="flex-1 flex justify-center items-center relative h-[20px]">
-                                        {/* Background dashed line connecting Nagano to Iizuna */}
-                                        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 border-t-[1px] border-dashed border-[#D45D56]/50 z-0"></div>
-                                        <div className="bg-[#FBF4F0] px-1 z-10 text-center flex flex-col justify-center">
-                                            <span className="text-[5px] text-[#D45D56]/80 leading-[1.2]">電車</span>
-                                            <span className="text-[5px] text-[#D45D56]/90 leading-[1.2]">20MIN</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="row-span-2 flex items-center pr-1 relative z-10">
+                                {/* Iizuna (row-span-2, far right, boxed red) */}
+                                <div className="row-span-2 flex items-center">
                                     <div className="bg-[#D45D56] text-white px-2 py-1.5 shadow-sm">
                                         <span className="text-[9px] font-bold tracking-[0.1em]">飯綱町</span>
                                     </div>
                                 </div>
 
-                                {/* Row 2: Car */}
-                                <div className="text-ink/60 flex justify-center">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-[14px] h-[14px]" xmlns="http://www.w3.org/2000/svg">
+                                {/* Row 2: Car icon */}
+                                <div className="text-ink/50 flex justify-center">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-[13px] h-[13px]" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z" />
                                         <circle cx="7.5" cy="14.5" r="1.5" /><circle cx="16.5" cy="14.5" r="1.5" />
                                     </svg>
                                 </div>
 
-                                <div className="flex items-center w-full relative">
-                                    <div className="flex-1 flex justify-center items-center relative h-[20px]">
-                                        {/* Background dashed line connecting Tokyo directly to Iizuna */}
-                                        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 border-t-[1px] border-dashed border-ink/30 z-0"></div>
-                                        <div className="bg-[#FBF4F0] px-1 z-10 text-center flex flex-col justify-center">
-                                            <span className="text-[5px] text-ink/50 leading-[1.2]">車</span>
-                                            <span className="text-[5px] text-ink/70 leading-[1.2]">3H</span>
-                                        </div>
+                                {/* Row 2: Car route dashed line */}
+                                <div className="flex items-center w-full relative h-[22px]">
+                                    <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 border-t-[1px] border-dashed border-ink/25 z-0"></div>
+                                    <div className="bg-[#FBF4F0] px-1 z-10 text-center flex flex-col leading-none mx-auto">
+                                        <span className="text-[5px] text-ink/45 leading-[1.3]">車</span>
+                                        <span className="text-[6px] text-ink/70 font-bold leading-[1.3]">3H</span>
                                     </div>
                                 </div>
                             </div>
