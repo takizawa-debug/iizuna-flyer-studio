@@ -159,8 +159,8 @@ export default function Canvas() {
                         {/* --- 左面：中折り (Inside Flap) --- */}
                         <div className="w-[280px] border-r border-ink/15 border-dashed relative z-10 flex flex-col p-8 text-ink print:border-none">
                             {/* Heading */}
-                            <div className="mt-8 mb-10 w-full">
-                                <h3 className="text-[16px] font-serif tracking-[0.25em] leading-loose text-ink/90 whitespace-nowrap pl-2">
+                            <div className="mt-8 mb-10 w-full flex justify-center">
+                                <h3 className="text-[14.5px] font-serif tracking-[0.25em] leading-loose text-ink/90 whitespace-nowrap">
                                     ようこそ、りんごのまちへ。
                                 </h3>
                             </div>
@@ -173,20 +173,20 @@ export default function Canvas() {
 
                                     <div className="flex flex-col items-center relative z-10 bg-[#FCF2F0] px-1.5">
                                         <div className="w-[8px] h-[8px] border-[0.5px] border-ink bg-white rounded-full mb-1.5"></div>
-                                        <span className="text-[9px] font-serif tracking-widest text-ink/80">東京駅</span>
+                                        <span className="text-[9px] font-serif tracking-widest text-ink/80 whitespace-nowrap">東京駅</span>
                                     </div>
 
                                     <div className="flex flex-col items-center justify-center relative z-10 -mt-3 bg-[#FCF2F0] px-1.5">
-                                        <span className="text-[7.5px] font-sans text-ink/50 tracking-wider">新幹線 1.5h</span>
+                                        <span className="text-[7.5px] font-sans text-ink/50 tracking-wider whitespace-nowrap">新幹線 1.5h</span>
                                     </div>
 
                                     <div className="flex flex-col items-center relative z-10 bg-[#FCF2F0] px-1.5">
                                         <div className="w-[8px] h-[8px] bg-ink rounded-full mb-1.5"></div>
-                                        <span className="text-[9px] font-serif tracking-widest text-ink/90">長野駅</span>
+                                        <span className="text-[9px] font-serif tracking-widest text-ink/90 whitespace-nowrap">長野駅</span>
                                     </div>
 
                                     <div className="flex flex-col items-center justify-center relative z-10 -mt-3 bg-[#FCF2F0] px-1.5">
-                                        <span className="text-[7.5px] font-sans text-ink/50 tracking-wider">車 30min</span>
+                                        <span className="text-[7.5px] font-sans text-ink/50 tracking-wider whitespace-nowrap">車 30min</span>
                                     </div>
 
                                     <div className="flex flex-col items-center relative z-10 bg-[#FCF2F0] pl-1.5">
@@ -229,15 +229,31 @@ export default function Canvas() {
                                 </div>
                             </div>
 
-                            {/* Food Quality - Hyper Minimal */}
-                            <div className="w-full flex justify-between items-center border-t-[0.5px] border-ink/20 pt-6 px-1">
-                                <span className="text-[8.5px] font-serif tracking-[0.2em] text-ink/70">農村の食文化に触れる豊かな土壌</span>
-                                <div className="flex gap-2.5 opacity-60 text-[12px]">
-                                    <span>🍎</span>
-                                    <span>🍜</span>
-                                    <span>🍶</span>
-                                    <span>🥕</span>
+                            {/* Food Quality - Editorial Photo Row */}
+                            <div className="w-full flex gap-[2px] mt-6 px-2 mb-2">
+                                {/* Food: Apple */}
+                                <div className="relative overflow-hidden w-full aspect-square">
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                                    <img src="https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&q=80&w=200" alt="Apple" className="w-full h-full object-cover grayscale-[20%] brightness-105" />
                                 </div>
+                                {/* Food: Soba */}
+                                <div className="relative overflow-hidden w-full aspect-square">
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                                    <img src="https://images.unsplash.com/photo-1519984388953-d240ec8ceab0?auto=format&fit=crop&q=80&w=200" alt="Soba" className="w-full h-full object-cover grayscale-[20%] brightness-105" />
+                                </div>
+                                {/* Food: Cider */}
+                                <div className="relative overflow-hidden w-full aspect-square">
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                                    <img src="https://images.unsplash.com/photo-1522856351838-5110ce4cdbe8?auto=format&fit=crop&q=80&w=200" alt="Cider" className="w-full h-full object-cover grayscale-[20%] brightness-105" />
+                                </div>
+                                {/* Food: Veggies */}
+                                <div className="relative overflow-hidden w-full aspect-square">
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                                    <img src="https://images.unsplash.com/photo-1596704179361-9f2df6f08fb7?auto=format&fit=crop&q=80&w=200" alt="Vegetables" className="w-full h-full object-cover grayscale-[20%] brightness-105" />
+                                </div>
+                            </div>
+                            <div className="w-full flex justify-end px-2">
+                                <span className="text-[8px] font-serif tracking-[0.2em] text-ink/80 mt-1">りんご、シードル、蕎麦、大地。</span>
                             </div>
                         </div>
 
