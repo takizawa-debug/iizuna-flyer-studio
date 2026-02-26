@@ -173,7 +173,7 @@ export default function Canvas() {
                                 />
                             </div>
 
-                            <div className="flex items-center gap-2 font-sans text-[13px] tracking-widest mt-auto border-b border-white border-dashed pb-[2px] opacity-90">
+                            <div className="absolute bottom-[44px] left-1/2 -translate-x-1/2 flex items-center gap-2 font-sans text-[13px] tracking-widest border-b border-white border-dashed pb-[2px] opacity-90">
                                 appletown-iizuna.com
                             </div>
                         </div>
@@ -227,7 +227,7 @@ export default function Canvas() {
                                 })}
                             </div>
 
-                            <h1 className={`absolute bottom-[44px] text-[18px] font-bold tracking-widest z-30 drop-shadow-md pb-[8px] transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'text-[#D45D56]' : 'text-white'}`}>
+                            <h1 className={`absolute bottom-[44px] left-1/2 -translate-x-1/2 text-[18px] font-bold tracking-widest z-30 drop-shadow-md whitespace-nowrap transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'text-[#D45D56]' : 'text-white'}`}>
                                 りんごのまち いいづな
                             </h1>
                         </div>
