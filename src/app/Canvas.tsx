@@ -69,6 +69,7 @@ const shuffleArray = (array: string[]) => {
 export default function Canvas() {
     const [scale, setScale] = useState(0.85);
     const [showGuides, setShowGuides] = useState(false);
+    const [coverColor, setCoverColor] = useState("#D45D56"); // Default Red
     const [randomApples, setRandomApples] = useState<string[]>([]);
 
     useEffect(() => {
@@ -80,6 +81,14 @@ export default function Canvas() {
     return (
         <div className="flex-1 overflow-auto relative flex flex-col items-center font-tsukushi font-bold">
             <div className="sticky top-0 right-0 z-50 p-4 w-full max-w-[840px] flex justify-end items-center pointer-events-none gap-4 print:hidden">
+                {/* Cover Color Toggle */}
+                <div className="flex items-center gap-2 bg-washi rounded-full shadow-sm border border-ink/10 px-3 py-1 pointer-events-auto">
+                    <span className="text-xs font-sans text-ink/60 mr-1">Cover:</span>
+                    <button onClick={() => setCoverColor('#D45D56')} className={`w-4 h-4 rounded-full border ${coverColor === '#D45D56' ? 'border-ink border-2' : 'border-ink/20'}`} style={{ backgroundColor: '#D45D56' }} aria-label="Red"></button>
+                    <button onClick={() => setCoverColor('#A1C23A')} className={`w-4 h-4 rounded-full border ${coverColor === '#A1C23A' ? 'border-ink border-2' : 'border-ink/20'}`} style={{ backgroundColor: '#A1C23A' }} aria-label="Green"></button>
+                    <button onClick={() => setCoverColor('#F1CE00')} className={`w-4 h-4 rounded-full border ${coverColor === '#F1CE00' ? 'border-ink border-2' : 'border-ink/20'}`} style={{ backgroundColor: '#F1CE00' }} aria-label="Yellow"></button>
+                </div>
+
                 <button
                     onClick={() => setShowGuides(!showGuides)}
                     className={`flex items-center gap-2 rounded-full shadow-sm border px-3 py-1 pointer-events-auto text-xs font-sans transition-colors ${showGuides ? 'bg-ink text-white border-ink' : 'bg-washi text-ink/60 border-ink/10 hover:text-ink'}`}
@@ -169,14 +178,17 @@ export default function Canvas() {
                         </div>
 
                         {/* --- 右面：表紙 (Front Cover) --- */}
-                        <div className="w-[280px] relative z-10 flex flex-col items-center justify-center bg-[#D45D56] text-white print:border-none overflow-hidden pb-[40px]">
+                        <div
+                            className="w-[280px] relative z-10 flex flex-col items-center justify-center text-white print:border-none overflow-hidden pb-[40px] transition-colors duration-300"
+                            style={{ backgroundColor: coverColor }}
+                        >
 
                             {/* "i" motif background */}
                             <div className="absolute inset-0 pointer-events-none z-0">
-                                {/* Dot: starts at y=100, height=50 */}
-                                <div className="absolute top-[100px] left-1/2 -translate-x-1/2 w-[50px] h-[50px] bg-white shadow-sm"></div>
-                                {/* Body: starts at y=180 (30px gap), height=320 -> ends exactly at y=500 */}
-                                <div className="absolute top-[180px] left-1/2 -translate-x-1/2 w-[50px] h-[320px] bg-white shadow-sm"></div>
+                                {/* Dot: starts at y=100, extends to 180 (height=80) */}
+                                <div className="absolute top-[100px] left-1/2 -translate-x-1/2 w-[50px] h-[80px] bg-white shadow-sm"></div>
+                                {/* Body: starts at y=210, extends to 500 (height=290) */}
+                                <div className="absolute top-[210px] left-1/2 -translate-x-1/2 w-[50px] h-[290px] bg-white shadow-sm"></div>
                             </div>
 
                             {/* Apple Grid overlay (Staggered 4-3-4-3... over 8 rows, tightly clumped in center) */}
@@ -200,9 +212,8 @@ export default function Canvas() {
                                                             <img
                                                                 src={appleUrl}
                                                                 alt="apple"
-                                                                // w-[110px] makes apples large and overlapping.
-                                                                // absolute + native aspect ratio is strictly maintained.
-                                                                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110px] max-w-none h-auto object-contain"
+                                                                // w-[90px] making apples slightly smaller while maintaining grid density.
+                                                                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90px] max-w-none h-auto object-contain"
                                                             />
                                                         ) : (
                                                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[30px] leading-none text-center z-10">🍎</div>
