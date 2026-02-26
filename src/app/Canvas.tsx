@@ -157,16 +157,92 @@ export default function Canvas() {
                         )}
 
                         {/* --- 左面：中折り (Inside Flap) --- */}
-                        <div className="w-[280px] border-r border-ink/15 border-dashed relative z-10 flex flex-col p-8 text-ink print:border-none items-center">
-                            <h3 className="text-lg font-bold tracking-widest mt-[180px] mb-8 text-center leading-loose">
-                                飯綱町の基本情報<br />
-                                （りんご以外の）
-                            </h3>
-                            <ul className="space-y-3 text-base font-bold tracking-widest leading-loose flex flex-col justify-center w-full max-w-[180px]">
-                                <li>・アクセス</li>
-                                <li>・四季折々の景色</li>
-                                <li>・食のクオリティ</li>
-                            </ul>
+                        <div className="w-[280px] border-r border-ink/15 border-dashed relative z-10 flex flex-col p-8 text-ink print:border-none">
+                            {/* Heading */}
+                            <div className="mt-6 mb-12 relative w-full flex justify-center">
+                                <h3 className="text-[17px] font-bold tracking-[0.2em] leading-loose text-center text-ink/90 whitespace-nowrap">
+                                    ようこそ、りんごのまちへ。
+                                </h3>
+                            </div>
+
+                            {/* Access Infographic */}
+                            <div className="w-full flex flex-col items-center mb-14">
+                                <div className="flex items-center w-full justify-between relative px-2 mb-3">
+                                    {/* Connecting Line */}
+                                    <div className="absolute top-[3px] left-[20px] right-[20px] h-0 border-t-[1px] border-ink/40 border-dashed z-0"></div>
+
+                                    <div className="flex flex-col items-center relative z-10">
+                                        <div className="w-[7px] h-[7px] bg-white border border-ink rounded-full mb-2"></div>
+                                        <span className="text-[9px] font-sans tracking-widest text-ink/70">東京駅</span>
+                                    </div>
+                                    <div className="flex flex-col items-center justify-center relative z-10 -mt-2">
+                                        <span className="text-[8px] font-sans text-ink/50 bg-transparent px-1 mb-1">新幹線 1.5h</span>
+                                    </div>
+                                    <div className="flex flex-col items-center relative z-10">
+                                        <div className="w-[7px] h-[7px] bg-ink rounded-full mb-2"></div>
+                                        <span className="text-[9px] font-sans tracking-widest text-ink/90 font-bold">長野駅</span>
+                                    </div>
+                                    <div className="flex flex-col items-center justify-center relative z-10 -mt-2">
+                                        <span className="text-[8px] font-sans text-ink/50 bg-transparent px-1 mb-1">車 30min</span>
+                                    </div>
+                                    <div className="flex flex-col items-center relative z-10">
+                                        <div className="w-[7px] h-[7px] bg-white border border-ink rounded-full mb-2"></div>
+                                        <span className="text-[9px] font-sans tracking-widest text-[#D45D56] font-bold">飯綱町</span>
+                                    </div>
+                                </div>
+                                <div className="text-[10px] tracking-widest text-ink/60 mt-2 font-medium">
+                                    長野駅からわずか30分の非日常
+                                </div>
+                            </div>
+
+                            {/* Seasons Grid (2x2) */}
+                            <div className="grid grid-cols-2 gap-x-6 gap-y-8 w-full px-2 mb-auto">
+                                {/* Spring */}
+                                <div className="flex flex-col items-center text-center group">
+                                    <div className="w-[44px] h-[44px] rounded-full bg-[#fae8e9] border border-[#f5d0d3] flex items-center justify-center mb-3 transition-transform group-hover:scale-105">
+                                        <span className="text-[#d88289] text-[18px]">🌸</span>
+                                    </div>
+                                    <h4 className="text-[11px] font-bold tracking-widest mb-1">春</h4>
+                                    <p className="text-[9px] text-ink/60 tracking-wider">桃源郷</p>
+                                </div>
+                                {/* Summer */}
+                                <div className="flex flex-col items-center text-center group">
+                                    <div className="w-[44px] h-[44px] rounded-full bg-[#e8f2ea] border border-[#cbe1ce] flex items-center justify-center mb-3 transition-transform group-hover:scale-105">
+                                        <span className="text-[#729f79] text-[18px]">🍃</span>
+                                    </div>
+                                    <h4 className="text-[11px] font-bold tracking-widest mb-1">夏</h4>
+                                    <p className="text-[9px] text-ink/60 tracking-wider">標高900mの涼風</p>
+                                </div>
+                                {/* Autumn */}
+                                <div className="flex flex-col items-center text-center group">
+                                    <div className="w-[44px] h-[44px] rounded-full bg-[#fdf3e6] border border-[#f8dfc2] flex items-center justify-center mb-3 transition-transform group-hover:scale-105">
+                                        <span className="text-[#d29b5a] text-[18px]">🌾</span>
+                                    </div>
+                                    <h4 className="text-[11px] font-bold tracking-widest mb-1">秋</h4>
+                                    <p className="text-[9px] text-ink/60 tracking-wider">黄金の収穫</p>
+                                </div>
+                                {/* Winter */}
+                                <div className="flex flex-col items-center text-center group">
+                                    <div className="w-[44px] h-[44px] rounded-full bg-white border border-ink/10 shadow-sm flex items-center justify-center mb-3 transition-transform group-hover:scale-105">
+                                        <span className="text-ink/40 text-[18px]">❄️</span>
+                                    </div>
+                                    <h4 className="text-[11px] font-bold tracking-widest mb-1">冬</h4>
+                                    <p className="text-[9px] text-ink/60 tracking-wider">静寂の銀世界</p>
+                                </div>
+                            </div>
+
+                            {/* Food Quality */}
+                            <div className="w-full flex flex-col items-center mt-6 border-t border-ink/10 pt-6">
+                                <div className="flex items-center justify-center gap-4 mb-3 text-[14px] opacity-80">
+                                    <span>🍎</span>
+                                    <span>🍜</span>
+                                    <span>🍶</span>
+                                    <span>🥕</span>
+                                </div>
+                                <div className="text-[10px] tracking-widest text-ink/80 text-center leading-relaxed">
+                                    農村の食文化に触れる、豊かな食材。
+                                </div>
+                            </div>
                         </div>
 
                         {/* --- 中面：裏表紙 (Back Cover) --- */}
