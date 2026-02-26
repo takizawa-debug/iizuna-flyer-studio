@@ -179,7 +179,7 @@ export default function Canvas() {
 
                             {/* 1. Header Area — Editorial Typography */}
                             <div className="w-full flex flex-col justify-start mb-3 mt-1 relative z-10">
-                                <h3 className="text-[15px] tracking-[0.18em] leading-[1.4] text-ink/85 whitespace-nowrap" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif", fontWeight: 300 }}>
+                                <h3 className="text-[15px] tracking-[0.18em] leading-[1.4] text-ink/85 whitespace-nowrap" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif", fontWeight: 500 }}>
                                     ようこそ、りんごのまちへ。
                                 </h3>
                                 {/* Yellow underline extending to x=250 */}
@@ -189,7 +189,7 @@ export default function Canvas() {
                             {/* 2. Access Section — Pictograms centered between 2 route rows */}
                             <div className="w-full grid grid-cols-[auto_1fr_auto] gap-x-0 gap-y-0 items-center mb-2">
                                 {/* Tokyo pictogram (spans both rows) */}
-                                <div className="row-span-2 flex flex-col items-center justify-end gap-0.5 pr-1 h-[72px]">
+                                <div className="row-span-2 flex flex-col items-center justify-end gap-0 pr-1 h-[72px]">
                                     <svg viewBox="0 0 512 512" className="w-[30px] h-[60px]" xmlns="http://www.w3.org/2000/svg">
                                         <g fill="currentColor" className="text-ink/60">
                                             <path d="M319.625,312.844l19.938-41.75v-48.781h-37.516l-2.406-46.625l20.953-32.188V96h-56.422V0h-16.344v96h-56.422v46.594l21.031,31.469l-2.484,48.25h-37.516v47.531l20.234,40.938L164.609,512h71.953l2.094-5.031c4.094-9.828,11.672-25.516,17.344-37.016c5.672,11.5,13.234,27.172,17.328,37.016l2.094,5.031h71.969L319.625,312.844z M315.125,398.969h-50.953v-30.297h46.734L315.125,398.969z M264.172,352.328v-33.703h39.75l4.703,33.703H264.172z M247.828,352.328h-44.453l4.688-33.703h39.766V352.328z M201.094,368.672h46.734v30.297h-50.969L201.094,368.672z M247.828,415.313v30.297h-57.469l4.234-30.297H247.828z M264.172,415.313h53.234l4.234,30.297h-57.469V415.313z M283.547,180.766l2.141,41.547h-21.516v-41.547H283.547z M207.75,112.344h96.5v26.297l-16.781,25.797h-61.813l-17.906-26.813V112.344z M228.469,180.766h19.359v41.547h-21.516L228.469,180.766z M188.781,238.656h20.328h93.781h20.328v28.75l-16.672,34.891h-99.844l-17.922-36.266V238.656z M225.734,495.656h-42.344l4.703-33.703h53.625C236.781,471.938,230.266,485.375,225.734,495.656z M286.25,495.656c-4.531-10.281-11.047-23.719-15.984-33.703h53.641l4.703,33.703H286.25z" />
@@ -204,7 +204,7 @@ export default function Canvas() {
                                 </div>
 
                                 {/* Row 1: Train route */}
-                                <div className="flex items-center w-full gap-0 py-1">
+                                <div className="flex items-center w-full gap-0 py-0.5">
                                     <div className="flex-1 border-t-[1px] border-dashed border-ink/25"></div>
                                     <div className="px-1 text-center flex flex-col leading-none flex-shrink-0">
                                         <span className="text-[8px] text-ink/50 leading-[1.3]">新幹線</span>
@@ -235,7 +235,7 @@ export default function Canvas() {
                                 </div>
 
                                 {/* Row 2: Car route */}
-                                <div className="flex items-center w-full gap-0 py-1">
+                                <div className="flex items-center w-full gap-0 py-0.5">
                                     <div className="flex-1 border-t-[1px] border-dashed border-ink/25"></div>
                                     <div className="px-1.5 flex items-center gap-1 flex-shrink-0">
                                         <span className="text-[8px] text-ink/50 leading-none">車</span>
@@ -248,8 +248,9 @@ export default function Canvas() {
                             {/* Subtext describing the town */}
                             <div className="w-full mb-3">
                                 <p className="text-[8px] font-serif tracking-[0.1em] text-ink/80 leading-[1.8] pl-2 border-l border-ink/20">
-                                    長野から約2時間。<br />
-                                    標高500m〜900m、寒暖差のある冷涼な地域です。
+                                    東京から約2時間。標高500m～900m。<br />
+                                    四季の移ろいが美しい、ちょうどいい田舎。<br />
+                                    冷涼な気候と豊かな土壌が「いいづなりんご」を育てます。
                                 </p>
                             </div>
 
@@ -397,7 +398,7 @@ export default function Canvas() {
                                 })}
                             </div>
 
-                            <h1 className={`absolute bottom-[44px] left-1/2 -translate-x-1/2 text-[18px] tracking-[0.2em] z-30 drop-shadow-md whitespace-nowrap transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'text-[#E88C83]' : 'text-white'}`} style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif", fontWeight: 300 }}>
+                            <h1 className={`absolute bottom-[44px] left-1/2 -translate-x-1/2 text-[18px] tracking-[0.2em] z-30 drop-shadow-md whitespace-nowrap transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'text-[#E88C83]' : 'text-white'}`} style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif", fontWeight: 500 }}>
                                 りんごのまち いいづな
                             </h1>
                         </div>
