@@ -159,14 +159,15 @@ export default function Canvas() {
                         {/* --- 左面：中折り (Inside Flap) --- */}
                         <div className="w-[280px] relative z-10 flex flex-col pt-12 pb-8 px-6 text-ink print:border-none">
                             {/* Heading (y=50 to 100) */}
-                            <div className="h-[50px] w-full flex items-center justify-start mt-4">
-                                <h3 className="text-[14px] font-serif tracking-[0.15em] leading-relaxed text-ink/90 whitespace-nowrap">
-                                    ようこそ、りんごのまちへ。
+                            <div className="h-[60px] w-full flex flex-col justify-center mt-2">
+                                <h3 className="text-[18px] font-serif tracking-[0.15em] leading-[1.4] text-ink/90">
+                                    ようこそ<br />
+                                    りんごのまちへ。
                                 </h3>
                             </div>
 
-                            {/* Divider */}
-                            <div className="w-full h-[0.5px] bg-ink/30 mb-5"></div>
+                            {/* Thick Yellow Divider */}
+                            <div className="w-full h-[4px] bg-[#F1CE00] mb-4"></div>
 
                             {/* Access Route & Subtext (y=110 to 230) */}
                             <div className="h-[120px] w-full flex flex-col justify-start">
