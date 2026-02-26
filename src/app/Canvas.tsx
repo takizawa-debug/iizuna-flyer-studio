@@ -147,14 +147,14 @@ export default function Canvas() {
                             </div>
 
                             {/* Apple Grid overlay (Staggered 4-3-4-3... over 8 rows, centered tightly) */}
-                            <div className="absolute inset-0 pt-[56px] pb-[100px] px-[24px] flex flex-col justify-between opacity-100 pointer-events-none z-10">
+                            <div className="absolute inset-0 pt-[50px] pb-[100px] px-[30px] flex flex-col justify-between opacity-100 pointer-events-none z-10">
                                 {[...Array(8)].map((_, rowIndex) => {
                                     const isFourRow = rowIndex % 2 === 0;
                                     const appleCount = isFourRow ? 4 : 3;
                                     const startIdx = Math.floor(rowIndex / 2) * 7 + (isFourRow ? 0 : 4);
 
                                     return (
-                                        <div key={rowIndex} className={`flex justify-between w-full ${!isFourRow ? 'px-[38px]' : 'px-0'}`}>
+                                        <div key={rowIndex} className={`flex justify-between w-full ${!isFourRow ? 'px-[34px]' : 'px-0'}`}>
                                             {[...Array(appleCount)].map((_, colIndex) => {
                                                 const appleIndex = startIdx + colIndex;
                                                 const appleUrl = randomApples[appleIndex];
@@ -166,10 +166,8 @@ export default function Canvas() {
                                                             <img
                                                                 src={appleUrl}
                                                                 alt="apple"
-                                                                // w-[110px] max-w-none completely ignores flex squishing,
-                                                                // h-auto enforces the true native aspect ratio of the original PNG.
-                                                                // Absolute + transforms centers the image precisely on the 0x0 flex point.
-                                                                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110px] max-w-none h-auto object-contain"
+                                                                // w-[90px] as requested, maintaining natural aspect ratio.
+                                                                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90px] max-w-none h-auto object-contain"
                                                             />
                                                         ) : (
                                                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[30px] leading-none text-center z-10">🍎</div>
