@@ -74,11 +74,21 @@ export default function Canvas() {
 
     const getBaseColor = (color: string) => {
         switch (color) {
-            case '#E88C83': return '#FCF2F0';
+            case '#E88C83': return '#FCF2F0'; // For the inner/left panels
             case '#A1C23A': return '#F6FAED';
             case '#F1CE00': return '#FEFBE6';
             case '#FFFFFF': return '#F5F5F5';
             default: return '#FCF2F0';
+        }
+    };
+
+    const getCoverGradient = (color: string) => {
+        switch (color) {
+            case '#E88C83': return 'radial-gradient(circle at center, #d74d42 0%, #7a150f 100%)'; // Deep rich red studio lighting
+            case '#A1C23A': return 'radial-gradient(circle at center, #8dae32 0%, #3a4d10 100%)';
+            case '#F1CE00': return 'radial-gradient(circle at center, #dcb900 0%, #756300 100%)';
+            case '#FFFFFF': return 'radial-gradient(circle at center, #ffffff 0%, #d0d0d0 100%)';
+            default: return 'radial-gradient(circle at center, #d74d42 0%, #7a150f 100%)';
         }
     };
 
@@ -295,45 +305,47 @@ export default function Canvas() {
                         </div>
 
                         {/* --- 右面：表紙 (Front Cover) --- */}
+                        {/* 誌面クオリティのスタジオライティングとシズル感を再現 */}
                         <div
-                            className="w-[280px] relative z-10 flex flex-col items-center justify-center text-white print:border-none overflow-hidden pb-[40px] transition-colors duration-300"
-                            style={{ backgroundColor: coverColor }}
+                            className="w-[280px] relative z-10 flex border-l border-ink/15 border-dashed print:border-none overflow-hidden"
+                            style={{ background: getCoverGradient(coverColor) }}
                         >
 
-                            {/* "i" motif background */}
-                            <div className="absolute inset-0 pointer-events-none z-0">
-                                {/* Dot: starts at y=100, extends to 180 (height=80) */}
-                                <div className={`absolute top-[100px] left-1/2 -translate-x-1/2 w-[50px] h-[80px] shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#E88C83]' : 'bg-white'}`}></div>
-                                {/* Body: starts at y=210, extends to 500 (height=290) */}
-                                <div className={`absolute top-[210px] left-1/2 -translate-x-1/2 w-[50px] h-[290px] shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#E88C83]' : 'bg-white'}`}></div>
-                            </div>
-
-                            {/* Apple Grid overlay (Staggered 4-3-4-3... over 8 rows, tightly clumped in center) */}
-                            {/* Increased padding drastically squishes the flex justify-between space, pulling apples together */}
-                            <div className="absolute inset-0 pt-[78px] pb-[136px] px-[50px] flex flex-col justify-between opacity-100 pointer-events-none z-10">
-                                {[...Array(8)].map((_, rowIndex) => {
-                                    const isFourRow = rowIndex % 2 === 0;
-                                    const appleCount = isFourRow ? 4 : 3;
-                                    const startIdx = Math.floor(rowIndex / 2) * 7 + (isFourRow ? 0 : 4);
-
+                            {/* Architectural Apple Grid Overlay (Meticulous Display) */}
+                            <div className="absolute inset-0 pt-[60px] pb-[100px] px-[20px] flex flex-col justify-between opacity-100 z-10">
+                                {/* Create 5 rows of 5 apples for a strict, luxurious grid (25 apples total) */}
+                                {[...Array(5)].map((_, rowIndex) => {
+                                    const startIdx = rowIndex * 5;
                                     return (
-                                        <div key={rowIndex} className={`flex justify-between w-full ${!isFourRow ? 'px-[30px]' : 'px-0'}`}>
-                                            {[...Array(appleCount)].map((_, colIndex) => {
+                                        <div key={rowIndex} className="flex justify-between w-full relative z-20 px-2">
+                                            {/* Subdued invisible shelf for realism */}
+                                            <div className="absolute bottom-[-10px] left-0 right-0 h-[2px] bg-white/10 blur-[1px] rounded-[100%] opacity-50"></div>
+                                            <div className="absolute bottom-[-20px] left-[-20%] right-[-20%] h-[15px] bg-black/30 blur-[10px] rounded-[100%] opacity-80 pointer-events-none z-[-1]"></div>
+
+                                            {[...Array(5)].map((_, colIndex) => {
                                                 const appleIndex = startIdx + colIndex;
                                                 const appleUrl = randomApples[appleIndex];
+                                                // Introduce subtle variation in rotation and scale for organic realism within the strict grid
+                                                const rotate = (appleIndex * 13 % 20) - 10; // -10 to +10 deg
+                                                const scaleMod = 1 + ((appleIndex * 7 % 20) - 10) / 100; // 0.9 to 1.1
+
                                                 return (
-                                                    // w-0 h-0 ensures justify-between distributes point centers mathematically perfectly
-                                                    <div key={colIndex} className="relative flex items-center justify-center w-0 h-0">
+                                                    <div key={colIndex} className="relative flex items-center justify-center w-[35px] h-[35px]">
                                                         {appleUrl ? (
                                                             // eslint-disable-next-line @next/next/no-img-element
                                                             <img
                                                                 src={appleUrl}
-                                                                alt="apple"
-                                                                // w-[90px] making apples slightly smaller while maintaining grid density.
-                                                                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90px] max-w-none h-auto object-contain"
+                                                                alt="apple display"
+                                                                className="absolute w-[65px] max-w-none h-auto object-contain transition-transform duration-500 hover:scale-110"
+                                                                style={{
+                                                                    // High-end multi-layer realistic shadow (Ground Contact + Ambient Spread) and texture enhancement
+                                                                    filter: `drop-shadow(0px 25px 15px rgba(0,0,0,0.85)) drop-shadow(0px 5px 5px rgba(0,0,0,0.5)) drop-shadow(0px -2px 10px rgba(255,255,255,0.15)) contrast(1.15) saturate(1.2) brightness(1.05)`,
+                                                                    transform: `rotate(${rotate}deg) scale(${scaleMod})`,
+                                                                    zIndex: 30
+                                                                }}
                                                             />
                                                         ) : (
-                                                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[30px] leading-none text-center z-10">🍎</div>
+                                                            <div className="text-[20px] opacity-10">🍎</div>
                                                         )}
                                                     </div>
                                                 );
@@ -343,7 +355,15 @@ export default function Canvas() {
                                 })}
                             </div>
 
-                            <h1 className={`absolute bottom-[44px] left-1/2 -translate-x-1/2 text-[18px] font-bold tracking-widest z-30 drop-shadow-md whitespace-nowrap transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'text-[#E88C83]' : 'text-white'}`}>
+                            {/* Title Positioned Elegantly with High Contrast */}
+                            <h1
+                                className="absolute bottom-[40px] left-1/2 -translate-x-1/2 text-[14px] font-serif tracking-[0.4em] z-30 whitespace-nowrap"
+                                style={{
+                                    color: coverColor === '#FFFFFF' ? '#7a150f' : '#FFF5E1', // Warm white/gold tint for red bg
+                                    textShadow: coverColor === '#FFFFFF' ? 'none' : '0 4px 15px rgba(0,0,0,0.8), 0 1px 3px rgba(0,0,0,0.5)',
+                                    fontWeight: 400
+                                }}
+                            >
                                 りんごのまち いいづな
                             </h1>
                         </div>
