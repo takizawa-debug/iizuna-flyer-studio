@@ -177,24 +177,21 @@ export default function Canvas() {
                                 }}
                             />
 
-                            {/* 1. Header Area — Editorial Magazine Typography */}
+                            {/* 1. Header Area — Editorial Typography */}
                             <div className="w-full flex flex-col justify-start mb-6 mt-1 relative z-10">
-                                <div className="flex flex-col">
-                                    <span className="text-[8px] font-sans tracking-[0.35em] text-ink/50 uppercase mb-1">Welcome to</span>
-                                    <h3 className="text-[18px] font-serif tracking-[0.08em] leading-[1.3] text-ink/90 font-bold">
-                                        りんごのまちへ。
-                                    </h3>
-                                </div>
+                                <h3 className="text-[15px] font-serif tracking-[0.12em] leading-[1.4] text-ink/90 font-bold whitespace-nowrap">
+                                    ようこそ、りんごのまちへ。
+                                </h3>
                                 {/* Refined thick yellow line */}
-                                <div className="w-[70%] h-[3px] bg-[#E8C340] mt-3"></div>
+                                <div className="w-[75%] h-[3px] bg-[#E8C340] mt-3"></div>
                             </div>
 
                             {/* 2. Access Section — Grid: [Tokyo | Icon | Route line | Iizuna] */}
                             <div className="w-full grid grid-cols-[auto_18px_1fr_auto] gap-x-1.5 gap-y-3 items-center py-2 mb-5">
                                 {/* Tokyo (row-span-2, far left, boxed) */}
                                 <div className="row-span-2 flex items-center">
-                                    <div className="border border-ink/30 px-1.5 py-1">
-                                        <span className="text-[9px] font-bold tracking-widest text-ink">東京</span>
+                                    <div className="border border-ink/30 px-2 py-1.5 flex items-center justify-center">
+                                        <span className="text-[10px] font-bold tracking-widest text-ink leading-none">東京</span>
                                     </div>
                                 </div>
 
@@ -206,29 +203,29 @@ export default function Canvas() {
                                 </div>
 
                                 {/* Row 1: Train route dashed line */}
-                                <div className="flex items-center w-full relative h-[22px]">
+                                <div className="flex items-center w-full relative h-[28px]">
                                     {/* Full-width dashed line */}
                                     <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 border-t-[1px] border-dashed border-ink/25 z-0"></div>
                                     {/* Label: Shinkansen 1.5H */}
-                                    <div className="bg-[#FBF4F0] px-1 z-10 text-center flex flex-col leading-none mx-auto">
-                                        <span className="text-[5px] text-ink/45 leading-[1.3]">新幹線</span>
-                                        <span className="text-[6px] text-ink/70 font-bold leading-[1.3]">1.5H</span>
+                                    <div className="bg-[#FBF4F0] px-1.5 z-10 text-center flex flex-col leading-none mx-auto">
+                                        <span className="text-[7px] text-ink/50 leading-[1.3]">新幹線</span>
+                                        <span className="text-[8px] text-ink/80 font-bold leading-[1.3]">1.5H</span>
                                     </div>
                                     {/* Nagano waypoint */}
-                                    <div className="bg-[#FBF4F0] px-1 z-10 flex-shrink-0">
-                                        <span className="text-[8px] font-bold text-ink">長野</span>
+                                    <div className="bg-[#FBF4F0] px-1.5 z-10 flex-shrink-0">
+                                        <span className="text-[9px] font-bold text-ink leading-none">長野</span>
                                     </div>
                                     {/* Label: Local train 20min */}
-                                    <div className="bg-[#FBF4F0] px-1 z-10 text-center flex flex-col leading-none mx-auto">
-                                        <span className="text-[5px] text-[#D45D56]/70 leading-[1.3]">電車</span>
-                                        <span className="text-[6px] text-[#D45D56]/90 font-bold leading-[1.3]">20MIN</span>
+                                    <div className="bg-[#FBF4F0] px-1.5 z-10 text-center flex flex-col leading-none mx-auto">
+                                        <span className="text-[7px] text-[#D45D56]/70 leading-[1.3]">電車</span>
+                                        <span className="text-[8px] text-[#D45D56] font-bold leading-[1.3]">20MIN</span>
                                     </div>
                                 </div>
 
                                 {/* Iizuna (row-span-2, far right, boxed red) */}
                                 <div className="row-span-2 flex items-center">
-                                    <div className="bg-[#D45D56] text-white px-2 py-1.5 shadow-sm">
-                                        <span className="text-[9px] font-bold tracking-[0.1em]">飯綱町</span>
+                                    <div className="bg-[#D45D56] text-white px-2 py-1.5 shadow-sm flex items-center justify-center">
+                                        <span className="text-[10px] font-bold tracking-[0.1em] leading-none">飯綱町</span>
                                     </div>
                                 </div>
 
@@ -241,11 +238,11 @@ export default function Canvas() {
                                 </div>
 
                                 {/* Row 2: Car route dashed line */}
-                                <div className="flex items-center w-full relative h-[22px]">
+                                <div className="flex items-center w-full relative h-[28px]">
                                     <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 border-t-[1px] border-dashed border-ink/25 z-0"></div>
-                                    <div className="bg-[#FBF4F0] px-1 z-10 text-center flex flex-col leading-none mx-auto">
-                                        <span className="text-[5px] text-ink/45 leading-[1.3]">車</span>
-                                        <span className="text-[6px] text-ink/70 font-bold leading-[1.3]">3H</span>
+                                    <div className="bg-[#FBF4F0] px-1.5 z-10 text-center flex flex-col leading-none mx-auto">
+                                        <span className="text-[7px] text-ink/50 leading-[1.3]">車</span>
+                                        <span className="text-[8px] text-ink/80 font-bold leading-[1.3]">3H</span>
                                     </div>
                                 </div>
                             </div>
