@@ -322,21 +322,21 @@ export default function Canvas() {
                             style={{ backgroundColor: coverColor }}
                         >
 
-                            {/* "Information (i)" motif background */}
+                            {/* "Information (i)" abstract motif background */}
                             <div className="absolute inset-0 pointer-events-none z-0">
-                                {/* Dot: Perfect Circle */}
-                                <div className={`absolute top-[90px] left-1/2 -translate-x-1/2 w-[66px] h-[66px] rounded-full shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#E88C83]' : 'bg-white'}`}></div>
+                                {/* Dot: Abstract Rectangle (Slit/Door feel) */}
+                                <div className={`absolute top-[100px] left-1/2 -translate-x-1/2 w-[50px] h-[80px] shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#E88C83]' : 'bg-white'}`}></div>
 
-                                {/* Body: Stem and Serifs */}
-                                <div className="absolute top-[180px] left-1/2 -translate-x-1/2 w-[60px] h-[260px]">
-                                    {/* Top-left Serif */}
-                                    <div className={`absolute top-0 -left-[28px] w-[28px] h-[26px] shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#E88C83]' : 'bg-white'}`}></div>
+                                {/* Body: Stem with subtle serifs */}
+                                <div className="absolute top-[210px] left-1/2 -translate-x-1/2 w-[50px] h-[290px]">
+                                    {/* Subtle Top-left Serif */}
+                                    <div className={`absolute top-0 -left-[16px] w-[16px] h-[16px] shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#E88C83]' : 'bg-white'}`}></div>
 
-                                    {/* Main Stem */}
+                                    {/* Main Stem (Inorganic block) */}
                                     <div className={`absolute inset-0 w-full h-full shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#E88C83]' : 'bg-white'}`}></div>
 
-                                    {/* Bottom Slab Serif */}
-                                    <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-[160px] h-[28px] shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#E88C83]' : 'bg-white'}`}></div>
+                                    {/* Subtle Bottom Spread */}
+                                    <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-[100px] h-[20px] shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#E88C83]' : 'bg-white'}`}></div>
                                 </div>
                             </div>
 
