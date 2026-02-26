@@ -577,6 +577,13 @@ export default function Canvas() {
                                         シャキシャキの食感は、破断強度で実証済み。
                                     </p>
                                 </div>
+
+                                {/* Museum callout */}
+                                <div className="bg-[#E8C340]/10 rounded-sm px-2.5 py-1.5 mt-2">
+                                    <p className="text-[6.5px] font-serif text-ink/55 leading-[1.6]">
+                                        <span className="font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>アップルミュージアム</span>——ニュートンのりんごの木や初代Macまで展示。全国でも珍しいりんご博物館。
+                                    </p>
+                                </div>
                             </div>
 
                             {/* Divider */}
@@ -695,7 +702,7 @@ export default function Canvas() {
 
                             {/* Online shop callout */}
                             <div className="mt-auto pt-3">
-                                <div className="bg-[#D45D56]/8 rounded-sm px-2.5 py-2 border border-[#D45D56]/15">
+                                <div className="rounded-sm px-2.5 py-2 border border-[#D45D56]/15" style={{ backgroundColor: 'rgba(212, 93, 86, 0.08)' }}>
                                     <p className="text-[7px] font-bold tracking-[0.06em] text-[#D45D56]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>みつどんマルシェ</p>
                                     <p className="text-[6px] font-serif text-ink/55 leading-[1.6]">オンラインで全国配送。30品種食べ比べ定期便も。</p>
                                 </div>
