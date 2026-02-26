@@ -157,9 +157,10 @@ export default function Canvas() {
                         )}
 
                         {/* --- 左面：中折り (Inside Flap) --- */}
-                        <div className="w-[280px] relative z-10 flex flex-col pt-12 pb-8 px-6 text-ink print:border-none">
-                            {/* Heading (y=50 to 100) */}
-                            <div className="h-[60px] w-full flex flex-col justify-center mt-2">
+                        {/* --- 左面：中折り (Inside Flap) --- */}
+                        <div className="w-[280px] relative z-10 flex flex-col pt-[50px] pb-[44px] px-6 text-ink print:border-none">
+                            {/* Heading (y=50 to 110) */}
+                            <div className="h-[60px] w-full flex flex-col justify-start">
                                 <h3 className="text-[18px] font-serif tracking-[0.15em] leading-[1.4] text-ink/90">
                                     ようこそ<br />
                                     りんごのまちへ。
@@ -167,38 +168,45 @@ export default function Canvas() {
                             </div>
 
                             {/* Thick Yellow Divider */}
-                            <div className="w-full h-[4px] bg-[#F1CE00] mb-4"></div>
+                            <div className="w-full h-[4px] bg-[#F1CE00] mb-[26px]"></div>
 
-                            {/* Access Route & Subtext (y=110 to 230) */}
-                            <div className="h-[120px] w-full flex flex-col justify-start">
-                                {/* Route */}
-                                <div className="w-full flex items-center justify-between mb-5 px-1">
+                            {/* Access Route & Subtext (y=140 to 230) */}
+                            <div className="h-[90px] w-full flex flex-col justify-start">
+                                {/* Elegant Route Typography */}
+                                <div className="w-full flex items-center justify-between mb-4">
                                     <div className="flex flex-col items-center">
-                                        <div className="w-[7px] h-[7px] border-[0.5px] border-ink bg-white rounded-full mb-1"></div>
-                                        <span className="text-[8px] font-serif tracking-widest text-ink/80 whitespace-nowrap">東京駅</span>
+                                        <span className="text-[10px] font-serif tracking-widest text-ink font-bold">東京</span>
+                                        <span className="text-[5.5px] font-sans tracking-widest text-ink/40 mt-0.5 uppercase">Tokyo</span>
                                     </div>
-                                    <div className="flex flex-col items-center justify-center -mt-2">
-                                        <span className="text-[7px] font-sans text-ink/50 tracking-wider whitespace-nowrap">新幹線 1.5h</span>
-                                    </div>
-                                    <div className="flex flex-col items-center">
-                                        <div className="w-[7px] h-[7px] bg-ink rounded-full mb-1"></div>
-                                        <span className="text-[8px] font-serif tracking-widest text-ink/90 whitespace-nowrap">長野駅</span>
-                                    </div>
-                                    <div className="flex flex-col items-center justify-center -mt-2">
-                                        <span className="text-[7px] font-sans text-ink/50 tracking-wider whitespace-nowrap">車 30min</span>
+                                    <div className="flex flex-col items-center justify-center -mt-1 w-[45px]">
+                                        <span className="text-[6.5px] font-sans text-ink/50 tracking-widest mb-1.5 whitespace-nowrap">新幹線 1.5h</span>
+                                        <svg width="24" height="4" viewBox="0 0 24 4" fill="none" stroke="currentColor" className="text-ink/30">
+                                            <path d="M0 2H22M20 0L23 2L20 4" strokeWidth="0.5" />
+                                        </svg>
                                     </div>
                                     <div className="flex flex-col items-center">
-                                        <span className="text-[11px] leading-none mb-0.5 opacity-90 drop-shadow-sm">🍎</span>
-                                        <span className="text-[8px] font-serif tracking-widest text-[#D45D56] font-bold whitespace-nowrap">飯綱町</span>
+                                        <span className="text-[10px] font-serif tracking-widest text-ink font-bold">長野</span>
+                                        <span className="text-[5.5px] font-sans tracking-widest text-ink/40 mt-0.5 uppercase">Nagano</span>
+                                    </div>
+                                    <div className="flex flex-col items-center justify-center -mt-1 w-[45px]">
+                                        <span className="text-[6.5px] font-sans text-ink/50 tracking-widest mb-1.5 whitespace-nowrap">車 30min</span>
+                                        <svg width="24" height="4" viewBox="0 0 24 4" fill="none" stroke="currentColor" className="text-ink/30">
+                                            <path d="M0 2H22M20 0L23 2L20 4" strokeWidth="0.5" />
+                                        </svg>
+                                    </div>
+                                    <div className="flex flex-col items-center">
+                                        <div className="bg-[#D45D56] text-white px-2 py-0.5 rounded-sm shadow-sm mb-0.5 mt-[-4px]">
+                                            <span className="text-[10px] font-serif tracking-widest font-bold font-sans">飯綱町</span>
+                                        </div>
                                     </div>
                                 </div>
 
                                 {/* Subtext */}
-                                <div className="w-full pl-1">
-                                    <p className="text-[9px] tracking-[0.2em] text-ink/80 font-serif mb-2">
+                                <div className="w-[90%] border-l-[1.5px] border-ink/10 pl-3 ml-1 mt-1">
+                                    <p className="text-[9px] tracking-[0.2em] text-ink/80 font-serif mb-1.5 font-bold">
                                         長野から約2時間
                                     </p>
-                                    <p className="text-[8px] tracking-[0.1em] text-ink/60 font-serif leading-relaxed">
+                                    <p className="text-[7.5px] tracking-[0.1em] text-ink/60 font-serif leading-relaxed">
                                         標高500m〜900m。<br />
                                         寒暖差のある冷涼な地域です。
                                     </p>
