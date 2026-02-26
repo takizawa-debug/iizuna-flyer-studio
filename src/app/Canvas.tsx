@@ -147,7 +147,7 @@ export default function Canvas() {
                             </div>
 
                             {/* Apple Grid overlay */}
-                            <div className="absolute inset-0 pt-[30px] pb-[60px] px-2 flex flex-col justify-between opacity-100 pointer-events-none z-10">
+                            <div className="absolute inset-0 pt-[24px] pb-[56px] px-1 flex flex-col justify-between opacity-100 pointer-events-none z-10">
                                 {[...Array(6)].map((_, rowIndex) => {
                                     const isEvenRow = rowIndex % 2 === 0;
                                     return (
@@ -156,12 +156,12 @@ export default function Canvas() {
                                                 const appleIndex = rowIndex * 4 + colIndex;
                                                 const appleUrl = randomApples[appleIndex];
                                                 return (
-                                                    <div key={colIndex} className="w-[50px] h-[50px] relative">
+                                                    <div key={colIndex} className="w-[44px] h-[44px] relative flex items-center justify-center">
                                                         {appleUrl ? (
                                                             // eslint-disable-next-line @next/next/no-img-element
-                                                            <img src={appleUrl} alt="apple" className="w-full h-full object-contain" />
+                                                            <img src={appleUrl} alt="apple" className="absolute w-[110px] h-[110px] max-w-none object-contain" />
                                                         ) : (
-                                                            <div className="text-[40px] leading-none text-center">🍎</div>
+                                                            <div className="text-[40px] leading-none text-center z-10">🍎</div>
                                                         )}
                                                     </div>
                                                 );
