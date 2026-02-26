@@ -69,8 +69,18 @@ const shuffleArray = (array: string[]) => {
 export default function Canvas() {
     const [scale, setScale] = useState(0.85);
     const [showGuides, setShowGuides] = useState(false);
-    const [coverColor, setCoverColor] = useState("#D45D56"); // Default Red
+    const [coverColor, setCoverColor] = useState("#E88C83"); // Light Red Default
     const [randomApples, setRandomApples] = useState<string[]>([]);
+
+    const getBaseColor = (color: string) => {
+        switch (color) {
+            case '#E88C83': return '#FCF2F0';
+            case '#A1C23A': return '#F6FAED';
+            case '#F1CE00': return '#FEFBE6';
+            case '#FFFFFF': return '#F5F5F5';
+            default: return '#FCF2F0';
+        }
+    };
 
     useEffect(() => {
         // Need about 30 apples for a 6x5 grid (30 items total limit)
@@ -84,10 +94,7 @@ export default function Canvas() {
                 {/* Cover Color Toggle */}
                 <div className="flex items-center gap-1.5 bg-washi rounded-full shadow-sm border border-ink/10 px-3 py-1 pointer-events-auto">
                     <span className="text-xs font-sans text-ink/60 mr-1">Cover:</span>
-                    <button onClick={() => setCoverColor('#D45D56')} className={`w-4 h-4 rounded-full border ${coverColor === '#D45D56' ? 'border-ink border-2' : 'border-ink/20'}`} style={{ backgroundColor: '#D45D56' }} title="Default Red"></button>
-                    <button onClick={() => setCoverColor('#8B2323')} className={`w-4 h-4 rounded-full border ${coverColor === '#8B2323' ? 'border-ink border-2' : 'border-ink/20'}`} style={{ backgroundColor: '#8B2323' }} title="Dark Red"></button>
                     <button onClick={() => setCoverColor('#E88C83')} className={`w-4 h-4 rounded-full border ${coverColor === '#E88C83' ? 'border-ink border-2' : 'border-ink/20'}`} style={{ backgroundColor: '#E88C83' }} title="Light Red"></button>
-                    <button onClick={() => setCoverColor('#5E1914')} className={`w-4 h-4 rounded-full border ${coverColor === '#5E1914' ? 'border-ink border-2' : 'border-ink/20'}`} style={{ backgroundColor: '#5E1914' }} title="Wine Red"></button>
                     <div className="w-[1px] h-3 bg-ink/20 mx-1"></div>
                     <button onClick={() => setCoverColor('#A1C23A')} className={`w-4 h-4 rounded-full border ${coverColor === '#A1C23A' ? 'border-ink border-2' : 'border-ink/20'}`} style={{ backgroundColor: '#A1C23A' }} title="Green"></button>
                     <button onClick={() => setCoverColor('#F1CE00')} className={`w-4 h-4 rounded-full border ${coverColor === '#F1CE00' ? 'border-ink border-2' : 'border-ink/20'}`} style={{ backgroundColor: '#F1CE00' }} title="Yellow"></button>
@@ -118,7 +125,10 @@ export default function Canvas() {
                     <h2 className="text-ink/60 font-medium text-sm px-2 flex items-center gap-2 tracking-widest font-sans print:hidden">
                         表面（左から： 中折り / 裏表紙 / 表紙）
                     </h2>
-                    <div className="w-[840px] h-[594px] shadow-2xl relative wabi-shadow rounded-sm overflow-hidden flex print:border-none print:shadow-none print:rounded-none bg-[#FA9B93]">
+                    <div
+                        className="w-[840px] h-[594px] shadow-2xl relative wabi-shadow rounded-sm overflow-hidden flex print:border-none print:shadow-none print:rounded-none transition-colors duration-300"
+                        style={{ backgroundColor: getBaseColor(coverColor) }}
+                    >
                         <div className="absolute inset-0 texture-paper pointer-events-none z-0" />
 
                         {/* Ruler Guides Overlay */}
@@ -147,7 +157,7 @@ export default function Canvas() {
                         )}
 
                         {/* --- 左面：中折り (Inside Flap) --- */}
-                        <div className="w-[280px] border-r border-[#EAA29A] border-dashed relative z-10 flex flex-col p-8 text-ink print:border-none items-center">
+                        <div className="w-[280px] border-r border-ink/15 border-dashed relative z-10 flex flex-col p-8 text-ink print:border-none items-center">
                             <h3 className="text-lg font-bold tracking-widest mt-[180px] mb-8 text-center leading-loose">
                                 飯綱町の基本情報<br />
                                 （りんご以外の）
@@ -160,7 +170,7 @@ export default function Canvas() {
                         </div>
 
                         {/* --- 中面：裏表紙 (Back Cover) --- */}
-                        <div className="w-[280px] border-r border-[#EAA29A] border-dashed relative z-10 flex flex-col items-center justify-center p-8 text-center text-white print:border-none pt-24">
+                        <div className="w-[280px] border-r border-ink/15 border-dashed relative z-10 flex flex-col items-center justify-center p-8 text-center text-ink print:border-none pt-24">
                             <div className="mb-14 space-y-4 font-bold tracking-wider leading-relaxed text-[15px]">
                                 <p>「いいづなりんご」とは？</p>
                                 <p>生産者の想いや<br />お店のこだわり</p>
@@ -177,7 +187,7 @@ export default function Canvas() {
                                 />
                             </div>
 
-                            <div className="absolute bottom-[44px] left-1/2 -translate-x-1/2 flex items-center gap-2 font-sans text-[13px] tracking-widest border-b border-white border-dashed pb-[2px] opacity-90 whitespace-nowrap">
+                            <div className="absolute bottom-[44px] left-1/2 -translate-x-1/2 flex items-center gap-2 font-sans text-[13px] tracking-widest border-b border-ink/30 border-dashed pb-[2px] opacity-90 whitespace-nowrap">
                                 appletown-iizuna.com
                             </div>
                         </div>
