@@ -157,118 +157,144 @@ export default function Canvas() {
                         )}
 
                         {/* --- 左面：中折り (Inside Flap) --- */}
-                        <div className="w-[280px] relative z-10 flex flex-col pt-12 pb-8 px-6 text-ink print:border-none">
-                            {/* Heading (y=50 to 100) */}
-                            <div className="h-[50px] w-full flex items-center justify-start mt-4">
-                                <h3 className="text-[14px] font-serif tracking-[0.15em] leading-relaxed text-ink/90 whitespace-nowrap">
-                                    ようこそ、りんごのまちへ。
+                        {/* --- 左面：中折り (Inside Flap) - Mitoro Scrapbook Style --- */}
+                        <div className="w-[280px] relative z-10 flex flex-col pt-10 pb-6 text-ink print:border-none overflow-hidden">
+                            {/* Decorative background blob */}
+                            <div className="absolute top-0 left-[-20px] w-[150px] h-[150px] bg-[#EBE2AF]/60 rounded-full blur-3xl z-[-1]"></div>
+
+                            {/* Heading with marker accent */}
+                            <div className="w-full relative mb-6 px-6">
+                                <div className="absolute top-[60%] left-4 right-10 h-[6px] bg-[#F1CE00]/50 -rotate-1 rounded-sm z-[-1]"></div>
+                                <h3 className="text-[17px] font-bold tracking-[0.1em] text-ink/90 transform rotate-[-1deg] inline-block">
+                                    ようこそ、りんごの<br />
+                                    <span className="text-[20px] inline-block transform translate-y-1">まちへ。</span>
                                 </h3>
                             </div>
 
-                            {/* Divider */}
-                            <div className="w-full h-[0.5px] bg-ink/30 mb-5"></div>
+                            {/* Access Route - Playful staggered layout */}
+                            <div className="w-full relative h-[70px] mb-4 px-8 mt-2">
+                                {/* Dotted route path svg */}
+                                <svg className="absolute top-2 left-6 w-[200px] h-[50px] overflow-visible pointer-events-none z-0" viewBox="0 0 200 50">
+                                    <path d="M 10 20 C 50 5, 120 40, 180 15" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" className="text-ink/30" />
+                                </svg>
 
-                            {/* Access Route & Subtext (y=110 to 230) */}
-                            <div className="h-[120px] w-full flex flex-col justify-start">
-                                {/* Route */}
-                                <div className="w-full flex items-center justify-between mb-5 px-1">
-                                    <div className="flex flex-col items-center">
-                                        <div className="w-[7px] h-[7px] border-[0.5px] border-ink bg-white rounded-full mb-1"></div>
-                                        <span className="text-[8px] font-serif tracking-widest text-ink/80 whitespace-nowrap">東京駅</span>
+                                <div className="absolute top-0 left-5 flex flex-col items-center rotate-[-3deg] z-10">
+                                    <div className="bg-white border border-ink px-2 py-0.5 rounded-full shadow-sm">
+                                        <span className="text-[8px] font-bold tracking-widest text-ink">東京駅</span>
                                     </div>
-                                    <div className="flex flex-col items-center justify-center -mt-2">
-                                        <span className="text-[7px] font-sans text-ink/50 tracking-wider whitespace-nowrap">新幹線 1.5h</span>
-                                    </div>
-                                    <div className="flex flex-col items-center">
-                                        <div className="w-[7px] h-[7px] bg-ink rounded-full mb-1"></div>
-                                        <span className="text-[8px] font-serif tracking-widest text-ink/90 whitespace-nowrap">長野駅</span>
-                                    </div>
-                                    <div className="flex flex-col items-center justify-center -mt-2">
-                                        <span className="text-[7px] font-sans text-ink/50 tracking-wider whitespace-nowrap">車 30min</span>
-                                    </div>
-                                    <div className="flex flex-col items-center">
-                                        <span className="text-[11px] leading-none mb-0.5 opacity-90 drop-shadow-sm">🍎</span>
-                                        <span className="text-[8px] font-serif tracking-widest text-[#D45D56] font-bold whitespace-nowrap">飯綱町</span>
-                                    </div>
+                                    <span className="text-[6px] font-sans text-ink/60 mt-0.5 bg-white/80 px-1 rounded-sm">新幹線1.5h</span>
                                 </div>
 
-                                {/* Subtext */}
-                                <div className="w-full pl-1">
-                                    <p className="text-[9px] tracking-[0.2em] text-ink/80 font-serif mb-2">
-                                        長野から約2時間
-                                    </p>
-                                    <p className="text-[8px] tracking-[0.1em] text-ink/60 font-serif leading-relaxed">
-                                        標高500m〜900m。<br />
-                                        寒暖差のある冷涼な地域です。
-                                    </p>
+                                <div className="absolute top-5 left-[85px] flex flex-col items-center rotate-[4deg] z-10">
+                                    <div className="bg-white border border-ink px-2 py-0.5 rounded-full shadow-sm">
+                                        <span className="text-[8px] font-bold tracking-widest text-ink">長野駅</span>
+                                    </div>
+                                    <span className="text-[6px] font-sans text-ink/60 mt-0.5 bg-white/80 px-1 rounded-sm">車30min</span>
                                 </div>
-                            </div>
 
-                            {/* Photo Mosaic (y=230 to 430) */}
-                            <div className="w-full h-[200px] mb-3">
-                                <div className="grid grid-cols-2 gap-[2px] w-full h-[200px]">
-                                    <div className="relative overflow-hidden w-full h-full">
-                                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                                        <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/bd0a2240-8eef-013e-f636-0a58a9feac02/08d38714aac878e65d2e26af32577e64.jpg" alt="Spring" className="w-full h-full object-cover grayscale-[10%] brightness-105" />
-                                    </div>
-                                    <div className="relative overflow-hidden w-full h-full">
-                                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                                        <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/ec2954c0-a041-013e-ff9d-0a58a9feac02/iizuna_20220525-2.jpg" alt="Summer" className="w-full h-full object-cover grayscale-[10%] brightness-105" />
-                                    </div>
-                                    <div className="relative overflow-hidden w-full h-full">
-                                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                                        <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/b0a34c40-a041-013e-b18a-0a58a9feac02/20231013_sweet-3.jpg" alt="Autumn" className="w-full h-full object-cover grayscale-[10%] brightness-105" />
-                                    </div>
-                                    <div className="relative overflow-hidden w-full h-full">
-                                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                                        <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/120aadf0-a042-013e-ffb1-0a58a9feac02/iizuna_20250123-10.jpg" alt="Winter" className="w-full h-full object-cover grayscale-[10%] brightness-105" />
+                                <div className="absolute top-[2px] right-6 flex flex-col items-center rotate-[-5deg] z-10">
+                                    <span className="text-[18px] leading-none mb-[-2px] drop-shadow-sm">🍎</span>
+                                    <div className="bg-[#D45D56] text-white px-2 py-0.5 rounded-full shadow-md">
+                                        <span className="text-[8px] font-bold tracking-widest">飯綱町</span>
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Poetic Caption (y=430 to 460) */}
-                            <div className="w-full h-[30px] pl-1">
-                                <p className="text-[9.5px] font-serif tracking-[0.15em] leading-relaxed text-ink/80">
-                                    春の桃源郷、夏の涼風。<br />
-                                    秋の黄金色と冬の静寂。
+                            {/* Subtext */}
+                            <div className="w-full px-6 mb-6">
+                                <p className="text-[10px] tracking-widest font-bold text-ink/80 mb-1">
+                                    長野から約2時間
+                                </p>
+                                <p className="text-[8px] tracking-wider text-ink/60 leading-relaxed">
+                                    標高500m〜900m。<br />
+                                    寒暖差のある冷涼な地域です。
                                 </p>
                             </div>
 
-                            {/* Food Gallery (y=460 to 550) */}
-                            <div className="w-full h-[90px] mt-auto">
-                                <div className="flex items-start justify-between gap-1 mb-3">
-                                    <div className="flex flex-col items-center gap-1 w-1/4">
-                                        <div className="w-full aspect-square relative overflow-hidden bg-ink/5">
-                                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                                            <img src="https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&q=80&w=200" alt="Apple" className="w-full h-full object-cover mix-blend-multiply" />
-                                        </div>
-                                    </div>
-                                    <div className="flex flex-col items-center gap-1 w-1/4 pt-1">
-                                        <div className="w-[85%] aspect-square rounded-full relative overflow-hidden bg-ink/5 border-[0.5px] border-ink/20">
-                                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                                            <img src="https://images.unsplash.com/photo-1519984388953-d240ec8ceab0?auto=format&fit=crop&q=80&w=200" alt="Soba" className="w-full h-full object-cover mix-blend-multiply opacity-90" />
-                                        </div>
-                                        <span className="text-[9px] font-serif tracking-widest text-ink/70">Soba</span>
-                                    </div>
-                                    <div className="flex flex-col items-center gap-1 w-1/4 pt-2">
-                                        <div className="w-[75%] aspect-[3/4] rounded-sm relative overflow-hidden bg-ink/5">
-                                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                                            <img src="https://images.unsplash.com/photo-1522856351838-5110ce4cdbe8?auto=format&fit=crop&q=80&w=200" alt="Cider" className="w-full h-full object-cover mix-blend-multiply grayscale-[30%]" />
-                                        </div>
-                                        <span className="text-[9px] font-serif tracking-widest text-ink/70">Cider</span>
-                                    </div>
-                                    <div className="flex flex-col items-center gap-1 w-1/4">
-                                        <div className="w-[90%] aspect-square relative overflow-hidden bg-ink/5">
-                                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                                            <img src="https://images.unsplash.com/photo-1596704179361-9f2df6f08fb7?auto=format&fit=crop&q=80&w=200" alt="Vegetables" className="w-full h-full object-cover mix-blend-multiply grayscale-[10%]" />
-                                        </div>
-                                        <span className="text-[9px] font-serif tracking-[0.1em] text-ink/70 pt-0.5">Vegeta</span>
-                                    </div>
+                            {/* Seasonal Photo Collage (Hero) - Polaroid Scrapbook Style */}
+                            <div className="w-full relative h-[210px] mb-2 z-20">
+                                {/* Spring */}
+                                <div className="absolute top-0 left-3 w-[120px] h-[100px] bg-white p-1.5 pb-5 shadow-md rotate-[-6deg] z-10 border border-ink/5">
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                                    <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/bd0a2240-8eef-013e-f636-0a58a9feac02/08d38714aac878e65d2e26af32577e64.jpg" alt="Spring" className="w-full h-full object-cover" />
+                                    <span className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[8px] font-marker text-ink/60">Spring</span>
                                 </div>
-                                <div className="w-full flex justify-center">
-                                    <span className="text-[8px] font-serif tracking-[0.2em] text-ink/60">りんご、シードル、蕎麦、大地。</span>
+                                {/* Summer */}
+                                <div className="absolute top-[10px] right-4 w-[110px] h-[115px] bg-white p-1.5 pb-5 shadow-lg rotate-[4deg] z-20 border border-ink/5">
+                                    {/* Masking tape */}
+                                    <div className="absolute top-[-5px] left-1/2 -translate-x-1/2 w-[30px] h-[10px] bg-white/50 rotate-[2deg] shadow-sm z-30 mix-blend-overlay"></div>
+                                    <div className="absolute top-[-5px] left-1/2 -translate-x-1/2 w-[30px] h-[10px] bg-[#A1C23A]/30 rotate-[2deg] z-30"></div>
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                                    <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/ec2954c0-a041-013e-ff9d-0a58a9feac02/iizuna_20220525-2.jpg" alt="Summer" className="w-full h-full object-cover" />
+                                </div>
+                                {/* Autumn */}
+                                <div className="absolute bottom-[20px] left-8 w-[130px] h-[95px] bg-white p-1.5 pb-4 shadow-xl rotate-[3deg] z-30 border border-ink/5">
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                                    <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/b0a34c40-a041-013e-b18a-0a58a9feac02/20231013_sweet-3.jpg" alt="Autumn" className="w-full h-full object-cover" />
+                                </div>
+                                {/* Winter */}
+                                <div className="absolute bottom-0 right-3 w-[100px] h-[120px] bg-white p-1.5 pb-5 shadow-md rotate-[-8deg] z-10 border border-ink/5">
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                                    <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/120aadf0-a042-013e-ffb1-0a58a9feac02/iizuna_20250123-10.jpg" alt="Winter" className="w-full h-full object-cover grayscale-[20%]" />
+                                    <span className="absolute bottom-1 right-2 text-[8px] font-marker text-ink/50 rotate-[-5deg]">Winter</span>
+                                </div>
+
+                                {/* Floating Badge */}
+                                <div className="absolute top-[80px] left-[50%] -translate-x-1/2 bg-white text-ink border-[2px] border-[#D45D56] font-bold text-[10px] py-1 px-3 rotate-[-10deg] shadow-lg rounded-full z-40 whitespace-nowrap">
+                                    四季折々の絶景！
                                 </div>
                             </div>
+
+                            {/* Poetic Caption */}
+                            <div className="w-full px-8 mt-2 reltive z-30">
+                                <div className="relative inline-block rotate-[1deg]">
+                                    <div className="absolute inset-0 bg-white/80 scale-110 -z-10 rounded-sm blur-[2px]"></div>
+                                    <p className="text-[10px] font-bold tracking-[0.1em] leading-loose text-ink/90">
+                                        春の桃源郷、夏の涼風。<br />
+                                        秋の黄金色と冬の静寂。
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Food Stickers (Scattered) */}
+                            <div className="absolute bottom-0 left-0 w-full h-[120px] pointer-events-none z-40 overflow-visible">
+                                {/* Soba Sticker */}
+                                <div className="absolute bottom-16 left-[-10px] bg-white p-1 rounded-full shadow-md rotate-[15deg]">
+                                    <div className="w-[45px] h-[45px] rounded-full overflow-hidden">
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                                        <img src="https://images.unsplash.com/photo-1519984388953-d240ec8ceab0?auto=format&fit=crop&q=80&w=200" alt="Soba" className="w-full h-full object-cover" />
+                                    </div>
+                                    <div className="absolute top-[-5px] right-[-5px] bg-[#D45D56] text-white text-[7px] font-bold px-1.5 rounded-sm rotate-[10deg]">蕎麦</div>
+                                </div>
+
+                                {/* Cider Sticker */}
+                                <div className="absolute bottom-4 left-10 bg-white p-1 pt-2 pb-3 shadow-lg rotate-[-12deg] rounded-sm">
+                                    <div className="w-[35px] h-[45px] overflow-hidden">
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                                        <img src="https://images.unsplash.com/photo-1522856351838-5110ce4cdbe8?auto=format&fit=crop&q=80&w=200" alt="Cider" className="w-full h-full object-cover" />
+                                    </div>
+                                    <span className="block text-center text-[6px] font-bold mt-1 tracking-widest text-[#A1C23A]">シードル</span>
+                                </div>
+
+                                {/* Vegetables Sticker */}
+                                <div className="absolute bottom-10 right-0 bg-white p-1 shadow-md rotate-[8deg] rounded-full border-2 border-dashed border-[#A1C23A]/50">
+                                    <div className="w-[50px] h-[50px] rounded-full overflow-hidden">
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                                        <img src="https://images.unsplash.com/photo-1596704179361-9f2df6f08fb7?auto=format&fit=crop&q=80&w=200" alt="Vegetables" className="w-full h-full object-cover" />
+                                    </div>
+                                    <div className="absolute bottom-[-2px] left-1/2 -translate-x-1/2 bg-white border border-[#A1C23A] text-ink text-[7px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap shadow-sm">高原野菜</div>
+                                </div>
+
+                                {/* Apple Sticker */}
+                                <div className="absolute bottom-[-10px] right-20 bg-white p-0.5 shadow-xl rotate-[-5deg]">
+                                    <div className="w-[55px] h-[55px] overflow-hidden">
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                                        <img src="https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&q=80&w=200" alt="Apple" className="w-full h-full object-cover" />
+                                    </div>
+                                    <div className="absolute top-[-5px] left-[-10px] bg-[#F1CE00] text-ink text-[8px] font-extrabold px-1 py-0.5 rotate-[-15deg] shadow-sm">特産品!</div>
+                                </div>
+                            </div>
+
                         </div>
 
                         {/* --- 中面：裏表紙 (Back Cover) --- */}
