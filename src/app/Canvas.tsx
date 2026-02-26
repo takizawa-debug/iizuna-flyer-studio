@@ -179,11 +179,11 @@ export default function Canvas() {
 
                             {/* 1. Header Area — Editorial Typography (Sans-serif accent) */}
                             <div className="w-full flex flex-col justify-start mb-3 mt-1 relative z-10">
-                                <h3 className="text-[15px] font-sans tracking-[0.15em] leading-[1.4] text-ink/90 font-bold whitespace-nowrap">
+                                <h3 className="text-[15px] tracking-[0.15em] leading-[1.4] text-ink/90 font-bold whitespace-nowrap" style={{ fontFamily: "'Noto Sans JP', sans-serif" }}>
                                     ようこそ、りんごのまちへ。
                                 </h3>
-                                {/* Refined thick yellow line */}
-                                <div className="w-[75%] h-[3px] bg-[#E8C340] mt-2"></div>
+                                {/* Yellow underline extending to x=250 (250px - 28px padding = 222px from left content edge) */}
+                                <div className="w-[222px] h-[3px] bg-[#E8C340] mt-2"></div>
                             </div>
 
                             {/* 2. Access Section — Pictograms centered between 2 route rows */}
@@ -200,7 +200,7 @@ export default function Canvas() {
                                             <rect x="265.703" y="124.25" width="12.25" height="28.594" />
                                         </g>
                                     </svg>
-                                    <span className="text-[8px] font-sans font-bold text-ink/50 tracking-wider leading-none">東京</span>
+                                    <span className="text-[8px] font-bold text-ink/50 tracking-wider leading-none" style={{ fontFamily: "'Noto Sans JP', sans-serif" }}>東京</span>
                                 </div>
 
                                 {/* Row 1: Train route */}
@@ -231,7 +231,7 @@ export default function Canvas() {
                                             <path d="M16 8 L13 14 L15.5 14 L14 17 L18 17 L17 14 L19 14 Z" fill="white" opacity="0.6" />
                                         </g>
                                     </svg>
-                                    <span className="text-[8px] font-sans font-bold text-[#D45D56]/60 tracking-wider leading-none">飯綱町</span>
+                                    <span className="text-[8px] font-bold text-[#D45D56]/60 tracking-wider leading-none" style={{ fontFamily: "'Noto Sans JP', sans-serif" }}>飯綱町</span>
                                 </div>
 
                                 {/* Row 2: Car route */}
@@ -397,7 +397,7 @@ export default function Canvas() {
                                 })}
                             </div>
 
-                            <h1 className={`absolute bottom-[44px] left-1/2 -translate-x-1/2 text-[18px] font-sans font-bold tracking-widest z-30 drop-shadow-md whitespace-nowrap transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'text-[#E88C83]' : 'text-white'}`}>
+                            <h1 className={`absolute bottom-[44px] left-1/2 -translate-x-1/2 text-[18px] font-bold tracking-widest z-30 drop-shadow-md whitespace-nowrap transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'text-[#E88C83]' : 'text-white'}`} style={{ fontFamily: "'Noto Sans JP', sans-serif" }}>
                                 りんごのまち いいづな
                             </h1>
                         </div>
