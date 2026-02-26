@@ -201,9 +201,9 @@ export default function Canvas() {
                             {/* "i" motif background */}
                             <div className="absolute inset-0 pointer-events-none z-0">
                                 {/* Dot: starts at y=100, extends to 180 (height=80) */}
-                                <div className={`absolute top-[100px] left-1/2 -translate-x-1/2 w-[50px] h-[80px] shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#D45D56]' : 'bg-white'}`}></div>
+                                <div className={`absolute top-[100px] left-1/2 -translate-x-1/2 w-[50px] h-[80px] shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#E88C83]' : 'bg-white'}`}></div>
                                 {/* Body: starts at y=210, extends to 500 (height=290) */}
-                                <div className={`absolute top-[210px] left-1/2 -translate-x-1/2 w-[50px] h-[290px] shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#D45D56]' : 'bg-white'}`}></div>
+                                <div className={`absolute top-[210px] left-1/2 -translate-x-1/2 w-[50px] h-[290px] shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#E88C83]' : 'bg-white'}`}></div>
                             </div>
 
                             {/* Apple Grid overlay (Staggered 4-3-4-3... over 8 rows, tightly clumped in center) */}
@@ -241,7 +241,7 @@ export default function Canvas() {
                                 })}
                             </div>
 
-                            <h1 className={`absolute bottom-[44px] left-1/2 -translate-x-1/2 text-[18px] font-bold tracking-widest z-30 drop-shadow-md whitespace-nowrap transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'text-[#D45D56]' : 'text-white'}`}>
+                            <h1 className={`absolute bottom-[44px] left-1/2 -translate-x-1/2 text-[18px] font-bold tracking-widest z-30 drop-shadow-md whitespace-nowrap transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'text-[#E88C83]' : 'text-white'}`}>
                                 りんごのまち いいづな
                             </h1>
                         </div>
