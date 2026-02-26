@@ -68,6 +68,7 @@ const shuffleArray = (array: string[]) => {
 
 export default function Canvas() {
     const [scale, setScale] = useState(0.85);
+    const [showGuides, setShowGuides] = useState(false);
     const [randomApples, setRandomApples] = useState<string[]>([]);
 
     useEffect(() => {
@@ -78,7 +79,13 @@ export default function Canvas() {
 
     return (
         <div className="flex-1 overflow-auto relative flex flex-col items-center font-tsukushi font-bold">
-            <div className="sticky top-0 right-0 z-30 p-4 w-full max-w-[840px] flex justify-end items-center pointer-events-none gap-4 print:hidden">
+            <div className="sticky top-0 right-0 z-50 p-4 w-full max-w-[840px] flex justify-end items-center pointer-events-none gap-4 print:hidden">
+                <button
+                    onClick={() => setShowGuides(!showGuides)}
+                    className={`flex items-center gap-2 rounded-full shadow-sm border px-3 py-1 pointer-events-auto text-xs font-sans transition-colors ${showGuides ? 'bg-ink text-white border-ink' : 'bg-washi text-ink/60 border-ink/10 hover:text-ink'}`}
+                >
+                    {showGuides ? 'Hide Guides' : 'Show Guides'}
+                </button>
                 <div className="flex items-center gap-2 bg-washi rounded-full shadow-sm border border-ink/10 px-2 py-1 pointer-events-auto">
                     <button onClick={() => setScale(s => Math.max(0.4, s - 0.1))} className="p-1 hover:text-apple"><ZoomOut size={16} /></button>
                     <span className="text-xs font-sans w-12 text-center">{Math.round(scale * 100)}%</span>
@@ -99,6 +106,31 @@ export default function Canvas() {
                     </h2>
                     <div className="w-[840px] h-[594px] shadow-2xl relative wabi-shadow rounded-sm overflow-hidden flex print:border-none print:shadow-none print:rounded-none bg-[#FA9B93]">
                         <div className="absolute inset-0 texture-paper pointer-events-none z-0" />
+
+                        {/* Ruler Guides Overlay */}
+                        {showGuides && (
+                            <div className="absolute inset-0 z-50 pointer-events-none" style={{
+                                backgroundImage: `
+                                    linear-gradient(to right, rgba(0,0,0,0.1) 1px, transparent 1px),
+                                    linear-gradient(to bottom, rgba(0,0,0,0.1) 1px, transparent 1px),
+                                    linear-gradient(to right, rgba(0,0,0,0.3) 1px, transparent 1px),
+                                    linear-gradient(to bottom, rgba(0,0,0,0.3) 1px, transparent 1px)
+                                `,
+                                backgroundSize: '10px 10px, 10px 10px, 50px 50px, 50px 50px'
+                            }}>
+                                {/* Add axis numbers every 50px for the cover panel (rightmost panel, x: 560 to 840) */}
+                                <div className="absolute top-0 right-0 w-[280px] h-full">
+                                    {/* X-axis labels (relative to the 280px panel) */}
+                                    {[0, 50, 100, 150, 200, 250].map(x => (
+                                        <div key={`x-${x}`} className="absolute top-0 text-[9px] font-sans text-white bg-black/50 px-0.5" style={{ left: `${x}px` }}>{x}</div>
+                                    ))}
+                                    {/* Y-axis labels */}
+                                    {[0, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550].map(y => (
+                                        <div key={`y-${y}`} className="absolute left-0 text-[9px] font-sans text-white bg-black/50 px-0.5" style={{ top: `${y}px` }}>{y}</div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
 
                         {/* --- 左面：中折り (Inside Flap) --- */}
                         <div className="w-[280px] border-r border-[#EAA29A] border-dashed relative z-10 flex flex-col p-8 text-ink print:border-none items-center">
