@@ -447,34 +447,34 @@ export default function Canvas() {
                                 <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/b0a34c40-a041-013e-b18a-0a58a9feac02/20231013_sweet-3.jpg" alt="いいづなりんご" className="w-full h-full object-cover" />
                             </div>
 
-                            <div className="bg-white/40 rounded-sm px-2.5 py-1.5 mb-2">
-                                <p className="text-[7.5px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                            <div className="bg-white/40 rounded-sm px-2.5 py-2 mb-2">
+                                <p className="text-[7.5px] font-bold tracking-[0.1em] mb-1.5" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
                                     りんご栽培のあゆみ
                                 </p>
-                                {[
-                                    { year: '1860年代', text: '「高坂林檎」が善光寺門前で売られる' },
-                                    { year: '1890年代', text: '笠井源太夫が西洋種を植え、果樹栽培開始' },
-                                    { year: '1929年〜', text: '世界恐慌で蚕糸業衰退、桑畑→りんご畑へ' },
-                                    { year: '1965年代', text: '「うまいくだものづくり運動」主力が「ふじ」に' },
-                                    { year: '1968年', text: '旧三水村で9,560t産出「日本一のりんご村」' },
-                                    { year: '1980年代', text: '絶滅寸前の「高坂林檎」を有志が苗木育成し保存' },
-                                    { year: '1987年', text: 'ニュートン品種「フラワー・オブ・ケント」植樹' },
-                                    { year: '1990年頃', text: '英国王立園芸協会からブラムリー等16品種渡来' },
-                                    { year: '2005年', text: '「高坂林檎」原木2本が天然記念物に指定' },
-                                    { year: '2020年頃', text: '高坂林檎にふじの約10倍の機能性成分を確認' },
-                                    { year: '現在', text: '50種以上を栽培「日本一のりんごのまち」へ' },
-                                ].map((item, i, arr) => (
-                                    <div key={i} className="flex items-center gap-1.5" style={{ marginBottom: i < arr.length - 1 ? 0 : 0 }}>
-                                        <div className="flex flex-col items-center flex-shrink-0 w-[6px]">
-                                            <div className={`w-[4px] h-[4px] rounded-full flex-shrink-0 ${i === arr.length - 1 ? 'bg-[#D45D56]' : 'bg-[#E8C340]'}`}></div>
-                                            {i < arr.length - 1 && <div className="w-px h-[4px] bg-[#E8C340]/40"></div>}
+                                <div className="flex flex-col">
+                                    {[
+                                        { year: '1860年代', text: '「高坂林檎」が善光寺門前で売られる' },
+                                        { year: '1890年代', text: '笠井源太夫が西洋種を植え、果樹栽培開始' },
+                                        { year: '1929年〜', text: '世界恐慌で蚕糸業衰退、桑畑→りんご畑へ' },
+                                        { year: '1965年代', text: '「うまいくだものづくり運動」主力が「ふじ」に' },
+                                        { year: '1968年', text: '旧三水村で9,560t産出「日本一のりんご村」' },
+                                        { year: '1980年代', text: '絶滅寸前の「高坂林檎」を有志が保存' },
+                                        { year: '1987年', text: 'ニュートン品種「フラワー・オブ・ケント」植樹' },
+                                        { year: '1990年頃', text: '英国王立園芸協会からブラムリー等16品種渡来' },
+                                        { year: '2005年', text: '「高坂林檎」原木2本が天然記念物に指定' },
+                                        { year: '2020年頃', text: '高坂林檎にふじの約10倍の機能性成分を確認' },
+                                        { year: '現在', text: '50種以上を栽培「日本一のりんごのまち」へ' },
+                                    ].map((item, i, arr) => (
+                                        <div key={i} className="flex items-start mb-[2px]">
+                                            <div className="flex flex-col items-center flex-shrink-0 w-[8px] pt-[3px]">
+                                                <div className={`w-[5px] h-[5px] rounded-full flex-shrink-0 ${i === arr.length - 1 ? 'bg-[#D45D56]' : 'bg-[#E8C340]'}`}></div>
+                                                {i < arr.length - 1 && <div className="w-px h-[6px] bg-[#E8C340]/40"></div>}
+                                            </div>
+                                            <span className="text-[6px] text-ink/40 flex-shrink-0 w-[42px] pt-[1px]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{item.year}</span>
+                                            <p className="text-[7px] font-serif text-ink/70 leading-[1.4]">{item.text}</p>
                                         </div>
-                                        <p className="text-[6.5px] font-serif text-ink/70 leading-[1.3]">
-                                            <span className="text-[5.5px] text-ink/40 mr-0.5" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{item.year}</span>
-                                            {item.text}
-                                        </p>
-                                    </div>
-                                ))}
+                                    ))}
+                                </div>
                             </div>
 
                             {/* Variety highlight */}
