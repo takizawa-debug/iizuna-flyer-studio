@@ -189,8 +189,8 @@ export default function Canvas() {
                             {/* 2. Access Section — Grid: [Tokyo Pictogram | Route line | Iizuna Pictogram] */}
                             <div className="w-full grid grid-cols-[auto_1fr_auto] gap-x-2 gap-y-3 items-center py-2 mb-5">
                                 {/* Tokyo (row-span-2, far left, Skytree pictogram) */}
-                                <div className="row-span-2 flex flex-col items-center justify-center gap-0.5">
-                                    <svg viewBox="0 0 512 512" className="w-[18px] h-[36px]" xmlns="http://www.w3.org/2000/svg">
+                                <div className="row-span-2 flex flex-col items-center justify-center gap-1">
+                                    <svg viewBox="0 0 512 512" className="w-[24px] h-[48px]" xmlns="http://www.w3.org/2000/svg">
                                         <g fill="currentColor" className="text-ink/60">
                                             <path d="M319.625,312.844l19.938-41.75v-48.781h-37.516l-2.406-46.625l20.953-32.188V96h-56.422V0h-16.344v96h-56.422v46.594l21.031,31.469l-2.484,48.25h-37.516v47.531l20.234,40.938L164.609,512h71.953l2.094-5.031c4.094-9.828,11.672-25.516,17.344-37.016c5.672,11.5,13.234,27.172,17.328,37.016l2.094,5.031h71.969L319.625,312.844z M315.125,398.969h-50.953v-30.297h46.734L315.125,398.969z M264.172,352.328v-33.703h39.75l4.703,33.703H264.172z M247.828,352.328h-44.453l4.688-33.703h39.766V352.328z M201.094,368.672h46.734v30.297h-50.969L201.094,368.672z M247.828,415.313v30.297h-57.469l4.234-30.297H247.828z M264.172,415.313h53.234l4.234,30.297h-57.469V415.313z M283.547,180.766l2.141,41.547h-21.516v-41.547H283.547z M207.75,112.344h96.5v26.297l-16.781,25.797h-61.813l-17.906-26.813V112.344z M228.469,180.766h19.359v41.547h-21.516L228.469,180.766z M188.781,238.656h20.328h93.781h20.328v28.75l-16.672,34.891h-99.844l-17.922-36.266V238.656z M225.734,495.656h-42.344l4.703-33.703h53.625C236.781,471.938,230.266,485.375,225.734,495.656z M286.25,495.656c-4.531-10.281-11.047-23.719-15.984-33.703h53.641l4.703,33.703H286.25z" />
                                             <rect x="218.219" y="258.375" width="12.25" height="28.594" />
@@ -200,28 +200,28 @@ export default function Canvas() {
                                             <rect x="265.703" y="124.25" width="12.25" height="28.594" />
                                         </g>
                                     </svg>
-                                    <span className="text-[6px] font-bold text-ink/50 tracking-wider leading-none">東京</span>
+                                    <span className="text-[8px] font-bold text-ink/50 tracking-wider leading-none">東京</span>
                                 </div>
 
                                 {/* Row 1: Train route dashed line */}
-                                <div className="flex items-center w-full relative h-[28px]">
+                                <div className="flex items-center w-full relative h-[32px]">
                                     <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 border-t-[1px] border-dashed border-ink/25 z-0"></div>
-                                    <div className="bg-[#FBF4F0] px-1.5 z-10 text-center flex flex-col leading-none mx-auto">
-                                        <span className="text-[7px] text-ink/50 leading-[1.3]">新幹線</span>
-                                        <span className="text-[8px] text-ink/80 font-bold leading-[1.3]">1.5H</span>
+                                    <div className="px-1.5 z-10 text-center flex flex-col leading-none mx-auto">
+                                        <span className="text-[8px] text-ink/50 leading-[1.3]">新幹線</span>
+                                        <span className="text-[9px] text-ink/80 font-bold leading-[1.3]">1.5H</span>
                                     </div>
-                                    <div className="bg-[#FBF4F0] px-1.5 z-10 flex-shrink-0">
-                                        <span className="text-[9px] font-bold text-ink leading-none">長野</span>
+                                    <div className="px-1.5 z-10 flex-shrink-0 flex items-center">
+                                        <span className="text-[10px] font-bold text-ink leading-none">長野</span>
                                     </div>
-                                    <div className="bg-[#FBF4F0] px-1.5 z-10 text-center flex flex-col leading-none mx-auto">
-                                        <span className="text-[7px] text-[#D45D56]/70 leading-[1.3]">電車</span>
-                                        <span className="text-[8px] text-[#D45D56] font-bold leading-[1.3]">20MIN</span>
+                                    <div className="px-1.5 z-10 text-center flex flex-col leading-none mx-auto">
+                                        <span className="text-[8px] text-[#D45D56]/70 leading-[1.3]">電車</span>
+                                        <span className="text-[9px] text-[#D45D56] font-bold leading-[1.3]">20MIN</span>
                                     </div>
                                 </div>
 
                                 {/* Iizuna (row-span-2, far right, mountain pictogram) */}
-                                <div className="row-span-2 flex flex-col items-center justify-center gap-0.5">
-                                    <svg viewBox="0 0 48 36" className="w-[28px] h-[21px]" xmlns="http://www.w3.org/2000/svg">
+                                <div className="row-span-2 flex flex-col items-center justify-center gap-1">
+                                    <svg viewBox="0 0 48 36" className="w-[36px] h-[27px]" xmlns="http://www.w3.org/2000/svg">
                                         <g fill="currentColor" className="text-[#D45D56]/70">
                                             {/* Back mountain */}
                                             <path d="M8 36 L22 10 L36 36 Z" opacity="0.5" />
@@ -231,15 +231,15 @@ export default function Canvas() {
                                             <path d="M16 8 L13 14 L15.5 14 L14 17 L18 17 L17 14 L19 14 Z" fill="white" opacity="0.6" />
                                         </g>
                                     </svg>
-                                    <span className="text-[6px] font-bold text-[#D45D56]/60 tracking-wider leading-none">飯綱町</span>
+                                    <span className="text-[8px] font-bold text-[#D45D56]/60 tracking-wider leading-none">飯綱町</span>
                                 </div>
 
                                 {/* Row 2: Car route dashed line */}
-                                <div className="flex items-center w-full relative h-[28px]">
+                                <div className="flex items-center w-full relative h-[32px]">
                                     <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 border-t-[1px] border-dashed border-ink/25 z-0"></div>
-                                    <div className="bg-[#FBF4F0] px-1.5 z-10 text-center flex flex-col leading-none mx-auto">
-                                        <span className="text-[7px] text-ink/50 leading-[1.3]">車</span>
-                                        <span className="text-[8px] text-ink/80 font-bold leading-[1.3]">3H</span>
+                                    <div className="px-1.5 z-10 text-center flex flex-col leading-none mx-auto">
+                                        <span className="text-[8px] text-ink/50 leading-[1.3]">車</span>
+                                        <span className="text-[9px] text-ink/80 font-bold leading-[1.3]">3H</span>
                                     </div>
                                 </div>
                             </div>
