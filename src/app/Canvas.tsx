@@ -322,23 +322,66 @@ export default function Canvas() {
                             style={{ backgroundColor: coverColor }}
                         >
 
-                            {/* "Information (i)" abstract motif background */}
-                            <div className="absolute inset-0 pointer-events-none z-0">
-                                {/* Dot: Abstract Rectangle (Slit/Door feel) */}
-                                <div className={`absolute top-[100px] left-1/2 -translate-x-1/2 w-[50px] h-[80px] shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#E88C83]' : 'bg-white'}`}></div>
-
-                                {/* Body: Stem with subtle serifs */}
-                                <div className="absolute top-[210px] left-1/2 -translate-x-1/2 w-[50px] h-[290px]">
-                                    {/* Subtle Top-left Serif */}
-                                    <div className={`absolute top-0 -left-[16px] w-[16px] h-[16px] shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#E88C83]' : 'bg-white'}`}></div>
-
-                                    {/* Main Stem (Inorganic block) */}
-                                    <div className={`absolute inset-0 w-full h-full shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#E88C83]' : 'bg-white'}`}></div>
-
-                                    {/* Subtle Bottom Spread */}
-                                    <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-[100px] h-[20px] shadow-sm transition-colors duration-300 ${coverColor === '#FFFFFF' ? 'bg-[#E88C83]' : 'bg-white'}`}></div>
-                                </div>
+                            {/* Background Image for the entire cover */}
+                            <div className="absolute inset-0 z-0">
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/b0a34c40-a041-013e-b18a-0a58a9feac02/20231013_sweet-3.jpg" alt="Autumn Orchard" className="w-full h-full object-cover filter saturate-150" />
+                                {/* Overlay to restore the cover color theme, but keep it slightly transparent so the image peeks through slightly, or keep it solid and ONLY reveal through the 'i' slit? The user said "ここはすりガラスの窓として、背景画像を下記の画像にして、スリットから奥に見えるようにしてほしい。". So the cover is solid, and the 'i' is the window. */}
+                                <div className="absolute inset-0 transition-colors duration-300" style={{ backgroundColor: coverColor === '#FFFFFF' ? '#E88C83' : coverColor }}></div>
                             </div>
+
+                            {/* "Information (i)" Frosted Glass Window Slits */}
+                            {/* We achieve "seeing through" by cutting holes in the overlay, OR by holding a duplicate image inside the 'i' divs. Let's use duplicate images inside the divs with background-attachment fixed or careful positioning, OR CSS clip-path on a reveal layer. */}
+                            {/* The most robust way to reveal a background through a specific shape in a solid overlay is to use CSS mask on the overlay itself. But let's build the 'i' shape using mask-image on a container that holds the clear image. */}
+
+                            <div className="absolute inset-0 pointer-events-none z-0" style={{
+                                // Create the 'i' mask using multiple linear-gradients
+                                WebkitMaskImage: `
+                                    linear-gradient(black, black) /* Dot */,
+                                    linear-gradient(black, black) /* Stem */,
+                                    linear-gradient(black, black) /* Top-left Serif */,
+                                    linear-gradient(black, black) /* Bottom Slab */
+                                `,
+                                WebkitMaskSize: `
+                                    50px 80px /* Dot */,
+                                    50px 290px /* Stem */,
+                                    16px 16px /* Top-left Serif */,
+                                    100px 20px /* Bottom Slab */
+                                `,
+                                WebkitMaskPosition: `
+                                    center 100px /* Dot */,
+                                    center 210px /* Stem */,
+                                    calc(50% - 25px - 8px) 210px /* Top-left Serif */,
+                                    center 500px /* Bottom Slab */
+                                `,
+                                WebkitMaskRepeat: 'no-repeat',
+                                maskImage: `
+                                    linear-gradient(black, black),
+                                    linear-gradient(black, black),
+                                    linear-gradient(black, black),
+                                    linear-gradient(black, black)
+                                `,
+                                maskSize: `
+                                    50px 80px,
+                                    50px 290px,
+                                    16px 16px,
+                                    100px 20px
+                                `,
+                                maskPosition: `
+                                    center 100px,
+                                    center 210px,
+                                    calc(50% - 33px) 210px,
+                                    center 480px
+                                `,
+                                maskRepeat: 'no-repeat'
+                            }}>
+                                {/* Inside the masked area, we show the image but with a frosted glass effect */}
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/b0a34c40-a041-013e-b18a-0a58a9feac02/20231013_sweet-3.jpg" alt="Autumn Orchard Clear" className="absolute inset-0 w-full h-full object-cover" />
+                                {/* Frosted glass overlay inside the slit */}
+                                <div className="absolute inset-0 backdrop-blur-md bg-white/20 border border-white/30 shadow-[inset_0_4px_10px_rgba(0,0,0,0.1)] blur-[0.5px]"></div>
+                            </div>
+
 
                             {/* Apple Grid overlay (Staggered 4-3-4-3... over 8 rows, tightly clumped in center) */}
                             {/* Increased padding drastically squishes the flex justify-between space, pulling apples together */}
