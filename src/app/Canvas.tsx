@@ -421,6 +421,29 @@ export default function Canvas() {
                     <div className="w-[840px] h-[594px] shadow-2xl relative wabi-shadow rounded-sm overflow-hidden flex print:shadow-none print:rounded-none bg-[#EBE2AF]">
                         <div className="absolute inset-0 texture-washi pointer-events-none z-0" />
 
+                        {/* Ruler Guides Overlay */}
+                        {showGuides && (
+                            <div className="absolute inset-0 z-50 pointer-events-none" style={{
+                                backgroundImage: `
+                                    linear-gradient(to right, rgba(0,0,0,0.1) 1px, transparent 1px),
+                                    linear-gradient(to bottom, rgba(0,0,0,0.1) 1px, transparent 1px),
+                                    linear-gradient(to right, rgba(0,0,0,0.3) 1px, transparent 1px),
+                                    linear-gradient(to bottom, rgba(0,0,0,0.3) 1px, transparent 1px)
+                                `,
+                                backgroundSize: '10px 10px, 10px 10px, 50px 50px, 50px 50px'
+                            }}>
+                                {/* X-axis labels */}
+                                {[0, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800].map(x => (
+                                    <div key={`bx-${x}`} className="absolute top-0 text-[9px] font-sans text-white bg-black/50 px-0.5" style={{ left: `${x}px` }}>{x}</div>
+                                ))}
+                                {/* Y-axis labels */}
+                                {[0, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550].map(y => (
+                                    <div key={`by-${y}`} className="absolute left-0 text-[9px] font-sans text-white bg-black/50 px-0.5" style={{ top: `${y}px` }}>{y}</div>
+                                ))}
+                            </div>
+                        )}
+
+
                         {/* Title across left panel only */}
                         <div className="absolute top-[16px] left-[24px] z-20">
                             <h2 className="text-[18px] tracking-[0.15em] text-ink/90" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif", fontWeight: 500 }}>
@@ -437,7 +460,7 @@ export default function Canvas() {
                                 <div className="w-[3px] h-[16px] bg-[#E8C340] rounded-full"></div>
                                 <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>知る</span>
                             </div>
-                            <p className="text-[7px] font-serif text-ink/55 leading-[1.8] mb-2 tracking-[0.04em]">
+                            <p className="text-[8px] font-serif text-ink/55 leading-[1.8] mb-2 tracking-[0.04em]">
                                 町の歴史・品種図鑑・栽培の科学
                             </p>
 
@@ -448,7 +471,7 @@ export default function Canvas() {
                             </div>
 
                             <div className="bg-white/40 rounded-sm px-2.5 py-2 mb-2">
-                                <p className="text-[7.5px] font-bold tracking-[0.1em] mb-1.5" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                <p className="text-[9px] font-bold tracking-[0.1em] mb-1.5" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
                                     りんご栽培のあゆみ
                                 </p>
                                 <div className="flex flex-col">
@@ -471,8 +494,8 @@ export default function Canvas() {
                                                 <div className={`w-[5px] h-[5px] rounded-full flex-shrink-0 ${i === arr.length - 1 ? 'bg-[#D45D56]' : 'bg-[#E8C340]'}`}></div>
                                                 {i < arr.length - 1 && <div className="w-px h-[6px] bg-[#E8C340]/40"></div>}
                                             </div>
-                                            <span className="text-[6px] text-ink/40 flex-shrink-0 w-[42px] pt-[1px]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{item.year}</span>
-                                            <p className="text-[7px] font-serif text-ink/70 leading-[1.4]">{item.text}</p>
+                                            <span className="text-[8px] text-ink/40 flex-shrink-0 w-[50px] pt-[1px]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{item.year}</span>
+                                            <p className="text-[8px] font-serif text-ink/70 leading-[1.4]">{item.text}</p>
                                         </div>
                                     ))}
                                 </div>
@@ -480,10 +503,10 @@ export default function Canvas() {
 
                             {/* Variety highlight */}
                             <div className="bg-white/50 rounded-sm p-2.5 mb-2">
-                                <p className="text-[7.5px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                <p className="text-[9px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
                                     50種を超えるりんごの宝庫
                                 </p>
-                                <p className="text-[6px] font-serif text-ink/55 leading-[1.8] tracking-[0.03em]">
+                                <p className="text-[8px] font-serif text-ink/55 leading-[1.8] tracking-[0.03em]">
                                     ふじ、つがる、王林の定番から、シナノスイート、<br />
                                     シナノゴールド、秋映。英国品種ブラムリー。<br />
                                     幻の和りんご「高坂りんご」まで。
@@ -492,10 +515,10 @@ export default function Canvas() {
 
                             {/* Science box */}
                             <div className="border-l-2 border-[#E8C340] pl-2.5 mb-2">
-                                <p className="text-[7px] font-bold tracking-[0.08em] mb-0.5" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                <p className="text-[9px] font-bold tracking-[0.08em] mb-0.5" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
                                     科学が証明する、飯綱の美味しさ
                                 </p>
-                                <p className="text-[6px] font-serif text-ink/55 leading-[1.7]">
+                                <p className="text-[8px] font-serif text-ink/55 leading-[1.7]">
                                     昼夜の寒暖差が糖度を凝縮。糖酸比30〜40——<br />
                                     科学的に「美味しい」数値域。シャキシャキの<br />
                                     食感は、破断強度で実証済み。
@@ -504,7 +527,7 @@ export default function Canvas() {
 
                             {/* Museum callout */}
                             <div className="mt-auto bg-[#E8C340]/10 rounded-sm px-2.5 py-1.5">
-                                <p className="text-[6.5px] font-serif text-ink/55 leading-[1.6]">
+                                <p className="text-[8px] font-serif text-ink/55 leading-[1.6]">
                                     <span className="font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>アップルミュージアム</span>——ニュートンのりんごの木から初代Macまで。全国でも珍しいりんご博物館。
                                 </p>
                             </div>
@@ -519,7 +542,7 @@ export default function Canvas() {
                                     <div className="w-[3px] h-[16px] bg-[#D45D56] rounded-full"></div>
                                     <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>味わう</span>
                                 </div>
-                                <p className="text-[7px] font-serif text-ink/55 leading-[1.8] mb-1.5 tracking-[0.04em]">
+                                <p className="text-[8px] font-serif text-ink/55 leading-[1.8] mb-1.5 tracking-[0.04em]">
                                     直売所・生産者・加工品・イベント
                                 </p>
 
@@ -530,7 +553,7 @@ export default function Canvas() {
                                 </div>
 
                                 {/* Shops */}
-                                <p className="text-[7.5px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                <p className="text-[9px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
                                     りんごが買えるお店
                                 </p>
                                 <div className="space-y-0.5 mb-2">
@@ -541,8 +564,8 @@ export default function Canvas() {
                                         { name: 'みつどんマルシェ', desc: '全国配送。30品種食べ比べ定期便' },
                                     ].map((shop, i) => (
                                         <div key={i} className="bg-white/50 rounded-sm px-2 py-0.5">
-                                            <span className="text-[6.5px] font-bold tracking-[0.06em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{shop.name}</span>
-                                            <span className="text-[5.5px] font-serif text-ink/50 ml-1">{shop.desc}</span>
+                                            <span className="text-[8px] font-bold tracking-[0.06em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{shop.name}</span>
+                                            <span className="text-[8px] font-serif text-ink/50 ml-1">{shop.desc}</span>
                                         </div>
                                     ))}
                                 </div>
@@ -550,40 +573,40 @@ export default function Canvas() {
                                 {/* Processed goods */}
                                 <div className="grid grid-cols-3 gap-1 mb-2">
                                     <div className="bg-white/40 rounded-sm p-1 text-center">
-                                        <p className="text-[6.5px] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>ジュース</p>
-                                        <p className="text-[5px] text-ink/40 leading-[1.4] mt-0.5">品種別の<br />飲み比べ</p>
+                                        <p className="text-[8px] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>ジュース</p>
+                                        <p className="text-[8px] text-ink/40 leading-[1.4] mt-0.5">品種別の<br />飲み比べ</p>
                                     </div>
                                     <div className="bg-white/40 rounded-sm p-1 text-center">
-                                        <p className="text-[6.5px] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>シードル</p>
-                                        <p className="text-[5px] text-ink/40 leading-[1.4] mt-0.5">2つの<br />醸造所</p>
+                                        <p className="text-[8px] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>シードル</p>
+                                        <p className="text-[8px] text-ink/40 leading-[1.4] mt-0.5">2つの<br />醸造所</p>
                                     </div>
                                     <div className="bg-white/40 rounded-sm p-1 text-center">
-                                        <p className="text-[6.5px] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>ジャム</p>
-                                        <p className="text-[5px] text-ink/40 leading-[1.4] mt-0.5">多品種の<br />味わい</p>
+                                        <p className="text-[8px] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>ジャム</p>
+                                        <p className="text-[8px] text-ink/40 leading-[1.4] mt-0.5">多品種の<br />味わい</p>
                                     </div>
                                 </div>
 
                                 {/* Events with photos */}
-                                <p className="text-[7.5px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                <p className="text-[9px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
                                     季節のイベント
                                 </p>
                                 <div className="grid grid-cols-2 gap-1">
                                     <div className="bg-white/50 rounded-sm overflow-hidden">
                                         <div className="w-full h-[30px] bg-[#D45D56]/10 flex items-center justify-center">
-                                            <span className="text-[6px] text-[#D45D56]/40" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>PHOTO</span>
+                                            <span className="text-[8px] text-[#D45D56]/40" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>PHOTO</span>
                                         </div>
                                         <div className="px-1.5 py-1">
-                                            <p className="text-[6px] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>英国りんごフェア</p>
-                                            <p className="text-[5px] font-serif text-ink/45 leading-[1.4]">料理用りんごの魅力を発信</p>
+                                            <p className="text-[8px] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>英国りんごフェア</p>
+                                            <p className="text-[8px] font-serif text-ink/45 leading-[1.4]">料理用りんごの魅力を発信</p>
                                         </div>
                                     </div>
                                     <div className="bg-white/50 rounded-sm overflow-hidden">
                                         <div className="w-full h-[30px] bg-[#D45D56]/10 flex items-center justify-center">
-                                            <span className="text-[6px] text-[#D45D56]/40" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>PHOTO</span>
+                                            <span className="text-[8px] text-[#D45D56]/40" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>PHOTO</span>
                                         </div>
                                         <div className="px-1.5 py-1">
-                                            <p className="text-[6px] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>スイーツコンクール</p>
-                                            <p className="text-[5px] font-serif text-ink/45 leading-[1.4]">パティシエが腕を競う</p>
+                                            <p className="text-[8px] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>スイーツコンクール</p>
+                                            <p className="text-[8px] font-serif text-ink/45 leading-[1.4]">パティシエが腕を競う</p>
                                         </div>
                                     </div>
                                 </div>
@@ -598,26 +621,26 @@ export default function Canvas() {
                                     <div className="w-[3px] h-[16px] bg-leaf rounded-full"></div>
                                     <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>体験する</span>
                                 </div>
-                                <p className="text-[7px] font-serif text-ink/55 leading-[1.8] mb-1.5 tracking-[0.04em]">
+                                <p className="text-[8px] font-serif text-ink/55 leading-[1.8] mb-1.5 tracking-[0.04em]">
                                     農業体験・滞在・フォトスポット
                                 </p>
 
                                 <div className="space-y-1">
                                     <div className="bg-white/50 rounded-sm p-2">
-                                        <p className="text-[7px] font-bold tracking-[0.08em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>りんごの木オーナー制度</p>
-                                        <p className="text-[5.5px] font-serif text-ink/55 leading-[1.6] mt-0.5">
+                                        <p className="text-[8px] font-bold tracking-[0.08em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>りんごの木オーナー制度</p>
+                                        <p className="text-[8px] font-serif text-ink/55 leading-[1.6] mt-0.5">
                                             1本の木を契約し、秋に自分だけの収穫を。管理はプロに任せる安心プランも。
                                         </p>
                                     </div>
                                     <div className="bg-white/50 rounded-sm p-2">
-                                        <p className="text-[7px] font-bold tracking-[0.08em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>信州いいづなりんご学校</p>
-                                        <p className="text-[5.5px] font-serif text-ink/55 leading-[1.6] mt-0.5">
+                                        <p className="text-[8px] font-bold tracking-[0.08em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>信州いいづなりんご学校</p>
+                                        <p className="text-[8px] font-serif text-ink/55 leading-[1.6] mt-0.5">
                                             日帰りから上級まで段階的に学べる体験型プログラム。
                                         </p>
                                     </div>
                                     <div className="bg-white/50 rounded-sm p-2">
-                                        <p className="text-[7px] font-bold tracking-[0.08em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>ワーキングホリデー</p>
-                                        <p className="text-[5.5px] font-serif text-ink/55 leading-[1.6] mt-0.5">
+                                        <p className="text-[8px] font-bold tracking-[0.08em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>ワーキングホリデー</p>
+                                        <p className="text-[8px] font-serif text-ink/55 leading-[1.6] mt-0.5">
                                             3泊4日、農家に入り込む実践型。就農の入り口として。
                                         </p>
                                     </div>
@@ -634,7 +657,7 @@ export default function Canvas() {
                                     <div className="w-[3px] h-[16px] bg-ink/25 rounded-full"></div>
                                     <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>暮らす</span>
                                 </div>
-                                <p className="text-[7px] font-serif text-ink/55 leading-[1.8] mb-1.5 tracking-[0.04em]">
+                                <p className="text-[8px] font-serif text-ink/55 leading-[1.8] mb-1.5 tracking-[0.04em]">
                                     移住・就職・就農の支援
                                 </p>
 
@@ -646,8 +669,8 @@ export default function Canvas() {
 
                                 <div className="space-y-1.5">
                                     <div className="flex gap-2 items-start">
-                                        <span className="text-[6px] text-ink/30 mt-[2px]">●</span>
-                                        <p className="text-[6px] font-serif text-ink/65 leading-[1.7]">
+                                        <span className="text-[8px] text-ink/30 mt-[2px]">●</span>
+                                        <p className="text-[8px] font-serif text-ink/65 leading-[1.7]">
                                             <span className="font-bold">移住体験住宅</span>——古民家に最長6泊7日。<br />
                                             生活導線を体感できるお試し滞在。
                                         </p>
@@ -678,7 +701,7 @@ export default function Canvas() {
                                     <div className="w-[3px] h-[16px] bg-[#C4956A] rounded-full"></div>
                                     <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>営む</span>
                                 </div>
-                                <p className="text-[7px] font-serif text-ink/55 leading-[1.8] mb-1.5 tracking-[0.04em]">
+                                <p className="text-[8px] font-serif text-ink/55 leading-[1.8] mb-1.5 tracking-[0.04em]">
                                     栽培支援・補助金・施設情報
                                 </p>
                                 {/* Hero image */}
@@ -687,10 +710,10 @@ export default function Canvas() {
                                     <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/ec2954c0-a041-013e-ff9d-0a58a9feac02/iizuna_20220525-2.jpg" alt="果樹園" className="w-full h-full object-cover" />
                                 </div>
                                 <div className="space-y-0.5">
-                                    <p className="text-[6px] font-serif text-ink/60 leading-[1.7]">
+                                    <p className="text-[8px] font-serif text-ink/60 leading-[1.7]">
                                         <span className="font-bold">JAりんご部会講習会</span> / 苗木導入補助 / 大型機械整備
                                     </p>
-                                    <p className="text-[6px] font-serif text-ink/60 leading-[1.7]">
+                                    <p className="text-[8px] font-serif text-ink/60 leading-[1.7]">
                                         <span className="font-bold">共同利用機械</span>補助 / 三本松加工所 / JAフルーツセンター
                                     </p>
                                 </div>
@@ -701,37 +724,37 @@ export default function Canvas() {
 
                             {/* Site information block */}
                             <div className="mt-auto">
-                                <p className="text-[7.5px] font-bold tracking-[0.1em] mb-1.5" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                <p className="text-[9px] font-bold tracking-[0.1em] mb-1.5" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
                                     サイトの使い方
                                 </p>
                                 <div className="space-y-1.5">
                                     <div className="flex gap-2 items-start">
                                         <div className="w-[14px] h-[14px] bg-[#E8C340]/20 rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5">
-                                            <span className="text-[7px]">🔗</span>
+                                            <span className="text-[8px]">🔗</span>
                                         </div>
-                                        <p className="text-[5.5px] font-serif text-ink/55 leading-[1.6]">
+                                        <p className="text-[8px] font-serif text-ink/55 leading-[1.6]">
                                             <span className="font-bold">キーワードで探索</span>——記事中の気になる<br />言葉をクリックで関連情報へジャンプ
                                         </p>
                                     </div>
                                     <div className="flex gap-2 items-start">
                                         <div className="w-[14px] h-[14px] bg-[#E8C340]/20 rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5">
-                                            <span className="text-[7px]">📄</span>
+                                            <span className="text-[8px]">📄</span>
                                         </div>
-                                        <p className="text-[5.5px] font-serif text-ink/55 leading-[1.6]">
+                                        <p className="text-[8px] font-serif text-ink/55 leading-[1.6]">
                                             <span className="font-bold">A4印刷対応</span>——QRコード付きの記事を<br />PDFで印刷、町歩きの資料に
                                         </p>
                                     </div>
                                     <div className="flex gap-2 items-start">
                                         <div className="w-[14px] h-[14px] bg-[#E8C340]/20 rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5">
-                                            <span className="text-[7px]">📱</span>
+                                            <span className="text-[8px]">📱</span>
                                         </div>
-                                        <p className="text-[5.5px] font-serif text-ink/55 leading-[1.6]">
+                                        <p className="text-[8px] font-serif text-ink/55 leading-[1.6]">
                                             <span className="font-bold">SNS共有</span>——全記事に独立URLを付与。<br />ワンクリックで家族や友人に共有
                                         </p>
                                     </div>
                                 </div>
                                 <div className="mt-2 text-center bg-ink/5 rounded-sm px-2 py-1.5">
-                                    <p className="text-[6px] font-serif text-ink/50 leading-[1.6]">
+                                    <p className="text-[8px] font-serif text-ink/50 leading-[1.6]">
                                         すべての記事は
                                         <span className="font-bold text-ink/70" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}> appletown-iizuna.com </span>
                                         でお読みいただけます
