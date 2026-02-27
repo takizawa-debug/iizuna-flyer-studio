@@ -465,7 +465,7 @@ export default function Canvas() {
                             </p>
 
                             {/* Hero image */}
-                            <div className="w-full h-[55px] rounded-sm overflow-hidden mb-2 border border-[#D5CD97]/30">
+                            <div className="w-full h-[80px] rounded-sm overflow-hidden mb-2 border border-[#D5CD97]/30">
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/b0a34c40-a041-013e-b18a-0a58a9feac02/20231013_sweet-3.jpg" alt="いいづなりんご" className="w-full h-full object-cover" />
                             </div>
@@ -514,7 +514,7 @@ export default function Canvas() {
                             </div>
 
                             {/* Science box */}
-                            <div className="border-l-2 border-[#E8C340] pl-2.5 mb-2">
+                            <div className="border-l-2 border-[#E8C340] pl-2.5 mt-auto">
                                 <p className="text-[9px] font-bold tracking-[0.08em] mb-0.5" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
                                     科学が証明する、飯綱の美味しさ
                                 </p>
@@ -522,13 +522,6 @@ export default function Canvas() {
                                     昼夜の寒暖差が糖度を凝縮。糖酸比30〜40——<br />
                                     科学的に「美味しい」数値域。シャキシャキの<br />
                                     食感は、破断強度で実証済み。
-                                </p>
-                            </div>
-
-                            {/* Museum callout */}
-                            <div className="mt-auto bg-[#E8C340]/10 rounded-sm px-2.5 py-1.5">
-                                <p className="text-[8px] font-serif text-ink/55 leading-[1.6]">
-                                    <span className="font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>アップルミュージアム</span>——ニュートンのりんごの木から初代Macまで。全国でも珍しいりんご博物館。
                                 </p>
                             </div>
                         </div>
@@ -615,80 +608,104 @@ export default function Canvas() {
                             {/* Divider */}
                             <div className="w-full border-t border-[#D5CD97]/40 mb-2"></div>
 
-                            {/* 体験する section */}
+                            {/* 体験する section — 滞在情報 */}
                             <div>
                                 <div className="flex items-baseline gap-2 mb-1">
                                     <div className="w-[3px] h-[16px] bg-leaf rounded-full"></div>
                                     <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>体験する</span>
                                 </div>
                                 <p className="text-[8px] font-serif text-ink/55 leading-[1.8] mb-1.5 tracking-[0.04em]">
-                                    農業体験・滞在・フォトスポット
+                                    滞在に役立つ情報
+                                </p>
+                                <div className="grid grid-cols-2 gap-1">
+                                    <div className="bg-white/50 rounded-sm p-2 text-center">
+                                        <p className="text-[10px] mb-0.5">🍽</p>
+                                        <p className="text-[8px] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>食事</p>
+                                        <p className="text-[8px] font-serif text-ink/50 leading-[1.4] mt-0.5">地元食材の蕎麦やカフェ、農家レストラン</p>
+                                    </div>
+                                    <div className="bg-white/50 rounded-sm p-2 text-center">
+                                        <p className="text-[10px] mb-0.5">🚗</p>
+                                        <p className="text-[8px] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>移動</p>
+                                        <p className="text-[8px] font-serif text-ink/50 leading-[1.4] mt-0.5">東京から約2時間。レンタカーが便利</p>
+                                    </div>
+                                    <div className="bg-white/50 rounded-sm p-2 text-center">
+                                        <p className="text-[10px] mb-0.5">🏠</p>
+                                        <p className="text-[8px] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>宿泊</p>
+                                        <p className="text-[8px] font-serif text-ink/50 leading-[1.4] mt-0.5">民泊・ゲストハウス・キャンプ場</p>
+                                    </div>
+                                    <div className="bg-white/50 rounded-sm p-2 text-center">
+                                        <p className="text-[10px] mb-0.5">♨️</p>
+                                        <p className="text-[8px] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>癒し</p>
+                                        <p className="text-[8px] font-serif text-ink/50 leading-[1.4] mt-0.5">温泉・霊仙寺湖・飯綱山トレッキング</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* --- 右面：体験する＋暮らす＋営む＋Info --- */}
+                        <div className="w-[280px] relative z-10 flex flex-col print:border-none text-ink/90 pt-[70px] px-[20px] pb-[12px]">
+
+                            {/* 体験する section — programs */}
+                            <div className="mb-3">
+                                <div className="flex items-baseline gap-2 mb-1">
+                                    <div className="w-[3px] h-[16px] bg-leaf rounded-full"></div>
+                                    <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>体験する</span>
+                                </div>
+                                <p className="text-[8px] font-serif text-ink/55 leading-[1.8] mb-1.5 tracking-[0.04em]">
+                                    農業体験・プログラム
                                 </p>
 
                                 <div className="space-y-1">
                                     <div className="bg-white/50 rounded-sm p-2">
                                         <p className="text-[8px] font-bold tracking-[0.08em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>りんごの木オーナー制度</p>
                                         <p className="text-[8px] font-serif text-ink/55 leading-[1.6] mt-0.5">
-                                            1本の木を契約し、秋に自分だけの収穫を。管理はプロに任せる安心プランも。
+                                            1本の木を契約し、秋に自分だけの収穫を。
                                         </p>
                                     </div>
                                     <div className="bg-white/50 rounded-sm p-2">
                                         <p className="text-[8px] font-bold tracking-[0.08em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>信州いいづなりんご学校</p>
                                         <p className="text-[8px] font-serif text-ink/55 leading-[1.6] mt-0.5">
-                                            日帰りから上級まで段階的に学べる体験型プログラム。
+                                            日帰り〜上級まで段階的に学べる体験型。
                                         </p>
                                     </div>
                                     <div className="bg-white/50 rounded-sm p-2">
                                         <p className="text-[8px] font-bold tracking-[0.08em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>ワーキングホリデー</p>
                                         <p className="text-[8px] font-serif text-ink/55 leading-[1.6] mt-0.5">
-                                            3泊4日、農家に入り込む実践型。就農の入り口として。
+                                            3泊4日、農家に入り込む実践型。就農の入口。
                                         </p>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        {/* --- 右面：暮らす＋営む＋Info --- */}
-                        <div className="w-[280px] relative z-10 flex flex-col print:border-none text-ink/90 pt-[16px] px-[20px] pb-[12px]">
+                                {/* Museum callout */}
+                                <div className="mt-1.5 bg-[#E8C340]/10 rounded-sm px-2.5 py-1.5">
+                                    <p className="text-[8px] font-serif text-ink/55 leading-[1.6]">
+                                        <span className="font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>アップルミュージアム</span>——ニュートンのりんごの木から初代Macまで。全国でも珍しいりんご博物館。
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Divider */}
+                            <div className="w-full border-t border-[#D5CD97]/40 mb-2"></div>
 
                             {/* 暮らす section */}
-                            <div className="mb-3">
+                            <div className="mb-2">
                                 <div className="flex items-baseline gap-2 mb-1">
                                     <div className="w-[3px] h-[16px] bg-ink/25 rounded-full"></div>
                                     <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>暮らす</span>
                                 </div>
-                                <p className="text-[8px] font-serif text-ink/55 leading-[1.8] mb-1.5 tracking-[0.04em]">
+                                <p className="text-[8px] font-serif text-ink/55 leading-[1.8] mb-1 tracking-[0.04em]">
                                     移住・就職・就農の支援
                                 </p>
-
-                                {/* Hero image */}
-                                <div className="w-full h-[45px] rounded-sm overflow-hidden mb-2 border border-[#D5CD97]/30">
-                                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                                    <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/120aadf0-a042-013e-ffb1-0a58a9feac02/iizuna_20250123-10.jpg" alt="飯綱町の暮らし" className="w-full h-full object-cover" />
-                                </div>
-
-                                <div className="space-y-1.5">
-                                    <div className="flex gap-2 items-start">
-                                        <span className="text-[8px] text-ink/30 mt-[2px]">●</span>
-                                        <p className="text-[8px] font-serif text-ink/65 leading-[1.7]">
-                                            <span className="font-bold">移住体験住宅</span>——古民家に最長6泊7日。<br />
-                                            生活導線を体感できるお試し滞在。
-                                        </p>
-                                    </div>
-                                    <div className="flex gap-2 items-start">
-                                        <span className="text-[6px] text-ink/30 mt-[2px]">●</span>
-                                        <p className="text-[6px] font-serif text-ink/65 leading-[1.7]">
-                                            <span className="font-bold">就農里親制度</span>——約3年で独立。<br />
-                                            里親農家の実地指導で基礎から伴走。
-                                        </p>
-                                    </div>
-                                    <div className="flex gap-2 items-start">
-                                        <span className="text-[6px] text-ink/30 mt-[2px]">●</span>
-                                        <p className="text-[6px] font-serif text-ink/65 leading-[1.7]">
-                                            <span className="font-bold">いいコネワークス</span>——複数の仕事を<br />
-                                            組み合わせ、収入と暮らしの安定を。
-                                        </p>
-                                    </div>
+                                <div className="space-y-0.5">
+                                    <p className="text-[8px] font-serif text-ink/65 leading-[1.7]">
+                                        <span className="font-bold">移住体験住宅</span>——古民家に最長6泊7日のお試し滞在
+                                    </p>
+                                    <p className="text-[8px] font-serif text-ink/65 leading-[1.7]">
+                                        <span className="font-bold">就農里親制度</span>——約3年で独立。里親農家が伴走
+                                    </p>
+                                    <p className="text-[8px] font-serif text-ink/65 leading-[1.7]">
+                                        <span className="font-bold">いいコネワークス</span>——複業で収入と暮らしの安定
+                                    </p>
                                 </div>
                             </div>
 
@@ -696,19 +713,14 @@ export default function Canvas() {
                             <div className="w-full border-t border-[#D5CD97]/40 mb-2"></div>
 
                             {/* 営む section */}
-                            <div className="mb-3">
+                            <div className="mb-2">
                                 <div className="flex items-baseline gap-2 mb-1">
                                     <div className="w-[3px] h-[16px] bg-[#C4956A] rounded-full"></div>
                                     <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>営む</span>
                                 </div>
-                                <p className="text-[8px] font-serif text-ink/55 leading-[1.8] mb-1.5 tracking-[0.04em]">
+                                <p className="text-[8px] font-serif text-ink/55 leading-[1.8] mb-1 tracking-[0.04em]">
                                     栽培支援・補助金・施設情報
                                 </p>
-                                {/* Hero image */}
-                                <div className="w-full h-[35px] rounded-sm overflow-hidden mb-1.5 border border-[#D5CD97]/30">
-                                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                                    <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/ec2954c0-a041-013e-ff9d-0a58a9feac02/iizuna_20220525-2.jpg" alt="果樹園" className="w-full h-full object-cover" />
-                                </div>
                                 <div className="space-y-0.5">
                                     <p className="text-[8px] font-serif text-ink/60 leading-[1.7]">
                                         <span className="font-bold">JAりんご部会講習会</span> / 苗木導入補助 / 大型機械整備
@@ -724,36 +736,30 @@ export default function Canvas() {
 
                             {/* Site information block */}
                             <div className="mt-auto">
-                                <p className="text-[9px] font-bold tracking-[0.1em] mb-1.5" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                <p className="text-[9px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
                                     サイトの使い方
                                 </p>
-                                <div className="space-y-1.5">
+                                <div className="space-y-1">
                                     <div className="flex gap-2 items-start">
-                                        <div className="w-[14px] h-[14px] bg-[#E8C340]/20 rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5">
-                                            <span className="text-[8px]">🔗</span>
-                                        </div>
-                                        <p className="text-[8px] font-serif text-ink/55 leading-[1.6]">
-                                            <span className="font-bold">キーワードで探索</span>——記事中の気になる<br />言葉をクリックで関連情報へジャンプ
+                                        <span className="text-[8px] flex-shrink-0">🔗</span>
+                                        <p className="text-[8px] font-serif text-ink/55 leading-[1.5]">
+                                            <span className="font-bold">キーワードで探索</span>——気になる言葉から関連情報へ
                                         </p>
                                     </div>
                                     <div className="flex gap-2 items-start">
-                                        <div className="w-[14px] h-[14px] bg-[#E8C340]/20 rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5">
-                                            <span className="text-[8px]">📄</span>
-                                        </div>
-                                        <p className="text-[8px] font-serif text-ink/55 leading-[1.6]">
-                                            <span className="font-bold">A4印刷対応</span>——QRコード付きの記事を<br />PDFで印刷、町歩きの資料に
+                                        <span className="text-[8px] flex-shrink-0">📄</span>
+                                        <p className="text-[8px] font-serif text-ink/55 leading-[1.5]">
+                                            <span className="font-bold">A4印刷対応</span>——QRコード付きPDFで町歩きに
                                         </p>
                                     </div>
                                     <div className="flex gap-2 items-start">
-                                        <div className="w-[14px] h-[14px] bg-[#E8C340]/20 rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5">
-                                            <span className="text-[8px]">📱</span>
-                                        </div>
-                                        <p className="text-[8px] font-serif text-ink/55 leading-[1.6]">
-                                            <span className="font-bold">SNS共有</span>——全記事に独立URLを付与。<br />ワンクリックで家族や友人に共有
+                                        <span className="text-[8px] flex-shrink-0">📱</span>
+                                        <p className="text-[8px] font-serif text-ink/55 leading-[1.5]">
+                                            <span className="font-bold">SNS共有</span>——全記事にURLを付与、ワンクリック共有
                                         </p>
                                     </div>
                                 </div>
-                                <div className="mt-2 text-center bg-ink/5 rounded-sm px-2 py-1.5">
+                                <div className="mt-1.5 text-center bg-ink/5 rounded-sm px-2 py-1">
                                     <p className="text-[8px] font-serif text-ink/50 leading-[1.6]">
                                         すべての記事は
                                         <span className="font-bold text-ink/70" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}> appletown-iizuna.com </span>
