@@ -684,9 +684,9 @@ export default function Canvas() {
 
                                 {/* 滞在支援情報 - text only */}
                                 <div className="text-[8px] font-serif text-ink/50 leading-[1.7] mt-1.5 space-y-0">
-                                    <p><span className="font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>食事</span> —— りんご料理・そば・カフェ</p>
-                                    <p><span className="font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>移動</span> —— 車推奨・アクセス・町内移動</p>
-                                    <p><span className="font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>宿泊</span> —— ホテル・民泊・キャンプ場</p>
+                                    <p><span className="font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>食事</span> —— りんご／郷土料理・そば・カフェ・レストラン</p>
+                                    <p><span className="font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>移動</span> —— バス／タクシー・レンタカー・レンタル自転車</p>
+                                    <p><span className="font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>宿泊</span> —— ホテル・民泊／一棟貸し・キャンプ／グランピング</p>
                                 </div>
                             </div>
 
