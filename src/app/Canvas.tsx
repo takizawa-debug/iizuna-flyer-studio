@@ -550,32 +550,18 @@ export default function Canvas() {
                                     りんごが買えるお店
                                 </p>
                                 <div className="space-y-0.5 mb-2">
-                                    {[
-                                        { name: 'むーちゃん', desc: 'カフェ併設、農業体験の相談窓口も' },
-                                        { name: 'さんちゃん', desc: '手作りジャム、アップルパイが人気' },
-                                        { name: '四季彩', desc: '雪むろ熟成りんご、収穫体験も併設' },
-                                        { name: 'みつどんマルシェ', desc: '全国配送。30品種食べ比べ定期便' },
-                                    ].map((shop, i) => (
-                                        <div key={i} className="bg-white/50 rounded-sm px-2 py-0.5">
-                                            <span className="text-[8px] font-bold tracking-[0.06em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{shop.name}</span>
-                                            <span className="text-[8px] font-serif text-ink/50 ml-1">{shop.desc}</span>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                {/* Processed goods */}
-                                <div className="grid grid-cols-3 gap-1 mb-2">
-                                    <div className="bg-white/40 rounded-sm p-1 text-center">
-                                        <p className="text-[8px] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>ジュース</p>
-                                        <p className="text-[8px] text-ink/40 leading-[1.4] mt-0.5">品種別の<br />飲み比べ</p>
+                                    <div className="flex items-center gap-1 flex-wrap">
+                                        <span className="text-[8px]">🏪</span>
+                                        <span className="text-[8px] font-serif text-ink/40">直売所</span>
+                                        {['むーちゃん', 'さんちゃん', '四季彩'].map((name, i) => (
+                                            <span key={i} className="text-[8px] font-bold bg-white/50 rounded-sm px-1.5 py-0.5" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{name}</span>
+                                        ))}
                                     </div>
-                                    <div className="bg-white/40 rounded-sm p-1 text-center">
-                                        <p className="text-[8px] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>シードル</p>
-                                        <p className="text-[8px] text-ink/40 leading-[1.4] mt-0.5">2つの<br />醸造所</p>
-                                    </div>
-                                    <div className="bg-white/40 rounded-sm p-1 text-center">
-                                        <p className="text-[8px] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>ジャム</p>
-                                        <p className="text-[8px] text-ink/40 leading-[1.4] mt-0.5">多品種の<br />味わい</p>
+                                    <div className="flex items-center gap-1">
+                                        <span className="text-[8px]">🛒</span>
+                                        <span className="text-[8px] font-serif text-ink/40">EC</span>
+                                        <span className="text-[8px] font-bold bg-white/50 rounded-sm px-1.5 py-0.5" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>みつどんマルシェ</span>
+                                        <span className="text-[8px] font-serif text-ink/40">全国配送</span>
                                     </div>
                                 </div>
 
