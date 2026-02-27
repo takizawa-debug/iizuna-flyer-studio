@@ -502,7 +502,7 @@ export default function Canvas() {
                             {/* Hero image */}
                             <div className="w-full h-[50px] rounded-sm overflow-hidden mb-2 border border-[#D5CD97]/30">
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                                <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/b0a34c40-a041-013e-b18a-0a58a9feac02/20231013_sweet-3.jpg" alt="いいづなりんご" className="w-full h-full object-cover" />
+                                <img src="https://cdn.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/8ae3ad00-8d6a-013e-bcd3-0a58a9feac02/IMG_2898.jpg" alt="いいづなりんご" className="w-full h-full object-cover" />
                             </div>
 
                             <div className="bg-white/40 rounded-sm px-2.5 py-2 mb-2">
@@ -579,7 +579,7 @@ export default function Canvas() {
                                 {/* Hero image */}
                                 <div className="w-full h-[50px] rounded-sm overflow-hidden mb-2 border border-[#D5CD97]/30">
                                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                                    <img src="https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&q=80&w=400" alt="りんご" className="w-full h-full object-cover" />
+                                    <img src="https://cdn.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/6e2a2080-8d6a-013e-bcbf-0a58a9feac02/applejuice-8.jpg" alt="りんご" className="w-full h-full object-cover" />
                                 </div>
 
                                 {/* Shops */}
@@ -674,9 +674,8 @@ export default function Canvas() {
 
                                 {/* Hero image */}
                                 <div className="w-full h-[30px] rounded-sm overflow-hidden mb-2 border border-[#D5CD97]/30">
-                                    <div className="w-full h-full bg-leaf/10 flex items-center justify-center">
-                                        <span className="text-[8px] text-leaf/40" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>PHOTO</span>
-                                    </div>
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                                    <img src="https://cdn.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/f2837410-8f03-013e-e63d-0a58a9feac02/photo-intermediate.jpg" alt="体験" className="w-full h-full object-cover" />
                                 </div>
 
                                 <div className="space-y-1">
@@ -720,7 +719,7 @@ export default function Canvas() {
                                 {/* Hero image */}
                                 <div className="w-full h-[30px] rounded-sm overflow-hidden mb-1.5 border border-[#D5CD97]/30">
                                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                                    <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/120aadf0-a042-013e-ffb1-0a58a9feac02/iizuna_20250123-10.jpg" alt="飯綱町の暮らし" className="w-full h-full object-cover" />
+                                    <img src="https://cdn.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/a681db10-8ee6-013e-065b-0a58a9feac02/slide-01.jpg" alt="飯綱町の暮らし" className="w-full h-full object-cover" />
                                 </div>
                                 <div className="space-y-0.5">
                                     <p className="text-[8px] font-serif text-ink/65 leading-[1.7]">
@@ -747,7 +746,7 @@ export default function Canvas() {
                                 {/* Hero image */}
                                 <div className="w-full h-[30px] rounded-sm overflow-hidden mb-1.5 border border-[#D5CD97]/30">
                                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                                    <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/ec2954c0-a041-013e-ff9d-0a58a9feac02/iizuna_20220525-2.jpg" alt="果樹園" className="w-full h-full object-cover" />
+                                    <img src="https://cdn.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/8b029720-8d6a-013e-bcd5-0a58a9feac02/IMG_3168%E5%90%88%E6%88%90.jpg" alt="果樹園" className="w-full h-full object-cover" />
                                 </div>
                                 <div className="space-y-0.5">
                                     <p className="text-[8px] font-serif text-ink/60 leading-[1.7]">
