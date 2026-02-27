@@ -453,7 +453,7 @@ export default function Canvas() {
                                 C785,30 790,28 800,32
                                 C810,38 820,45 830,50
                                 L840,55 L840,175 Z
-                            " fill="white" fillOpacity="0.85" />
+                            " fill="#D9C96E" fillOpacity="0.7" />
                         </svg>
 
                         {/* Ruler Guides Overlay */}
