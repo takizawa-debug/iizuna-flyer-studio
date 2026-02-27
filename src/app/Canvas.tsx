@@ -730,13 +730,13 @@ export default function Canvas() {
                                 </div>
                                 <div className="space-y-0.5">
                                     <p className="text-[8px] font-serif text-ink/65 leading-[1.7]">
-                                        <span className="font-bold">移住体験住宅</span>——古民家に最長6泊7日のお試し滞在
+                                        <span className="font-bold">移住</span> —— 体験住宅あり・最長6泊7日のお試し滞在可能
                                     </p>
                                     <p className="text-[8px] font-serif text-ink/65 leading-[1.7]">
-                                        <span className="font-bold">就農里親制度</span>——約3年で独立。里親農家が伴走
+                                        <span className="font-bold">働く</span> —— いいコネワークスで複業で収入と暮らしの安定
                                     </p>
                                     <p className="text-[8px] font-serif text-ink/65 leading-[1.7]">
-                                        <span className="font-bold">いいコネワークス</span>——複業で収入と暮らしの安定
+                                        <span className="font-bold">就農</span> —— 約3年で独立を目指す里親制度など
                                     </p>
                                 </div>
                             </div>
