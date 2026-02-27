@@ -453,7 +453,7 @@ export default function Canvas() {
                         </div>
 
                         {/* --- 左面：知る (Full panel) --- */}
-                        <div className="w-[280px] border-r border-[#D5CD97]/50 border-dashed relative z-10 flex flex-col print:border-none text-ink/90 pt-[50px] px-[20px] pb-[12px]">
+                        <div className="w-[280px] border-r border-[#D5CD97]/50 border-dashed relative z-10 flex flex-col print:border-none text-ink/90 pt-[70px] px-[20px] pb-[12px]">
 
                             {/* 知る header */}
                             <div className="flex items-baseline gap-2 mb-1">
@@ -490,11 +490,11 @@ export default function Canvas() {
                                         { year: '現在', text: '50種以上を栽培「日本一のりんごのまち」へ' },
                                     ].map((item, i, arr) => (
                                         <div key={i} className="flex items-start mb-[2px]">
-                                            <div className="flex flex-col items-center flex-shrink-0 w-[8px] pt-[3px]">
+                                            <div className="flex flex-col items-center flex-shrink-0 w-[8px] mt-[4px]">
                                                 <div className={`w-[5px] h-[5px] rounded-full flex-shrink-0 ${i === arr.length - 1 ? 'bg-[#D45D56]' : 'bg-[#E8C340]'}`}></div>
                                                 {i < arr.length - 1 && <div className="w-px h-[6px] bg-[#E8C340]/40"></div>}
                                             </div>
-                                            <span className="text-[8px] text-ink/40 flex-shrink-0 w-[50px] pt-[1px]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{item.year}</span>
+                                            <span className="text-[8px] text-ink/40 flex-shrink-0 w-[42px] leading-[1.4]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{item.year}</span>
                                             <p className="text-[8px] font-serif text-ink/70 leading-[1.4]">{item.text}</p>
                                         </div>
                                     ))}
@@ -534,7 +534,7 @@ export default function Canvas() {
                         </div>
 
                         {/* --- 中面：味わう＋体験する --- */}
-                        <div className="w-[280px] border-r border-[#D5CD97]/50 border-dashed relative z-10 flex flex-col print:border-none text-ink/90 pt-[16px] px-[20px] pb-[12px]">
+                        <div className="w-[280px] border-r border-[#D5CD97]/50 border-dashed relative z-10 flex flex-col print:border-none text-ink/90 pt-[70px] px-[20px] pb-[12px]">
 
                             {/* 味わう section */}
                             <div className="mb-3">
