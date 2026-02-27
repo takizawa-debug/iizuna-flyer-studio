@@ -604,23 +604,32 @@ export default function Canvas() {
                                 <p className="text-[9px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
                                     季節のイベント
                                 </p>
-                                <div className="grid grid-cols-2 gap-1">
+                                <div className="grid grid-cols-3 gap-1">
                                     <div className="bg-white/50 rounded-sm overflow-hidden">
-                                        <div className="w-full h-[30px] bg-[#D45D56]/10 flex items-center justify-center">
-                                            <span className="text-[8px] text-[#D45D56]/40" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>PHOTO</span>
+                                        <div className="w-full h-[45px] bg-[#D45D56]/10 flex items-center justify-center">
+                                            <span className="text-[7px] text-[#D45D56]/40" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>PHOTO</span>
                                         </div>
-                                        <div className="px-1.5 py-1">
-                                            <p className="text-[8px] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>英国りんごフェア</p>
-                                            <p className="text-[8px] font-serif text-ink/45 leading-[1.4]">料理用りんごの魅力を発信</p>
+                                        <div className="px-1 py-1">
+                                            <p className="text-[7px] font-bold leading-[1.3]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>英国りんごフェア</p>
+                                            <p className="text-[7px] font-serif text-ink/45 leading-[1.3] mt-0.5">料理用りんごの魅力を発信</p>
                                         </div>
                                     </div>
                                     <div className="bg-white/50 rounded-sm overflow-hidden">
-                                        <div className="w-full h-[30px] bg-[#D45D56]/10 flex items-center justify-center">
-                                            <span className="text-[8px] text-[#D45D56]/40" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>PHOTO</span>
+                                        <div className="w-full h-[45px] bg-[#D45D56]/10 flex items-center justify-center">
+                                            <span className="text-[7px] text-[#D45D56]/40" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>PHOTO</span>
                                         </div>
-                                        <div className="px-1.5 py-1">
-                                            <p className="text-[8px] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>スイーツコンクール</p>
-                                            <p className="text-[8px] font-serif text-ink/45 leading-[1.4]">パティシエが腕を競う</p>
+                                        <div className="px-1 py-1">
+                                            <p className="text-[7px] font-bold leading-[1.3]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>りんごスイーツフェア</p>
+                                            <p className="text-[7px] font-serif text-ink/45 leading-[1.3] mt-0.5">町のスイーツを食べ歩き</p>
+                                        </div>
+                                    </div>
+                                    <div className="bg-white/50 rounded-sm overflow-hidden">
+                                        <div className="w-full h-[45px] bg-[#D45D56]/10 flex items-center justify-center">
+                                            <span className="text-[7px] text-[#D45D56]/40" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>PHOTO</span>
+                                        </div>
+                                        <div className="px-1 py-1">
+                                            <p className="text-[7px] font-bold leading-[1.3]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>スイーツコンクール</p>
+                                            <p className="text-[7px] font-serif text-ink/45 leading-[1.3] mt-0.5">パティシエが腕を競う</p>
                                         </div>
                                     </div>
                                 </div>
