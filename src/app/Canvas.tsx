@@ -592,37 +592,36 @@ export default function Canvas() {
                             {/* Divider */}
                             <div className="w-full border-t border-[#D5CD97]/40 mb-2"></div>
 
-                            {/* 体験する section — アップルミュージアム */}
-                            <div>
+                            {/* アップルミュージアム プチコラム */}
+                            <div className="bg-white/50 rounded-sm p-2.5 mt-auto">
+                                <p className="text-[9px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                    アップルミュージアム
+                                </p>
+                                <p className="text-[8px] font-serif text-ink/55 leading-[1.8] tracking-[0.03em]">
+                                    ニュートンのりんごの木から初代Macまで。<br />
+                                    全国でも珍しいりんご専門の博物館。<br />
+                                    りんごの歴史と文化を一度に体験。
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* --- 右面：体験する＋暮らす＋営む --- */}
+                        <div className="w-[280px] relative z-10 flex flex-col print:border-none text-ink/90 pt-[30px] px-[20px] pb-[12px]">
+
+                            {/* 体験する section */}
+                            <div className="mb-2">
                                 <div className="flex items-baseline gap-2 mb-1">
                                     <div className="w-[3px] h-[16px] bg-leaf rounded-full"></div>
                                     <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>体験する</span>
                                 </div>
 
-                                {/* Hero image - アップルミュージアム */}
+                                {/* Hero image */}
                                 <div className="w-full h-[50px] rounded-sm overflow-hidden mb-2 border border-[#D5CD97]/30">
-                                    <div className="w-full h-full bg-[#E8C340]/10 flex items-center justify-center">
-                                        <span className="text-[8px] text-[#E8C340]/50" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>PHOTO</span>
+                                    <div className="w-full h-full bg-leaf/10 flex items-center justify-center">
+                                        <span className="text-[8px] text-leaf/40" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>PHOTO</span>
                                     </div>
                                 </div>
 
-                                <div className="bg-[#E8C340]/10 rounded-sm px-2.5 py-1.5">
-                                    <p className="text-[9px] font-bold tracking-[0.08em] mb-0.5" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>アップルミュージアム</p>
-                                    <p className="text-[8px] font-serif text-ink/55 leading-[1.6]">
-                                        ニュートンのりんごの木から初代Macまで。全国でも珍しいりんご専門の博物館。
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* --- 右面：体験プログラム＋滞在支援＋暮らす＋営む＋Info --- */}
-                        <div className="w-[280px] relative z-10 flex flex-col print:border-none text-ink/90 pt-[30px] px-[20px] pb-[12px]">
-
-                            {/* 各種体験プログラム */}
-                            <div className="mb-2">
-                                <p className="text-[9px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
-                                    各種体験プログラム
-                                </p>
                                 <div className="space-y-1">
                                     <div className="bg-white/50 rounded-sm p-2">
                                         <p className="text-[8px] font-bold tracking-[0.08em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>りんごの木オーナー制度</p>
@@ -643,33 +642,13 @@ export default function Canvas() {
                                         </p>
                                     </div>
                                 </div>
-                            </div>
 
-                            {/* Divider */}
-                            <div className="w-full border-t border-[#D5CD97]/40 mb-2"></div>
-
-                            {/* 滞在支援情報 */}
-                            <div className="mb-2">
-                                <p className="text-[9px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
-                                    滞在支援情報
+                                {/* 滞在支援情報 - text only */}
+                                <p className="text-[8px] font-serif text-ink/50 leading-[1.7] mt-1.5">
+                                    <span className="font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>食事</span> 蕎麦・カフェ・農家レストラン
+                                    <span className="font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>移動</span> 東京から約2h・レンタカー推奨
+                                    <span className="font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>宿泊</span> 民泊・ゲストハウス・キャンプ場
                                 </p>
-                                <div className="grid grid-cols-3 gap-1">
-                                    <div className="bg-white/50 rounded-sm p-1.5 text-center">
-                                        <p className="text-[9px] mb-0.5">🍽</p>
-                                        <p className="text-[8px] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>食事</p>
-                                        <p className="text-[8px] font-serif text-ink/45 leading-[1.3] mt-0.5">蕎麦・カフェ・農家レストラン</p>
-                                    </div>
-                                    <div className="bg-white/50 rounded-sm p-1.5 text-center">
-                                        <p className="text-[9px] mb-0.5">🚗</p>
-                                        <p className="text-[8px] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>移動</p>
-                                        <p className="text-[8px] font-serif text-ink/45 leading-[1.3] mt-0.5">東京から約2h・レンタカー推奨</p>
-                                    </div>
-                                    <div className="bg-white/50 rounded-sm p-1.5 text-center">
-                                        <p className="text-[9px] mb-0.5">🏠</p>
-                                        <p className="text-[8px] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>宿泊</p>
-                                        <p className="text-[8px] font-serif text-ink/45 leading-[1.3] mt-0.5">民泊・ゲストハウス・キャンプ場</p>
-                                    </div>
-                                </div>
                             </div>
 
                             {/* Divider */}
