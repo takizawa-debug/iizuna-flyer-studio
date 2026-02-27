@@ -539,14 +539,20 @@ export default function Canvas() {
                             {/* Variety highlight — positioned at y=420 */}
                             <div className="absolute left-[20px] right-[20px] z-10" style={{ top: '420px' }}>
                                 <div className="bg-white/50 rounded-sm p-2.5 mb-2">
-                                    <p className="text-[9px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
-                                        50種を超えるりんごの宝庫
-                                    </p>
-                                    <p className="text-[8px] font-serif text-ink/55 leading-[1.8] tracking-[0.03em]">
-                                        ふじ、つがる、王林の定番から、シナノスイート、<br />
-                                        シナノゴールド、秋映。英国品種ブラムリー。<br />
-                                        幻の和りんご「高坂りんご」まで。
-                                    </p>
+                                    <div className="flex gap-2">
+                                        <div className="flex-1">
+                                            <p className="text-[9px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                                50品種を超えるりんごの宝庫
+                                            </p>
+                                            <p className="text-[8px] font-serif text-ink/55 leading-[1.8] tracking-[0.03em]">
+                                                ふじ、つがる、王林の定番から、シナノスイート、<br />
+                                                シナノゴールド、秋映。英国品種ブラムリー。<br />
+                                                幻の和りんご「高坂りんご」まで。
+                                            </p>
+                                        </div>
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                                        <img src="https://appletown-iizuna.s3.ap-northeast-1.amazonaws.com/apples/images/%E3%83%96%E3%83%A9%E3%83%A0%E3%83%AA%E3%83%BC.png" alt="ブラムリー" className="w-[50px] h-[50px] object-contain flex-shrink-0" />
+                                    </div>
                                 </div>
 
                                 {/* Science box */}
