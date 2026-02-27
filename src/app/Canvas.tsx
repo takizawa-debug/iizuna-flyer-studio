@@ -588,14 +588,23 @@ export default function Canvas() {
                                 </p>
                                 <div className="space-y-1 mb-2">
                                     {[
-                                        { name: 'むーちゃん', desc: 'カフェ併設、農業体験の相談窓口' },
-                                        { name: 'さんちゃん', desc: '手作りジャム、アップルパイが人気' },
-                                        { name: '四季彩', desc: '雪むろ熟成りんご、収穫体験も' },
-                                        { name: 'みつどんマルシェ', desc: 'EC全国配送。30品種食べ比べ' },
+                                        { name: 'むーちゃん', desc: 'カフェ併設、農業体験の相談窓口', type: 'shop' },
+                                        { name: 'さんちゃん', desc: '手作りジャム、アップルパイが人気', type: 'shop' },
+                                        { name: '四季彩', desc: '雪むろ熟成りんご、収穫体験も', type: 'shop' },
+                                        { name: 'みつどんマルシェ', desc: 'EC全国配送。30品種食べ比べ', type: 'ec' },
                                     ].map((shop, i) => (
-                                        <div key={i} className="bg-white/50 rounded-sm px-2 py-1 flex items-baseline gap-1.5">
+                                        <div key={i} className="bg-white/50 rounded-sm px-2 py-1 flex items-center gap-1.5">
                                             <span className="text-[8px] font-bold tracking-[0.06em] flex-shrink-0" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{shop.name}</span>
-                                            <span className="text-[8px] font-serif text-ink/45">{shop.desc}</span>
+                                            <span className="text-[8px] font-serif text-ink/45 flex-1">{shop.desc}</span>
+                                            {shop.type === 'shop' ? (
+                                                <svg className="w-[10px] h-[10px] flex-shrink-0 text-ink/30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                    <path d="M3 21V9l9-7 9 7v12H3z" /><rect x="9" y="13" width="6" height="8" />
+                                                </svg>
+                                            ) : (
+                                                <svg className="w-[10px] h-[10px] flex-shrink-0 text-ink/30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                    <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a1 1 0 001 .61h9.72a1 1 0 001-.76L23 6H6" />
+                                                </svg>
+                                            )}
                                         </div>
                                     ))}
                                 </div>
@@ -619,7 +628,7 @@ export default function Canvas() {
                                             <span className="text-[7px] text-[#D45D56]/40" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>PHOTO</span>
                                         </div>
                                         <div className="px-1 py-1">
-                                            <p className="text-[7px] font-bold leading-[1.3]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>りんごスイーツフェア</p>
+                                            <p className="text-[7px] font-bold leading-[1.3]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>スイーツフェア</p>
                                             <p className="text-[7px] font-serif text-ink/45 leading-[1.3] mt-0.5">町のスイーツを食べ歩き</p>
                                         </div>
                                     </div>
