@@ -615,8 +615,9 @@ export default function Canvas() {
                                 </p>
                                 <div className="grid grid-cols-3 gap-1">
                                     <div className="bg-white/50 rounded-sm overflow-hidden">
-                                        <div className="w-full h-[45px] bg-[#D45D56]/10 flex items-center justify-center">
-                                            <span className="text-[7px] text-[#D45D56]/40" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>PHOTO</span>
+                                        <div className="w-full h-[45px] overflow-hidden">
+                                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                                            <img src="https://cdn.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/cd850820-8d6a-013e-c3bf-0a58a9feac02/%E3%83%95%E3%82%99%E3%83%A9%E3%83%A0%E3%83%AA%E3%83%BC_5.jpg" alt="英国りんごフェア" className="w-full h-full object-cover" />
                                         </div>
                                         <div className="px-1 py-1">
                                             <p className="text-[7px] font-bold leading-[1.3]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>英国りんごフェア</p>
@@ -746,7 +747,7 @@ export default function Canvas() {
                                 {/* Hero image */}
                                 <div className="w-full h-[30px] rounded-sm overflow-hidden mb-1.5 border border-[#D5CD97]/30">
                                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                                    <img src="https://cdn.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/8b029720-8d6a-013e-bcd5-0a58a9feac02/IMG_3168%E5%90%88%E6%88%90.jpg" alt="果樹園" className="w-full h-full object-cover" />
+                                    <img src="https://cdn.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/b431fc30-8d6a-013e-bcf4-0a58a9feac02/tanpopo-16.jpg" alt="果樹園" className="w-full h-full object-cover" />
                                 </div>
                                 <div className="space-y-0.5">
                                     <p className="text-[8px] font-serif text-ink/60 leading-[1.7]">
