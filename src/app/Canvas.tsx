@@ -655,13 +655,19 @@ export default function Canvas() {
                                 </div>
 
                                 {/* Hero image */}
-                                <div className="w-full h-[50px] rounded-sm overflow-hidden mb-2 border border-[#D5CD97]/30">
+                                <div className="w-full h-[30px] rounded-sm overflow-hidden mb-2 border border-[#D5CD97]/30">
                                     <div className="w-full h-full bg-leaf/10 flex items-center justify-center">
                                         <span className="text-[8px] text-leaf/40" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>PHOTO</span>
                                     </div>
                                 </div>
 
                                 <div className="space-y-1">
+                                    <div className="bg-white/50 rounded-sm p-2">
+                                        <p className="text-[8px] font-bold tracking-[0.08em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>農業体験・ワーキングホリデー</p>
+                                        <p className="text-[8px] font-serif text-ink/55 leading-[1.6] mt-0.5">
+                                            3泊4日、農家に入り込む実践型。就農の入口。
+                                        </p>
+                                    </div>
                                     <div className="bg-white/50 rounded-sm p-2">
                                         <p className="text-[8px] font-bold tracking-[0.08em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>りんごの木オーナー制度</p>
                                         <p className="text-[8px] font-serif text-ink/55 leading-[1.6] mt-0.5">
@@ -674,20 +680,14 @@ export default function Canvas() {
                                             日帰り〜上級まで段階的に学べる体験型。
                                         </p>
                                     </div>
-                                    <div className="bg-white/50 rounded-sm p-2">
-                                        <p className="text-[8px] font-bold tracking-[0.08em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>ワーキングホリデー</p>
-                                        <p className="text-[8px] font-serif text-ink/55 leading-[1.6] mt-0.5">
-                                            3泊4日、農家に入り込む実践型。就農の入口。
-                                        </p>
-                                    </div>
                                 </div>
 
                                 {/* 滞在支援情報 - text only */}
-                                <p className="text-[8px] font-serif text-ink/50 leading-[1.7] mt-1.5">
-                                    <span className="font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>食事</span> 蕎麦・カフェ・農家レストラン
-                                    <span className="font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>移動</span> 東京から約2h・レンタカー推奨
-                                    <span className="font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>宿泊</span> 民泊・ゲストハウス・キャンプ場
-                                </p>
+                                <div className="text-[8px] font-serif text-ink/50 leading-[1.7] mt-1.5 space-y-0">
+                                    <p><span className="font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>食事</span> —— りんご料理・そば・カフェ</p>
+                                    <p><span className="font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>移動</span> —— 車推奨・アクセス・町内移動</p>
+                                    <p><span className="font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>宿泊</span> —— ホテル・民泊・キャンプ場</p>
+                                </div>
                             </div>
 
                             {/* Divider */}
