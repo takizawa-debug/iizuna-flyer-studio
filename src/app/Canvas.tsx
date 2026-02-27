@@ -483,11 +483,11 @@ export default function Canvas() {
                                         { year: '1968年', text: <>旧三水村で9,560t産出、<span className="font-extrabold text-ink/90" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>日本一のりんご村</span>に</> },
                                         { year: '1980年〜', text: <>絶滅寸前の<span className="font-extrabold text-ink/90" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>高坂林檎</span>を有志が保存</> },
                                         { year: '1987年', text: <>ニュートン品種<span className="font-extrabold text-ink/90" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>フラワー・オブ・ケント</span>植樹</> },
-                                        { year: '1990年〜', text: <>英国王立園芸協会からブラムリー等16品種渡来</> },
+                                        { year: '1990年〜', text: <>英国王立園芸協会から<span className="font-extrabold text-ink/90" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>ブラムリー</span>等16品種渡来</> },
                                         { year: '2005年', text: <><span className="font-extrabold text-ink/90" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>高坂林檎</span>原木2本が天然記念物に指定</> },
                                         { year: '2005年', text: <>旧牟礼村と旧三水村が合併し<span className="font-extrabold text-ink/90" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>飯綱町</span>誕生</> },
-                                        { year: '2020年〜', text: <>高坂林檎にふじの約10倍の機能性成分を確認</> },
-                                        { year: '現在', text: <>50種以上を栽培、<span className="font-extrabold text-ink/90" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>日本一のりんごのまち</span>へ</> },
+                                        { year: '2020年〜', text: <><span className="font-extrabold text-ink/90" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>高坂林檎</span>にふじの約10倍の機能性成分を確認</> },
+                                        { year: '現在', text: <>50品種以上を栽培、<span className="font-extrabold text-ink/90" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>日本一のりんごのまち</span>へ</> },
                                     ].map((item, i, arr) => (
                                         <div key={i} className="flex items-start mb-[2px]">
                                             <div className="flex flex-col items-center flex-shrink-0 w-[8px] mt-[4px]">
