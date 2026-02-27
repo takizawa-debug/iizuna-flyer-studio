@@ -421,6 +421,41 @@ export default function Canvas() {
                     <div className="w-[840px] h-[594px] shadow-2xl relative wabi-shadow rounded-sm overflow-hidden flex print:shadow-none print:rounded-none bg-[#EBE2AF]">
                         <div className="absolute inset-0 texture-washi pointer-events-none z-0" />
 
+                        {/* 北信五岳 mountain silhouette background */}
+                        <svg className="absolute bottom-0 left-0 w-full pointer-events-none z-[1]" viewBox="0 0 840 175" preserveAspectRatio="none" style={{ height: '175px' }}>
+                            <path d="
+                                M0,175 L0,120
+                                C20,115 35,100 50,85
+                                C60,75 70,55 85,40
+                                C95,30 100,28 105,35
+                                C115,50 120,60 130,70
+                                C140,60 150,50 160,42
+                                C170,35 175,30 180,38
+                                C190,50 200,65 215,75
+                                C225,70 235,62 250,55
+                                C260,48 270,40 280,35
+                                C290,30 295,32 305,40
+                                C315,50 325,58 340,60
+                                C350,55 360,48 375,42
+                                C385,36 395,30 405,25
+                                C415,20 420,18 430,22
+                                C440,28 450,38 460,45
+                                C470,50 480,55 495,58
+                                C505,55 515,48 530,40
+                                C540,35 550,30 560,28
+                                C570,26 575,28 580,32
+                                C590,40 600,50 615,55
+                                C625,52 635,48 650,42
+                                C660,38 670,35 680,38
+                                C690,42 700,50 715,55
+                                C725,52 735,48 745,45
+                                C755,42 765,40 775,35
+                                C785,30 790,28 800,32
+                                C810,38 820,45 830,50
+                                L840,55 L840,175 Z
+                            " fill="white" fillOpacity="0.85" />
+                        </svg>
+
                         {/* Ruler Guides Overlay */}
                         {showGuides && (
                             <div className="absolute inset-0 z-50 pointer-events-none" style={{
@@ -501,28 +536,30 @@ export default function Canvas() {
                                 </div>
                             </div>
 
-                            {/* Variety highlight */}
-                            <div className="bg-white/50 rounded-sm p-2.5 mb-2">
-                                <p className="text-[9px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
-                                    50種を超えるりんごの宝庫
-                                </p>
-                                <p className="text-[8px] font-serif text-ink/55 leading-[1.8] tracking-[0.03em]">
-                                    ふじ、つがる、王林の定番から、シナノスイート、<br />
-                                    シナノゴールド、秋映。英国品種ブラムリー。<br />
-                                    幻の和りんご「高坂りんご」まで。
-                                </p>
-                            </div>
+                            {/* Variety highlight — positioned at y=420 */}
+                            <div className="absolute left-[20px] right-[20px] z-10" style={{ top: '420px' }}>
+                                <div className="bg-white/50 rounded-sm p-2.5 mb-2">
+                                    <p className="text-[9px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                        50種を超えるりんごの宝庫
+                                    </p>
+                                    <p className="text-[8px] font-serif text-ink/55 leading-[1.8] tracking-[0.03em]">
+                                        ふじ、つがる、王林の定番から、シナノスイート、<br />
+                                        シナノゴールド、秋映。英国品種ブラムリー。<br />
+                                        幻の和りんご「高坂りんご」まで。
+                                    </p>
+                                </div>
 
-                            {/* Science box */}
-                            <div className="border-l-2 border-[#E8C340] pl-2.5 mt-auto">
-                                <p className="text-[9px] font-bold tracking-[0.08em] mb-0.5" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
-                                    科学が証明する、飯綱の美味しさ
-                                </p>
-                                <p className="text-[8px] font-serif text-ink/55 leading-[1.7]">
-                                    昼夜の寒暖差が糖度を凝縮。糖酸比30〜40——<br />
-                                    科学的に「美味しい」数値域。シャキシャキの<br />
-                                    食感は、破断強度で実証済み。
-                                </p>
+                                {/* Science box */}
+                                <div className="border-l-2 border-[#E8C340] pl-2.5">
+                                    <p className="text-[9px] font-bold tracking-[0.08em] mb-0.5" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                        科学が証明する、飯綱の美味しさ
+                                    </p>
+                                    <p className="text-[8px] font-serif text-ink/55 leading-[1.7]">
+                                        昼夜の寒暖差が糖度を凝縮。糖酸比30〜40——<br />
+                                        科学的に「美味しい」数値域。シャキシャキの<br />
+                                        食感は、破断強度で実証済み。
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
@@ -592,16 +629,18 @@ export default function Canvas() {
                             {/* Divider */}
                             <div className="w-full border-t border-[#D5CD97]/40 mb-2"></div>
 
-                            {/* アップルミュージアム プチコラム */}
-                            <div className="bg-white/50 rounded-sm p-2.5 mt-auto">
-                                <p className="text-[9px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
-                                    アップルミュージアム
-                                </p>
-                                <p className="text-[8px] font-serif text-ink/55 leading-[1.8] tracking-[0.03em]">
-                                    ニュートンのりんごの木から初代Macまで。<br />
-                                    全国でも珍しいりんご専門の博物館。<br />
-                                    りんごの歴史と文化を一度に体験。
-                                </p>
+                            {/* アップルミュージアム プチコラム — positioned at y=420 */}
+                            <div className="absolute left-[20px] right-[20px] z-10" style={{ top: '420px' }}>
+                                <div className="bg-white/50 rounded-sm p-2.5">
+                                    <p className="text-[9px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                        アップルミュージアム
+                                    </p>
+                                    <p className="text-[8px] font-serif text-ink/55 leading-[1.8] tracking-[0.03em]">
+                                        ニュートンのりんごの木から初代Macまで。<br />
+                                        全国でも珍しいりんご専門の博物館。<br />
+                                        りんごの歴史と文化を一度に体験。
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
