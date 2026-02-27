@@ -476,18 +476,18 @@ export default function Canvas() {
                                 </p>
                                 <div className="flex flex-col">
                                     {[
-                                        { year: '1860年〜', text: <><b>高坂林檎</b>が善光寺門前で信濃名物として人気</> },
+                                        { year: '1860年〜', text: <><span className="font-extrabold text-ink/90" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>高坂林檎</span>が善光寺門前で信濃名物として人気</> },
                                         { year: '1890年〜', text: <>本格的なりんご栽培の始まり、徐々に拡大</> },
                                         { year: '1929年〜', text: <>世界恐慌で蚕糸業衰退、桑畑→りんご畑へ</> },
-                                        { year: '1965年〜', text: <><b>うまいくだものづくり運動</b>で主力が<b>ふじ</b>に</> },
-                                        { year: '1968年', text: <>旧三水村で9,560t産出、<b>日本一のりんご村</b>に</> },
-                                        { year: '1980年〜', text: <>絶滅寸前の<b>高坂林檎</b>を有志が保存</> },
-                                        { year: '1987年', text: <>ニュートン品種<b>フラワー・オブ・ケント</b>植樹</> },
+                                        { year: '1965年〜', text: <><span className="font-extrabold text-ink/90" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>うまいくだものづくり運動</span>で主力が<span className="font-extrabold text-ink/90" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>ふじ</span>に</> },
+                                        { year: '1968年', text: <>旧三水村で9,560t産出、<span className="font-extrabold text-ink/90" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>日本一のりんご村</span>に</> },
+                                        { year: '1980年〜', text: <>絶滅寸前の<span className="font-extrabold text-ink/90" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>高坂林檎</span>を有志が保存</> },
+                                        { year: '1987年', text: <>ニュートン品種<span className="font-extrabold text-ink/90" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>フラワー・オブ・ケント</span>植樹</> },
                                         { year: '1990年〜', text: <>英国王立園芸協会からブラムリー等16品種渡来</> },
-                                        { year: '2005年', text: <><b>高坂林檎</b>原木2本が天然記念物に指定</> },
-                                        { year: '2005年', text: <>旧牟礼村と旧三水村が合併し<b>飯綱町</b>誕生</> },
+                                        { year: '2005年', text: <><span className="font-extrabold text-ink/90" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>高坂林檎</span>原木2本が天然記念物に指定</> },
+                                        { year: '2005年', text: <>旧牟礼村と旧三水村が合併し<span className="font-extrabold text-ink/90" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>飯綱町</span>誕生</> },
                                         { year: '2020年〜', text: <>高坂林檎にふじの約10倍の機能性成分を確認</> },
-                                        { year: '現在', text: <>50種以上を栽培、<b>日本一のりんごのまち</b>へ</> },
+                                        { year: '現在', text: <>50種以上を栽培、<span className="font-extrabold text-ink/90" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>日本一のりんごのまち</span>へ</> },
                                     ].map((item, i, arr) => (
                                         <div key={i} className="flex items-start mb-[2px]">
                                             <div className="flex flex-col items-center flex-shrink-0 w-[8px] mt-[4px]">
