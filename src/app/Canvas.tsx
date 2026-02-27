@@ -753,7 +753,7 @@ export default function Canvas() {
                                 {/* Hero image */}
                                 <div className="w-full h-[30px] rounded-sm overflow-hidden mb-1.5 border border-[#D5CD97]/30">
                                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                                    <img src="https://cdn.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/b431fc30-8d6a-013e-bcf4-0a58a9feac02/tanpopo-16.jpg" alt="果樹園" className="w-full h-full object-cover" />
+                                    <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/b41733e0-8d6a-013e-bcf2-0a58a9feac02/sunfuji_kodama_1207-25.jpg" alt="果樹園" className="w-full h-full object-cover" />
                                 </div>
                                 <div className="space-y-0.5">
                                     <p className="text-[8px] font-serif text-ink/60 leading-[1.7]">
