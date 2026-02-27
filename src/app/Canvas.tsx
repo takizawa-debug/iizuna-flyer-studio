@@ -465,7 +465,7 @@ export default function Canvas() {
                             </p>
 
                             {/* Hero image */}
-                            <div className="w-full h-[80px] rounded-sm overflow-hidden mb-2 border border-[#D5CD97]/30">
+                            <div className="w-full h-[50px] rounded-sm overflow-hidden mb-2 border border-[#D5CD97]/30">
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/b0a34c40-a041-013e-b18a-0a58a9feac02/20231013_sweet-3.jpg" alt="いいづなりんご" className="w-full h-full object-cover" />
                             </div>
@@ -599,17 +599,18 @@ export default function Canvas() {
                                     <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>体験する</span>
                                 </div>
 
-                                <div className="bg-white/50 rounded-sm overflow-hidden">
-                                    <div className="w-full h-[50px] bg-[#E8C340]/10 flex items-center justify-center">
+                                {/* Hero image - アップルミュージアム */}
+                                <div className="w-full h-[50px] rounded-sm overflow-hidden mb-2 border border-[#D5CD97]/30">
+                                    <div className="w-full h-full bg-[#E8C340]/10 flex items-center justify-center">
                                         <span className="text-[8px] text-[#E8C340]/50" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>PHOTO</span>
                                     </div>
-                                    <div className="px-2.5 py-2">
-                                        <p className="text-[9px] font-bold tracking-[0.08em] mb-0.5" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>アップルミュージアム</p>
-                                        <p className="text-[8px] font-serif text-ink/55 leading-[1.6]">
-                                            ニュートンのりんごの木から初代Macまで。<br />
-                                            全国でも珍しいりんご専門の博物館。
-                                        </p>
-                                    </div>
+                                </div>
+
+                                <div className="bg-[#E8C340]/10 rounded-sm px-2.5 py-1.5">
+                                    <p className="text-[9px] font-bold tracking-[0.08em] mb-0.5" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>アップルミュージアム</p>
+                                    <p className="text-[8px] font-serif text-ink/55 leading-[1.6]">
+                                        ニュートンのりんごの木から初代Macまで。全国でも珍しいりんご専門の博物館。
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -680,6 +681,11 @@ export default function Canvas() {
                                     <div className="w-[3px] h-[16px] bg-ink/25 rounded-full"></div>
                                     <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>暮らす</span>
                                 </div>
+                                {/* Hero image */}
+                                <div className="w-full h-[30px] rounded-sm overflow-hidden mb-1.5 border border-[#D5CD97]/30">
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                                    <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/120aadf0-a042-013e-ffb1-0a58a9feac02/iizuna_20250123-10.jpg" alt="飯綱町の暮らし" className="w-full h-full object-cover" />
+                                </div>
                                 <div className="space-y-0.5">
                                     <p className="text-[8px] font-serif text-ink/65 leading-[1.7]">
                                         <span className="font-bold">移住体験住宅</span>——古民家に最長6泊7日のお試し滞在
@@ -702,6 +708,11 @@ export default function Canvas() {
                                     <div className="w-[3px] h-[16px] bg-[#C4956A] rounded-full"></div>
                                     <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>営む</span>
                                 </div>
+                                {/* Hero image */}
+                                <div className="w-full h-[30px] rounded-sm overflow-hidden mb-1.5 border border-[#D5CD97]/30">
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                                    <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/ec2954c0-a041-013e-ff9d-0a58a9feac02/iizuna_20220525-2.jpg" alt="果樹園" className="w-full h-full object-cover" />
+                                </div>
                                 <div className="space-y-0.5">
                                     <p className="text-[8px] font-serif text-ink/60 leading-[1.7]">
                                         <span className="font-bold">JAりんご部会講習会</span> / 苗木導入補助 / 大型機械整備
@@ -712,42 +723,6 @@ export default function Canvas() {
                                 </div>
                             </div>
 
-                            {/* Divider */}
-                            <div className="w-full border-t border-[#D5CD97]/40 mb-2"></div>
-
-                            {/* Site information block */}
-                            <div className="mt-auto">
-                                <p className="text-[9px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
-                                    サイトの使い方
-                                </p>
-                                <div className="space-y-1">
-                                    <div className="flex gap-2 items-start">
-                                        <span className="text-[8px] flex-shrink-0">🔗</span>
-                                        <p className="text-[8px] font-serif text-ink/55 leading-[1.5]">
-                                            <span className="font-bold">キーワードで探索</span>——気になる言葉から関連情報へ
-                                        </p>
-                                    </div>
-                                    <div className="flex gap-2 items-start">
-                                        <span className="text-[8px] flex-shrink-0">📄</span>
-                                        <p className="text-[8px] font-serif text-ink/55 leading-[1.5]">
-                                            <span className="font-bold">A4印刷対応</span>——QRコード付きPDFで町歩きに
-                                        </p>
-                                    </div>
-                                    <div className="flex gap-2 items-start">
-                                        <span className="text-[8px] flex-shrink-0">📱</span>
-                                        <p className="text-[8px] font-serif text-ink/55 leading-[1.5]">
-                                            <span className="font-bold">SNS共有</span>——全記事にURLを付与、ワンクリック共有
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="mt-1.5 text-center bg-ink/5 rounded-sm px-2 py-1">
-                                    <p className="text-[8px] font-serif text-ink/50 leading-[1.6]">
-                                        すべての記事は
-                                        <span className="font-bold text-ink/70" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}> appletown-iizuna.com </span>
-                                        でお読みいただけます
-                                    </p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
