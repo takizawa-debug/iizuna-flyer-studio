@@ -37,14 +37,18 @@ async function getBrowser() {
     const isVercel = !!process.env.VERCEL || !!process.env.AWS_LAMBDA_FUNCTION_NAME;
 
     if (isVercel) {
-        // Serverless environment — use @sparticuz/chromium + puppeteer-core
-        const chromium = (await import('@sparticuz/chromium')).default;
+        // Serverless environment — use @sparticuz/chromium-min + puppeteer-core
+        const chromium = (await import('@sparticuz/chromium-min')).default;
         const puppeteerCore = (await import('puppeteer-core')).default;
+
+        const executablePath = await chromium.executablePath(
+            'https://github.com/nichochar/chromium-oss/releases/download/v143.0.0/chromium-v143.0.0-pack.tar'
+        );
 
         return puppeteerCore.launch({
             args: chromium.args,
             defaultViewport: { width: 1200, height: 2400 },
-            executablePath: await chromium.executablePath(),
+            executablePath,
             headless: 'shell' as const,
         });
     } else {
