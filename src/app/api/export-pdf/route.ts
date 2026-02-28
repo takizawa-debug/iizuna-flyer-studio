@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import puppeteer from 'puppeteer';
 import { jsPDF } from 'jspdf';
 
 export const maxDuration = 120;
@@ -34,6 +33,35 @@ function drawTrimMarks(pdf: jsPDF, bleed: number, contentW: number, contentH: nu
     pdf.line(x2, y2 + markOffset, x2, y2 + markOffset + markLen);
 }
 
+async function getBrowser() {
+    const isVercel = !!process.env.VERCEL || !!process.env.AWS_LAMBDA_FUNCTION_NAME;
+
+    if (isVercel) {
+        // Serverless environment — use @sparticuz/chromium + puppeteer-core
+        const chromium = (await import('@sparticuz/chromium')).default;
+        const puppeteerCore = (await import('puppeteer-core')).default;
+
+        return puppeteerCore.launch({
+            args: chromium.args,
+            defaultViewport: { width: 1200, height: 2400 },
+            executablePath: await chromium.executablePath(),
+            headless: 'shell' as const,
+        });
+    } else {
+        // Local development — use regular puppeteer with bundled Chromium
+        const puppeteer = (await import('puppeteer')).default;
+        return puppeteer.launch({
+            headless: true,
+            args: [
+                '--no-sandbox',
+                '--disable-setuid-sandbox',
+                '--disable-dev-shm-usage',
+                '--font-render-hinting=none',
+            ],
+        });
+    }
+}
+
 export async function GET(req: NextRequest) {
     let browser;
     try {
@@ -43,15 +71,7 @@ export async function GET(req: NextRequest) {
         const lang = req.nextUrl.searchParams.get('lang') || 'ja';
         const pageUrl = `${protocol}://${host}?color=${encodeURIComponent(color)}&lang=${encodeURIComponent(lang)}`;
 
-        browser = await puppeteer.launch({
-            headless: true,
-            args: [
-                '--no-sandbox',
-                '--disable-setuid-sandbox',
-                '--disable-dev-shm-usage',
-                '--font-render-hinting=none',
-            ],
-        });
+        browser = await getBrowser();
 
         const page = await browser.newPage();
 
@@ -73,9 +93,10 @@ export async function GET(req: NextRequest) {
 
         // Hide UI controls and set scale to 1
         await page.evaluate(() => {
-            // Hide sticky header
-            const header = document.querySelector('.sticky');
-            if (header) (header as HTMLElement).style.display = 'none';
+            // Hide fixed header
+            document.querySelectorAll('.fixed').forEach(el => {
+                (el as HTMLElement).style.display = 'none';
+            });
 
             // Hide elements marked for export hiding
             document.querySelectorAll('[data-export-hide]').forEach(el => {
