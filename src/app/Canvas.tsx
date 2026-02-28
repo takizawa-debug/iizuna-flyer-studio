@@ -91,6 +91,7 @@ export default function Canvas() {
     const [randomApples, setRandomApples] = useState<string[]>([]);
     const [exporting, setExporting] = useState(false);
     const [exportProgress, setExportProgress] = useState(0);
+    const [showBrowserBanner, setShowBrowserBanner] = useState(false);
     const frontRef = useRef<HTMLDivElement>(null);
     const backRef = useRef<HTMLDivElement>(null);
 
@@ -172,6 +173,13 @@ export default function Canvas() {
         // Need about 30 apples for a 6x5 grid (30 items total limit)
         // eslint-disable-next-line react-hooks/exhaustive-deps
         setRandomApples(shuffleArray(APPLE_IMAGES).slice(0, 30));
+
+        // Detect non-Chrome browsers
+        const ua = navigator.userAgent;
+        const isChrome = /Chrome/.test(ua) && !/Edg|OPR/.test(ua);
+        if (!isChrome) {
+            setShowBrowserBanner(true);
+        }
     }, []);
 
     return (
@@ -195,6 +203,33 @@ export default function Canvas() {
                         </div>
                         <p className="text-[10px] font-sans text-ink/40 animate-pulse">しばらくお待ちください</p>
                     </div>
+                </div>
+            )}
+            {/* Browser Recommendation Banner */}
+            {showBrowserBanner && (
+                <div className="fixed bottom-4 left-4 z-[90] max-w-[360px] bg-white rounded-xl shadow-lg border border-ink/10 p-4 flex gap-3 items-start print:hidden animate-in fade-in slide-in-from-bottom-4">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-[#4285F4] via-[#EA4335] to-[#FBBC05] flex items-center justify-center">
+                        <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" /></svg>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                        <p className="text-[11px] font-sans font-bold text-ink/80 mb-0.5">
+                            PDF出力にはGoogle Chromeを推奨
+                        </p>
+                        <p className="text-[10px] font-sans text-ink/50 leading-[1.5]">
+                            フォントや配置を正確に出力するため、<br />
+                            <a href="https://www.google.com/chrome/" target="_blank" rel="noopener noreferrer" className="text-[#4285F4] underline hover:text-[#1a73e8]">
+                                Google Chrome
+                            </a>
+                            でのご利用をおすすめします。
+                        </p>
+                    </div>
+                    <button
+                        onClick={() => setShowBrowserBanner(false)}
+                        className="flex-shrink-0 p-1 text-ink/30 hover:text-ink/60 transition-colors"
+                        aria-label="閉じる"
+                    >
+                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12" /></svg>
+                    </button>
                 </div>
             )}
             <div className="fixed top-0 left-0 right-0 z-50 p-4 flex justify-center items-center pointer-events-none print:hidden">

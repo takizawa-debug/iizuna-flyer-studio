@@ -94,6 +94,8 @@
   /* ── Remove ALL box-shadows throughout ── */
   body.is-printing * {
     box-shadow: none !important;
+    filter: none !important;
+    text-shadow: none !important;
   }
 
   /* ──────────────────────────────────────
