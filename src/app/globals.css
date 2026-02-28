@@ -63,6 +63,7 @@
     margin: 0;
   }
 
+  /* ── Global print resets ── */
   html,
   body {
     margin: 0 !important;
@@ -71,101 +72,108 @@
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
     overflow: visible !important;
+    width: auto !important;
+    height: auto !important;
   }
 
-  /* ── When body has .is-printing ── */
-
-  /* Hide the fixed toolbar */
-  body.is-printing .fixed {
-    display: none !important;
-  }
-
-  /* Hide progress overlay if any */
-  body.is-printing [class*="z-[100]"] {
-    display: none !important;
-  }
-
-  /* Remove top padding from content wrapper */
-  body.is-printing .pt-\[56px\] {
-    padding-top: 0 !important;
-  }
-
-  /* Hide section labels */
-  body.is-printing h2 {
-    display: none !important;
-  }
-
-  /* Remove zoom controls */
-  body.is-printing [data-export-hide] {
-    display: none !important;
-  }
-
-  /* Flatten the scroll container */
-  body.is-printing .overflow-auto {
-    overflow: visible !important;
-  }
-
-  /* Remove all box shadows */
-  body.is-printing [data-panel] {
-    box-shadow: none !important;
-  }
-
-  /* Kill wabi-shadow on images too */
-  body.is-printing .wabi-shadow {
-    box-shadow: none !important;
-  }
-
-  body.is-printing .shadow-sm,
-  body.is-printing .shadow-2xl {
-    box-shadow: none !important;
-  }
-
-  /* Remove the SVG filter on body */
-  body.is-printing>svg {
-    display: none !important;
-  }
-
-  /* Remove texture-paper overlay dots from body */
+  /* Remove body texture background */
   body.is-printing {
     background-image: none !important;
   }
 
-  /* Each panel fills exactly one A4 page via scaling */
-  /* 840px x 594px → 297mm x 210mm */
-  /* At 96dpi: 297mm = 1122.52px, scale = 1122.52 / 840 ≈ 1.3363 */
+  /* Hide SVG filters from body */
+  body.is-printing>svg {
+    display: none !important;
+  }
+
+  /* ── Hide all non-content elements ── */
+
+  /* Fixed toolbar */
+  body.is-printing .fixed {
+    display: none !important;
+  }
+
+  /* Progress overlay */
+  body.is-printing [class*="z-\[100\]"] {
+    display: none !important;
+  }
+
+  /* Section labels (h2) */
+  body.is-printing h2.print\:hidden {
+    display: none !important;
+  }
+
+  /* Export-hide elements */
+  body.is-printing [data-export-hide] {
+    display: none !important;
+  }
+
+  /* ── Remove ALL padding, margin, gap from wrapper chain ── */
+
+  /* 1. pt-[56px] padding wrapper */
+  body.is-printing .pt-\[56px\] {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* 2. Root scrollable container */
+  body.is-printing .overflow-auto {
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  /* 3. Scale container (pb-12 flex flex-col gap-16) */
+  body.is-printing .pb-12 {
+    padding: 0 !important;
+    margin: 0 !important;
+    gap: 0 !important;
+    display: block !important;
+  }
+
+  /* 4. Section wrapper (flex flex-col gap-3) */
+  body.is-printing .gap-3 {
+    gap: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  /* ── Remove ALL shadows ── */
+  body.is-printing * {
+    box-shadow: none !important;
+  }
+
+  /* ── Panel sizing: exact A4 landscape ── */
   body.is-printing [data-panel] {
+    display: flex !important;
     width: 840px !important;
     height: 594px !important;
     transform: scale(1.3363) !important;
     transform-origin: top left !important;
-    page-break-after: always;
-    break-after: page;
-    page-break-inside: avoid;
-    break-inside: avoid;
-    box-shadow: none !important;
-  }
-
-  body.is-printing [data-panel]:last-of-type {
-    page-break-after: auto;
-    break-after: auto;
-  }
-
-  /* Remove section wrapper gaps/padding  */
-  body.is-printing .flex.flex-col.gap-3 {
-    gap: 0 !important;
-    padding: 0 !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
     margin: 0 !important;
-  }
-
-  body.is-printing .flex.flex-col.gap-16 {
-    gap: 0 !important;
     padding: 0 !important;
-    margin: 0 !important;
+    position: relative !important;
   }
 
-  /* Ensure images don't get clipped cross-page */
+  /* Page break after front panel */
+  body.is-printing [data-panel="front"] {
+    page-break-after: always !important;
+    break-after: page !important;
+    margin-bottom: 0 !important;
+  }
+
+  body.is-printing [data-panel="back"] {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+
+  /* Prevent images from getting split across pages */
   body.is-printing img {
-    page-break-inside: avoid;
-    break-inside: avoid;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 }
