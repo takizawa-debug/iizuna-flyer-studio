@@ -98,24 +98,50 @@ export default function Canvas() {
         setExporting(true);
         setExportProgress(50);
         try {
-            // Save current scale and reset to 1 for print
-            const currentScale = scale;
-            setScale(1);
+            // Create a print-only container with exact A4 sizing
+            const printContainer = document.createElement('div');
+            printContainer.id = 'print-container';
+            printContainer.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:99999;background:white;';
 
-            // Wait for React to re-render at scale 1
-            await new Promise(r => setTimeout(r, 300));
+            // Clone front panel
+            const frontEl = frontRef.current;
+            if (frontEl) {
+                const frontClone = frontEl.cloneNode(true) as HTMLElement;
+                const frontPage = document.createElement('div');
+                frontPage.className = 'print-page';
+                frontPage.appendChild(frontClone);
+                printContainer.appendChild(frontPage);
+            }
+
+            // Clone back panel
+            const backEl = backRef.current;
+            if (backEl) {
+                const backClone = backEl.cloneNode(true) as HTMLElement;
+                const backPage = document.createElement('div');
+                backPage.className = 'print-page';
+                backPage.appendChild(backClone);
+                printContainer.appendChild(backPage);
+            }
+
+            document.body.appendChild(printContainer);
+            document.body.classList.add('is-printing');
 
             setExportProgress(80);
 
-            // Trigger browser print dialog
+            await new Promise(r => setTimeout(r, 200));
+
             window.print();
 
             setExportProgress(100);
 
-            // Restore scale after print
-            setScale(currentScale);
+            // Cleanup
+            document.body.classList.remove('is-printing');
+            document.body.removeChild(printContainer);
         } catch (err) {
             console.error('PDF export failed:', err);
+            document.body.classList.remove('is-printing');
+            const pc = document.getElementById('print-container');
+            if (pc) pc.remove();
             alert(t('ui.exportFailed', lang) + '\n' + String(err));
         } finally {
             setTimeout(() => {

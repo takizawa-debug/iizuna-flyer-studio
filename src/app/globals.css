@@ -56,45 +56,59 @@
   }
 }
 
-/* Print-to-PDF styles */
+/* ===== Print-to-PDF: exact A4 landscape ===== */
 @media print {
   @page {
-    size: 297mm 210mm landscape;
+    size: 297mm 210mm;
     margin: 0;
   }
 
+  html,
   body {
+    margin: 0 !important;
+    padding: 0 !important;
     background: white !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+    overflow: visible !important;
   }
 
-  /* Hide all UI controls */
-  [data-export-hide],
-  [data-no-print] {
+  /* When is-printing class is on body, hide the entire app */
+  body.is-printing>*:not(#print-container) {
     display: none !important;
   }
 
-  /* Reset zoom scale */
-  [style*="scale"] {
-    transform: scale(1) !important;
+  /* Print container itself */
+  #print-container {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    background: none !important;
+    z-index: auto !important;
   }
 
-  /* Remove shadows and outer spacing */
-  .shadow-2xl {
-    box-shadow: none !important;
-  }
-
-  /* Page break between panels */
-  [data-panel="front"] {
+  /* Each print page = one A4 sheet */
+  .print-page {
+    width: 297mm;
+    height: 210mm;
+    overflow: hidden;
     page-break-after: always;
     break-after: page;
+    position: relative;
   }
 
-  /* Ensure panels fill the page */
-  [data-panel="front"],
-  [data-panel="back"] {
-    width: 297mm !important;
-    height: 210mm !important;
+  .print-page:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  /* Scale the 840x594px panel to fit 297mm x 210mm exactly */
+  /* 297mm ≈ 1122.5px at 96dpi. Scale factor = 1122.5 / 840 ≈ 1.3363 */
+  .print-page>[data-panel] {
+    width: 840px !important;
+    height: 594px !important;
+    transform: scale(1.3363) !important;
+    transform-origin: top left !important;
+    box-shadow: none !important;
   }
 }
