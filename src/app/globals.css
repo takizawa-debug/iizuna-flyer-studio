@@ -56,7 +56,7 @@
   }
 }
 
-/* ===== Print-to-PDF: exact A4 landscape ===== */
+/* ===== Print-to-PDF: exact A4 landscape (297mm × 210mm) ===== */
 @media print {
   @page {
     size: 297mm 210mm;
@@ -73,42 +73,99 @@
     overflow: visible !important;
   }
 
-  /* When is-printing class is on body, hide the entire app */
-  body.is-printing>*:not(#print-container) {
+  /* ── When body has .is-printing ── */
+
+  /* Hide the fixed toolbar */
+  body.is-printing .fixed {
     display: none !important;
   }
 
-  /* Print container itself */
-  #print-container {
-    position: static !important;
-    width: auto !important;
-    height: auto !important;
-    background: none !important;
-    z-index: auto !important;
+  /* Hide progress overlay if any */
+  body.is-printing [class*="z-[100]"] {
+    display: none !important;
   }
 
-  /* Each print page = one A4 sheet */
-  .print-page {
-    width: 297mm;
-    height: 210mm;
-    overflow: hidden;
-    page-break-after: always;
-    break-after: page;
-    position: relative;
+  /* Remove top padding from content wrapper */
+  body.is-printing .pt-\[56px\] {
+    padding-top: 0 !important;
   }
 
-  .print-page:last-child {
-    page-break-after: auto;
-    break-after: auto;
+  /* Hide section labels */
+  body.is-printing h2 {
+    display: none !important;
   }
 
-  /* Scale the 840x594px panel to fit 297mm x 210mm exactly */
-  /* 297mm ≈ 1122.5px at 96dpi. Scale factor = 1122.5 / 840 ≈ 1.3363 */
-  .print-page>[data-panel] {
+  /* Remove zoom controls */
+  body.is-printing [data-export-hide] {
+    display: none !important;
+  }
+
+  /* Flatten the scroll container */
+  body.is-printing .overflow-auto {
+    overflow: visible !important;
+  }
+
+  /* Remove all box shadows */
+  body.is-printing [data-panel] {
+    box-shadow: none !important;
+  }
+
+  /* Kill wabi-shadow on images too */
+  body.is-printing .wabi-shadow {
+    box-shadow: none !important;
+  }
+
+  body.is-printing .shadow-sm,
+  body.is-printing .shadow-2xl {
+    box-shadow: none !important;
+  }
+
+  /* Remove the SVG filter on body */
+  body.is-printing>svg {
+    display: none !important;
+  }
+
+  /* Remove texture-paper overlay dots from body */
+  body.is-printing {
+    background-image: none !important;
+  }
+
+  /* Each panel fills exactly one A4 page via scaling */
+  /* 840px x 594px → 297mm x 210mm */
+  /* At 96dpi: 297mm = 1122.52px, scale = 1122.52 / 840 ≈ 1.3363 */
+  body.is-printing [data-panel] {
     width: 840px !important;
     height: 594px !important;
     transform: scale(1.3363) !important;
     transform-origin: top left !important;
+    page-break-after: always;
+    break-after: page;
+    page-break-inside: avoid;
+    break-inside: avoid;
     box-shadow: none !important;
+  }
+
+  body.is-printing [data-panel]:last-of-type {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  /* Remove section wrapper gaps/padding  */
+  body.is-printing .flex.flex-col.gap-3 {
+    gap: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  body.is-printing .flex.flex-col.gap-16 {
+    gap: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Ensure images don't get clipped cross-page */
+  body.is-printing img {
+    page-break-inside: avoid;
+    break-inside: avoid;
   }
 }

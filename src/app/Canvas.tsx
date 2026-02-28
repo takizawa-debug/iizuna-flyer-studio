@@ -98,50 +98,37 @@ export default function Canvas() {
         setExporting(true);
         setExportProgress(50);
         try {
-            // Create a print-only container with exact A4 sizing
-            const printContainer = document.createElement('div');
-            printContainer.id = 'print-container';
-            printContainer.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:99999;background:white;';
-
-            // Clone front panel
-            const frontEl = frontRef.current;
-            if (frontEl) {
-                const frontClone = frontEl.cloneNode(true) as HTMLElement;
-                const frontPage = document.createElement('div');
-                frontPage.className = 'print-page';
-                frontPage.appendChild(frontClone);
-                printContainer.appendChild(frontPage);
-            }
-
-            // Clone back panel
-            const backEl = backRef.current;
-            if (backEl) {
-                const backClone = backEl.cloneNode(true) as HTMLElement;
-                const backPage = document.createElement('div');
-                backPage.className = 'print-page';
-                backPage.appendChild(backClone);
-                printContainer.appendChild(backPage);
-            }
-
-            document.body.appendChild(printContainer);
+            // Add print class to body — CSS @media print rules handle the rest
             document.body.classList.add('is-printing');
+
+            // Temporarily reset scale inline
+            const scaleEl = document.querySelector('[style*="scale"]') as HTMLElement;
+            const origTransform = scaleEl?.style.transform || '';
+            if (scaleEl) {
+                scaleEl.style.transform = 'scale(1)';
+                scaleEl.style.gap = '0px';
+                scaleEl.style.paddingBottom = '0px';
+            }
 
             setExportProgress(80);
 
-            await new Promise(r => setTimeout(r, 200));
+            // Wait for browser to apply styles
+            await new Promise(r => setTimeout(r, 300));
 
             window.print();
 
             setExportProgress(100);
 
-            // Cleanup
+            // Restore
             document.body.classList.remove('is-printing');
-            document.body.removeChild(printContainer);
+            if (scaleEl) {
+                scaleEl.style.transform = origTransform;
+                scaleEl.style.gap = '';
+                scaleEl.style.paddingBottom = '';
+            }
         } catch (err) {
             console.error('PDF export failed:', err);
             document.body.classList.remove('is-printing');
-            const pc = document.getElementById('print-container');
-            if (pc) pc.remove();
             alert(t('ui.exportFailed', lang) + '\n' + String(err));
         } finally {
             setTimeout(() => {
