@@ -55,3 +55,46 @@
     box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.06), 0px 1px 2px rgba(0, 0, 0, 0.04);
   }
 }
+
+/* Print-to-PDF styles */
+@media print {
+  @page {
+    size: 297mm 210mm landscape;
+    margin: 0;
+  }
+
+  body {
+    background: white !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide all UI controls */
+  [data-export-hide],
+  [data-no-print] {
+    display: none !important;
+  }
+
+  /* Reset zoom scale */
+  [style*="scale"] {
+    transform: scale(1) !important;
+  }
+
+  /* Remove shadows and outer spacing */
+  .shadow-2xl {
+    box-shadow: none !important;
+  }
+
+  /* Page break between panels */
+  [data-panel="front"] {
+    page-break-after: always;
+    break-after: page;
+  }
+
+  /* Ensure panels fill the page */
+  [data-panel="front"],
+  [data-panel="back"] {
+    width: 297mm !important;
+    height: 210mm !important;
+  }
+}

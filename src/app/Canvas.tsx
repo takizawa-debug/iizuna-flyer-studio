@@ -96,30 +96,24 @@ export default function Canvas() {
 
     const exportPDF = useCallback(async () => {
         setExporting(true);
-        setExportProgress(0);
+        setExportProgress(50);
         try {
-            setExportProgress(10);
+            // Save current scale and reset to 1 for print
+            const currentScale = scale;
+            setScale(1);
 
-            const response = await fetch(`/api/export-pdf?color=${encodeURIComponent(coverColor)}&lang=${lang}`);
-
-            setExportProgress(60);
-
-            if (!response.ok) {
-                const err = await response.json();
-                throw new Error(err.details || 'Export failed');
-            }
+            // Wait for React to re-render at scale 1
+            await new Promise(r => setTimeout(r, 300));
 
             setExportProgress(80);
 
-            const blob = await response.blob();
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'iizuna-apple-pamphlet.pdf';
-            a.click();
-            URL.revokeObjectURL(url);
+            // Trigger browser print dialog
+            window.print();
 
             setExportProgress(100);
+
+            // Restore scale after print
+            setScale(currentScale);
         } catch (err) {
             console.error('PDF export failed:', err);
             alert(t('ui.exportFailed', lang) + '\n' + String(err));
@@ -129,7 +123,7 @@ export default function Canvas() {
                 setExportProgress(0);
             }, 500);
         }
-    }, [coverColor, lang]);
+    }, [coverColor, lang, scale]);
 
     const getBaseColor = (color: string) => {
         if (color === '#FFFFFF') return '#F5F5F5';
