@@ -97,7 +97,7 @@
   }
 
   /* ──────────────────────────────────────
-     Wrapper chain: target ONLY the 3 layers
+     Wrapper chain: target ONLY the layers
      between body and [data-panel]
      ────────────────────────────────────── */
 
@@ -107,47 +107,53 @@
     margin: 0 !important;
   }
 
-  /* Layer 2: Scale container — the JS already resets transform/gap/padding,
-     but also reset via CSS for safety */
+  /* Layer 2: Scale container */
   body.is-printing .pb-12.min-h-max {
     padding: 0 !important;
     margin: 0 !important;
     gap: 0 !important;
+    display: block !important;
   }
 
-  /* Layer 3: Section wrappers that directly contain [data-panel]
-     These are div.flex.flex-col.gap-3 that have print:break-after-page */
-  body.is-printing [data-panel="front"] {
-    margin-bottom: 0 !important;
+  /* Layer 3: Section wrappers (direct children of scale container)
+     These contain h2 + [data-panel]. Make each exactly one A4 page. */
+  body.is-printing .pb-12.min-h-max>* {
+    width: 297mm !important;
+    height: 210mm !important;
+    overflow: hidden !important;
+    gap: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    display: block !important;
   }
 
-  /* The h2 labels next to panels */
+  body.is-printing .pb-12.min-h-max>*:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+
+  /* The h2 labels */
   body.is-printing h2.print\:hidden {
     display: none !important;
   }
 
-  /* Also flatten overflow on root scroll container */
+  /* Flatten overflow on root scroll container */
   body.is-printing .overflow-auto {
     overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
-  /* ── Panel sizing  ── */
+  /* ── Panel sizing: zoom to fill A4 page ── */
+  /* 840px × 1.3363 = 1122.5px = 297mm @96dpi */
+  /* 594px × 1.3363 = 793.8px  = 210mm @96dpi */
   body.is-printing [data-panel] {
     width: 840px !important;
     height: 594px !important;
-    /* Scale 840px → 297mm (1122.5px @96dpi) = ×1.3363 */
     zoom: 1.3363 !important;
     page-break-inside: avoid !important;
     break-inside: avoid !important;
-  }
-
-  body.is-printing [data-panel="front"] {
-    page-break-after: always !important;
-    break-after: page !important;
-  }
-
-  body.is-printing [data-panel="back"] {
-    page-break-after: auto !important;
-    break-after: auto !important;
   }
 }
