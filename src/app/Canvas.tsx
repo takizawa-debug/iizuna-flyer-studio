@@ -678,7 +678,7 @@ export default function Canvas() {
                                                     <div className={`w-[5px] h-[5px] rounded-full flex-shrink-0 ${i === arr.length - 1 ? 'bg-[#D45D56]' : 'bg-[#E8C340]'}`}></div>
                                                     {i < arr.length - 1 && <div className="w-px h-[6px] bg-[#E8C340]/40"></div>}
                                                 </div>
-                                                <span className="text-[8px] text-ink/40 flex-shrink-0 w-[34px] leading-[1.4]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{item.year}</span>
+                                                <span className="text-[8px] text-ink/40 flex-shrink-0 w-[30px] ml-[2px] leading-[1.4]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{item.year}</span>
                                                 <p className="text-[8px] font-serif text-ink/70 leading-[1.4]">{t(item.key, lang)}</p>
                                             </div>
                                         ))}
