@@ -3,58 +3,22 @@ import { jsPDF } from 'jspdf';
 
 export const maxDuration = 120;
 
-// Trim mark (トンボ) helper — draws crop marks at each corner
-function drawTrimMarks(pdf: jsPDF, bleed: number, contentW: number, contentH: number) {
-    const markLen = 8; // mm length of each mark line
-    const markOffset = 1; // mm gap between content edge and mark start
-    pdf.setDrawColor(0, 0, 0);
-    pdf.setLineWidth(0.25);
-
-    // Corner positions (content edges within the bleed)
-    const x1 = bleed;
-    const y1 = bleed;
-    const x2 = bleed + contentW;
-    const y2 = bleed + contentH;
-
-    // Top-Left
-    pdf.line(x1 - markOffset, y1, x1 - markOffset - markLen, y1); // horizontal left
-    pdf.line(x1, y1 - markOffset, x1, y1 - markOffset - markLen); // vertical up
-
-    // Top-Right
-    pdf.line(x2 + markOffset, y1, x2 + markOffset + markLen, y1);
-    pdf.line(x2, y1 - markOffset, x2, y1 - markOffset - markLen);
-
-    // Bottom-Left
-    pdf.line(x1 - markOffset, y2, x1 - markOffset - markLen, y2);
-    pdf.line(x1, y2 + markOffset, x1, y2 + markOffset + markLen);
-
-    // Bottom-Right
-    pdf.line(x2 + markOffset, y2, x2 + markOffset + markLen, y2);
-    pdf.line(x2, y2 + markOffset, x2, y2 + markOffset + markLen);
-}
-
 async function getBrowser() {
-    const isVercel = !!process.env.VERCEL || !!process.env.AWS_LAMBDA_FUNCTION_NAME;
+    if (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME) {
+        // Serverless: use @sparticuz/chromium (full) + puppeteer-core
+        const chromium = await import('@sparticuz/chromium');
+        const puppeteerCore = await import('puppeteer-core');
 
-    if (isVercel) {
-        // Serverless environment — use @sparticuz/chromium-min + puppeteer-core
-        const chromium = (await import('@sparticuz/chromium-min')).default;
-        const puppeteerCore = (await import('puppeteer-core')).default;
-
-        const executablePath = await chromium.executablePath(
-            'https://github.com/Sparticuz/chromium/releases/download/v143.0.4/chromium-v143.0.4-pack.x64.tar'
-        );
-
-        return puppeteerCore.launch({
-            args: chromium.args,
-            defaultViewport: { width: 1200, height: 2400 },
-            executablePath,
-            headless: 'shell' as const,
+        return puppeteerCore.default.launch({
+            args: chromium.default.args,
+            defaultViewport: { width: 1200, height: 2400, deviceScaleFactor: 5 },
+            executablePath: await chromium.default.executablePath(),
+            headless: true,
         });
     } else {
-        // Local development — use regular puppeteer with bundled Chromium
-        const puppeteer = (await import('puppeteer')).default;
-        return puppeteer.launch({
+        // Local: use regular puppeteer
+        const puppeteer = await import('puppeteer');
+        return puppeteer.default.launch({
             headless: true,
             args: [
                 '--no-sandbox',
@@ -76,14 +40,12 @@ export async function GET(req: NextRequest) {
         const pageUrl = `${protocol}://${host}?color=${encodeURIComponent(color)}&lang=${encodeURIComponent(lang)}`;
 
         browser = await getBrowser();
-
         const page = await browser.newPage();
 
-        // Set viewport wider than panel to prevent clipping
         await page.setViewport({
             width: 1200,
             height: 2400,
-            deviceScaleFactor: 5, // 5x = ~359 DPI for commercial print quality
+            deviceScaleFactor: 5,
         });
 
         await page.goto(pageUrl, {
@@ -136,7 +98,7 @@ export async function GET(req: NextRequest) {
             ? await backPanel.screenshot({ type: 'png', omitBackground: false })
             : null;
 
-        // PDF dimensions — A4 landscape, no bleed, no trim marks
+        // PDF — A4 landscape
         const contentW = 297;
         const contentH = 210;
 
@@ -147,11 +109,9 @@ export async function GET(req: NextRequest) {
             compress: true,
         });
 
-        // Page 1 — Front (edge to edge)
         const frontBase64 = `data:image/png;base64,${Buffer.from(frontScreenshot).toString('base64')}`;
         pdf.addImage(frontBase64, 'PNG', 0, 0, contentW, contentH, undefined, 'FAST');
 
-        // Page 2 — Back
         if (backScreenshot) {
             pdf.addPage([contentW, contentH], 'landscape');
             const backBase64 = `data:image/png;base64,${Buffer.from(backScreenshot).toString('base64')}`;

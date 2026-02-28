@@ -98,62 +98,27 @@ export default function Canvas() {
         setExporting(true);
         setExportProgress(0);
         try {
-            const html2canvas = (await import('html2canvas-pro')).default;
-            const { jsPDF } = await import('jspdf');
-
             setExportProgress(10);
 
-            const scale = 4; // 4x for high DPI
-            const contentW = 297; // A4 landscape mm
-            const contentH = 210;
+            const response = await fetch(`/api/export-pdf?color=${encodeURIComponent(coverColor)}&lang=${lang}`);
 
-            // Capture front panel
-            setExportProgress(20);
-            const frontEl = frontRef.current;
-            if (!frontEl) throw new Error('Front panel not found');
-            const frontCanvas = await html2canvas(frontEl, {
-                scale,
-                useCORS: true,
-                allowTaint: true,
-                backgroundColor: null,
-                logging: false,
-            });
-            setExportProgress(50);
+            setExportProgress(60);
 
-            // Capture back panel
-            const backEl = backRef.current;
-            let backCanvas: HTMLCanvasElement | null = null;
-            if (backEl) {
-                backCanvas = await html2canvas(backEl, {
-                    scale,
-                    useCORS: true,
-                    allowTaint: true,
-                    backgroundColor: null,
-                    logging: false,
-                });
+            if (!response.ok) {
+                const err = await response.json();
+                throw new Error(err.details || 'Export failed');
             }
+
             setExportProgress(80);
 
-            // Build PDF
-            const pdf = new jsPDF({
-                orientation: 'landscape',
-                unit: 'mm',
-                format: [contentW, contentH],
-                compress: true,
-            });
+            const blob = await response.blob();
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'iizuna-apple-pamphlet.pdf';
+            a.click();
+            URL.revokeObjectURL(url);
 
-            const frontImg = frontCanvas.toDataURL('image/png');
-            pdf.addImage(frontImg, 'PNG', 0, 0, contentW, contentH, undefined, 'FAST');
-
-            if (backCanvas) {
-                pdf.addPage([contentW, contentH], 'landscape');
-                const backImg = backCanvas.toDataURL('image/png');
-                pdf.addImage(backImg, 'PNG', 0, 0, contentW, contentH, undefined, 'FAST');
-            }
-
-            setExportProgress(95);
-
-            pdf.save('iizuna-apple-pamphlet.pdf');
             setExportProgress(100);
         } catch (err) {
             console.error('PDF export failed:', err);
