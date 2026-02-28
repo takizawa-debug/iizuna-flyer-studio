@@ -330,7 +330,7 @@ export default function Canvas() {
                             )}
 
                             {/* --- 左面：中折り (Inside Flap) --- */}
-                            <div className={`w-[280px] h-full relative z-10 flex flex-col justify-center py-[20px] ${lang === 'ja' ? 'px-[28px]' : 'px-[24px]'} text-ink print:border-none`}>
+                            <div className={`w-[280px] h-full relative z-10 flex flex-col justify-center py-[20px] px-[24px] text-ink print:border-none`}>
 
                                 {/* Dynamic Absolute Background Silhouette - Using user's specific PNG */}
                                 <div
