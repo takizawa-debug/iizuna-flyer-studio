@@ -90,29 +90,79 @@ export default function Canvas() {
     });
     const [randomApples, setRandomApples] = useState<string[]>([]);
     const [exporting, setExporting] = useState(false);
+    const [exportProgress, setExportProgress] = useState(0);
     const frontRef = useRef<HTMLDivElement>(null);
     const backRef = useRef<HTMLDivElement>(null);
 
     const exportPDF = useCallback(async () => {
         setExporting(true);
+        setExportProgress(0);
         try {
-            const response = await fetch(`/api/export-pdf?color=${encodeURIComponent(coverColor)}&lang=${lang}`);
-            if (!response.ok) {
-                const err = await response.json();
-                throw new Error(err.details || 'Export failed');
+            const html2canvas = (await import('html2canvas-pro')).default;
+            const { jsPDF } = await import('jspdf');
+
+            setExportProgress(10);
+
+            const scale = 4; // 4x for high DPI
+            const contentW = 297; // A4 landscape mm
+            const contentH = 210;
+
+            // Capture front panel
+            setExportProgress(20);
+            const frontEl = frontRef.current;
+            if (!frontEl) throw new Error('Front panel not found');
+            const frontCanvas = await html2canvas(frontEl, {
+                scale,
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: null,
+                logging: false,
+            });
+            setExportProgress(50);
+
+            // Capture back panel
+            const backEl = backRef.current;
+            let backCanvas: HTMLCanvasElement | null = null;
+            if (backEl) {
+                backCanvas = await html2canvas(backEl, {
+                    scale,
+                    useCORS: true,
+                    allowTaint: true,
+                    backgroundColor: null,
+                    logging: false,
+                });
             }
-            const blob = await response.blob();
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'iizuna-apple-pamphlet.pdf';
-            a.click();
-            URL.revokeObjectURL(url);
+            setExportProgress(80);
+
+            // Build PDF
+            const pdf = new jsPDF({
+                orientation: 'landscape',
+                unit: 'mm',
+                format: [contentW, contentH],
+                compress: true,
+            });
+
+            const frontImg = frontCanvas.toDataURL('image/png');
+            pdf.addImage(frontImg, 'PNG', 0, 0, contentW, contentH, undefined, 'FAST');
+
+            if (backCanvas) {
+                pdf.addPage([contentW, contentH], 'landscape');
+                const backImg = backCanvas.toDataURL('image/png');
+                pdf.addImage(backImg, 'PNG', 0, 0, contentW, contentH, undefined, 'FAST');
+            }
+
+            setExportProgress(95);
+
+            pdf.save('iizuna-apple-pamphlet.pdf');
+            setExportProgress(100);
         } catch (err) {
             console.error('PDF export failed:', err);
             alert(t('ui.exportFailed', lang) + '\n' + String(err));
         } finally {
-            setExporting(false);
+            setTimeout(() => {
+                setExporting(false);
+                setExportProgress(0);
+            }, 500);
         }
     }, [coverColor, lang]);
 
@@ -154,6 +204,27 @@ export default function Canvas() {
 
     return (
         <div className="flex-1 overflow-auto relative flex flex-col items-center font-tsukushi font-bold">
+            {/* Export Progress Overlay */}
+            {exporting && (
+                <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center print:hidden">
+                    <div className="bg-washi rounded-2xl shadow-2xl p-8 w-[340px] flex flex-col items-center gap-5">
+                        <div className="w-12 h-12 rounded-full border-[3px] border-ink/10 border-t-[#D45D56] animate-spin" />
+                        <div className="w-full">
+                            <div className="flex justify-between text-xs font-sans text-ink/60 mb-2">
+                                <span>PDF出力中...</span>
+                                <span>{exportProgress}%</span>
+                            </div>
+                            <div className="w-full h-2 bg-ink/10 rounded-full overflow-hidden">
+                                <div
+                                    className="h-full bg-gradient-to-r from-[#D45D56] to-[#E88C83] rounded-full transition-all duration-500 ease-out"
+                                    style={{ width: `${exportProgress}%` }}
+                                />
+                            </div>
+                        </div>
+                        <p className="text-[10px] font-sans text-ink/40 animate-pulse">しばらくお待ちください</p>
+                    </div>
+                </div>
+            )}
             <div className="fixed top-0 left-0 right-0 z-50 p-4 flex justify-center items-center pointer-events-none print:hidden">
                 <div className="max-w-[840px] w-full flex justify-end items-center gap-4 pointer-events-none">
                     {/* Cover Color Toggle */}
