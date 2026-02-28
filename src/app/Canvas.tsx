@@ -183,7 +183,7 @@ export default function Canvas() {
     }, []);
 
     return (
-        <div className="flex-1 overflow-auto relative flex flex-col items-center font-tsukushi font-bold">
+        <div className="flex-1 overflow-auto relative flex flex-col items-center font-tsukushi font-medium">
             {/* Export Progress Overlay */}
             {exporting && (
                 <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center print:hidden">
