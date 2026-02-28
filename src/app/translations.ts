@@ -5,14 +5,14 @@ const translations = {
     'cover.title': {
         ja: 'りんごのまち いいづな',
         en: 'Apple Town Iizuna',
-        zh: '蘋果之鎮 飯綱',
+        zh: '苹果小镇 飯綱',
     },
 
     // ===== INSIDE FLAP (表面 左面：中折り) =====
     'insideFlap.heading': {
         ja: 'ようこそ、りんごのまちへ。',
         en: 'Welcome to Apple Town.',
-        zh: '歡迎來到蘋果之鎮。',
+        zh: '歡迎來到苹果小镇。',
     },
     'insideFlap.tagline': {
         ja: '北信濃の五岳が肩を並べ、\n空からの風が、そっと頬をなでる。\n冷たい空気と、温かな土をぎゅっと抱きしめて、\n色あざやかに輝くりんごと\n人々の心が、しずかに、響きあう。\nここは、実りの鼓動と、私の呼吸が交わる\nちょうど \u201cいい\u201d 場所。',
@@ -84,7 +84,7 @@ const translations = {
     'backCover.issuer': {
         ja: '発行：飯綱町 / りんごのまち いいづな 事務局\n〒389-1293 長野県上水内郡飯綱町牟礼2795-1\nTEL 026-253-2511',
         en: 'Published by: Iizuna Town / Apple Town Iizuna Office\n〒389-1293 Mure 2795-1, Iizuna, Kamiminochi, Nagano\nTEL 026-253-2511',
-        zh: '發行：飯綱町 / 蘋果之鎮飯綱事務局\n〒389-1293 長野縣上水內郡飯綱町牟禮2795-1\nTEL 026-253-2511',
+        zh: '發行：飯綱町 / 苹果小镇飯綱事務局\n〒389-1293 長野縣上水內郡飯綱町牟禮2795-1\nTEL 026-253-2511',
     },
 
     // ===== BACK SIDE (裏面) =====
@@ -165,7 +165,7 @@ const translations = {
     'timeline.now': {
         ja: '50品種以上を栽培、日本一のりんごのまちへ',
         en: '50+ varieties — toward Japan\'s best',
-        zh: '栽培逾50種，邁向日本第一蘋果鎮',
+        zh: '栽培逾50種，邁向日本第一苹果小镇',
     },
     'timeline.now.label': { ja: '現在', en: 'Now', zh: '現在' },
 
@@ -197,7 +197,7 @@ const translations = {
     'vision.title': {
         ja: '日本一のりんごのまちを目指して',
         en: 'Becoming Japan\'s Premier Apple Town',
-        zh: '邁向日本第一蘋果之鎮',
+        zh: '邁向日本第一苹果小镇',
     },
     'vision.desc': {
         ja: '飯綱町は「りんご」を核に地域資源を磨き上げる独自のまちづくりを推進中。農業に留まらず健康・文化・働き方まで含めた持続可能な地域モデルを展開しています。',
