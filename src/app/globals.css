@@ -56,14 +56,13 @@
   }
 }
 
-/* ===== Print-to-PDF: exact A4 landscape (297mm × 210mm) ===== */
+/* ===== Print-to-PDF: A4 landscape ===== */
 @media print {
   @page {
     size: 297mm 210mm;
     margin: 0;
   }
 
-  /* ── Global print resets ── */
   html,
   body {
     margin: 0 !important;
@@ -82,7 +81,7 @@
     display: none !important;
   }
 
-  /* ── Hide UI elements ── */
+  /* Hide UI elements */
   body.is-printing .fixed {
     display: none !important;
   }
@@ -91,25 +90,18 @@
     display: none !important;
   }
 
-  /* ── Remove ALL box-shadows throughout ── */
+  /* Remove box-shadows only (keep CSS filters like drop-shadow!) */
   body.is-printing * {
     box-shadow: none !important;
-    filter: none !important;
-    text-shadow: none !important;
   }
 
-  /* ──────────────────────────────────────
-     Wrapper chain: target ONLY the layers
-     between body and [data-panel]
-     ────────────────────────────────────── */
+  /* ── Wrapper chain ── */
 
-  /* Layer 1: pt-[56px] padding wrapper */
   body.is-printing .pt-\[56px\] {
     padding: 0 !important;
     margin: 0 !important;
   }
 
-  /* Layer 2: Scale container */
   body.is-printing .pb-12.min-h-max {
     padding: 0 !important;
     margin: 0 !important;
@@ -117,8 +109,7 @@
     display: block !important;
   }
 
-  /* Layer 3: Section wrappers (direct children of scale container)
-     These contain h2 + [data-panel]. Make each exactly one A4 page. */
+  /* Section wrappers = exactly one A4 page each */
   body.is-printing .pb-12.min-h-max>* {
     width: 297mm !important;
     height: 210mm !important;
@@ -136,25 +127,26 @@
     break-after: auto !important;
   }
 
-  /* The h2 labels */
   body.is-printing h2.print\:hidden {
     display: none !important;
   }
 
-  /* Flatten overflow on root scroll container */
   body.is-printing .overflow-auto {
     overflow: visible !important;
     padding: 0 !important;
     margin: 0 !important;
   }
 
-  /* ── Panel sizing: zoom to fill A4 page ── */
-  /* 840px × 1.3363 = 1122.5px = 297mm @96dpi */
-  /* 594px × 1.3363 = 793.8px  = 210mm @96dpi */
+  /* ── Panel sizing: transform scale (preserves PNG transparency & filters) ──
+     transform: scale() preserves layer compositing, unlike zoom which
+     rasterizes and loses PNG alpha channel in Chrome's print engine.
+     840px × 1.3363 → 1122.5px = 297mm @96dpi
+     594px × 1.3363 → 793.8px  = 210mm @96dpi */
   body.is-printing [data-panel] {
     width: 840px !important;
     height: 594px !important;
-    zoom: 1.3363 !important;
+    transform: scale(1.3363) !important;
+    transform-origin: top left !important;
     page-break-inside: avoid !important;
     break-inside: avoid !important;
   }

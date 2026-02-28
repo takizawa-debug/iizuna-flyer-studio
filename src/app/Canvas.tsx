@@ -111,14 +111,6 @@ export default function Canvas() {
                 scaleEl.style.paddingBottom = '0px';
             }
 
-            // Strip all CSS filters from elements (drop-shadow causes rectangle artifacts in print)
-            const filteredEls: { el: HTMLElement; orig: string }[] = [];
-            document.querySelectorAll('[style*="filter"]').forEach(el => {
-                const htmlEl = el as HTMLElement;
-                filteredEls.push({ el: htmlEl, orig: htmlEl.style.filter });
-                htmlEl.style.filter = 'none';
-            });
-
             setExportProgress(80);
 
             // Wait for browser to apply styles
@@ -127,11 +119,6 @@ export default function Canvas() {
             window.print();
 
             setExportProgress(100);
-
-            // Restore filters
-            filteredEls.forEach(({ el, orig }) => {
-                el.style.filter = orig;
-            });
 
             // Restore scale
             document.body.classList.remove('is-printing');
