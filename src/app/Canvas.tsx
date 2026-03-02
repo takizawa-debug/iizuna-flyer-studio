@@ -92,6 +92,11 @@ export default function Canvas() {
     const [exporting, setExporting] = useState(false);
     const [exportProgress, setExportProgress] = useState(0);
     const [showBrowserBanner, setShowBrowserBanner] = useState(false);
+    const [sessionId] = useState(() => {
+        const now = new Date();
+        const pad = (n: number) => n.toString().padStart(2, '0');
+        return `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
+    });
     const frontRef = useRef<HTMLDivElement>(null);
     const backRef = useRef<HTMLDivElement>(null);
 
@@ -458,7 +463,7 @@ export default function Canvas() {
                                 <div className="flex flex-col items-center gap-3 mb-6">
                                     <div className="bg-white p-3.5 shadow-sm rounded-sm relative">
                                         <QRCodeSVG
-                                            value="https://appletown-iizuna.com/?flyer"
+                                            value={`https://appletown-iizuna.com/?lang=${lang}&source=flyer&id=${sessionId}`}
                                             size={110}
                                             level="H"
                                             includeMargin={false}
