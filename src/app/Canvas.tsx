@@ -97,8 +97,20 @@ export default function Canvas() {
         const pad = (n: number) => n.toString().padStart(2, '0');
         return `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
     });
+    const [uid, setUid] = useState<string>('');
     const frontRef = useRef<HTMLDivElement>(null);
     const backRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const STORAGE_KEY = 'iizuna_flyer_uid';
+        let storedUid = localStorage.getItem(STORAGE_KEY);
+        if (!storedUid) {
+            // Generate a random string like 'user_xxxxxxxxxxxx'
+            storedUid = 'user_' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+            localStorage.setItem(STORAGE_KEY, storedUid);
+        }
+        setUid(storedUid);
+    }, []);
 
     const exportPDF = useCallback(async () => {
         setExporting(true);
@@ -463,7 +475,7 @@ export default function Canvas() {
                                 <div className="flex flex-col items-center gap-3 mb-6">
                                     <div className="bg-white p-3.5 shadow-sm rounded-sm relative">
                                         <QRCodeSVG
-                                            value={`https://appletown-iizuna.com/?lang=${lang}&source=flyer&id=${sessionId}`}
+                                            value={`https://appletown-iizuna.com/?lang=${lang}&source=flyer&uid=${uid}&id=${sessionId}`}
                                             size={110}
                                             level="H"
                                             includeMargin={false}
