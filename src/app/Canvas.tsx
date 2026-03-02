@@ -475,7 +475,7 @@ export default function Canvas() {
                                 <div className="flex flex-col items-center gap-3 mb-6">
                                     <div className="bg-white p-3.5 shadow-sm rounded-sm relative">
                                         <QRCodeSVG
-                                            value={`https://appletown-iizuna.com/?lang=${lang}&source=flyer&uid=${uid}&id=${sessionId}`}
+                                            value={`https://appletown-iizuna.com/?lang=${lang}&source=flyer&uid=${uid}&time=${sessionId}`}
                                             size={110}
                                             level="H"
                                             includeMargin={false}
