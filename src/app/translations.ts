@@ -176,9 +176,9 @@ const translations = {
         zh: '超過50品種的蘋果寶庫',
     },
     'variety.desc': {
-        ja: 'ふじ、つがる、王林の定番から、長野県オリジナル品種のシナノスイート・秋映・シナノゴールド、英国品種ブラムリー、幻の和りんご「高坂林檎」まで。',
-        en: 'From classics like Fuji, Tsugaru, and Orin, to Nagano originals Shinano Sweet, Akibae, and Shinano Gold, UK heritage Bramley, and the legendary Kosaka Apple.',
-        zh: '從富士、津輕、王林等經典，到長野原創的信濃甜、秋映、信濃金，英國傳統布拉姆利，以及夢幻的高坂蘋果。',
+        ja: 'ふじ、つがる、王林の定番から、長野県オリジナル品種のシナノスイート・秋映・シナノゴールド、英国品種ブラムリー、和りんご「高坂林檎」まで。',
+        en: 'From classics like Fuji, Tsugaru, and Orin, to Nagano originals Shinano Sweet, Akibae, and Shinano Gold, UK heritage Bramley, and the Kosaka Apple.',
+        zh: '從富士、津輕、王林等經典，到長野原創的信濃甜、秋映、信濃金，英國傳統布拉姆利，以及和蘋果「高坂蘋果」。',
     },
 
     // Science column
@@ -233,7 +233,7 @@ const translations = {
     // Events — user table: "Seasonal Events"
     'events.title': { ja: '季節のイベント', en: 'Seasonal Events', zh: '季節活動' },
     'event.ukfair.title': { ja: '英国りんごフェア', en: 'British Apple Fair', zh: '英國蘋果嘉年華' },
-    'event.ukfair.desc': { ja: '料理用りんごを使ったメニューが味わえる', en: 'Savor dishes made with culinary apples', zh: '品嚐使用料理蘋果製作的餐點' },
+    'event.ukfair.desc': { ja: '料理用りんごを使ったメニューを堪能', en: 'Enjoy dishes made with culinary apples', zh: '品嚐使用料理蘋果製作的餐點' },
     'event.sweets.title': { ja: 'スイーツフェア', en: 'Sweets Fair', zh: '甜點嘉年華' },
     'event.sweets.desc': { ja: '町内飲食店がりんごスイーツを提供', en: 'Local cafés serve apple treats', zh: '町內餐廳推出蘋果甜點' },
     'event.concours.title': { ja: 'スイーツコンクール', en: 'Sweets Concours', zh: '甜點大賽' },
