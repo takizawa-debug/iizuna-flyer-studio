@@ -43,9 +43,9 @@ const translations = {
     // Category highlights
     'cat.agriculture.title': { ja: '農業', en: 'Agriculture', zh: '農業' },
     'cat.agriculture.line1': { ja: '「りんご」が町花', en: 'Apple is the town flower', zh: '「蘋果」是町花' },
-    'cat.agriculture.line2': { ja: 'そば、米の栽培も盛ん', en: 'Soba & rice also thrive', zh: '蕎麥、稻米栽培也興盛' },
+    'cat.agriculture.line2': { ja: '米、そばの栽培も盛ん', en: 'Rice & soba also thrive', zh: '稻米、蕎麥栽培也興盛' },
     'cat.nature.title': { ja: '自然', en: 'Nature', zh: '自然' },
-    'cat.nature.line1': { ja: '飯綱山、霊仙寺湖', en: 'Mt. Iizuna, Lake Reisenji', zh: '飯綱山、靈仙寺湖' },
+    'cat.nature.line1': { ja: '飯縄山、霊仙寺湖', en: 'Mt. Iizuna, Lake Reisenji', zh: '飯繩山、靈仙寺湖' },
     'cat.nature.line2': { ja: 'いいづなリゾートスキー場', en: 'Iizuna Resort Ski Area', zh: '飯綱度假滑雪場' },
     'cat.migration.title': { ja: '移住', en: 'Settling In', zh: '移居' },
     'cat.migration.line1': { ja: '近年は社会増傾向', en: 'Growing population', zh: '近年人口持續增長' },
@@ -90,7 +90,7 @@ const translations = {
     // ===== BACK SIDE (裏面) =====
     'back.mainTitle.apple': { ja: 'いいづなりんご', en: 'Iizuna Apples', zh: '飯綱蘋果' },
     'back.mainTitle.suffix': { ja: 'からはじまる物語', en: '— Where Stories Begin', zh: '開啟的故事' },
-    'back.monument': { ja: '町天然記念物', en: 'Town Heritage Tree', zh: '町天然紀念物' },
+    'back.monument': { ja: '町の天然記念物', en: 'Town Heritage Tree', zh: '町天然紀念物' },
     'back.kosaka': { ja: '高坂林檎', en: 'Kosaka Apple', zh: '高坂蘋果' },
 
     // Section headers — aligned to user category table
@@ -176,9 +176,9 @@ const translations = {
         zh: '超過50品種的蘋果寶庫',
     },
     'variety.desc': {
-        ja: 'ふじ、つがる、王林の定番から、シナノスイート、シナノゴールド、秋映。英国品種ブラムリー。幻の和りんご「高坂林檎」まで。',
-        en: 'Fuji, Tsugaru, Orin, Shinano Sweet, Gold, Akibae, UK heritage Bramley, and the legendary Kosaka Apple.',
-        zh: '從富士、津輕、王林等經典，到長野原創的信濃甜、信濃金、秋映，英國傳統布拉姆利，以及夢幻的高坂蘋果。',
+        ja: 'ふじ、つがる、王林の定番から、長野県オリジナル品種のシナノスイート・秋映・シナノゴールド、英国品種ブラムリー、幻の和りんご「高坂林檎」まで。',
+        en: 'From classics like Fuji, Tsugaru, and Orin, to Nagano originals Shinano Sweet, Akibae, and Shinano Gold, UK heritage Bramley, and the legendary Kosaka Apple.',
+        zh: '從富士、津輕、王林等經典，到長野原創的信濃甜、秋映、信濃金，英國傳統布拉姆利，以及夢幻的高坂蘋果。',
     },
 
     // Science column
@@ -188,9 +188,9 @@ const translations = {
         zh: '科學解密美味的祕密',
     },
     'science.desc': {
-        ja: '昼夜の寒暖差が糖度を凝縮。飯綱町産「ふじ」の味のバランスを示す「糖酸比」は30〜40と科学的にも「美味しい」数値域。他産地に比べシャキシャキの食感（高破断強度）も特徴。',
+        ja: '昼夜の寒暖差が糖度を凝縮。飯綱町産「ふじ」の味のバランスを示す「糖酸比」は30〜40と科学的にも「美味しい」数値域。他産地に比べシャキシャキの食感も特徴。',
         en: 'Day-night temperature swings concentrate sugars. Iizuna Fuji scores 30–40 on the sugar-acid ratio — certified "excellent." Its crisp, snappy bite is another hallmark.',
-        zh: '晝夜溫差大幅凝聚糖分。飯綱產「富士」的糖酸比達30〜40，科學認證的「美味」區間。清脆爽口的口感（高斷裂強度）更是一大特色。',
+        zh: '晝夜溫差大幅凝聚糖分。飯綱產「富士」的糖酸比達30〜40，科學認證的「美味」區間。清脆爽口的口感更是一大特色。',
     },
 
     // Town vision column
@@ -200,7 +200,7 @@ const translations = {
         zh: '邁向日本第一苹果小镇',
     },
     'vision.desc': {
-        ja: '飯綱町は「りんご」を核に地域資源を磨き上げる独自のまちづくりを推進中。農業に留まらず健康・文化・働き方まで含めた持続可能な地域モデルを展開しています。',
+        ja: '飯綱町は「りんご」を核に地域資源を磨き上げる独自のまちづくりを推進中。農業にとどまらず健康・文化・働き方まで含めた持続可能な地域モデルを展開しています。',
         en: 'Iizuna is building a sustainable community with apples at its heart — weaving agriculture, wellness, culture, and new ways of working into a single vision.',
         zh: '飯綱町以「蘋果」為核心，推動獨特的造鎮計畫。不僅限於農業，更涵蓋健康、文化與工作型態的永續地域模式。',
     },
@@ -219,11 +219,11 @@ const translations = {
 
     // Shops — user table: "Where to Buy"
     'shops.title': { ja: '買えるお店', en: 'Where to Buy', zh: '購買地點' },
-    'shop.muchan.name': { ja: 'いいづなマルシェ むーちゃん', en: 'Iizuna Marché Mu-chan', zh: '飯綱市集 姆醬' },
+    'shop.muchan.name': { ja: '農産物直売所 いいづなマルシェ むーちゃん', en: 'Farmers Market Mu-chan', zh: '農產直銷所 姆醬市集' },
     'shop.muchan.desc': { ja: 'カフェ併設、景色も魅力', en: 'Café & scenic views', zh: '附設咖啡廳，風景宜人' },
-    'shop.sanchan.name': { ja: '直売所 さんちゃん', en: 'Farm Stand San-chan', zh: '三醬農產直銷所' },
+    'shop.sanchan.name': { ja: '農産物直売所 さんちゃん', en: 'Farmers Market San-chan', zh: '農產直銷所 三醬' },
     'shop.sanchan.desc': { ja: 'アップルパイ、おやきなども人気', en: 'Apple pies & oyaki popular', zh: '蘋果派、御燒也很受歡迎' },
-    'shop.shikisai.name': { ja: '横手直売所 四季彩', en: 'Yokote Shikisai', zh: '四季彩農產直銷所' },
+    'shop.shikisai.name': { ja: '横手農産物直売所 四季菜', en: 'Yokote Farmers Market Shikisai', zh: '橫手農產直銷所 四季菜' },
     'shop.shikisai.desc': { ja: '雪むろ熟成りんご、そばも人気', en: 'Snow-aged apples & soba', zh: '雪室熟成蘋果・手打蕎麥' },
     'shop.farm.name': { ja: '農家直売', en: 'Direct from Farmers', zh: '農家直銷' },
     'shop.farm.desc': { ja: '農家から直接購入・直売所／通販など', en: 'Buy direct / farm stands / online', zh: '產地直購・直銷所・網路訂購' },
@@ -233,11 +233,11 @@ const translations = {
     // Events — user table: "Seasonal Events"
     'events.title': { ja: '季節のイベント', en: 'Seasonal Events', zh: '季節活動' },
     'event.ukfair.title': { ja: '英国りんごフェア', en: 'British Apple Fair', zh: '英國蘋果嘉年華' },
-    'event.ukfair.desc': { ja: '酸味の効いた料理用りんごが味わえる', en: 'Savor tart UK apples', zh: '品嚐英式酸味料理蘋果' },
+    'event.ukfair.desc': { ja: '料理用りんごを使ったメニューが味わえる', en: 'Savor dishes made with culinary apples', zh: '品嚐使用料理蘋果製作的餐點' },
     'event.sweets.title': { ja: 'スイーツフェア', en: 'Sweets Fair', zh: '甜點嘉年華' },
     'event.sweets.desc': { ja: '町内飲食店がりんごスイーツを提供', en: 'Local cafés serve apple treats', zh: '町內餐廳推出蘋果甜點' },
     'event.concours.title': { ja: 'スイーツコンクール', en: 'Sweets Concours', zh: '甜點大賽' },
-    'event.concours.desc': { ja: 'りんごを使い、料理人たちが腕を競う', en: 'Chefs compete with apple dishes', zh: '廚師以蘋果為題一較高下' },
+    'event.concours.desc': { ja: 'りんごを使い、パティシエたちが腕を競う', en: 'Pastry chefs compete with apple sweets', zh: '甜點師以蘋果為題一較高下' },
 
     // Apple Museum
     'museum.title': { ja: 'いいづなアップルミュージアム', en: 'Iizuna Apple Museum', zh: '飯綱蘋果博物館' },
@@ -269,7 +269,7 @@ const translations = {
     'live.work.label': { ja: '働く', en: 'Work', zh: '就業' },
     'live.work.desc': { ja: '地域おこし協力隊／いいコネワークスで複業など', en: 'Community corps & co-working options', zh: '地方振興協力隊／共創空間複業等' },
     'live.farming.label': { ja: '就農', en: 'Start Farming', zh: '務農' },
-    'live.farming.desc': { ja: '約3年で独立を目指す新規就農里親研修制度など', en: '3-year mentorship to independence', zh: '約3年獨立的新農里親研修制度' },
+    'live.farming.desc': { ja: '独立を目指す新規就農里親研修制度など', en: 'Mentorship to independence', zh: '輔導獨立的新農里親研修制度等' },
 
     // Work/Business section — user table: "Business" > "Grower Support"
     'work.line1': {
@@ -278,9 +278,9 @@ const translations = {
         zh: '蘋果論壇／技術講習／加工設施／水果中心／',
     },
     'work.line2': {
-        ja: '苗木導入補助／機械整備補助 など',
+        ja: '苗木導入補助／機械導入補助 など',
         en: 'sapling & equipment grants',
-        zh: '苗木引進補助／機械整備補助等',
+        zh: '苗木引進補助／機械引進補助等',
     },
 
     // PDF export UI
