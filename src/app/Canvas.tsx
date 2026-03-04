@@ -644,11 +644,11 @@ export default function Canvas() {
 
                             {/* 高坂林檎 PNG — absolute in 裏面 container */}
                             {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <div className="absolute pointer-events-none z-20" style={{ left: '230px', top: '460px', transform: 'translate(-50%, -50%)' }}>
+                            <div className="absolute pointer-events-none z-20" style={{ left: '245px', top: '460px', transform: 'translate(-50%, -50%)' }}>
                                 <img src="https://appletown-iizuna.s3.ap-northeast-1.amazonaws.com/apples/images/%E9%AB%98%E5%9D%82%E6%9E%97%E6%AA%8E.png" alt="高坂林檎" className="w-[110px] h-[110px] object-contain" />
                             </div>
-                            <span className="absolute text-[6px] text-ink/40 tracking-[0.05em] pointer-events-none z-20" style={{ left: '230px', top: '435px', transform: 'translateX(-50%)', fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{t('back.monument', lang)}</span>
-                            <span className="absolute text-[6px] text-ink/40 tracking-[0.05em] pointer-events-none z-20" style={{ left: '230px', top: '480px', transform: 'translateX(-50%)', fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{t('back.kosaka', lang)}</span>
+                            <span className="absolute text-[6px] text-ink/40 tracking-[0.05em] pointer-events-none z-20" style={{ left: '245px', top: '435px', transform: 'translateX(-50%)', fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{t('back.monument', lang)}</span>
+                            <span className="absolute text-[6px] text-ink/40 tracking-[0.05em] pointer-events-none z-20" style={{ left: '245px', top: '480px', transform: 'translateX(-50%)', fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{t('back.kosaka', lang)}</span>
 
                             {/* プチコラムエリア区切り線 — 3面通し y=510 */}
                             <div className="absolute z-20 border-t border-white/50" style={{ top: '510px', left: '20px', right: '20px' }}></div>
@@ -708,7 +708,7 @@ export default function Canvas() {
                                         <p className="text-[9px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
                                             {t('variety.title', lang)}
                                         </p>
-                                        <p className="text-[8px] font-serif text-ink/55 leading-[1.8] tracking-[0.03em]" style={{ maxWidth: '180px' }}>
+                                        <p className="text-[8px] font-serif text-ink/55 leading-[1.8] tracking-[0.03em]" style={{ maxWidth: '195px' }}>
                                             {t('variety.desc', lang)}
                                         </p>
                                         {/* 高坂林檎 PNG is rendered at 裏面 container level */}
