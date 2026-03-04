@@ -218,7 +218,7 @@ const translations = {
     },
 
     // Shops — user table: "Where to Buy"
-    'shops.title': { ja: '買えるお店（農産物直売所）', en: 'Where to Buy', zh: '購買地點(農產直銷所)' },
+    'shops.title': { ja: '買えるお店（農産物直売所など）', en: 'Where to Buy', zh: '購買地點(農產直銷所等)' },
     'shop.muchan.name': { ja: 'いいづなマルシェ むーちゃん', en: 'Iizuna Marché Mu-chan', zh: '飯綱市集 姆醬' },
     'shop.muchan.desc': { ja: 'カフェ併設、景色も魅力', en: 'Café & scenic views', zh: '附設咖啡廳，風景宜人' },
     'shop.sanchan.name': { ja: '直売所 さんちゃん', en: 'Farm Stand San-chan', zh: '三醬農產直銷所' },
