@@ -148,9 +148,9 @@ const translations = {
         zh: '英國引進布拉姆利等16品種',
     },
     'timeline.2005a': {
-        ja: '高坂林檎原木2本が天然記念物に指定',
+        ja: '高坂林檎原木2本が町の天然記念物に指定',
         en: '2 Kosaka originals named heritage',
-        zh: '高坂蘋果原木2棵列為天然紀念物',
+        zh: '高坂蘋果原木2棵列為町天然紀念物',
     },
     'timeline.2005b': {
         ja: '旧牟礼村と旧三水村が合併し飯綱町誕生',
