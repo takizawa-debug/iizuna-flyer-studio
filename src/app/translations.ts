@@ -237,7 +237,7 @@ const translations = {
     'event.sweets.title': { ja: 'スイーツフェア', en: 'Sweets Fair', zh: '甜點嘉年華' },
     'event.sweets.desc': { ja: '町内飲食店がりんごスイーツを提供', en: 'Local cafés serve apple treats', zh: '町內餐廳推出蘋果甜點' },
     'event.concours.title': { ja: 'スイーツコンクール', en: 'Sweets Concours', zh: '甜點大賽' },
-    'event.concours.desc': { ja: 'りんごを使い、パティシエたちが腕を競う', en: 'Pastry chefs compete with apple sweets', zh: '甜點師以蘋果為題一較高下' },
+    'event.concours.desc': { ja: 'りんごを使いパティシエたちが腕を競う', en: 'Pastry chefs compete with apple sweets', zh: '甜點師以蘋果為題一較高下' },
 
     // Apple Museum
     'museum.title': { ja: 'いいづなアップルミュージアム', en: 'Iizuna Apple Museum', zh: '飯綱蘋果博物館' },
