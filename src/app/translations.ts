@@ -5,14 +5,14 @@ const translations = {
     'cover.title': {
         ja: 'りんごのまち いいづな',
         en: 'Apple Town Iizuna',
-        zh: '苹果小镇 飯綱',
+        zh: '蘋果之町 飯綱',
     },
 
     // ===== INSIDE FLAP (表面 左面：中折り) =====
     'insideFlap.heading': {
         ja: 'ようこそ、りんごのまちへ。',
         en: 'Welcome to Apple Town.',
-        zh: '歡迎來到苹果小镇。',
+        zh: '歡迎來到蘋果之町。',
     },
     'insideFlap.tagline': {
         ja: '北信濃の五岳が肩を並べ、\n空からの風が、そっと頬をなでる。\n冷たい空気と、温かな土をぎゅっと抱きしめて、\n色あざやかに輝くりんごと\n人々の心が、しずかに、響きあう。\nここは、実りの鼓動と、私の呼吸が交わる\nちょうど \u201cいい\u201d 場所。',
@@ -84,14 +84,14 @@ const translations = {
     'backCover.issuer': {
         ja: '発行：飯綱町 / りんごのまち いいづな 事務局\n〒389-1293 長野県上水内郡飯綱町牟礼2795-1\nTEL 026-253-2511',
         en: 'Published by: Iizuna Town / Apple Town Iizuna Office\n〒389-1293 Mure 2795-1, Iizuna, Kamiminochi, Nagano\nTEL 026-253-2511',
-        zh: '發行：飯綱町 / 苹果小镇飯綱事務局\n〒389-1293 長野縣上水內郡飯綱町牟禮2795-1\nTEL 026-253-2511',
+        zh: '發行：飯綱町 / 蘋果之町飯綱事務局\n〒389-1293 長野縣上水內郡飯綱町牟禮2795-1\nTEL 026-253-2511',
     },
 
     // ===== BACK SIDE (裏面) =====
     'back.mainTitle.apple': { ja: 'いいづなりんご', en: 'Iizuna Apples', zh: '飯綱蘋果' },
     'back.mainTitle.suffix': { ja: 'からはじまる物語', en: '— Where Stories Begin', zh: '開啟的故事' },
     'back.monument': { ja: '町の天然記念物', en: 'Town Heritage Tree', zh: '町天然紀念物' },
-    'back.kosaka': { ja: '高坂林檎', en: 'Kosaka Apple', zh: '高坂蘋果' },
+    'back.kosaka': { ja: '高坂林檎', en: 'Kosaka Apple', zh: '高坂林檎' },
 
     // Section headers — aligned to user category table
     'section.shiru': { ja: '知る', en: 'Discover', zh: '探索' },
@@ -107,102 +107,111 @@ const translations = {
 
     // Timeline
     'timeline.title': { ja: 'これまでのあゆみ', en: 'Our Heritage', zh: '歷史沿革' },
-    'timeline.1860': {
+    'timeline.edo': {
         ja: '高坂林檎が善光寺門前で信濃名物として人気',
-        en: 'Kosaka Apple famous at Zenkoji',
-        zh: '高坂蘋果於善光寺門前成為名產',
+        en: 'Kosaka Apple popular as Shinano specialty at Zenkō-ji',
+        zh: '高坂林檎於善光寺門前作為信濃名物大受歡迎',
     },
-    'timeline.1890': {
-        ja: '本格的なりんご栽培の始まり、徐々に拡大',
-        en: 'Commercial apple farming begins',
-        zh: '正式開始商業蘋果栽培',
+    'timeline.m23': {
+        ja: 'りんご栽培始まり、苗木が初めて植えられる',
+        en: 'Apple farming begins; first saplings planted',
+        zh: '蘋果栽培正式開始，首次種下苗木',
     },
-    'timeline.1929': {
-        ja: '世界恐慌で蚕糸業衰退、桑畑→りんご畑へ',
-        en: 'Silk declines; orchards replace mulberry',
-        zh: '蠶絲業衰退，桑田改為蘋果園',
+    'timeline.s4': {
+        ja: '世界恐慌で繭価暴落、蚕糸業衰退しりんご栽培へ',
+        en: 'Depression crashes silk prices; shift to apple farming',
+        zh: '世界恐慌導致繭價暴跌，蠶絲業衰退而轉向蘋果栽培',
     },
-    'timeline.1965': {
+    'timeline.s20_30': {
+        ja: 'りんご栽培、急拡大し産地に',
+        en: 'Apple farming expands rapidly; major producing region',
+        zh: '蘋果栽培急速擴展，發展成為重要產地',
+    },
+    'timeline.s43a': {
+        ja: '旧三水村で9,560t産出、国内有数のりんご村に',
+        en: 'Samizu yields 9,560 t—a top apple village in Japan',
+        zh: '舊三水村產出9,560噸，成為日本頂級蘋果村之一',
+    },
+    'timeline.s43b': {
         ja: 'うまいくだものづくり運動で主力がふじに',
-        en: '"Better Fruit" drive shifts to Fuji',
-        zh: '「優質水果」運動，主力轉向富士',
+        en: '"Better Fruit" campaign makes Fuji the leading variety',
+        zh: '「優質水果運動」推動主力品種轉向富士',
     },
-    'timeline.1968': {
-        ja: '旧三水村で9,560t産出、日本一のりんご村に',
-        en: '9,560 t — Japan\'s top apple village',
-        zh: '舊三水村產9,560噸，日本第一蘋果村',
+    'timeline.s44': {
+        ja: 'ふじへの品種更新が進む',
+        en: 'Orchards accelerate shift to Fuji variety',
+        zh: '向富士品種的更新推進',
     },
-    'timeline.1980': {
+    'timeline.s55': {
         ja: '絶滅寸前の高坂林檎を有志が保存',
-        en: 'Volunteers rescue endangered Kosaka',
-        zh: '志願者搶救瀕臨絕種的高坂蘋果',
+        en: 'Volunteers save near-extinct Kosaka Apple',
+        zh: '有志之士搶救瀕臨絕種的高坂林檎',
     },
-    'timeline.1987': {
-        ja: 'ニュートン品種フラワー・オブ・ケント植樹',
-        en: "Newton's Flower of Kent planted",
-        zh: '種植牛頓品種「肯特之花」',
+    'timeline.s62': {
+        ja: 'ニュートンゆかりの品種フラワーオブケント植樹',
+        en: 'Newton\'s "Flower of Kent" apple tree planted',
+        zh: '種植與牛頓淵源深厚的品種「肯特之花」',
     },
-    'timeline.1990': {
-        ja: '英国王立園芸協会からブラムリー等16品種渡来',
-        en: '16 UK varieties inc. Bramley arrive',
-        zh: '英國引進布拉姆利等16品種',
+    'timeline.h2': {
+        ja: '英国王立園芸協会のりんご16品種を植樹',
+        en: '16 RHS (Royal Horticultural Society) varieties planted',
+        zh: '種植英國皇家園藝協會16個蘋果品種',
     },
-    'timeline.2005a': {
-        ja: '高坂林檎原木2本が町の天然記念物に指定',
-        en: '2 Kosaka originals named heritage',
-        zh: '高坂蘋果原木2棵列為町天然紀念物',
-    },
-    'timeline.2005b': {
+    'timeline.h17': {
         ja: '旧牟礼村と旧三水村が合併し飯綱町誕生',
-        en: 'Mure & Samizu merge → Iizuna Town',
-        zh: '牟禮村與三水村合併，飯綱町誕生',
+        en: 'Mure & Samizu villages merge to form Iizuna Town',
+        zh: '舊牟禮村與舊三水村合併，飯綱町誕生',
     },
-    'timeline.2020': {
-        ja: '高坂林檎にふじの約10倍の機能性成分を確認',
-        en: 'Kosaka: 10× the antioxidants of Fuji',
-        zh: '高坂蘋果含富士約10倍機能性成分',
+    'timeline.h21': {
+        ja: '高坂林檎、皇居の東御苑古品種果樹園に植樹',
+        en: 'Kosaka Apple planted in Imperial Palace East Gardens',
+        zh: '高坂林檎植入皇居東御苑古品種果樹園',
+    },
+    'timeline.r2': {
+        ja: '飯綱町産りんごの成分分析実施、美味しさを解明',
+        en: 'Scientific analysis of Iizuna apples reveals flavor secrets',
+        zh: '實施飯綱町產蘋果成分分析，科學揭示美味之祕',
     },
     'timeline.now': {
         ja: '50品種以上を栽培、日本一のりんごのまちへ',
-        en: '50+ varieties — toward Japan\'s best',
-        zh: '栽培逾50種，邁向日本第一苹果小镇',
+        en: '50+ varieties grown; pursuing Japan\'s No.1 apple town',
+        zh: '栽培超過50個品種，朝著日本第一蘋果之町邁進',
     },
-    'timeline.now.label': { ja: '現在', en: 'Now', zh: '現在' },
 
     // Variety highlight
     'variety.title': {
         ja: '50品種を超えるりんごの宝庫',
         en: 'Over 50 Varieties to Explore',
-        zh: '超過50品種的蘋果寶庫',
+        zh: '擁有超過50個品種的蘋果寶庫',
     },
     'variety.desc': {
-        ja: 'ふじ、つがる、王林の定番から、長野県オリジナル品種のシナノスイート・秋映・シナノゴールド、英国品種ブラムリー、和りんご「高坂林檎」まで。',
-        en: 'From classics like Fuji, Tsugaru, and Orin, to Nagano originals Shinano Sweet, Akibae, and Shinano Gold, UK heritage Bramley, and the Kosaka Apple.',
-        zh: '從富士、津輕、王林等經典，到長野原創的信濃甜、秋映、信濃金，英國傳統布拉姆利，以及和蘋果「高坂蘋果」。',
+        ja: 'ふじ、つがる、王林の定番から長野県生まれのシナノスイート、シナノゴールド、秋映。希少な英国品種ブラムリーズ・シードリング、幻の和りんご「高坂林檎」まで。',
+        en: 'From Fuji, Tsugaru & Ōrin to Nagano-bred Shinano Sweet, Shinano Gold & Akibae. Including rare UK heritage Bramley\'s Seedling and the legendary Kosaka Apple.',
+        zh: '從富士、津輕、王林等經典品種，到長野縣培育的信濃甜心、信濃金、秋映。更有珍稀英國品種布拉姆利以及夢幻和蘋果「高坂林檎」。',
     },
 
     // Science column
     'science.title': {
-        ja: '科学的にみる、美味しさのひみつ',
-        en: 'Flavor & Science',
-        zh: '科學解密美味的祕密',
+        ja: '科学的にみる美味しさの理由',
+        en: 'The Science Behind the Flavor',
+        zh: '科學解析美味的理由',
     },
     'science.desc': {
-        ja: '昼夜の寒暖差が糖度を凝縮。飯綱町産「ふじ」の味のバランスを示す「糖酸比」は30〜40と科学的にも「美味しい」数値域。他産地に比べシャキシャキの食感も特徴。',
-        en: 'Day-night temperature swings concentrate sugars. Iizuna Fuji scores 30–40 on the sugar-acid ratio — certified "excellent." Its crisp, snappy bite is another hallmark.',
-        zh: '晝夜溫差大幅凝聚糖分。飯綱產「富士」的糖酸比達30〜40，科學認證的「美味」區間。清脆爽口的口感更是一大特色。',
+        ja: '飯綱町は、昼夜の寒暖差があり日照量が多く、りんごが高糖度で濃厚な味わいに。シャキシャキした食感も特徴。成分分析でその美味しさを科学的に実証しています。',
+        en: 'Sharp day-night temperature swings and ample sunshine yield apples of exceptional sweetness, depth, and crisp bite—now confirmed by compositional analysis.',
+        zh: '飯綱町晝夜溫差顯著且日照充足，蘋果糖度高、風味濃郁香醇。清脆爽口的口感也是一大特色。透過成分分析，已從科學角度實證其美味。',
     },
 
     // Town vision column
     'vision.title': {
         ja: '日本一のりんごのまちを目指して',
         en: 'Becoming Japan\'s Premier Apple Town',
-        zh: '邁向日本第一苹果小镇',
+        zh: '朝著日本第一蘋果之町邁進',
     },
     'vision.desc': {
         ja: '飯綱町は「りんご」を核に地域資源を磨き上げる独自のまちづくりを推進中。農業にとどまらず健康・文化・働き方まで含めた持続可能な地域モデルを展開しています。',
         en: 'Iizuna is building a sustainable community with apples at its heart — weaving agriculture, wellness, culture, and new ways of working into a single vision.',
-        zh: '飯綱町以「蘋果」為核心，推動獨特的造鎮計畫。不僅限於農業，更涵蓋健康、文化與工作型態的永續地域模式。',
+        zh: '飯綱町以「蘋果」為核心，推動琢磨地域資源的獨特造鎮計畫。不僅限於農業，更涵蓋健康、文化與工作型態，展開永續發展的地域模式。',
     },
 
     // Migration column
@@ -213,12 +222,12 @@ const translations = {
     },
     'migration.desc': {
         ja: '2025年、2年連続の社会増を達成。「信州やまほいく」認定園が4施設あり、自然の中での子育て環境が人気の要因に。移住体験住宅や空き家情報など丁寧な相談体制も整っています。',
-        en: 'Growing population, four nature-based nurseries, trial housing, and dedicated relocation support make moving here easy.',
-        zh: '連續兩年實現人口正增長。擁有4所「信州山之幼兒園」認定園所，大自然中的育兒環境備受好評。移居體驗住宅、空屋媒合等諮詢體制完善。',
+        en: 'Net population growth two years running. Four Shinshu Yama-hoiku nurseries provide nature-rich childcare. Trial housing, vacant-home listings, and hands-on support ease the move.',
+        zh: '2025年，連續兩年實現社會增長。擁有4所「信州山保育」認定園所，大自然中的育兒環境深受家庭青睞。移居體驗住宅、空屋資訊等細心的諮詢支援體制也十分完善。',
     },
 
     // Shops — user table: "Where to Buy"
-    'shops.title': { ja: '買えるお店（農産物直売所など）', en: 'Where to Buy', zh: '購買地點(農產直銷所等)' },
+    'shops.title': { ja: '買えるお店（農産物直売所など）', en: 'Where to Buy (Farm Stands & More)', zh: '購買地點(農產直銷所等)' },
     'shop.muchan.name': { ja: 'いいづなマルシェ むーちゃん', en: 'Iizuna Marché Mu-chan', zh: '飯綱市集 姆醬' },
     'shop.muchan.desc': { ja: 'カフェ併設、景色も魅力', en: 'Café & scenic views', zh: '附設咖啡廳，風景宜人' },
     'shop.sanchan.name': { ja: '直売所 さんちゃん', en: 'Farm Stand San-chan', zh: '三醬農產直銷所' },

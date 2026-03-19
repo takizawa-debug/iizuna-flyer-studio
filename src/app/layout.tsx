@@ -25,6 +25,7 @@ const zenMaru = Zen_Maru_Gothic({
   preload: false,
 });
 
+
 export const metadata: Metadata = {
   title: "Iizuna Apple Flyer Studio",
   description: "A tool to create flyers with the warmth of Iizuna Town.",

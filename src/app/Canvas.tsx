@@ -186,10 +186,24 @@ export default function Canvas() {
         return `#${lr.toString(16).padStart(2, '0')}${lg.toString(16).padStart(2, '0')}${lb.toString(16).padStart(2, '0')}`;
     };
 
+    // Language-conditional font families for consistent rendering
+    const gothicFont = lang === 'zh'
+        ? "'Noto Sans TC', 'Zen Kaku Gothic New', sans-serif"
+        : "'Zen Kaku Gothic New', 'Noto Sans TC', sans-serif";
+
     useEffect(() => {
         // Need about 30 apples for a 6x5 grid (30 items total limit)
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        setRandomApples(shuffleArray(APPLE_IMAGES).slice(0, 30));
+        // Shuffle apples, ensuring 高坂林檎 lands in one of the 4 center positions (rows 3-4 center)
+        const KOSAKA_URL = APPLE_IMAGES[0]; // 高坂林檎 is first in array
+        const CENTER_INDICES = [5, 12, 19, 26]; // center apple of each 3-apple row (rows 1,3,5,7)
+        const shuffled = shuffleArray(APPLE_IMAGES).slice(0, 30);
+        const kosakaPos = shuffled.indexOf(KOSAKA_URL);
+        if (kosakaPos !== -1 && !CENTER_INDICES.includes(kosakaPos)) {
+            const targetIdx = CENTER_INDICES[Math.floor(Math.random() * CENTER_INDICES.length)];
+            [shuffled[kosakaPos], shuffled[targetIdx]] = [shuffled[targetIdx], shuffled[kosakaPos]];
+        }
+        setRandomApples(shuffled);
 
         // Detect non-Chrome browsers
         const ua = navigator.userAgent;
@@ -305,6 +319,7 @@ export default function Canvas() {
                 <div
                     className="pb-12 min-h-max flex flex-col gap-16 items-center transform-gpu transition-transform origin-top print:transform-none print:m-0 print:p-0 print:gap-0"
                     style={{ transform: `scale(${scale})` }}
+                    data-lang={lang}
                 >
                     {/* =========================================================
             【表面】 Outer Side (Left to Right: Inside Flap / Back Cover / Front Cover)
@@ -367,7 +382,7 @@ export default function Canvas() {
 
                                 {/* 1. Title */}
                                 <div className="w-full flex flex-col justify-start mb-2 mt-1 relative z-10">
-                                    <h3 className="text-[15px] tracking-[0.18em] leading-[1.4] text-ink/85 whitespace-nowrap" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif", fontWeight: 700 }}>
+                                    <h3 className="text-[15px] tracking-[0.18em] leading-[1.4] text-ink/85 whitespace-nowrap" style={{ fontFamily: gothicFont, fontWeight: 700 }}>
                                         {t('insideFlap.heading', lang)}
                                     </h3>
                                     <div className="w-[60px] h-[2px] mt-2 transition-colors duration-300" style={{ backgroundColor: coverColor === '#FFFFFF' ? '#E88C83' : coverColor }}></div>
@@ -413,7 +428,7 @@ export default function Canvas() {
                                             { num: t('data.temp.num', lang), unit: t('data.temp.unit', lang), label: t('data.temp.label', lang) },
                                         ].map((d, i) => (
                                             <div key={i} className="flex flex-col items-center">
-                                                <span className="text-[11px] font-bold tracking-tight leading-none" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                                <span className="text-[11px] font-bold tracking-tight leading-none" style={{ fontFamily: gothicFont }}>
                                                     {d.num}<span className="text-[8px] font-normal ml-[1px]">{d.unit}</span>
                                                 </span>
                                                 <span className="text-[8px] text-ink/40 tracking-[0.1em] mt-[2px] font-sans">{d.label}</span>
@@ -445,7 +460,7 @@ export default function Canvas() {
                                             <div key={i} className="flex items-start gap-1.5">
                                                 <div className={`w-[4px] h-[4px] rounded-full ${cat.color} mt-[3px] flex-shrink-0`}></div>
                                                 <div>
-                                                    <p className="text-[8px] font-bold text-ink/80 leading-none mb-[2px]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{t(cat.titleKey, lang)}</p>
+                                                    <p className="text-[8px] font-bold text-ink/80 leading-none mb-[2px]" style={{ fontFamily: gothicFont }}>{t(cat.titleKey, lang)}</p>
                                                     <p className="text-[8px] font-serif text-ink/50 leading-[1.5]">{t(cat.l1Key, lang)}<br />{t(cat.l2Key, lang)}</p>
                                                 </div>
                                             </div>
@@ -459,7 +474,7 @@ export default function Canvas() {
 
                                 {/* Top: Compelling headline */}
                                 <div className="space-y-3 mb-6">
-                                    <p className="text-[11px] tracking-[0.2em] leading-[2] font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                    <p className="text-[11px] tracking-[0.2em] leading-[2] font-bold" style={{ fontFamily: gothicFont }}>
                                         {t('backCover.headline', lang).split('\n').map((line, i, arr) => (
                                             <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
                                         ))}
@@ -583,7 +598,7 @@ export default function Canvas() {
                                     })}
                                 </div>
 
-                                <h1 className={`absolute bottom-[44px] left-1/2 -translate-x-1/2 text-[15px] tracking-[0.2em] z-30 whitespace-nowrap transition-colors duration-300`} style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif", fontWeight: 900, color: coverColor === '#FFFFFF' ? '#E88C83' : getLighterColor(coverColor, 0.85) }}>
+                                <h1 className={`absolute bottom-[44px] left-1/2 -translate-x-1/2 text-[15px] tracking-[0.2em] z-30 whitespace-nowrap transition-colors duration-300`} style={{ fontFamily: gothicFont, fontWeight: 900, color: coverColor === '#FFFFFF' ? '#E88C83' : getLighterColor(coverColor, 0.85) }}>
                                     {t('cover.title', lang)}
                                 </h1>
                             </div>
@@ -637,18 +652,18 @@ export default function Canvas() {
 
                             {/* Title across left panel only */}
                             <div className="absolute top-[25px] left-[24px] z-20">
-                                <h2 className="tracking-[0.15em] whitespace-nowrap" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif", fontWeight: 700 }}>
+                                <h2 className="tracking-[0.15em] whitespace-nowrap" style={{ fontFamily: gothicFont, fontWeight: 700 }}>
                                     <span className="text-[25px]" style={{ color: '#D45D56' }}>{t('back.mainTitle.apple', lang)}</span>{' '}<span className="text-[22px] text-ink/90 font-medium">{t('back.mainTitle.suffix', lang)}</span>
                                 </h2>
                             </div>
 
-                            {/* 高坂林檎 PNG — absolute in 裏面 container */}
+                            {/* 高坂林檎 PNG — absolute in 裏面 container, beside variety text */}
                             {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <div className="absolute pointer-events-none z-20" style={{ left: '238px', top: '460px', transform: 'translate(-50%, -50%)' }}>
-                                <img src="https://appletown-iizuna.s3.ap-northeast-1.amazonaws.com/apples/images/%E9%AB%98%E5%9D%82%E6%9E%97%E6%AA%8E.png" alt="高坂林檎" className="w-[110px] h-[110px] object-contain" />
+                            <div className="absolute pointer-events-none z-20" style={{ left: lang === 'en' ? '222px' : '232px', top: '460px', transform: 'translate(-50%, -50%)' }}>
+                                <img src="https://appletown-iizuna.s3.ap-northeast-1.amazonaws.com/apples/images/%E9%AB%98%E5%9D%82%E6%9E%97%E6%AA%8E.png" alt="高坂林檎" className="w-[95px] h-[95px] object-contain" />
                             </div>
-                            <span className="absolute text-[6px] text-ink/40 tracking-[0.05em] pointer-events-none z-20" style={{ left: '238px', top: '435px', transform: 'translateX(-50%)', fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{t('back.monument', lang)}</span>
-                            <span className="absolute text-[6px] text-ink/40 tracking-[0.05em] pointer-events-none z-20" style={{ left: '238px', top: '480px', transform: 'translateX(-50%)', fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{t('back.kosaka', lang)}</span>
+                            <span className="absolute text-[6.5px] text-ink/40 tracking-[0.05em] pointer-events-none z-20" style={{ left: lang === 'en' ? '222px' : '232px', top: '430px', transform: 'translateX(-50%)', fontFamily: gothicFont }}>{t('back.monument', lang)}</span>
+                            <span className="absolute text-[6.5px] text-ink/40 tracking-[0.05em] pointer-events-none z-20" style={{ left: lang === 'en' ? '222px' : '232px', top: '482px', transform: 'translateX(-50%)', fontFamily: gothicFont }}>{t('back.kosaka', lang)}</span>
 
                             {/* プチコラムエリア区切り線 — 3面通し y=510 */}
                             <div className="absolute z-20 border-t border-white/50" style={{ top: '510px', left: '20px', right: '20px' }}></div>
@@ -659,7 +674,7 @@ export default function Canvas() {
                                 {/* 知る header */}
                                 <div className="flex items-center gap-2 mb-1">
                                     <div className="w-[3px] h-[16px] bg-[#E8C340] rounded-full"></div>
-                                    <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{t('section.shiru', lang)}</span>
+                                    <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: gothicFont }}>{t('section.shiru', lang)}</span>
                                 </div>
                                 <p className="text-[8px] font-serif text-ink/55 leading-[1.8] mb-2 tracking-[0.04em]">
                                     {t('section.shiru.sub', lang)}
@@ -671,32 +686,34 @@ export default function Canvas() {
                                     <img src="https://cdn.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/8ae3ad00-8d6a-013e-bcd3-0a58a9feac02/IMG_2898.jpg" alt="いいづなりんご" className="w-full h-full object-cover" />
                                 </div>
 
-                                <div className="bg-white/40 rounded-sm px-2.5 py-2 mb-2">
-                                    <p className="text-[9px] font-bold tracking-[0.1em] mb-1.5" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                <div className="bg-white/40 rounded-sm px-2.5 pt-1.5 pb-[5px] mb-2">
+                                    <p className="text-[9px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: gothicFont }}>
                                         {t('timeline.title', lang)}
                                     </p>
                                     <div className="flex flex-col">
                                         {[
-                                            { year: '1860〜', key: 'timeline.1860' as const },
-                                            { year: '1890〜', key: 'timeline.1890' as const },
-                                            { year: '1929〜', key: 'timeline.1929' as const },
-                                            { year: '1965〜', key: 'timeline.1965' as const },
-                                            { year: '1968', key: 'timeline.1968' as const },
-                                            { year: '1980〜', key: 'timeline.1980' as const },
-                                            { year: '1987', key: 'timeline.1987' as const },
-                                            { year: '1990〜', key: 'timeline.1990' as const },
-                                            { year: '2005', key: 'timeline.2005a' as const },
-                                            { year: '2005', key: 'timeline.2005b' as const },
-                                            { year: '2020〜', key: 'timeline.2020' as const },
-                                            { year: t('timeline.now.label', lang), key: 'timeline.now' as const },
+                                            { year: lang === 'ja' ? '江戸末期' : '~1860', key: 'timeline.edo' as const },
+                                            { year: lang === 'ja' ? '明治23年' : '1890', key: 'timeline.m23' as const },
+                                            { year: lang === 'ja' ? '昭和4年' : '1929', key: 'timeline.s4' as const },
+                                            { year: lang === 'ja' ? '\u00A0\u00A020年代〜' : '~1945–', key: 'timeline.s20_30' as const },
+                                            { year: lang === 'ja' ? '\u00A0\u00A043年' : '1968', key: 'timeline.s43a' as const },
+                                            { year: lang === 'ja' ? '\u00A0\u00A043年' : '1968', key: 'timeline.s43b' as const },
+                                            { year: lang === 'ja' ? '\u00A0\u00A044年頃' : '~1969', key: 'timeline.s44' as const },
+                                            { year: lang === 'ja' ? '\u00A0\u00A055年' : '1980', key: 'timeline.s55' as const },
+                                            { year: lang === 'ja' ? '\u00A0\u00A062年' : '1987', key: 'timeline.s62' as const },
+                                            { year: lang === 'ja' ? '平成2年' : '1990', key: 'timeline.h2' as const },
+                                            { year: lang === 'ja' ? '\u00A0\u00A017年' : '2005', key: 'timeline.h17' as const },
+                                            { year: lang === 'ja' ? '\u00A0\u00A021年' : '2009', key: 'timeline.h21' as const },
+                                            { year: lang === 'ja' ? '令和2年' : '2020', key: 'timeline.r2' as const },
+                                            { year: lang === 'ja' ? '現在' : 'Now', key: 'timeline.now' as const },
                                         ].map((item, i, arr) => (
-                                            <div key={i} className="flex items-start mb-[2px]">
-                                                <div className="flex flex-col items-center flex-shrink-0 w-[8px] mt-[4px]">
-                                                    <div className={`w-[5px] h-[5px] rounded-full flex-shrink-0 ${i === arr.length - 1 ? 'bg-[#D45D56]' : 'bg-[#E8C340]'}`}></div>
+                                            <div key={i} className="flex items-start mb-[2.3px]">
+                                                <div className="flex flex-col items-center flex-shrink-0 w-[8px] mt-[3px]">
+                                                    <div className={`w-[4px] h-[4px] rounded-full flex-shrink-0 ${i === arr.length - 1 ? 'bg-[#D45D56]' : 'bg-[#E8C340]'}`}></div>
                                                     {i < arr.length - 1 && <div className="w-px h-[6px] bg-[#E8C340]/40"></div>}
                                                 </div>
-                                                <span className="text-[8px] text-ink/40 flex-shrink-0 w-[30px] ml-[2px] leading-[1.4]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{item.year}</span>
-                                                <p className="text-[8px] font-serif text-ink/70 leading-[1.4]">{t(item.key, lang)}</p>
+                                                <span className={`text-[7.2px] text-ink/40 flex-shrink-0 ${lang === 'ja' ? 'w-[38px]' : lang === 'en' ? 'w-[28px]' : 'w-[36px]'} ml-[3px] leading-[1.4]`} style={{ fontFamily: gothicFont }}>{item.year}</span>
+                                                <p className="text-[7.2px] font-serif text-ink/70 leading-[1.4]">{t(item.key, lang)}</p>
                                             </div>
                                         ))}
                                     </div>
@@ -704,11 +721,11 @@ export default function Canvas() {
 
                                 {/* Variety highlight — positioned at y=420 */}
                                 <div className="absolute left-[20px] right-[20px] z-10" style={{ top: '420px' }}>
-                                    <div className="bg-white/50 rounded-sm p-2.5 mb-2 relative overflow-visible">
-                                        <p className="text-[9px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                    <div className="bg-white/50 rounded-sm pt-2.5 px-2.5 pb-[10px] mb-2 relative overflow-visible">
+                                        <p className="text-[9px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: gothicFont }}>
                                             {t('variety.title', lang)}
                                         </p>
-                                        <p className="text-[8px] font-serif text-ink/55 leading-[1.8] tracking-[0.03em]" style={{ maxWidth: '195px' }}>
+                                        <p className={`${lang === 'zh' ? 'text-[8px] leading-[1.8]' : 'text-[7.8px] leading-[1.4]'} font-serif text-ink/55 tracking-[0.03em]`} style={{ maxWidth: '170px' }}>
                                             {t('variety.desc', lang)}
                                         </p>
                                         {/* 高坂林檎 PNG is rendered at 裏面 container level */}
@@ -719,7 +736,7 @@ export default function Canvas() {
                             {/* Science box — positioned in プチコラム area at 裏面 container level */}
                             <div className="absolute left-[20px] z-20" style={{ top: '520px', width: '240px' }}>
                                 <div className="border-l-2 border-leaf pl-2.5">
-                                    <p className="text-[9px] font-bold tracking-[0.08em] mb-0.5" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                    <p className="text-[9px] font-bold tracking-[0.08em] mb-0.5" style={{ fontFamily: gothicFont }}>
                                         {t('science.title', lang)}
                                     </p>
                                     <p className="text-[8px] font-serif text-ink/55 leading-[1.7]">
@@ -731,7 +748,7 @@ export default function Canvas() {
                             {/* 中面プチコラム — 日本一のりんごのまちを目指して */}
                             <div className="absolute z-20" style={{ top: '520px', left: '300px', width: '240px' }}>
                                 <div className="border-l-2 border-[#D45D56] pl-2.5">
-                                    <p className="text-[9px] font-bold tracking-[0.08em] mb-0.5" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                    <p className="text-[9px] font-bold tracking-[0.08em] mb-0.5" style={{ fontFamily: gothicFont }}>
                                         {t('vision.title', lang)}
                                     </p>
                                     <p className="text-[8px] font-serif text-ink/55 leading-[1.7]">
@@ -743,7 +760,7 @@ export default function Canvas() {
                             {/* 右面プチコラム — 移住地として人気 */}
                             <div className="absolute z-20" style={{ top: '520px', left: '580px', width: '240px' }}>
                                 <div className="border-l-2 border-ink/25 pl-2.5">
-                                    <p className="text-[9px] font-bold tracking-[0.08em] mb-0.5" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                    <p className="text-[9px] font-bold tracking-[0.08em] mb-0.5" style={{ fontFamily: gothicFont }}>
                                         {t('migration.title', lang)}
                                     </p>
                                     <p className="text-[8px] font-serif text-ink/55 leading-[1.7]">
@@ -759,7 +776,7 @@ export default function Canvas() {
                                 <div className="mb-3">
                                     <div className="flex items-center gap-2 mb-1">
                                         <div className="w-[3px] h-[16px] bg-[#D45D56] rounded-full"></div>
-                                        <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{t('section.ajiwau', lang)}</span>
+                                        <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: gothicFont }}>{t('section.ajiwau', lang)}</span>
                                     </div>
                                     <p className="text-[8px] font-serif text-ink/55 leading-[1.8] mb-1.5 tracking-[0.04em]">
                                         {t('section.ajiwau.sub', lang)}
@@ -772,7 +789,7 @@ export default function Canvas() {
                                     </div>
 
                                     {/* Shops */}
-                                    <p className="text-[9px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                    <p className="text-[9px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: gothicFont }}>
                                         {t('shops.title', lang)}
                                     </p>
                                     <div className="space-y-1 mb-2">
@@ -796,14 +813,14 @@ export default function Canvas() {
                                                         <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a1 1 0 001 .61h9.72a1 1 0 001-.76L23 6H6" />
                                                     </svg>
                                                 )}
-                                                <span className="text-[8px] font-bold tracking-[0.06em] flex-shrink-0" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{shop.name}</span>
+                                                <span className="text-[8px] font-bold tracking-[0.06em] flex-shrink-0" style={{ fontFamily: gothicFont }}>{shop.name}</span>
                                                 <span className="text-[8px] font-serif text-ink/45 flex-1">{shop.desc}</span>
                                             </div>
                                         ))}
                                     </div>
 
                                     {/* Events with photos */}
-                                    <p className="text-[9px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                    <p className="text-[9px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: gothicFont }}>
                                         {t('events.title', lang)}
                                     </p>
                                     <div className="grid grid-cols-3 gap-1">
@@ -813,7 +830,7 @@ export default function Canvas() {
                                                 <img src="https://cdn.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/cd850820-8d6a-013e-c3bf-0a58a9feac02/%E3%83%95%E3%82%99%E3%83%A9%E3%83%A0%E3%83%AA%E3%83%BC_5.jpg" alt="英国りんごフェア" className="w-full h-full object-cover" />
                                             </div>
                                             <div className="px-1 py-1">
-                                                <p className="text-[7px] font-bold leading-[1.3]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{t('event.ukfair.title', lang)}</p>
+                                                <p className="text-[7px] font-bold leading-[1.3]" style={{ fontFamily: gothicFont }}>{t('event.ukfair.title', lang)}</p>
                                                 <p className="text-[7px] font-serif text-ink/45 leading-[1.3] mt-0.5">{t('event.ukfair.desc', lang)}</p>
                                             </div>
                                         </div>
@@ -823,7 +840,7 @@ export default function Canvas() {
                                                 <img src="https://s3-ap-northeast-1.amazonaws.com/s3.peraichi.com/userData/cadd36d5-015f-4440-aa3c-b426c32c22a0/img/2772b080-f5f2-013e-83c3-0a58a9feac02/20230915_izumigaoka-14.jpg" alt="スイーツフェア" className="w-full h-full object-cover" />
                                             </div>
                                             <div className="px-1 py-1">
-                                                <p className="text-[7px] font-bold leading-[1.3]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{t('event.sweets.title', lang)}</p>
+                                                <p className="text-[7px] font-bold leading-[1.3]" style={{ fontFamily: gothicFont }}>{t('event.sweets.title', lang)}</p>
                                                 <p className="text-[7px] font-serif text-ink/45 leading-[1.3] mt-0.5">{t('event.sweets.desc', lang)}</p>
                                             </div>
                                         </div>
@@ -833,7 +850,7 @@ export default function Canvas() {
                                                 <img src="https://prcdn.freetls.fastly.net/release_image/76519/225/76519-225-6ea93e73c8a86d34e9806be5df3449a4-1240x827.png?width=1950&height=1350&quality=85%2C75&format=jpeg&auto=webp&fit=bounds&bg-color=fff" alt="スイーツコンクール" className="w-full h-full object-cover" style={{ transform: 'scale(1.15)' }} />
                                             </div>
                                             <div className="px-1 py-1">
-                                                <p className="text-[7px] font-bold leading-[1.3]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{t('event.concours.title', lang)}</p>
+                                                <p className="text-[7px] font-bold leading-[1.3]" style={{ fontFamily: gothicFont }}>{t('event.concours.title', lang)}</p>
                                                 <p className="text-[7px] font-serif text-ink/45 leading-[1.3] mt-0.5">{t('event.concours.desc', lang)}</p>
                                             </div>
                                         </div>
@@ -845,7 +862,7 @@ export default function Canvas() {
                                 <div className="absolute left-[20px] right-[20px] z-10" style={{ top: '420px' }}>
                                     <div className="bg-white/50 rounded-sm p-2.5 flex gap-2">
                                         <div className="flex-1">
-                                            <p className="text-[9px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>
+                                            <p className="text-[9px] font-bold tracking-[0.1em] mb-1" style={{ fontFamily: gothicFont }}>
                                                 {t('museum.title', lang)}
                                             </p>
                                             <p className="text-[8px] font-serif text-ink/55 leading-[1.8] tracking-[0.03em]">
@@ -867,7 +884,7 @@ export default function Canvas() {
                                 <div className="mb-2">
                                     <div className="flex items-center gap-2 mb-1">
                                         <div className="w-[3px] h-[16px] bg-leaf rounded-full"></div>
-                                        <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{t('section.taiken', lang)}</span>
+                                        <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: gothicFont }}>{t('section.taiken', lang)}</span>
                                         <span className="text-[8px] font-serif text-ink/55 tracking-[0.04em] ml-1">{t('section.taiken.sub', lang)}</span>
                                     </div>
 
@@ -895,7 +912,7 @@ export default function Canvas() {
                                                 }}
                                             />
                                             <div>
-                                                <p className="text-[8px] font-bold tracking-[0.08em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{t('exp.farming.title', lang)}</p>
+                                                <p className="text-[8px] font-bold tracking-[0.08em]" style={{ fontFamily: gothicFont }}>{t('exp.farming.title', lang)}</p>
                                                 <p className="text-[8px] font-serif text-ink/55 leading-[1.6] mt-0.5">{t('exp.farming.desc', lang)}</p>
                                             </div>
                                         </div>
@@ -916,7 +933,7 @@ export default function Canvas() {
                                                 <circle cx="17" cy="11" r="1.3" fill="#D45D56" />
                                             </svg>
                                             <div>
-                                                <p className="text-[8px] font-bold tracking-[0.08em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{t('exp.owner.title', lang)}</p>
+                                                <p className="text-[8px] font-bold tracking-[0.08em]" style={{ fontFamily: gothicFont }}>{t('exp.owner.title', lang)}</p>
                                                 <p className="text-[8px] font-serif text-ink/55 leading-[1.6] mt-0.5">{t('exp.owner.desc', lang)}</p>
                                             </div>
                                         </div>
@@ -926,7 +943,7 @@ export default function Canvas() {
                                                 <path d="M256,92.969c-21.078,0-38.219,17.141-38.219,38.203c0,21.078,17.141,38.219,38.219,38.219c21.063,0,38.219-17.141,38.219-38.219C294.219,110.109,277.063,92.969,256,92.969z M263.594,133.625c0,2.734-1.781,5.016-4.188,5.891c-1.031,0.672-2.281,1.094-3.625,1.094h-19.594c-3.641,0-6.594-2.953-6.594-6.578c0-3.641,2.953-6.594,6.594-6.594h14.844v-20.797c0-3.453,2.813-6.266,6.281-6.266s6.281,2.813,6.281,6.266V133.625z" />
                                             </svg>
                                             <div>
-                                                <p className="text-[8px] font-bold tracking-[0.08em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{t('exp.school.title', lang)}</p>
+                                                <p className="text-[8px] font-bold tracking-[0.08em]" style={{ fontFamily: gothicFont }}>{t('exp.school.title', lang)}</p>
                                                 <p className="text-[8px] font-serif text-ink/55 leading-[1.6] mt-0.5">{t('exp.school.desc', lang)}</p>
                                             </div>
                                         </div>
@@ -934,9 +951,9 @@ export default function Canvas() {
 
                                     {/* 滞在支援情報 - text only */}
                                     <div className="text-[8px] font-serif text-ink/65 leading-[1.7] mt-1.5 space-y-0.5">
-                                        <p className="flex items-start gap-1"><svg className="w-[7px] h-[7px] flex-shrink-0 mt-[2px]" viewBox="0 0 24 24" fill="#7B9B4B" opacity="0.6"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z" /></svg><span><span className="font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{t('stay.dining.label', lang)}</span> —— {t('stay.dining.desc', lang)}</span></p>
-                                        <p className="flex items-start gap-1"><svg className="w-[7px] h-[7px] flex-shrink-0 mt-[2px]" viewBox="0 0 24 24" fill="#7B9B4B" opacity="0.6"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z" /></svg><span><span className="font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{t('stay.transport.label', lang)}</span> —— {t('stay.transport.desc', lang)}</span></p>
-                                        <p className="flex items-start gap-1"><svg className="w-[7px] h-[7px] flex-shrink-0 mt-[2px]" viewBox="0 0 24 24" fill="#7B9B4B" opacity="0.6"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z" /></svg><span><span className="font-bold" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{t('stay.lodging.label', lang)}</span> —— {t('stay.lodging.desc', lang)}</span></p>
+                                        <p className="flex items-start gap-1"><svg className="w-[7px] h-[7px] flex-shrink-0 mt-[2px]" viewBox="0 0 24 24" fill="#7B9B4B" opacity="0.6"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z" /></svg><span><span className="font-bold" style={{ fontFamily: gothicFont }}>{t('stay.dining.label', lang)}</span> —— {t('stay.dining.desc', lang)}</span></p>
+                                        <p className="flex items-start gap-1"><svg className="w-[7px] h-[7px] flex-shrink-0 mt-[2px]" viewBox="0 0 24 24" fill="#7B9B4B" opacity="0.6"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z" /></svg><span><span className="font-bold" style={{ fontFamily: gothicFont }}>{t('stay.transport.label', lang)}</span> —— {t('stay.transport.desc', lang)}</span></p>
+                                        <p className="flex items-start gap-1"><svg className="w-[7px] h-[7px] flex-shrink-0 mt-[2px]" viewBox="0 0 24 24" fill="#7B9B4B" opacity="0.6"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z" /></svg><span><span className="font-bold" style={{ fontFamily: gothicFont }}>{t('stay.lodging.label', lang)}</span> —— {t('stay.lodging.desc', lang)}</span></p>
                                     </div>
                                 </div>
 
@@ -947,7 +964,7 @@ export default function Canvas() {
                                 <div className="mb-2">
                                     <div className="flex items-center gap-2 mb-1">
                                         <div className="w-[3px] h-[16px] bg-ink/25 rounded-full"></div>
-                                        <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{t('section.kurasu', lang)}</span>
+                                        <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: gothicFont }}>{t('section.kurasu', lang)}</span>
                                         <span className="text-[8px] font-serif text-ink/55 tracking-[0.04em] ml-1">{t('section.kurasu.sub', lang)}</span>
                                     </div>
                                     {/* Hero image */}
@@ -978,7 +995,7 @@ export default function Canvas() {
                                 <div className="mb-2">
                                     <div className="flex items-center gap-2 mb-1">
                                         <div className="w-[3px] h-[16px] bg-[#C4956A] rounded-full"></div>
-                                        <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif" }}>{t('section.itonamu', lang)}</span>
+                                        <span className="text-[13px] font-bold tracking-[0.15em]" style={{ fontFamily: gothicFont }}>{t('section.itonamu', lang)}</span>
                                         <span className="text-[8px] font-serif text-ink/55 tracking-[0.04em] ml-1">{t('section.itonamu.sub', lang)}</span>
                                     </div>
                                     {/* Hero image */}
