@@ -102,7 +102,7 @@ const translations = {
     'section.taiken.sub': { ja: '農業体験・滞在・アクセス', en: 'Farming, stays & access', zh: '農事體驗・住宿・交通' },
     'section.kurasu': { ja: '暮らす', en: 'Lifestyle', zh: '定居' },
     'section.kurasu.sub': { ja: '仕事・移住支援・就農支援', en: 'Work, relocation & farming support', zh: '工作・移居支援・務農支援' },
-    'section.itonamu': { ja: '営む', en: 'Business', zh: '推廣' },
+    'section.itonamu': { ja: '営む', en: 'Business', zh: '經營' },
     'section.itonamu.sub': { ja: '生産支援・販促素材', en: 'Production support & promotion', zh: '生產支援・行銷素材' },
 
     // Timeline
@@ -257,7 +257,7 @@ const translations = {
     },
 
     // Experience section — user table: "Hands-on Farming"
-    'exp.farming.title': { ja: '農業体験・ワーキングホリデー', en: 'Hands-on Farming', zh: '農事體驗・農業打工度假' },
+    'exp.farming.title': { ja: '農業体験・ワーキングホリデー', en: 'Hands-on Farming & Working Holidays', zh: '農事體驗・農業打工度假' },
     'exp.farming.desc': { ja: '収穫や作業体験・宿泊は一部町の補助あり。', en: 'Harvest & work with lodging support.', zh: '收穫及農事體驗，部分住宿有町補助。' },
     'exp.owner.title': { ja: 'りんごの木オーナー制度', en: 'Apple Tree Patronage', zh: '蘋果樹認養制度' },
     'exp.owner.desc': { ja: '1本の木を契約し、秋には自分のりんごを収穫。', en: 'Adopt a tree; harvest your own apples.', zh: '認養一棵樹，秋天採收專屬蘋果。' },
@@ -278,18 +278,18 @@ const translations = {
     'live.work.label': { ja: '働く', en: 'Work', zh: '就業' },
     'live.work.desc': { ja: '地域おこし協力隊／いいコネワークスで複業など', en: 'Community corps & co-working options', zh: '地方振興協力隊／共創空間複業等' },
     'live.farming.label': { ja: '就農', en: 'Start Farming', zh: '務農' },
-    'live.farming.desc': { ja: '独立を目指す新規就農制度など', en: 'Mentorship to independence', zh: '輔導獨立的新農里親研修制度等' },
+    'live.farming.desc': { ja: '独立を目指す新規就農制度など', en: 'New-farmer mentorship program & more', zh: '輔導獨立的新農里親研修制度等' },
 
     // Work/Business section — user table: "Business" > "Grower Support"
     'work.line1': {
         ja: 'りんごフォーラム／栽培技術講習会／加工施設／',
-        en: 'Forums / workshops / processing / fruit center /',
-        zh: '蘋果論壇／技術講習／加工設施／水果中心／',
+        en: 'Forums / workshops / processing /',
+        zh: '蘋果論壇／技術講習／加工設施／',
     },
     'work.line2': {
         ja: 'フルーツセンター／苗木購入補助／機械導入補助 など',
-        en: 'sapling & equipment grants',
-        zh: '苗木引進補助／機械引進補助等',
+        en: 'fruit center / sapling & equipment grants',
+        zh: '水果中心／苗木引進補助／機械引進補助等',
     },
 
     // PDF export UI
