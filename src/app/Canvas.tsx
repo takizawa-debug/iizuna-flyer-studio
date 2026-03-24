@@ -211,7 +211,8 @@ export default function Canvas() {
         const shuffled = shuffleArray(APPLE_IMAGES).slice(0, 30);
         const kosakaPos = shuffled.indexOf(KOSAKA_URL);
         if (kosakaPos !== -1 && !CENTER_INDICES.includes(kosakaPos)) {
-            const targetIdx = CENTER_INDICES[Math.floor(Math.random() * CENTER_INDICES.length)];
+            const kosakaRng = seededRandom(APPLE_SEED + 1);
+            const targetIdx = CENTER_INDICES[Math.floor(kosakaRng() * CENTER_INDICES.length)];
             [shuffled[kosakaPos], shuffled[targetIdx]] = [shuffled[targetIdx], shuffled[kosakaPos]];
         }
         setRandomApples(shuffled);
