@@ -100,6 +100,12 @@
     box-shadow: none !important;
   }
 
+  /* Remove CSS filters from images — drop-shadow and contrast/saturate/brightness
+     cause gray border artifacts around transparent PNGs in Chromium's PDF engine */
+  body.is-printing img {
+    filter: none !important;
+  }
+
   /* ── Wrapper chain ── */
 
   body.is-printing .pt-\[56px\] {
