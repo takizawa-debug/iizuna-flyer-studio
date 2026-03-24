@@ -282,12 +282,12 @@ const translations = {
 
     // Work/Business section — user table: "Business" > "Grower Support"
     'work.line1': {
-        ja: 'りんごフォーラム／栽培技術講習会／加工施設／フルーツセンター／',
+        ja: 'りんごフォーラム／栽培技術講習会／加工施設／',
         en: 'Forums / workshops / processing / fruit center /',
         zh: '蘋果論壇／技術講習／加工設施／水果中心／',
     },
     'work.line2': {
-        ja: '苗木購入補助／機械導入補助 など',
+        ja: 'フルーツセンター／苗木購入補助／機械導入補助 など',
         en: 'sapling & equipment grants',
         zh: '苗木引進補助／機械引進補助等',
     },
