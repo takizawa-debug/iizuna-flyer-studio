@@ -9,7 +9,7 @@ async function getBrowser() {
         const puppeteerCore = await import('puppeteer-core');
         return puppeteerCore.default.launch({
             args: chromium.default.args,
-            defaultViewport: { width: 840, height: 2400, deviceScaleFactor: 5 },
+            defaultViewport: { width: 1200, height: 2400, deviceScaleFactor: 8 },
             executablePath: await chromium.default.executablePath(),
             headless: true,
         });
@@ -40,7 +40,7 @@ export async function GET(req: NextRequest) {
         const page = await browser.newPage();
 
         await page.setViewport({
-            width: 840,
+            width: 1200,
             height: 2400,
             deviceScaleFactor: 8,
         });
