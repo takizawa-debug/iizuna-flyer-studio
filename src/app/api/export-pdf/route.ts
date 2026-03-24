@@ -42,7 +42,7 @@ export async function GET(req: NextRequest) {
         await page.setViewport({
             width: 840,
             height: 2400,
-            deviceScaleFactor: 5,
+            deviceScaleFactor: 8,
         });
 
         await page.goto(pageUrl, {
