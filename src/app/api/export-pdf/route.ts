@@ -10,7 +10,7 @@ async function getBrowser() {
 
         return puppeteerCore.default.launch({
             args: chromium.default.args,
-            defaultViewport: { width: 1200, height: 2400, deviceScaleFactor: 5 },
+            defaultViewport: null,
             executablePath: await chromium.default.executablePath(),
             headless: true,
         });
@@ -19,6 +19,7 @@ async function getBrowser() {
         const puppeteer = await import('puppeteer');
         return puppeteer.default.launch({
             headless: true,
+            defaultViewport: null,
             args: [
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
@@ -41,10 +42,12 @@ export async function GET(req: NextRequest) {
         browser = await getBrowser();
         const page = await browser.newPage();
 
+        // Set viewport to match panel width for accurate print layout
+        // 840px = panel width; print CSS scales it to A4 (297mm)
         await page.setViewport({
-            width: 1200,
-            height: 2400,
-            deviceScaleFactor: 5,
+            width: 840,
+            height: 594,
+            deviceScaleFactor: 1,
         });
 
         await page.goto(pageUrl, {
@@ -56,7 +59,7 @@ export async function GET(req: NextRequest) {
         await page.evaluate(() => document.fonts.ready);
         await new Promise(r => setTimeout(r, 5000));
 
-        // Apply print mode: hide UI, reset scale, remove filters
+        // Apply print mode: hide UI, flatten layout for exact A4 fit
         await page.evaluate(() => {
             document.body.classList.add('is-printing');
 
@@ -68,18 +71,50 @@ export async function GET(req: NextRequest) {
             document.querySelectorAll('[data-export-hide]').forEach(el => {
                 (el as HTMLElement).style.display = 'none';
             });
-            // Hide section labels
+            // Hide section labels (h2 with print:hidden)
             document.querySelectorAll('h2').forEach(h => {
-                if (h.classList.contains('print:hidden')) {
-                    (h as HTMLElement).style.display = 'none';
-                }
+                (h as HTMLElement).style.display = 'none';
             });
-            // Reset scale
+
+            // Strip ALL padding/margin/gap from wrapper chain
+            const outerContainer = document.querySelector('.overflow-auto') as HTMLElement;
+            if (outerContainer) {
+                outerContainer.style.padding = '0';
+                outerContainer.style.margin = '0';
+                outerContainer.style.overflow = 'visible';
+            }
+
+            // Reset scale wrapper
             const scaleContainer = document.querySelector('[style*="scale"]') as HTMLElement;
             if (scaleContainer) {
-                scaleContainer.style.transform = 'scale(1)';
-                scaleContainer.style.gap = '20px';
+                scaleContainer.style.transform = 'none';
+                scaleContainer.style.gap = '0';
                 scaleContainer.style.padding = '0';
+                scaleContainer.style.margin = '0';
+                scaleContainer.style.minHeight = 'auto';
+            }
+
+            // Section wrappers (front/back groups): strip all spacing
+            const sectionWrappers = scaleContainer?.children;
+            if (sectionWrappers) {
+                for (let i = 0; i < sectionWrappers.length; i++) {
+                    const wrapper = sectionWrappers[i] as HTMLElement;
+                    wrapper.style.gap = '0';
+                    wrapper.style.padding = '0';
+                    wrapper.style.margin = '0';
+                    wrapper.style.display = 'block';
+                    wrapper.style.width = '297mm';
+                    wrapper.style.height = '210mm';
+                    wrapper.style.overflow = 'hidden';
+                    wrapper.style.pageBreakAfter = i < sectionWrappers.length - 1 ? 'always' : 'auto';
+                }
+            }
+
+            // Force top-level wrapper to block and no spacing
+            const ptWrapper = document.querySelector('.pt-\\[56px\\]') as HTMLElement;
+            if (ptWrapper) {
+                ptWrapper.style.padding = '0';
+                ptWrapper.style.margin = '0';
             }
         });
 
@@ -88,10 +123,10 @@ export async function GET(req: NextRequest) {
         // Generate PDF using Chromium's built-in PDF engine
         // This produces vector text with embedded fonts
         const pdfBuffer = await page.pdf({
-            format: 'A4',
-            landscape: true,
+            width: '297mm',
+            height: '210mm',
             printBackground: true,
-            preferCSSPageSize: true,
+            preferCSSPageSize: false,
             margin: { top: '0', right: '0', bottom: '0', left: '0' },
         });
 
