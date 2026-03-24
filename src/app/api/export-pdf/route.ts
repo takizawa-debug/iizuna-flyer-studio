@@ -4,10 +4,8 @@ export const maxDuration = 120;
 
 async function getBrowser() {
     if (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME) {
-        // Serverless: use @sparticuz/chromium (full) + puppeteer-core
         const chromium = await import('@sparticuz/chromium');
         const puppeteerCore = await import('puppeteer-core');
-
         return puppeteerCore.default.launch({
             args: chromium.default.args,
             defaultViewport: null,
@@ -15,7 +13,6 @@ async function getBrowser() {
             headless: true,
         });
     } else {
-        // Local: use regular puppeteer
         const puppeteer = await import('puppeteer');
         return puppeteer.default.launch({
             headless: true,
@@ -42,13 +39,7 @@ export async function GET(req: NextRequest) {
         browser = await getBrowser();
         const page = await browser.newPage();
 
-        // Set viewport to match panel width for accurate print layout
-        // 840px = panel width; print CSS scales it to A4 (297mm)
-        await page.setViewport({
-            width: 840,
-            height: 594,
-            deviceScaleFactor: 1,
-        });
+        await page.setViewport({ width: 840, height: 594, deviceScaleFactor: 1 });
 
         await page.goto(pageUrl, {
             waitUntil: 'networkidle2',
@@ -59,69 +50,86 @@ export async function GET(req: NextRequest) {
         await page.evaluate(() => document.fonts.ready);
         await new Promise(r => setTimeout(r, 5000));
 
-        // Apply print mode: hide UI, flatten layout for exact A4 fit
+        // Extract panels from the DOM and rebuild body with ONLY the panels,
+        // each sized to exactly fill one A4 landscape page (297mm × 210mm).
+        // This eliminates all wrapper chain margin/padding/gap issues.
         await page.evaluate(() => {
-            document.body.classList.add('is-printing');
+            const frontPanel = document.querySelector('[data-panel="front"]') as HTMLElement;
+            const backPanel = document.querySelector('[data-panel="back"]') as HTMLElement;
+            if (!frontPanel) return;
 
-            // Hide fixed header
-            document.querySelectorAll('.fixed').forEach(el => {
-                (el as HTMLElement).style.display = 'none';
-            });
-            // Hide elements marked for export hiding
-            document.querySelectorAll('[data-export-hide]').forEach(el => {
-                (el as HTMLElement).style.display = 'none';
-            });
-            // Hide section labels (h2 with print:hidden)
-            document.querySelectorAll('h2').forEach(h => {
-                (h as HTMLElement).style.display = 'none';
-            });
+            // Clone panels to preserve content
+            const frontClone = frontPanel.cloneNode(true) as HTMLElement;
+            const backClone = backPanel ? backPanel.cloneNode(true) as HTMLElement : null;
 
-            // Strip ALL padding/margin/gap from wrapper chain
-            const outerContainer = document.querySelector('.overflow-auto') as HTMLElement;
-            if (outerContainer) {
-                outerContainer.style.padding = '0';
-                outerContainer.style.margin = '0';
-                outerContainer.style.overflow = 'visible';
+            // Style each panel to fill exactly one A4 page
+            const panelStyle = `
+                display: flex !important;
+                width: 297mm !important;
+                height: 210mm !important;
+                overflow: hidden !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                box-shadow: none !important;
+                transform-origin: top left !important;
+                transform: scale(calc(297 / 222.25)) !important;
+            `;
+            // 840px at 96dpi = 222.25mm. Scale factor = 297/222.25 = 1.3363
+            frontClone.setAttribute('style', frontClone.getAttribute('style') + ';' + panelStyle);
+            if (backClone) {
+                backClone.setAttribute('style', backClone.getAttribute('style') + ';' + panelStyle);
             }
 
-            // Reset scale wrapper
-            const scaleContainer = document.querySelector('[style*="scale"]') as HTMLElement;
-            if (scaleContainer) {
-                scaleContainer.style.transform = 'none';
-                scaleContainer.style.gap = '0';
-                scaleContainer.style.padding = '0';
-                scaleContainer.style.margin = '0';
-                scaleContainer.style.minHeight = 'auto';
-            }
+            // Remove filter from all images to prevent gray borders
+            const removeFilters = (el: HTMLElement) => {
+                el.querySelectorAll('img').forEach(img => {
+                    (img as HTMLElement).style.filter = 'none';
+                });
+            };
+            removeFilters(frontClone);
+            if (backClone) removeFilters(backClone);
 
-            // Section wrappers (front/back groups): strip all spacing
-            const sectionWrappers = scaleContainer?.children;
-            if (sectionWrappers) {
-                for (let i = 0; i < sectionWrappers.length; i++) {
-                    const wrapper = sectionWrappers[i] as HTMLElement;
-                    wrapper.style.gap = '0';
-                    wrapper.style.padding = '0';
-                    wrapper.style.margin = '0';
-                    wrapper.style.display = 'block';
-                    wrapper.style.width = '297mm';
-                    wrapper.style.height = '210mm';
-                    wrapper.style.overflow = 'hidden';
-                    wrapper.style.pageBreakAfter = i < sectionWrappers.length - 1 ? 'always' : 'auto';
+            // Clear body and inject only the panels
+            document.body.innerHTML = '';
+            document.body.style.cssText = 'margin:0 !important; padding:0 !important; background:white !important;';
+
+            // Inject print-specific styles
+            const style = document.createElement('style');
+            style.textContent = `
+                @page { size: 297mm 210mm; margin: 0; }
+                html, body { margin: 0 !important; padding: 0 !important; }
+                * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+                .pdf-page { page-break-after: always; width: 297mm; height: 210mm; overflow: hidden; position: relative; }
+                .pdf-page:last-child { page-break-after: auto; }
+                .pdf-page [data-panel] {
+                    width: 840px !important;
+                    height: 594px !important;
+                    transform: scale(1.3363) !important;
+                    transform-origin: top left !important;
+                    box-shadow: none !important;
                 }
-            }
+            `;
+            document.head.appendChild(style);
 
-            // Force top-level wrapper to block and no spacing
-            const ptWrapper = document.querySelector('.pt-\\[56px\\]') as HTMLElement;
-            if (ptWrapper) {
-                ptWrapper.style.padding = '0';
-                ptWrapper.style.margin = '0';
+            // Wrap each panel in a page container
+            const frontPage = document.createElement('div');
+            frontPage.className = 'pdf-page';
+            // Reset the inline style we set above — let the CSS class handle sizing
+            frontClone.style.cssText = '';
+            frontPage.appendChild(frontClone);
+            document.body.appendChild(frontPage);
+
+            if (backClone) {
+                const backPage = document.createElement('div');
+                backPage.className = 'pdf-page';
+                backClone.style.cssText = '';
+                backPage.appendChild(backClone);
+                document.body.appendChild(backPage);
             }
         });
 
         await new Promise(r => setTimeout(r, 1000));
 
-        // Generate PDF using Chromium's built-in PDF engine
-        // This produces vector text with embedded fonts
         const pdfBuffer = await page.pdf({
             width: '297mm',
             height: '210mm',
