@@ -114,39 +114,37 @@ export default function Canvas() {
 
     const exportPDF = useCallback(async () => {
         setExporting(true);
-        setExportProgress(50);
+        setExportProgress(30);
         try {
-            // Add print class to body — CSS @media print rules handle the rest
-            document.body.classList.add('is-printing');
+            const params = new URLSearchParams({
+                color: coverColor,
+                lang,
+            });
 
-            // Temporarily reset scale inline
-            const scaleEl = document.querySelector('[style*="scale"]') as HTMLElement;
-            const origTransform = scaleEl?.style.transform || '';
-            if (scaleEl) {
-                scaleEl.style.transform = 'scale(1)';
-                scaleEl.style.gap = '0px';
-                scaleEl.style.paddingBottom = '0px';
-            }
+            setExportProgress(50);
+
+            const res = await fetch(`/api/export-pdf?${params.toString()}`);
 
             setExportProgress(80);
 
-            // Wait for browser to apply styles
-            await new Promise(r => setTimeout(r, 300));
+            if (!res.ok) {
+                const errData = await res.json().catch(() => ({}));
+                throw new Error(errData.error || `HTTP ${res.status}`);
+            }
 
-            window.print();
+            const blob = await res.blob();
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'iizuna-apple-pamphlet.pdf';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
 
             setExportProgress(100);
-
-            // Restore scale
-            document.body.classList.remove('is-printing');
-            if (scaleEl) {
-                scaleEl.style.transform = origTransform;
-                scaleEl.style.gap = '';
-                scaleEl.style.paddingBottom = '';
-            }
         } catch (err) {
             console.error('PDF export failed:', err);
-            document.body.classList.remove('is-printing');
             alert(t('ui.exportFailed', lang) + '\n' + String(err));
         } finally {
             setTimeout(() => {
@@ -154,7 +152,7 @@ export default function Canvas() {
                 setExportProgress(0);
             }, 500);
         }
-    }, [coverColor, lang, scale]);
+    }, [coverColor, lang]);
 
     const getBaseColor = (color: string) => {
         if (color === '#FFFFFF') return '#F5F5F5';
