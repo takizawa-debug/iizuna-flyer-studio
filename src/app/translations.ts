@@ -113,7 +113,7 @@ const translations = {
         zh: '高坂林檎於善光寺門前作為信濃名物大受歡迎',
     },
     'timeline.m23': {
-        ja: 'りんご栽培始まり、苗木が初めて植えられる',
+        ja: 'りんご栽培が始まり、苗木が初めて植えられる',
         en: 'Apple farming begins; first saplings planted',
         zh: '蘋果栽培正式開始，首次種下苗木',
     },
@@ -123,7 +123,7 @@ const translations = {
         zh: '世界恐慌導致繭價暴跌，蠶絲業衰退而轉向蘋果栽培',
     },
     'timeline.s20_30': {
-        ja: 'りんご栽培、急拡大し産地に',
+        ja: 'りんご栽培面積が増加、急拡大し産地に',
         en: 'Apple farming expands rapidly; major producing region',
         zh: '蘋果栽培急速擴展，發展成為重要產地',
     },
@@ -168,7 +168,7 @@ const translations = {
         zh: '高坂林檎植入皇居東御苑古品種果樹園',
     },
     'timeline.r2': {
-        ja: '飯綱町産りんごの成分分析実施、美味しさを解明',
+        ja: '飯綱町産りんごの成分分析実施、おいしさを解明',
         en: 'Scientific analysis of Iizuna apples reveals flavor secrets',
         zh: '實施飯綱町產蘋果成分分析，科學揭示美味之祕',
     },
@@ -192,12 +192,12 @@ const translations = {
 
     // Science column
     'science.title': {
-        ja: '科学的にみる美味しさの理由',
+        ja: '科学的にみるおいしさの理由',
         en: 'The Science Behind the Flavor',
         zh: '科學解析美味的理由',
     },
     'science.desc': {
-        ja: '飯綱町は、昼夜の寒暖差があり日照量が多く、りんごが高糖度で濃厚な味わいに。シャキシャキした食感も特徴。成分分析でその美味しさを科学的に実証しています。',
+        ja: '飯綱町は、昼夜の寒暖差があり日照量が多く、りんごが高糖度で濃厚な味わいに。シャキシャキした食感も特徴。成分分析でそのおいしさを科学的に実証しています。',
         en: 'Sharp day-night temperature swings and ample sunshine yield apples of exceptional sweetness, depth, and crisp bite—now confirmed by compositional analysis.',
         zh: '飯綱町晝夜溫差顯著且日照充足，蘋果糖度高、風味濃郁香醇。清脆爽口的口感也是一大特色。透過成分分析，已從科學角度實證其美味。',
     },
@@ -209,7 +209,7 @@ const translations = {
         zh: '朝著日本第一蘋果之町邁進',
     },
     'vision.desc': {
-        ja: '飯綱町は「りんご」を核に地域資源を磨き上げる独自のまちづくりを推進中。農業にとどまらず健康・文化・働き方まで含めた持続可能な地域モデルを展開しています。',
+        ja: '飯綱町は「りんご」を核に地域資源を磨き上げる独自のまちづくりを推進中。農業にとどまらず健康・文化・働き方まで含めた持続可能な地域モデルの構築を展開しています。',
         en: 'Iizuna is building a sustainable community with apples at its heart — weaving agriculture, wellness, culture, and new ways of working into a single vision.',
         zh: '飯綱町以「蘋果」為核心，推動琢磨地域資源的獨特造鎮計畫。不僅限於農業，更涵蓋健康、文化與工作型態，展開永續發展的地域模式。',
     },
@@ -278,16 +278,16 @@ const translations = {
     'live.work.label': { ja: '働く', en: 'Work', zh: '就業' },
     'live.work.desc': { ja: '地域おこし協力隊／いいコネワークスで複業など', en: 'Community corps & co-working options', zh: '地方振興協力隊／共創空間複業等' },
     'live.farming.label': { ja: '就農', en: 'Start Farming', zh: '務農' },
-    'live.farming.desc': { ja: '独立を目指す新規就農里親研修制度など', en: 'Mentorship to independence', zh: '輔導獨立的新農里親研修制度等' },
+    'live.farming.desc': { ja: '独立を目指す新規就農制度など', en: 'Mentorship to independence', zh: '輔導獨立的新農里親研修制度等' },
 
     // Work/Business section — user table: "Business" > "Grower Support"
     'work.line1': {
-        ja: 'りんごフォーラム／栽培講習会／加工施設／フルーツセンター／',
+        ja: 'りんごフォーラム／栽培技術講習会／加工施設／フルーツセンター／',
         en: 'Forums / workshops / processing / fruit center /',
         zh: '蘋果論壇／技術講習／加工設施／水果中心／',
     },
     'work.line2': {
-        ja: '苗木導入補助／機械導入補助 など',
+        ja: '苗木購入補助／機械導入補助 など',
         en: 'sapling & equipment grants',
         zh: '苗木引進補助／機械引進補助等',
     },
