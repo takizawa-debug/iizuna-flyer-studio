@@ -80,15 +80,6 @@ export async function GET(req: NextRequest) {
                 backClone.setAttribute('style', backClone.getAttribute('style') + ';' + panelStyle);
             }
 
-            // Remove filter from all images to prevent gray borders
-            const removeFilters = (el: HTMLElement) => {
-                el.querySelectorAll('img').forEach(img => {
-                    (img as HTMLElement).style.filter = 'none';
-                });
-            };
-            removeFilters(frontClone);
-            if (backClone) removeFilters(backClone);
-
             // Clear body and inject only the panels
             document.body.innerHTML = '';
             document.body.style.cssText = 'margin:0 !important; padding:0 !important; background:white !important;';
