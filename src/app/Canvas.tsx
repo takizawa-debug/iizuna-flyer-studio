@@ -70,7 +70,7 @@ const seededRandom = (seed: number) => {
     };
 };
 
-const APPLE_SEED = 42; // ← Change this number for a different fixed arrangement
+const APPLE_SEED = 50; // ← Change this number for a different fixed arrangement
 
 const shuffleArray = (array: string[]) => {
     const rng = seededRandom(APPLE_SEED);
@@ -127,37 +127,39 @@ export default function Canvas() {
 
     const exportPDF = useCallback(async () => {
         setExporting(true);
-        setExportProgress(30);
+        setExportProgress(50);
         try {
-            const params = new URLSearchParams({
-                color: coverColor,
-                lang,
-            });
+            // Add print class to body — CSS @media print rules handle the rest
+            document.body.classList.add('is-printing');
 
-            setExportProgress(50);
-
-            const res = await fetch(`/api/export-pdf?${params.toString()}`);
+            // Temporarily reset scale inline
+            const scaleEl = document.querySelector('[style*="scale"]') as HTMLElement;
+            const origTransform = scaleEl?.style.transform || '';
+            if (scaleEl) {
+                scaleEl.style.transform = 'scale(1)';
+                scaleEl.style.gap = '0px';
+                scaleEl.style.paddingBottom = '0px';
+            }
 
             setExportProgress(80);
 
-            if (!res.ok) {
-                const errData = await res.json().catch(() => ({}));
-                throw new Error(errData.error || `HTTP ${res.status}`);
-            }
+            // Wait for browser to apply styles
+            await new Promise(r => setTimeout(r, 300));
 
-            const blob = await res.blob();
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'iizuna-apple-pamphlet.pdf';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
+            window.print();
 
             setExportProgress(100);
+
+            // Restore scale
+            document.body.classList.remove('is-printing');
+            if (scaleEl) {
+                scaleEl.style.transform = origTransform;
+                scaleEl.style.gap = '';
+                scaleEl.style.paddingBottom = '';
+            }
         } catch (err) {
             console.error('PDF export failed:', err);
+            document.body.classList.remove('is-printing');
             alert(t('ui.exportFailed', lang) + '\n' + String(err));
         } finally {
             setTimeout(() => {
@@ -165,7 +167,7 @@ export default function Canvas() {
                 setExportProgress(0);
             }, 500);
         }
-    }, [coverColor, lang]);
+    }, [coverColor, lang, scale]);
 
     const getBaseColor = (color: string) => {
         if (color === '#FFFFFF') return '#F5F5F5';
