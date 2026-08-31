@@ -373,7 +373,7 @@ export default function Canvas() {
                             )}
 
                             {/* --- 左面：中折り (Inside Flap) --- */}
-                            <div className={`w-[280px] h-full relative z-10 flex flex-col justify-center py-[20px] px-[24px] text-ink print:border-none`}>
+                            <div className={`w-[274px] h-full relative z-10 flex flex-col justify-center py-[20px] px-[22px] text-ink print:border-none`}>
 
                                 {/* Dynamic Absolute Background Silhouette - Using user's specific PNG */}
                                 <div
@@ -481,7 +481,7 @@ export default function Canvas() {
                             </div>
 
                             {/* --- 中面：裏表紙 (Back Cover) --- */}
-                            <div className="w-[280px] relative z-10 flex flex-col items-center justify-between p-6 pt-[60px] pb-[24px] text-center text-ink print:border-none">
+                            <div className="w-[283px] relative z-10 flex flex-col items-center justify-between p-6 pt-[60px] pb-[24px] text-center text-ink print:border-none">
 
                                 {/* Top: Compelling headline */}
                                 <div className="space-y-3 mb-6">
@@ -548,9 +548,14 @@ export default function Canvas() {
 
                             {/* --- 右面：表紙 (Front Cover) --- */}
                             <div
-                                className="w-[280px] relative z-10 flex flex-col items-center justify-center text-white print:border-none overflow-hidden pb-[40px] transition-colors duration-300"
+                                className="w-[283px] relative z-10 flex flex-col items-center justify-center text-white print:border-none pb-[40px] transition-colors duration-300"
                                 style={{ backgroundColor: coverColor }}
                             >
+                                {/* プロ仕様: 左側山折り部分の白フチ（背抜け）防止ブリード (-3.5mm / -10px 折り越し) */}
+                                <div 
+                                    className="absolute top-0 bottom-0 -left-[10px] w-[12px] pointer-events-none transition-colors duration-300"
+                                    style={{ backgroundColor: coverColor }}
+                                />
 
                                 {/* "Information (i)" abstract motif background */}
                                 <div className="absolute inset-0 pointer-events-none z-0">
@@ -680,7 +685,7 @@ export default function Canvas() {
                             <div className="absolute z-20 border-t border-white/50" style={{ top: '510px', left: '20px', right: '20px' }}></div>
 
                             {/* --- 左面：知る (Full panel) --- */}
-                            <div className="w-[280px] relative z-10 flex flex-col print:border-none text-ink/90 pt-[70px] px-[20px] pb-[12px]">
+                            <div className="w-[283px] relative z-10 flex flex-col print:border-none text-ink/90 pt-[70px] px-[20px] pb-[12px]">
 
                                 {/* 知る header */}
                                 <div className="flex items-center gap-2 mb-1">
@@ -781,7 +786,7 @@ export default function Canvas() {
                             </div>
 
                             {/* --- 中面：味わう＋体験する --- */}
-                            <div className="w-[280px] relative z-10 flex flex-col print:border-none text-ink/90 pt-[70px] px-[20px] pb-[12px]">
+                            <div className="w-[283px] relative z-10 flex flex-col print:border-none text-ink/90 pt-[70px] px-[20px] pb-[12px]">
 
                                 {/* 味わう section */}
                                 <div className="mb-3">
@@ -889,7 +894,7 @@ export default function Canvas() {
                             </div>
 
                             {/* --- 右面：体験する＋暮らす＋営む --- */}
-                            <div className="w-[280px] relative z-10 flex flex-col print:border-none text-ink/90 pt-[25px] px-[20px] pb-[12px]">
+                            <div className="w-[274px] relative z-10 flex flex-col print:border-none text-ink/90 pt-[25px] px-[18px] pb-[12px]">
 
                                 {/* 体験する section */}
                                 <div className="mb-2">
