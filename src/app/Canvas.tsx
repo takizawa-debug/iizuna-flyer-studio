@@ -4,6 +4,8 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { ZoomIn, ZoomOut, Download } from "lucide-react";
 import { QRCodeSVG } from "qrcode.react";
 import { t, Lang } from "./translations";
+import { toPng } from "html-to-image";
+import { jsPDF } from "jspdf";
 
 const APPLE_SVG_PATH = "M287.04,32.3c.29.17,1.01.63,1.46,1.55.57,1.19.29,2.29.2,2.57-7.08,18.09-14.18,36.17-21.26,54.26,5.96-.91,14.77-2.45,25.28-5.06,17.98-4.45,22.46-7.44,33.44-9.85,18.59-4.08,33.88-1.67,44.51,0,21.1,3.32,37.42,10.74,47.91,16.6-4.08,8.59-11.1,20.05-23.06,29.99-18.47,15.35-38.46,18.54-52.07,20.7-7.55,1.21-21.61,3.32-39.12.24-13.71-2.41-11-4.76-30.72-9.36-6.73-1.56-12.82-2.64-17.98-7.87-3.73-3.77-4.92-7.63-6.74-7.3-2.44.43-1.84,7.58-4.5,16.85-.98,3.46-5.56,19.45-14.05,21.35-5.5,1.23-9.85-4.07-17.02-9.79-17.52-13.96-36.26-17.94-45.91-19.99-7.62-1.62-25.33-5.16-45.19,1.36-6.6,2.17-19.57,7.82-35.2,23.74-48.04,48.93-49.39,127.17-49.69,143.97-.08,5-.47,48.18,16.56,90.06,6.63,16.3,14.21,28.27,24.85,38.3,4.2,3.97,12.19,11.37,24.85,16.56,13.72,5.63,26.8,6.15,31.06,6.21,8.06.12,9.06-1.03,14.49,0,10.22,1.95,13.47,7.33,22.77,12.42,10.16,5.56,19.45,6.3,30.02,7.25,8.15.73,18.56,1.67,31.15-1.99,9.83-2.85,16.44-7.18,25.24-12.93,2.47-1.61,9.94-6.61,20.55-16.18,12.76-11.51,21.35-21.79,25.53-26.87,26.39-32.12,39.71-48.12,50.73-71.43,12.87-27.23,17.2-49.56,18.63-57.97,3.23-18.95,5.82-35.27,0-54.87-2.24-7.54-6.98-23.94-21.74-37.27-5.26-4.76-12.9-11.66-24.85-13.46-17.04-2.58-30.24,7.19-33.13,9.32-9.71,7.17-13.91,16.56-21.93,35.04-1.81,4.19-8.26,19.38-14.31,43.63-2.82,11.32-6.43,25.97-8.28,45.55-1.47,15.61-3.27,34.6,1.04,59.01,4.92,27.9,15.01,47.01,17.6,51.76,5.58,10.26,12.02,21.83,24.85,33.13,6.45,5.69,17.55,15.24,35.2,19.77,19.17,4.92,34.7.98,38.3,0,14.29-3.9,24.02-11.27,28.99-15.63";
 
@@ -125,44 +127,70 @@ export default function Canvas() {
     }, []);
 
     const exportPDF = useCallback(async () => {
+        if (!frontRef.current) return;
         setExporting(true);
-        setExportProgress(30);
+        setExportProgress(15);
+
         try {
-            const params = new URLSearchParams({
-                color: coverColor,
-                lang,
+            // 1. Capture Front Panel (300DPI equivalent, pixelRatio: 3)
+            setExportProgress(35);
+            const frontDataUrl = await toPng(frontRef.current, {
+                pixelRatio: 3,
+                cacheBust: true,
             });
 
-            setExportProgress(50);
-
-            const res = await fetch(`/api/export-pdf?${params.toString()}`);
-
-            setExportProgress(80);
-
-            if (!res.ok) {
-                const errData = await res.json().catch(() => ({}));
-                throw new Error(errData.error || `HTTP ${res.status}`);
+            // 2. Capture Back Panel
+            setExportProgress(65);
+            let backDataUrl = null;
+            if (backRef.current) {
+                backDataUrl = await toPng(backRef.current, {
+                    pixelRatio: 3,
+                    cacheBust: true,
+                });
             }
 
-            const blob = await res.blob();
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'iizuna-apple-pamphlet.pdf';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
+            // 3. Build A4 Landscape PDF Document
+            setExportProgress(85);
+            const pdf = new jsPDF({
+                orientation: 'landscape',
+                unit: 'mm',
+                format: [297, 210],
+                compress: true,
+            });
 
+            pdf.addImage(frontDataUrl, 'PNG', 0, 0, 297, 210, undefined, 'FAST');
+
+            if (backDataUrl) {
+                pdf.addPage([297, 210], 'landscape');
+                pdf.addImage(backDataUrl, 'PNG', 0, 0, 297, 210, undefined, 'FAST');
+            }
+
+            // 4. Instant Download
+            pdf.save('iizuna-apple-pamphlet.pdf');
             setExportProgress(100);
         } catch (err) {
-            console.error('PDF export failed:', err);
-            alert(t('ui.exportFailed', lang) + '\n' + String(err));
+            console.error('Client PDF export failed, falling back to server export:', err);
+            try {
+                const params = new URLSearchParams({ color: coverColor, lang });
+                const res = await fetch('/api/export-pdf?' + params.toString());
+                if (!res.ok) throw new Error('Server returned ' + res.status);
+                const blob = await res.blob();
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'iizuna-apple-pamphlet.pdf';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            } catch (fallbackErr) {
+                alert(t('ui.exportFailed', lang) + '\n' + String(err));
+            }
         } finally {
             setTimeout(() => {
                 setExporting(false);
                 setExportProgress(0);
-            }, 500);
+            }, 400);
         }
     }, [coverColor, lang]);
 
